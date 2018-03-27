@@ -1808,6 +1808,7 @@ else return selectOutputOutBlue;	]]></Body>
 		populateDemandSKU(s, rows, i);
 	}
 	populateSKU(s, rows.get(0));
+	calculateRealDemand(s);
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -1841,7 +1842,7 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1522164614223</Id>
 					<Name><![CDATA[populateDemandSKU]]></Name>
-					<Description><![CDATA[Populates SKUs' parameters with data from the input_output table]]></Description>
+					<Description><![CDATA[Populates SKUs' demand with data from the input_output table]]></Description>
 					<X>-170</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1860,6 +1861,73 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
 					<Body><![CDATA[s.demand[i] = rows.get(i).get( input_tablecmpc.demand );]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1522175936525</Id>
+					<Name><![CDATA[country2code]]></Name>
+					<Description><![CDATA[Recieves a country-s initials and returns the code as double]]></Description>
+					<X>-340</X><Y>-90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[country]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (country) {
+	case "AR": return 1;
+	case "CH": return 2;
+	case "BR": return 3;
+	case "CO": return 4;
+	case "PE": return 5;
+	case "EC": return 6;
+	case "PA": return 7;
+	case "UR": return 8;
+	default: return 0;
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1522176441485</Id>
+					<Name><![CDATA[size_str2int]]></Name>
+					<Description><![CDATA[Recieves a country-s initials and returns the code as double]]></Description>
+					<X>-340</X><Y>-70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[size]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (size) {
+	case "XXG": return 10;
+	case "XG": return 9;
+	case "G": return 8;
+	case "M": return 7;
+	case "P": return 6;
+	default: return 0;
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1522176633069</Id>
+					<Name><![CDATA[calculateRealDemand]]></Name>
+					<Description><![CDATA[Calculates real demand, taking into account lead times.]]></Description>
+					<X>-170</X><Y>-30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[s]]></Name>
+						<Type><![CDATA[SKU]]></Type>
+					</Parameter>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -3839,6 +3907,9 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[demand]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[real_demand]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -6232,6 +6303,30 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1522165702123</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1522175825207</Id>
+					<Name><![CDATA[real_demand]]></Name>
+					<X>180</X><Y>300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new double[12]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1522175825205</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
