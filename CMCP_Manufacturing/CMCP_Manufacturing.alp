@@ -954,7 +954,7 @@
 				<Variable Class="Parameter">
 					<Id>1522161149296</Id>
 					<Name><![CDATA[proSline]]></Name>
-					<X>640</X><Y>530</Y>
+					<X>770</X><Y>-100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1601,7 +1601,7 @@
 				<Connector>
 					<Id>1519241265884</Id>
 					<Name><![CDATA[connector11]]></Name>
-					<X>100</X><Y>460</Y>
+					<X>550</X><Y>550</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1627,8 +1627,8 @@
 						<ItemName><![CDATA[in]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
-						<Point><X>450</X><Y>90</Y></Point>
-						<Point><X>530</X><Y>90</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>80</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -1766,24 +1766,6 @@
 			</Connectors>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[SelectOutputOut]]></ReturnType>
-					<Id>1519240190329</Id>
-					<Name><![CDATA[chooseOutput]]></Name>
-					<X>390</X><Y>350</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[agent]]></Name>
-						<Type><![CDATA[Part]]></Type>
-					</Parameter>
-					<Body><![CDATA[if (agent.color == red)
-	return selectOutputOutRed;
-else return selectOutputOutBlue;	]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1522163878563</Id>
@@ -1864,10 +1846,10 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
+					<ReturnType><![CDATA[int]]></ReturnType>
 					<Id>1522175936525</Id>
 					<Name><![CDATA[country2code]]></Name>
-					<Description><![CDATA[Recieves a country-s initials and returns the code as double]]></Description>
+					<Description><![CDATA[Receives a country's initials and returns the code as int]]></Description>
 					<X>-340</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1894,7 +1876,7 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 					<ReturnType><![CDATA[int]]></ReturnType>
 					<Id>1522176441485</Id>
 					<Name><![CDATA[size_str2int]]></Name>
-					<Description><![CDATA[Recieves a country-s initials and returns the code as double]]></Description>
+					<Description><![CDATA[Receives a size's initials and returns the code as int]]></Description>
 					<X>-340</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1972,7 +1954,7 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 							<ItemName><![CDATA[1412336242933]]></ItemName>
 						</GenericParameterSubstituteReference>
 						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[Lote]]></Code>
+							<Code><![CDATA[SKU]]></Code>
 						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
@@ -2214,9 +2196,6 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 					<Parameters>
 						<Parameter>
 							<Name><![CDATA[conditionIsProbabilistic]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[false]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[choice]]></Name>
@@ -2299,6 +2278,9 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[probability]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[0]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
@@ -2375,6 +2357,9 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[probability]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[0]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
@@ -2848,6 +2833,9 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[probability]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[0]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
@@ -3031,6 +3019,9 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[probability]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[0]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
@@ -3214,6 +3205,9 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[probability]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[0]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
@@ -3397,6 +3391,9 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[probability]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[0]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
@@ -3580,6 +3577,9 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[probability]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[0]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
@@ -3654,7 +3654,7 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[t0]]></Code>
+								<Code><![CDATA[0]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 							</Value>
 						</Parameter>
