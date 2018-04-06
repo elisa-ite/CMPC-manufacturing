@@ -9460,7 +9460,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522333378023</Id>
 					<Name><![CDATA[connector1]]></Name>
-					<X>1070</X><Y>200</Y>
+					<X>1240</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9534,7 +9534,7 @@ del Producto]]></Text>
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[cmcp_manufacturing_1]]></PackageName>
 						<ClassName><![CDATA[ProductionLine]]></ClassName>
-						<ItemName><![CDATA[delay]]></ItemName>
+						<ItemName><![CDATA[delayArranque]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -9627,7 +9627,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522361974291</Id>
 					<Name><![CDATA[connector]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>750</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9645,7 +9645,7 @@ del Producto]]></Text>
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[cmcp_manufacturing_1]]></PackageName>
 						<ClassName><![CDATA[ProductionLine]]></ClassName>
-						<ItemName><![CDATA[delay2]]></ItemName>
+						<ItemName><![CDATA[delayChangeSize]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -9653,14 +9653,14 @@ del Producto]]></Text>
 						<ItemName><![CDATA[in]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
-						<Point><X>750</X><Y>200</Y></Point>
-						<Point><X>790</X><Y>200</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>40</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1522361988077</Id>
 					<Name><![CDATA[connector2]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>830</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9668,7 +9668,7 @@ del Producto]]></Text>
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[cmcp_manufacturing_1]]></PackageName>
 						<ClassName><![CDATA[ProductionLine]]></ClassName>
-						<ItemName><![CDATA[delay2]]></ItemName>
+						<ItemName><![CDATA[delayChangeSize]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -9678,7 +9678,7 @@ del Producto]]></Text>
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[cmcp_manufacturing_1]]></PackageName>
 						<ClassName><![CDATA[ProductionLine]]></ClassName>
-						<ItemName><![CDATA[delay3]]></ItemName>
+						<ItemName><![CDATA[delayChangePackSize]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -9686,14 +9686,14 @@ del Producto]]></Text>
 						<ItemName><![CDATA[in]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
-						<Point><X>830</X><Y>200</Y></Point>
-						<Point><X>880</X><Y>200</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>50</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1522610077120</Id>
 					<Name><![CDATA[connector81]]></Name>
-					<X>1150</X><Y>200</Y>
+					<X>1320</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9724,42 +9724,9 @@ del Producto]]></Text>
 					</Points>
 				</Connector>
 				<Connector>
-					<Id>1522945755009</Id>
-					<Name><![CDATA[connector3]]></Name>
-					<X>0</X><Y>0</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[cmcp_manufacturing_1]]></PackageName>
-						<ClassName><![CDATA[ProductionLine]]></ClassName>
-						<ItemName><![CDATA[delay3]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Delay]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[cmcp_manufacturing_1]]></PackageName>
-						<ClassName><![CDATA[ProductionLine]]></ClassName>
-						<ItemName><![CDATA[restrictedAreaEnd4]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[RestrictedAreaEnd]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>920</X><Y>200</Y></Point>
-						<Point><X>960</X><Y>200</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
 					<Id>1522945755014</Id>
 					<Name><![CDATA[connector4]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>1150</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9785,8 +9752,8 @@ del Producto]]></Text>
 						<ItemName><![CDATA[in]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
-						<Point><X>980</X><Y>200</Y></Point>
-						<Point><X>1030</X><Y>200</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>50</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -9843,7 +9810,7 @@ del Producto]]></Text>
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[cmcp_manufacturing_1]]></PackageName>
 						<ClassName><![CDATA[ProductionLine]]></ClassName>
-						<ItemName><![CDATA[delay]]></ItemName>
+						<ItemName><![CDATA[delayArranque]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -9853,6 +9820,72 @@ del Producto]]></Text>
 					<Points>
 						<Point><X>630</X><Y>200</Y></Point>
 						<Point><X>650</X><Y>200</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1522950026211</Id>
+					<Name><![CDATA[connector3]]></Name>
+					<X>920</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[cmcp_manufacturing_1]]></PackageName>
+						<ClassName><![CDATA[ProductionLine]]></ClassName>
+						<ItemName><![CDATA[delayChangePackSize]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[cmcp_manufacturing_1]]></PackageName>
+						<ClassName><![CDATA[ProductionLine]]></ClassName>
+						<ItemName><![CDATA[productionTime]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>80</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1522950026214</Id>
+					<Name><![CDATA[connector8]]></Name>
+					<X>1040</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[cmcp_manufacturing_1]]></PackageName>
+						<ClassName><![CDATA[ProductionLine]]></ClassName>
+						<ItemName><![CDATA[productionTime]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[cmcp_manufacturing_1]]></PackageName>
+						<ClassName><![CDATA[ProductionLine]]></ClassName>
+						<ItemName><![CDATA[restrictedAreaEnd4]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[RestrictedAreaEnd]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>90</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
@@ -11390,7 +11423,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522333371898</Id>
 					<Name><![CDATA[prodAttained1]]></Name>
-					<X>1030</X><Y>180</Y>
+					<X>1200</X><Y>180</Y>
 					<Label><X>-10</X><Y>40</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11668,7 +11701,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1522337615250</Id>
-					<Name><![CDATA[delay]]></Name>
+					<Name><![CDATA[delayArranque]]></Name>
 					<X>650</X><Y>180</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -11921,9 +11954,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1522361967285</Id>
-					<Name><![CDATA[delay2]]></Name>
+					<Name><![CDATA[delayChangeSize]]></Name>
 					<X>790</X><Y>180</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
+					<Label><X>-25</X><Y>55</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -12025,9 +12058,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1522361980778</Id>
-					<Name><![CDATA[delay3]]></Name>
+					<Name><![CDATA[delayChangePackSize]]></Name>
 					<X>880</X><Y>180</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
+					<Label><X>-35</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -12130,7 +12163,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522610077015</Id>
 					<Name><![CDATA[hold12]]></Name>
-					<X>1130</X><Y>190</Y>
+					<X>1300</X><Y>190</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12215,7 +12248,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522610077086</Id>
 					<Name><![CDATA[sink4]]></Name>
-					<X>1180</X><Y>190</Y>
+					<X>1350</X><Y>190</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12288,7 +12321,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522945749306</Id>
 					<Name><![CDATA[restrictedAreaEnd4]]></Name>
-					<X>960</X><Y>180</Y>
+					<X>1130</X><Y>180</Y>
 					<Label><X>-43</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12392,6 +12425,110 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialSpeedCode Class="CodeUnitValue">
+						<Code><![CDATA[10]]></Code>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</InitialSpeedCode>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1522950015452</Id>
+					<Name><![CDATA[productionTime]]></Name>
+					<X>1000</X><Y>180</Y>
+					<Label><X>-25</X><Y>55</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[Delay]]></ClassName>
+							<ItemName><![CDATA[1412336242930]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[type]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[delayTime]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[triangular( 0.5, 1, 1.5 )]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[capacity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[maximumCapacity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[entityLocation]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[pushProtocol]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[restoreEntityLocationOnExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[forceStatisticsCollection]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onAtExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onRemove]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
