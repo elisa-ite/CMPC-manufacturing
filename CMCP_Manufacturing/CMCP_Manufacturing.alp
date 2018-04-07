@@ -2127,7 +2127,7 @@ SKU s = getHighPriorSKU( month-1 );
 //}
 
 
-in_products.take( s );	// Take SKU
+in_products.take(s);	// Take SKU
 
 //
 // Generate Lote
