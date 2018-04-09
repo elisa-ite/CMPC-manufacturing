@@ -207,6 +207,888 @@
 			</ScaleRuler>
 			<ConnectionsId>1519223879328</ConnectionsId>
 			<Variables>
+				<Variable Class="PlainVariable">
+					<Id>1523191316830</Id>
+					<Name><![CDATA[backorder]]></Name>
+					<X>750</X><Y>-230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316835</Id>
+					<Name><![CDATA[code1]]></Name>
+					<X>950</X><Y>-230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316840</Id>
+					<Name><![CDATA[dayOfMonth]]></Name>
+					<X>750</X><Y>-190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316844</Id>
+					<Name><![CDATA[iteration]]></Name>
+					<X>-290</X><Y>-110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316850</Id>
+					<Name><![CDATA[jkey]]></Name>
+					<X>-870</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[String]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316855</Id>
+					<Name><![CDATA[loteId]]></Name>
+					<X>950</X><Y>-210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316859</Id>
+					<Name><![CDATA[month1]]></Name>
+					<X>540</X><Y>-190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316864</Id>
+					<Name><![CDATA[monthForwardCoverage]]></Name>
+					<X>750</X><Y>-290</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316869</Id>
+					<Name><![CDATA[monthProdQueue]]></Name>
+					<X>540</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316873</Id>
+					<Name><![CDATA[prodLine]]></Name>
+					<X>540</X><Y>-110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[ProductionLine]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316877</Id>
+					<Name><![CDATA[production]]></Name>
+					<X>750</X><Y>-250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316881</Id>
+					<Name><![CDATA[readyToGo]]></Name>
+					<X>540</X><Y>-150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316885</Id>
+					<Name><![CDATA[shiftTime]]></Name>
+					<X>750</X><Y>-210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316889</Id>
+					<Name><![CDATA[skuAtt]]></Name>
+					<X>-950</X><Y>320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1212]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316893</Id>
+					<Name><![CDATA[skuBat]]></Name>
+					<X>-1030</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316897</Id>
+					<Name><![CDATA[skuBO]]></Name>
+					<X>-950</X><Y>340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316901</Id>
+					<Name><![CDATA[skuCode]]></Name>
+					<X>-1030</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1212]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316905</Id>
+					<Name><![CDATA[skuDelay]]></Name>
+					<X>950</X><Y>-270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316909</Id>
+					<Name><![CDATA[skuDem]]></Name>
+					<X>-1030</X><Y>360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316913</Id>
+					<Name><![CDATA[skuDFC]]></Name>
+					<X>-870</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316917</Id>
+					<Name><![CDATA[skuInProd]]></Name>
+					<X>950</X><Y>-250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316921</Id>
+					<Name><![CDATA[skuInv]]></Name>
+					<X>-1030</X><Y>320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316925</Id>
+					<Name><![CDATA[skuLin]]></Name>
+					<X>-1030</X><Y>260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316929</Id>
+					<Name><![CDATA[skuLoteSize]]></Name>
+					<X>950</X><Y>-290</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316933</Id>
+					<Name><![CDATA[skuMax]]></Name>
+					<X>-950</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316937</Id>
+					<Name><![CDATA[skuMcp]]></Name>
+					<X>-870</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316942</Id>
+					<Name><![CDATA[skuMin]]></Name>
+					<X>-950</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316947</Id>
+					<Name><![CDATA[skuMod]]></Name>
+					<X>-950</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316950</Id>
+					<Name><![CDATA[skuMon]]></Name>
+					<X>-1030</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316954</Id>
+					<Name><![CDATA[skuMpr]]></Name>
+					<X>-1030</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316958</Id>
+					<Name><![CDATA[skuPla]]></Name>
+					<X>-950</X><Y>300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316962</Id>
+					<Name><![CDATA[skuPointer]]></Name>
+					<X>-670</X><Y>-220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[SKU]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316966</Id>
+					<Name><![CDATA[skuPPB]]></Name>
+					<X>-950</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316970</Id>
+					<Name><![CDATA[skuPPS]]></Name>
+					<X>-950</X><Y>260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316974</Id>
+					<Name><![CDATA[skuPri]]></Name>
+					<X>-1030</X><Y>300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1212]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316980</Id>
+					<Name><![CDATA[skuRat]]></Name>
+					<X>-1030</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316984</Id>
+					<Name><![CDATA[skuRde]]></Name>
+					<X>-1030</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316989</Id>
+					<Name><![CDATA[skuReq]]></Name>
+					<X>-1030</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191316995</Id>
+					<Name><![CDATA[skuSli]]></Name>
+					<X>-1030</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317000</Id>
+					<Name><![CDATA[skuSO]]></Name>
+					<X>-950</X><Y>360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1212]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317005</Id>
+					<Name><![CDATA[skuTin]]></Name>
+					<X>-1030</X><Y>340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317011</Id>
+					<Name><![CDATA[skuUbp]]></Name>
+					<X>-870</X><Y>360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317015</Id>
+					<Name><![CDATA[skuUci]]></Name>
+					<X>-870</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317020</Id>
+					<Name><![CDATA[skuUcv]]></Name>
+					<X>-950</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317026</Id>
+					<Name><![CDATA[skuUps]]></Name>
+					<X>-950</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317031</Id>
+					<Name><![CDATA[skuVer]]></Name>
+					<X>-870</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[String]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317035</Id>
+					<Name><![CDATA[sumBO]]></Name>
+					<X>540</X><Y>-240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317039</Id>
+					<Name><![CDATA[sumCap]]></Name>
+					<X>540</X><Y>-280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317043</Id>
+					<Name><![CDATA[sumProd]]></Name>
+					<X>540</X><Y>-260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317047</Id>
+					<Name><![CDATA[sumSO]]></Name>
+					<X>540</X><Y>-220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317051</Id>
+					<Name><![CDATA[timeout]]></Name>
+					<X>750</X><Y>-270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317055</Id>
+					<Name><![CDATA[totBOpLine1]]></Name>
+					<X>-120</X><Y>1040</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317059</Id>
+					<Name><![CDATA[totBOpLine2]]></Name>
+					<X>-120</X><Y>1070</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317063</Id>
+					<Name><![CDATA[totBOpLine3]]></Name>
+					<X>-120</X><Y>1100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317067</Id>
+					<Name><![CDATA[totBOpLine4]]></Name>
+					<X>-120</X><Y>1130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317071</Id>
+					<Name><![CDATA[totBOpLine5]]></Name>
+					<X>-120</X><Y>1160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317075</Id>
+					<Name><![CDATA[totCountBO]]></Name>
+					<X>660</X><Y>-310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317079</Id>
+					<Name><![CDATA[totCountPRD]]></Name>
+					<X>660</X><Y>-330</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317083</Id>
+					<Name><![CDATA[totCountSO]]></Name>
+					<X>540</X><Y>-330</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317087</Id>
+					<Name><![CDATA[totCountSO2]]></Name>
+					<X>540</X><Y>-310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double[]]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new double[prodLines]]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317091</Id>
+					<Name><![CDATA[totPROpLine1]]></Name>
+					<X>-120</X><Y>850</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317095</Id>
+					<Name><![CDATA[totPROpLine2]]></Name>
+					<X>-120</X><Y>880</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317099</Id>
+					<Name><![CDATA[totPROpLine3]]></Name>
+					<X>-120</X><Y>910</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317103</Id>
+					<Name><![CDATA[totPROpLine4]]></Name>
+					<X>-120</X><Y>940</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317108</Id>
+					<Name><![CDATA[totPROpLine5]]></Name>
+					<X>-120</X><Y>970</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317111</Id>
+					<Name><![CDATA[totSOcostpLine1]]></Name>
+					<X>-120</X><Y>660</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317115</Id>
+					<Name><![CDATA[totSOcostpLine2]]></Name>
+					<X>-120</X><Y>690</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317119</Id>
+					<Name><![CDATA[totSOcostpLine3]]></Name>
+					<X>-120</X><Y>720</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317123</Id>
+					<Name><![CDATA[totSOcostpLine4]]></Name>
+					<X>-120</X><Y>750</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317127</Id>
+					<Name><![CDATA[totSOcostpLine5]]></Name>
+					<X>-120</X><Y>780</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317131</Id>
+					<Name><![CDATA[updatedRows]]></Name>
+					<X>-1040</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523191317135</Id>
+					<Name><![CDATA[uploadedRows]]></Name>
+					<X>-1040</X><Y>190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1522161149042</Id>
 					<Name><![CDATA[bulk]]></Name>
@@ -897,12 +1779,9 @@
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
+						<Type><![CDATA[int[]]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA["empty"]]></Code>
-						</DefaultValue>
 						<ParameterEditor>
 							<Id>1522161149262</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -1395,6 +2274,231 @@
 						<ParameterEditor>
 							<Id>1522161149359</Id>
 							<Label><![CDATA[type1]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523190969988</Id>
+					<Name><![CDATA[mape]]></Name>
+					<X>230</X><Y>-380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1523190969986</Id>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523190969999</Id>
+					<Name><![CDATA[mapeMax]]></Name>
+					<X>508</X><Y>-380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1.05]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523190969997</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523190970005</Id>
+					<Name><![CDATA[mapeMin]]></Name>
+					<X>508</X><Y>-420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[.95]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523190970003</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523190970012</Id>
+					<Name><![CDATA[mapeMod]]></Name>
+					<X>508</X><Y>-400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[.97]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523190970010</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523191073161</Id>
+					<Name><![CDATA[minForLote]]></Name>
+					<X>370</X><Y>-420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1523191073159</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523191101577</Id>
+					<Name><![CDATA[totInv]]></Name>
+					<X>720</X><Y>-420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1523191101575</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523191101584</Id>
+					<Name><![CDATA[totInvCost]]></Name>
+					<X>820</X><Y>-400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1523191101582</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523191101591</Id>
+					<Name><![CDATA[totInvPal]]></Name>
+					<X>720</X><Y>-380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1523191101589</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523191134710</Id>
+					<Name><![CDATA[prodLines]]></Name>
+					<X>-270</X><Y>340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[5]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523191134708</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523191662237</Id>
+					<Name><![CDATA[daysForwardCoverage]]></Name>
+					<X>-270</X><Y>360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523191662235</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -1949,85 +3053,85 @@ SKU s = getHighPriorSKU( month-1 );
 
 // Initialize SKU variables
 
-//readyToGo = prodLines;
-//s.lotees[month-1] = 0;
-//s.prodReq[month-1] = 0;
-//s.prodPlan[month-1] = 0;
-//s.prodAtt[month-1] = 0;
-//s.prodBO[month-1] = 0;
-//s.prodSOut[month-1] = 0;
-//double pproLotees = 0;
-//double pproBOLotees = 0;
-//double prLotees = 0;
-//double lotees = 0;
+readyToGo = prodLines;
+s.lotees[month-1] = 0;
+s.prodReq[month-1] = 0;
+s.prodPlan[month-1] = 0;
+s.prodAtt[month-1] = 0;
+s.prodBO[month-1] = 0;
+s.prodSOut[month-1] = 0;
+double pproLotees = 0;
+double pproBOLotees = 0;
+double prLotees = 0;
+double lotees = 0;
 
 // Calculate Initial Inventory
 
-//if (month > 1 && month <= 12) {
-	//s.proInventory[month-1] = (s.prodAtt[month-2] + s.proInventory[month-2]) - s.proRDemand[month-2];//(pp + pi) - pd;
-	//if (s.proInventory[month-1] < 0) {
-		//s.prodSOut[month-2] = s.proInventory[month-1];
-		//s.proInventory[month-1] = 0;
-	//}
-//}
+if (month > 1 && month <= 12) {
+	s.proInventory[month-1] = (s.prodAtt[month-2] + s.proInventory[month-2]) - s.proRDemand[month-2];//(pp + pi) - pd;
+	if (s.proInventory[month-1] < 0) {
+		s.prodSOut[month-2] = s.proInventory[month-1];
+		s.proInventory[month-1] = 0;
+	}
+}
 
 //
 // Calculate Target Inventory (ti) by SKU
 //
 
-//double ti = 0;
-//int mfc = 0;
-//int dfc = 0;
-//int rdays = 0;
+double ti = 0;
+int mfc = 0;
+int dfc = 0;
+int rdays = 0;
 
-//if (s.proDFC[month-1] > 0) {
-	//monthForwardCoverage = s.proDFC[month-1] / 30;
-//} else {
-	//monthForwardCoverage = daysForwardCoverage / 30;
-//}
-//mfc = (int)Math.floor(monthForwardCoverage);
-//dfc = mfc * 30;
-//rdays = daysForwardCoverage - dfc;
+if (s.proDFC[month-1] > 0) {
+	monthForwardCoverage = s.proDFC[month-1] / 30;
+} else {
+	monthForwardCoverage = daysForwardCoverage / 30;
+}
+mfc = (int)Math.floor(monthForwardCoverage);
+dfc = mfc * 30;
+rdays = daysForwardCoverage - dfc;
 
-//if (mfc > 0){
-	//for( int j = 1 ; j <= mfc ; j++ ){
-		//if ((month-1) + j <= 11) {
-		//	ti = ti + s.proDemand[(month-1)+j];
-		//} else {
-	//		if ((month-1) + j == 12) {
-		//	ti = ti + s.proDemand[0];
-		//} else {
-		//	if ((month-1) + j == 13) {
-		//	ti = ti + s.proDemand[1];
-		//}}};
-	//}
-//}
-//if (rdays > 0){
-	//if ((month-1) + (mfc+1) <= 11) {
-	//		ti = ti + s.proDemand[(month-1)+(mfc+1)] / 30 * rdays;
-	//	} else {
-		//	if ((month-1) + (mfc+1) == 12) {
-		//	ti = ti + s.proDemand[0] / 30 * rdays;
-		//} else {
-		//	if ((month-1) + (mfc+1) == 13) {
-		//	ti = ti + s.proDemand[1] / 30 * rdays;
-		//}}
-	//}
-	//ti = (int)Math.floor(ti+0.9999);
-//};
-//s.proTargetInventory[month-1] = ti;
+if (mfc > 0){
+	for( int j = 1 ; j <= mfc ; j++ ){
+		if ((month-1) + j <= 11) {
+			ti = ti + s.proDemand[(month-1)+j];
+		} else {
+			if ((month-1) + j == 12) {
+			ti = ti + s.proDemand[0];
+		} else {
+			if ((month-1) + j == 13) {
+			ti = ti + s.proDemand[1];
+		}}};
+	}
+}
+if (rdays > 0){
+	if ((month-1) + (mfc+1) <= 11) {
+			ti = ti + s.proDemand[(month-1)+(mfc+1)] / 30 * rdays;
+		} else {
+			if ((month-1) + (mfc+1) == 12) {
+			ti = ti + s.proDemand[0] / 30 * rdays;
+		} else {
+			if ((month-1) + (mfc+1) == 13) {
+			ti = ti + s.proDemand[1] / 30 * rdays;
+		}}
+	}
+	ti = (int)Math.floor(ti+0.9999);
+};
+s.proTargetInventory[month-1] = ti;
 
-//traceln("mfc: "+mfc+" dfc: "+dfc+" rdays: "+rdays+" ti: "+ti);
+traceln("mfc: "+mfc+" dfc: "+dfc+" rdays: "+rdays+" ti: "+ti);
 
 // Cumulate Inventory & Target Inventort for chart Datasets
 
-//totInv = totInv + s.proInventory[month-1];
+totInv = totInv + s.proInventory[month-1];
 
-//if (s.proUPal[month-1] > 0) {
-	//totInvPal = totInvPal + s.proInventory[month-1]/s.proUPal[month-1];
-//} else {
-	//totInvPal = totInvPal + 0;
-//}
+if (s.proUPal[month-1] > 0) {
+	totInvPal = totInvPal + s.proInventory[month-1]/s.proUPal[month-1];
+} else {
+	totInvPal = totInvPal + 0;
+}
 
 //totWHCost = totInvPal * s.proCPal[month-1];
 //totInvCost = totInv * s.proCost[month-1];
@@ -2075,80 +3179,81 @@ SKU s = getHighPriorSKU( month-1 );
 // Calculate Production Required (pr) & Planned (pp) by SKU
 //
 
-//double pi = s.proInventory[month-1]; // Product Inventory
+double pi = s.proInventory[month-1]; // Product Inventory
 
 // If MAPE is True Apply Forecast Error on Demand
-//if (mape == true){
-	//if (s.proMAPEMin[month-1] == 0) {
-		//s.proRDemand[month-1] = triangular( mapeMin,mapeMax,mapeMod ) * s.proDemand[month-1];
-		//s.proRDemand[month-1] = Math.floor(s.proRDemand[month-1] + 0.999999);
-	//} else {
-		//s.proRDemand[month-1] = triangular( s.proMAPEMin[month-1],s.proMAPEMax[month-1],s.proMAPEMod[month-1] ) * s.proDemand[month-1];
-		//s.proRDemand[month-1] = Math.floor(s.proRDemand[month-1] + 0.999999);
-	//}	
-//} else {
-	//s.proRDemand[month-1] = s.proDemand[month-1];
-//}
+if (mape == true){
+	if (s.proMAPEMin[month-1] == 0) {
+		s.proRDemand[month-1] = triangular( mapeMin,mapeMax,mapeMod ) * s.proDemand[month-1];
+		s.proRDemand[month-1] = Math.floor(s.proRDemand[month-1] + 0.999999);
+	} else {
+		s.proRDemand[month-1] = triangular( s.proMAPEMin[month-1],s.proMAPEMax[month-1],s.proMAPEMod[month-1] ) * s.proDemand[month-1];
+		s.proRDemand[month-1] = Math.floor(s.proRDemand[month-1] + 0.999999);
+	}	
+} else {
+	s.proRDemand[month-1] = s.proDemand[month-1];
+}
 
-//double pd = s.proRDemand[month-1]; //Product Demand
-//double pr = ((pd + ti) - pi); // Production Required
+double pd = s.proRDemand[month-1]; //Product Demand
+double pr = ((pd + ti) - pi); // Production Required
 
-//if (pr / s.loteSize[month-1] <= minForLote) {
-	//if (pi-pd > 0) {
-	//	pr = 0;
-	//}
-//}
+if (pr / s.loteSize[month-1] <= minForLote) {
+	if (pi-pd > 0) {
+		pr = 0;
+	}
+}
 
-//double pp = 0;
-
-//if (pr > 0) {
-	//prLotees = pr / s.loteSize[month-1]; // Amount of Lotes
-	//prLotees = rint(prLotees + 0.49999);
-	//if (prLotees < s.loteMin[month-1]) {
-	//	prLotees = s.loteMin[month-1];
-	//} else {
-			//double prLoteesAdj = prLotees / s.loteMin[month-1]; // Adjust Amount of Lotes
-		//	prLotees = (int)Math.floor(prLoteesAdj + 0.99) * s.loteMin[month-1];
-	//}
-//} else {
-//	pr = 0;
-//}
+double pp = 0;
+if (pr > 0) {
+	prLotees = pr / s.loteSize[month-1]; // Amount of Lotes
+	prLotees = rint(prLotees + 0.49999);
+	if (prLotees < s.loteMin[month-1]) {
+		prLotees = s.loteMin[month-1];
+	} else {
+			double prLoteesAdj = prLotees / s.loteMin[month-1]; // Adjust Amount of Lotes
+			prLotees = (int)Math.floor(prLoteesAdj + 0.99) * s.loteMin[month-1];
+	}
+} else {
+	pr = 0;
+}
 
 // Define Production Planned & Lotees Planned
 
-//lotees = prLotees + pproLotees + pproBOLotees; // Lotees Planned
-//pp = lotees * s.loteSize[month-1]; // Production Planned
-//s.lotees[month-1] = lotees;
-//s.prodReq[month-1] = pr;
-//s.prodPlan[month-1] = pp;
+lotees = prLotees + pproLotees + pproBOLotees; // Lotees Planned
+pp = lotees * s.loteSize[month-1]; // Production Planned
+s.lotees[month-1] = lotees;
+s.prodReq[month-1] = pr;
+s.prodPlan[month-1] = pp;
 
-//if (lotees == 0 && month <= 11) {
-		//s.proInventory[month] = pi - pd; // If no production planned calculate new Inventory
-//}
+if (lotees == 0 && month <= 11) {
+		s.proInventory[month] = pi - pd; // If no production planned calculate new Inventory
+}
 
 
-in_products.take(s);	// Take SKU
+//in_products.take(s);	// Take SKU
 
 //
 // Generate Lote
 //
 
-//for( int i = 0 ; i < lotees ; i++ ){
-	//Lote n = add_lote();
-	//loteId = loteId + 1;
-	//n.loteID = loteId;
-	//n.proLine = s.proLine[month-1];
-	//n.proSline = s.proSline[month-1];
-	//n.proPri = s.proPri[month-1];
-	//n.prodPlan = s.prodPlan[month-1]/lotees;
-	//n.proDemand = s.proDemand[month-1];
-	//n.proRDemand = s.proRDemand[month-1];
-	//n.proInventory = s.proInventory[month-1];
-	//n.proTargetInventory = ti;
-	//n.name = s.name;
-	//n.code = s.code;
+if (lotees == 0)	lotees = 1;
 
-	//n.loteNumber = i+1;
+for( int i = 0 ; i < lotees ; i++ ){
+	Lote n = add_lote();
+	loteId = loteId + 1;
+	n.loteID = loteId;
+	n.proLine = s.proLine[month-1];
+	n.proSline = s.proSline[month-1];
+	n.proPri = s.proPri[month-1];
+	n.prodPlan = s.prodPlan[month-1]/lotees;
+	n.proDemand = s.proDemand[month-1];
+	n.proRDemand = s.proRDemand[month-1];
+	n.proInventory = s.proInventory[month-1];
+	n.proTargetInventory = ti;
+	n.name = s.name;
+	n.code = s.code;
+
+	n.loteNumber = i+1;
 	
 	//traceln(" n = "+ n);
 
@@ -2162,13 +3267,13 @@ in_products.take(s);	// Take SKU
 		//	" pproLotees: "+pproLotees+
 		//	" prodPlan: " + s.prodPlan[month-1]
 		//);
-	//}
+//	}
 
 
-	//lote.add( n ); // Add Lote in Lote collection
+//	lote.add( n ); // Add Lote in Lote collection
 	
-	//enterBatch.take( n ); // Inject Lote in production line
-//}
+	in_products.take( n ); // Inject Lote in production line
+}
 
 tempSKU.remove(s); // Delete SKU from temp list]]></Action>
 				</DynamicEventClass>
@@ -2383,7 +3488,7 @@ return result;]]></Body>
 							<ItemName><![CDATA[1412336242933]]></ItemName>
 						</GenericParameterSubstituteReference>
 						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[SKU]]></Code>
+							<Code><![CDATA[Lote]]></Code>
 						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
@@ -2697,6 +3802,9 @@ return result;]]></Body>
 							<ClassName><![CDATA[SelectOutputOut]]></ClassName>
 							<ItemName><![CDATA[1412336243166]]></ItemName>
 						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Lote]]></Code>
+						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -2776,6 +3884,9 @@ return result;]]></Body>
 							<ClassName><![CDATA[SelectOutputOut]]></ClassName>
 							<ItemName><![CDATA[1412336243166]]></ItemName>
 						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Lote]]></Code>
+						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -3069,6 +4180,9 @@ return result;]]></Body>
 							<ClassName><![CDATA[SelectOutputOut]]></ClassName>
 							<ItemName><![CDATA[1412336243166]]></ItemName>
 						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Lote]]></Code>
+						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -3145,6 +4259,9 @@ return result;]]></Body>
 							<ClassName><![CDATA[SelectOutputOut]]></ClassName>
 							<ItemName><![CDATA[1412336243166]]></ItemName>
 						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Lote]]></Code>
+						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -3331,6 +4448,9 @@ return result;]]></Body>
 							<ClassName><![CDATA[SelectOutputOut]]></ClassName>
 							<ItemName><![CDATA[1412336243166]]></ItemName>
 						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Lote]]></Code>
+						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -3517,6 +4637,9 @@ return result;]]></Body>
 							<ClassName><![CDATA[SelectOutputOut]]></ClassName>
 							<ItemName><![CDATA[1412336243166]]></ItemName>
 						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Lote]]></Code>
+						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -3703,6 +4826,9 @@ return result;]]></Body>
 							<ClassName><![CDATA[SelectOutputOut]]></ClassName>
 							<ItemName><![CDATA[1412336243166]]></ItemName>
 						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Lote]]></Code>
+						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -3889,6 +5015,9 @@ return result;]]></Body>
 							<ClassName><![CDATA[SelectOutputOut]]></ClassName>
 							<ItemName><![CDATA[1412336243166]]></ItemName>
 						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Lote]]></Code>
+						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -4236,6 +5365,12 @@ return result;]]></Body>
 						<Parameter>
 							<Name><![CDATA[line]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[tipoLinea]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rateskuL]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -4567,6 +5702,9 @@ return result;]]></Body>
 								<Code><![CDATA[{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}]]></Code>
 							</Value>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[tipoLinea]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -4678,6 +5816,27 @@ return result;]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[loteID]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[countryD]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[countryD_code]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[countryP]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[countryP_code]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[nomRate]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rateskuL]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -5114,6 +6273,9 @@ return result;]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[lineCapacity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[tipoLinea]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -6200,11 +7362,11 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
+						<Type><![CDATA[double[]]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA["empty"]]></Code>
+							<Code><![CDATA[new double[12]]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1519227095924</Id>
@@ -6854,6 +8016,54 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523289418253</Id>
+					<Name><![CDATA[tipoLinea]]></Name>
+					<X>180</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[3]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523289418251</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523290919248</Id>
+					<Name><![CDATA[rateskuL]]></Name>
+					<X>180</X><Y>410</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[3]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523290919246</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<AgentLinks>
 				<AgentLink>
@@ -7170,7 +8380,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146070</Id>
 					<Name><![CDATA[month]]></Name>
-					<X>680</X><Y>-360</Y>
+					<X>-170</X><Y>580</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7182,7 +8392,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146072</Id>
 					<Name><![CDATA[skuInProd1]]></Name>
-					<X>680</X><Y>-340</Y>
+					<X>-170</X><Y>600</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7194,7 +8404,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146074</Id>
 					<Name><![CDATA[skuDelay1]]></Name>
-					<X>680</X><Y>-320</Y>
+					<X>-170</X><Y>620</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7206,7 +8416,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146076</Id>
 					<Name><![CDATA[skuLoteSize1]]></Name>
-					<X>680</X><Y>-280</Y>
+					<X>-170</X><Y>660</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7218,7 +8428,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146078</Id>
 					<Name><![CDATA[shiftTime1]]></Name>
-					<X>680</X><Y>-300</Y>
+					<X>-170</X><Y>640</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7233,7 +8443,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146080</Id>
 					<Name><![CDATA[monthForwardCoverage1]]></Name>
-					<X>680</X><Y>-260</Y>
+					<X>-170</X><Y>680</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7248,7 +8458,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146082</Id>
 					<Name><![CDATA[totSOCost]]></Name>
-					<X>980</X><Y>-620</Y>
+					<X>-170</X><Y>820</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7260,7 +8470,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146084</Id>
 					<Name><![CDATA[totInvCost]]></Name>
-					<X>980</X><Y>-600</Y>
+					<X>-170</X><Y>840</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7272,7 +8482,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146086</Id>
 					<Name><![CDATA[totWHCost]]></Name>
-					<X>980</X><Y>-580</Y>
+					<X>-170</X><Y>860</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7284,7 +8494,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146088</Id>
 					<Name><![CDATA[totInv]]></Name>
-					<X>650</X><Y>-620</Y>
+					<X>-170</X><Y>760</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7296,7 +8506,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146090</Id>
 					<Name><![CDATA[totTInv]]></Name>
-					<X>650</X><Y>-600</Y>
+					<X>-170</X><Y>780</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7308,7 +8518,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146092</Id>
 					<Name><![CDATA[totInvPal]]></Name>
-					<X>650</X><Y>-580</Y>
+					<X>-170</X><Y>800</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7320,7 +8530,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146094</Id>
 					<Name><![CDATA[wCap]]></Name>
-					<X>760</X><Y>-540</Y>
+					<X>-170</X><Y>740</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7332,7 +8542,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146096</Id>
 					<Name><![CDATA[statePline]]></Name>
-					<X>260</X><Y>-370</Y>
+					<X>-170</X><Y>700</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7347,7 +8557,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146098</Id>
 					<Name><![CDATA[day]]></Name>
-					<X>260</X><Y>-340</Y>
+					<X>-170</X><Y>720</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7362,7 +8572,7 @@ del Producto]]></Text>
 				<Variable Class="PlainVariable">
 					<Id>1522333146100</Id>
 					<Name><![CDATA[delay1]]></Name>
-					<X>-100</X><Y>80</Y>
+					<X>-170</X><Y>560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7374,7 +8584,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146384</Id>
 					<Name><![CDATA[dayOfMonth]]></Name>
-					<X>860</X><Y>-260</Y>
+					<X>-680</X><Y>600</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7398,7 +8608,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146387</Id>
 					<Name><![CDATA[timeout]]></Name>
-					<X>480</X><Y>-340</Y>
+					<X>-900</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7422,7 +8632,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146390</Id>
 					<Name><![CDATA[skuLoteSize]]></Name>
-					<X>1040</X><Y>-360</Y>
+					<X>-800</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7446,7 +8656,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146393</Id>
 					<Name><![CDATA[skuInProd]]></Name>
-					<X>1040</X><Y>-320</Y>
+					<X>-800</X><Y>460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7470,7 +8680,8 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146396</Id>
 					<Name><![CDATA[skuDelay]]></Name>
-					<X>1040</X><Y>-340</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-800</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7494,7 +8705,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146399</Id>
 					<Name><![CDATA[shiftTime]]></Name>
-					<X>860</X><Y>-280</Y>
+					<X>-680</X><Y>580</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7518,7 +8729,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146402</Id>
 					<Name><![CDATA[monthForwardCoverage]]></Name>
-					<X>860</X><Y>-300</Y>
+					<X>-680</X><Y>560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7542,7 +8753,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146405</Id>
 					<Name><![CDATA[production]]></Name>
-					<X>860</X><Y>-340</Y>
+					<X>-680</X><Y>540</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7563,7 +8774,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146408</Id>
 					<Name><![CDATA[backorder]]></Name>
-					<X>860</X><Y>-360</Y>
+					<X>-680</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7584,7 +8795,8 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146411</Id>
 					<Name><![CDATA[code]]></Name>
-					<X>1040</X><Y>-300</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-800</X><Y>480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7605,7 +8817,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146414</Id>
 					<Name><![CDATA[stockOutPCoef]]></Name>
-					<X>1040</X><Y>-380</Y>
+					<X>-800</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7629,7 +8841,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146417</Id>
 					<Name><![CDATA[loteId]]></Name>
-					<X>1040</X><Y>-280</Y>
+					<X>-800</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7653,7 +8865,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146420</Id>
 					<Name><![CDATA[pproAuto]]></Name>
-					<X>400</X><Y>-400</Y>
+					<X>-490</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7674,7 +8886,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146423</Id>
 					<Name><![CDATA[countR1]]></Name>
-					<X>840</X><Y>-230</Y>
+					<X>-320</X><Y>530</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7698,7 +8910,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146426</Id>
 					<Name><![CDATA[countR1Pr]]></Name>
-					<X>700</X><Y>-230</Y>
+					<X>-490</X><Y>480</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7722,7 +8934,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146429</Id>
 					<Name><![CDATA[countR1Bo]]></Name>
-					<X>560</X><Y>-240</Y>
+					<X>-490</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7746,7 +8958,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146432</Id>
 					<Name><![CDATA[countR1T]]></Name>
-					<X>960</X><Y>-200</Y>
+					<X>-320</X><Y>510</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7770,7 +8982,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146435</Id>
 					<Name><![CDATA[countR1PrT]]></Name>
-					<X>820</X><Y>-200</Y>
+					<X>-320</X><Y>550</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7794,7 +9006,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146438</Id>
 					<Name><![CDATA[countR1BoT]]></Name>
-					<X>680</X><Y>-200</Y>
+					<X>-490</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7818,7 +9030,8 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146441</Id>
 					<Name><![CDATA[mapeMin]]></Name>
-					<X>1258</X><Y>-500</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-450</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7842,7 +9055,8 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146444</Id>
 					<Name><![CDATA[mapeMod]]></Name>
-					<X>1258</X><Y>-480</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-450</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7866,7 +9080,8 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146447</Id>
 					<Name><![CDATA[mapeMax]]></Name>
-					<X>1258</X><Y>-460</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-450</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7890,7 +9105,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146450</Id>
 					<Name><![CDATA[countR1So]]></Name>
-					<X>970</X><Y>-230</Y>
+					<X>-320</X><Y>490</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7914,7 +9129,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146453</Id>
 					<Name><![CDATA[countR1SoT]]></Name>
-					<X>1090</X><Y>-200</Y>
+					<X>-320</X><Y>470</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7935,7 +9150,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146456</Id>
 					<Name><![CDATA[totInv_o]]></Name>
-					<X>760</X><Y>-620</Y>
+					<X>-680</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7956,7 +9171,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146459</Id>
 					<Name><![CDATA[totTInv_o]]></Name>
-					<X>760</X><Y>-600</Y>
+					<X>-680</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7977,7 +9192,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146462</Id>
 					<Name><![CDATA[wCap_o]]></Name>
-					<X>650</X><Y>-540</Y>
+					<X>-320</X><Y>570</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7998,7 +9213,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146465</Id>
 					<Name><![CDATA[minForLote]]></Name>
-					<X>40</X><Y>-220</Y>
+					<X>-540</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8019,7 +9234,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146468</Id>
 					<Name><![CDATA[totInvPal_o]]></Name>
-					<X>760</X><Y>-580</Y>
+					<X>-680</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8040,7 +9255,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146471</Id>
 					<Name><![CDATA[pproBOAuto]]></Name>
-					<X>400</X><Y>-380</Y>
+					<X>-490</X><Y>460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8061,7 +9276,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146474</Id>
 					<Name><![CDATA[applyOEE]]></Name>
-					<X>40</X><Y>-300</Y>
+					<X>-540</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8085,7 +9300,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146477</Id>
 					<Name><![CDATA[minOEE]]></Name>
-					<X>40</X><Y>-280</Y>
+					<X>-540</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8109,7 +9324,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146480</Id>
 					<Name><![CDATA[modOEE]]></Name>
-					<X>40</X><Y>-260</Y>
+					<X>-540</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8133,7 +9348,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146483</Id>
 					<Name><![CDATA[maxOEE]]></Name>
-					<X>40</X><Y>-240</Y>
+					<X>-540</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8157,7 +9372,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146486</Id>
 					<Name><![CDATA[nomRate]]></Name>
-					<X>40</X><Y>-370</Y>
+					<X>-680</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8181,7 +9396,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146489</Id>
 					<Name><![CDATA[netRate]]></Name>
-					<X>-90</X><Y>-60</Y>
+					<X>-680</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8205,7 +9420,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146492</Id>
 					<Name><![CDATA[applyNet]]></Name>
-					<X>40</X><Y>-330</Y>
+					<X>-680</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8229,7 +9444,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146495</Id>
 					<Name><![CDATA[prodMin]]></Name>
-					<X>40</X><Y>-390</Y>
+					<X>-540</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8253,7 +9468,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146498</Id>
 					<Name><![CDATA[prodMin1]]></Name>
-					<X>-90</X><Y>-180</Y>
+					<X>-680</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8277,7 +9492,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146501</Id>
 					<Name><![CDATA[prodMin2]]></Name>
-					<X>-90</X><Y>-160</Y>
+					<X>-680</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8301,7 +9516,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146504</Id>
 					<Name><![CDATA[prodMin3]]></Name>
-					<X>-90</X><Y>-140</Y>
+					<X>-680</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8325,7 +9540,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146507</Id>
 					<Name><![CDATA[prodMin4]]></Name>
-					<X>-90</X><Y>-120</Y>
+					<X>-680</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8349,7 +9564,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146510</Id>
 					<Name><![CDATA[prodMin5]]></Name>
-					<X>-90</X><Y>-100</Y>
+					<X>-680</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8373,7 +9588,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146513</Id>
 					<Name><![CDATA[plineindex]]></Name>
-					<X>-90</X><Y>-80</Y>
+					<X>-680</X><Y>310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8394,7 +9609,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146516</Id>
 					<Name><![CDATA[plineQueue]]></Name>
-					<X>40</X><Y>-410</Y>
+					<X>-540</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8415,7 +9630,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146519</Id>
 					<Name><![CDATA[pslineQueue]]></Name>
-					<X>150</X><Y>-410</Y>
+					<X>-490</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8439,7 +9654,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146522</Id>
 					<Name><![CDATA[subLine]]></Name>
-					<X>200</X><Y>-250</Y>
+					<X>-490</X><Y>550</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8523,7 +9738,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146534</Id>
 					<Name><![CDATA[daysM1]]></Name>
-					<X>40</X><Y>-530</Y>
+					<X>-800</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8547,7 +9762,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146537</Id>
 					<Name><![CDATA[daysM2]]></Name>
-					<X>40</X><Y>-510</Y>
+					<X>-800</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8571,7 +9786,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146540</Id>
 					<Name><![CDATA[daysM3]]></Name>
-					<X>40</X><Y>-490</Y>
+					<X>-800</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8595,7 +9810,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146543</Id>
 					<Name><![CDATA[daysM4]]></Name>
-					<X>40</X><Y>-470</Y>
+					<X>-800</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8619,7 +9834,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146546</Id>
 					<Name><![CDATA[daysM5]]></Name>
-					<X>40</X><Y>-450</Y>
+					<X>-800</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8643,7 +9858,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146549</Id>
 					<Name><![CDATA[daysM6]]></Name>
-					<X>120</X><Y>-530</Y>
+					<X>-800</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8667,7 +9882,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146552</Id>
 					<Name><![CDATA[daysM7]]></Name>
-					<X>120</X><Y>-510</Y>
+					<X>-800</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8691,7 +9906,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146555</Id>
 					<Name><![CDATA[daysM8]]></Name>
-					<X>120</X><Y>-490</Y>
+					<X>-800</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8715,7 +9930,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146558</Id>
 					<Name><![CDATA[daysM9]]></Name>
-					<X>120</X><Y>-470</Y>
+					<X>-800</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8739,7 +9954,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146561</Id>
 					<Name><![CDATA[daysM10]]></Name>
-					<X>120</X><Y>-450</Y>
+					<X>-800</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8763,7 +9978,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146564</Id>
 					<Name><![CDATA[daysM11]]></Name>
-					<X>210</X><Y>-530</Y>
+					<X>-800</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8787,7 +10002,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146567</Id>
 					<Name><![CDATA[daysM12]]></Name>
-					<X>210</X><Y>-510</Y>
+					<X>-800</X><Y>310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8832,7 +10047,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146573</Id>
 					<Name><![CDATA[capSubLin5]]></Name>
-					<X>-180</X><Y>590</Y>
+					<X>-180</X><Y>490</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8856,7 +10071,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146576</Id>
 					<Name><![CDATA[capSubLin1]]></Name>
-					<X>-180</X><Y>510</Y>
+					<X>-180</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8880,7 +10095,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146579</Id>
 					<Name><![CDATA[capSubLin2]]></Name>
-					<X>-180</X><Y>530</Y>
+					<X>-180</X><Y>430</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8904,7 +10119,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146582</Id>
 					<Name><![CDATA[capSubLin3]]></Name>
-					<X>-180</X><Y>550</Y>
+					<X>-180</X><Y>450</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8928,7 +10143,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146585</Id>
 					<Name><![CDATA[capSubLin4]]></Name>
-					<X>-180</X><Y>570</Y>
+					<X>-180</X><Y>470</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8952,7 +10167,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146588</Id>
 					<Name><![CDATA[timeout1]]></Name>
-					<X>480</X><Y>-320</Y>
+					<X>-900</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8976,7 +10191,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146591</Id>
 					<Name><![CDATA[timeout2]]></Name>
-					<X>480</X><Y>-300</Y>
+					<X>-900</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9000,7 +10215,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146594</Id>
 					<Name><![CDATA[timeout3]]></Name>
-					<X>480</X><Y>-280</Y>
+					<X>-900</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9024,7 +10239,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146597</Id>
 					<Name><![CDATA[timeout4]]></Name>
-					<X>480</X><Y>-260</Y>
+					<X>-900</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9048,7 +10263,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146600</Id>
 					<Name><![CDATA[timeout5]]></Name>
-					<X>480</X><Y>-240</Y>
+					<X>-900</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9156,7 +10371,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146615</Id>
 					<Name><![CDATA[totInvCost_o]]></Name>
-					<X>862</X><Y>-600</Y>
+					<X>-680</X><Y>480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9177,7 +10392,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146618</Id>
 					<Name><![CDATA[totWHCost_o]]></Name>
-					<X>862</X><Y>-580</Y>
+					<X>-680</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9198,7 +10413,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146621</Id>
 					<Name><![CDATA[totSOCost_o]]></Name>
-					<X>862</X><Y>-620</Y>
+					<X>-680</X><Y>460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9219,7 +10434,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146624</Id>
 					<Name><![CDATA[name]]></Name>
-					<X>680</X><Y>-420</Y>
+					<X>-680</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9240,7 +10455,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146627</Id>
 					<Name><![CDATA[lineCapacity]]></Name>
-					<X>-180</X><Y>670</Y>
+					<X>-180</X><Y>510</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9248,13 +10463,13 @@ del Producto]]></Text>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
 						<Type><![CDATA[HyperArray]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
+						<SdArray>true</SdArray>
 						<Dimension>
-							<PackageName><![CDATA[sku_version_Version23Excel]]></PackageName>
+							<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
 							<ClassName><![CDATA[Month]]></ClassName>
 						</Dimension>
 						<Dimension>
-							<PackageName><![CDATA[sku_version_Version23Excel]]></PackageName>
+							<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
 							<ClassName><![CDATA[Figures]]></ClassName>
 						</Dimension>
 						<ParameterEditor>
@@ -9266,10 +10481,31 @@ del Producto]]></Text>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523289348204</Id>
+					<Name><![CDATA[tipoLinea]]></Name>
+					<X>-680</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1523289348202</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1522333146064</Id>
 					<Name><![CDATA[sLine]]></Name>
-					<X>199</X><Y>-304</Y>
+					<X>-310</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9286,7 +10522,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522333146295</Id>
 					<Name><![CDATA[connector68]]></Name>
-					<X>288</X><Y>450</Y>
+					<X>148</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9319,7 +10555,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522333146369</Id>
 					<Name><![CDATA[connector93]]></Name>
-					<X>1210</X><Y>120</Y>
+					<X>1070</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9352,7 +10588,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522333146371</Id>
 					<Name><![CDATA[connector92]]></Name>
-					<X>1090</X><Y>120</Y>
+					<X>950</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9386,7 +10622,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522333146379</Id>
 					<Name><![CDATA[connector14]]></Name>
-					<X>200</X><Y>450</Y>
+					<X>60</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9419,7 +10655,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522333378023</Id>
 					<Name><![CDATA[connector1]]></Name>
-					<X>1400</X><Y>200</Y>
+					<X>1260</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9452,7 +10688,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522335354745</Id>
 					<Name><![CDATA[connector80]]></Name>
-					<X>1350</X><Y>120</Y>
+					<X>1210</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9485,7 +10721,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522337620266</Id>
 					<Name><![CDATA[connector10]]></Name>
-					<X>850</X><Y>200</Y>
+					<X>710</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9518,7 +10754,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522361183956</Id>
 					<Name><![CDATA[connector7]]></Name>
-					<X>160</X><Y>0</Y>
+					<X>20</X><Y>-40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9551,7 +10787,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522361215138</Id>
 					<Name><![CDATA[connector13]]></Name>
-					<X>730</X><Y>190</Y>
+					<X>590</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9586,7 +10822,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522361974291</Id>
 					<Name><![CDATA[connector]]></Name>
-					<X>910</X><Y>200</Y>
+					<X>770</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9619,7 +10855,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522361988077</Id>
 					<Name><![CDATA[connector2]]></Name>
-					<X>990</X><Y>200</Y>
+					<X>850</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9652,7 +10888,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522610077120</Id>
 					<Name><![CDATA[connector81]]></Name>
-					<X>1480</X><Y>200</Y>
+					<X>1340</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9685,7 +10921,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522945755014</Id>
 					<Name><![CDATA[connector4]]></Name>
-					<X>1310</X><Y>200</Y>
+					<X>1170</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9718,7 +10954,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522946045878</Id>
 					<Name><![CDATA[connector5]]></Name>
-					<X>160</X><Y>0</Y>
+					<X>20</X><Y>-40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9751,7 +10987,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522946045882</Id>
 					<Name><![CDATA[connector6]]></Name>
-					<X>160</X><Y>0</Y>
+					<X>20</X><Y>-40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9784,7 +11020,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522950026211</Id>
 					<Name><![CDATA[connector3]]></Name>
-					<X>1080</X><Y>200</Y>
+					<X>940</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9817,7 +11053,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522950026214</Id>
 					<Name><![CDATA[connector8]]></Name>
-					<X>1200</X><Y>200</Y>
+					<X>1060</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9850,7 +11086,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522969615817</Id>
 					<Name><![CDATA[connector11]]></Name>
-					<X>610</X><Y>200</Y>
+					<X>470</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9883,7 +11119,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522969810217</Id>
 					<Name><![CDATA[connector9]]></Name>
-					<X>390</X><Y>450</Y>
+					<X>250</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9916,7 +11152,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575026</Id>
 					<Name><![CDATA[connector94]]></Name>
-					<X>1210</X><Y>300</Y>
+					<X>1070</X><Y>260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9949,7 +11185,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575029</Id>
 					<Name><![CDATA[connector95]]></Name>
-					<X>1090</X><Y>300</Y>
+					<X>950</X><Y>260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9983,7 +11219,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575032</Id>
 					<Name><![CDATA[connector12]]></Name>
-					<X>1400</X><Y>380</Y>
+					<X>1260</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10016,7 +11252,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575035</Id>
 					<Name><![CDATA[connector82]]></Name>
-					<X>1350</X><Y>300</Y>
+					<X>1210</X><Y>260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10049,7 +11285,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575039</Id>
 					<Name><![CDATA[connector15]]></Name>
-					<X>850</X><Y>380</Y>
+					<X>710</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10082,7 +11318,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575042</Id>
 					<Name><![CDATA[connector16]]></Name>
-					<X>160</X><Y>180</Y>
+					<X>20</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10115,7 +11351,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575045</Id>
 					<Name><![CDATA[connector17]]></Name>
-					<X>730</X><Y>370</Y>
+					<X>590</X><Y>330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10150,7 +11386,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575047</Id>
 					<Name><![CDATA[connector18]]></Name>
-					<X>910</X><Y>380</Y>
+					<X>770</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10183,7 +11419,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575050</Id>
 					<Name><![CDATA[connector19]]></Name>
-					<X>990</X><Y>380</Y>
+					<X>850</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10216,7 +11452,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575052</Id>
 					<Name><![CDATA[connector83]]></Name>
-					<X>1480</X><Y>380</Y>
+					<X>1340</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10249,7 +11485,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575056</Id>
 					<Name><![CDATA[connector20]]></Name>
-					<X>1310</X><Y>380</Y>
+					<X>1170</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10282,7 +11518,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575059</Id>
 					<Name><![CDATA[connector21]]></Name>
-					<X>160</X><Y>180</Y>
+					<X>20</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10315,7 +11551,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575062</Id>
 					<Name><![CDATA[connector22]]></Name>
-					<X>160</X><Y>180</Y>
+					<X>20</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10348,7 +11584,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575065</Id>
 					<Name><![CDATA[connector23]]></Name>
-					<X>1080</X><Y>380</Y>
+					<X>940</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10381,7 +11617,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575068</Id>
 					<Name><![CDATA[connector24]]></Name>
-					<X>1200</X><Y>380</Y>
+					<X>1060</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10414,7 +11650,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522970575071</Id>
 					<Name><![CDATA[connector25]]></Name>
-					<X>610</X><Y>380</Y>
+					<X>470</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10447,7 +11683,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601261</Id>
 					<Name><![CDATA[connector96]]></Name>
-					<X>1210</X><Y>480</Y>
+					<X>1070</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10480,7 +11716,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601264</Id>
 					<Name><![CDATA[connector97]]></Name>
-					<X>1090</X><Y>480</Y>
+					<X>950</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10514,7 +11750,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601266</Id>
 					<Name><![CDATA[connector26]]></Name>
-					<X>1400</X><Y>560</Y>
+					<X>1260</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10547,7 +11783,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601268</Id>
 					<Name><![CDATA[connector84]]></Name>
-					<X>1350</X><Y>480</Y>
+					<X>1210</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10580,7 +11816,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601270</Id>
 					<Name><![CDATA[connector27]]></Name>
-					<X>850</X><Y>560</Y>
+					<X>710</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10613,7 +11849,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601273</Id>
 					<Name><![CDATA[connector28]]></Name>
-					<X>160</X><Y>360</Y>
+					<X>20</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10646,7 +11882,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601275</Id>
 					<Name><![CDATA[connector29]]></Name>
-					<X>730</X><Y>550</Y>
+					<X>590</X><Y>510</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10681,7 +11917,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601279</Id>
 					<Name><![CDATA[connector30]]></Name>
-					<X>910</X><Y>560</Y>
+					<X>770</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10714,7 +11950,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601281</Id>
 					<Name><![CDATA[connector31]]></Name>
-					<X>990</X><Y>560</Y>
+					<X>850</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10747,7 +11983,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601284</Id>
 					<Name><![CDATA[connector85]]></Name>
-					<X>1480</X><Y>560</Y>
+					<X>1340</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10780,7 +12016,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601287</Id>
 					<Name><![CDATA[connector32]]></Name>
-					<X>1310</X><Y>560</Y>
+					<X>1170</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10813,7 +12049,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601289</Id>
 					<Name><![CDATA[connector33]]></Name>
-					<X>160</X><Y>360</Y>
+					<X>20</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10846,7 +12082,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601291</Id>
 					<Name><![CDATA[connector34]]></Name>
-					<X>160</X><Y>360</Y>
+					<X>20</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10879,7 +12115,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601293</Id>
 					<Name><![CDATA[connector35]]></Name>
-					<X>1080</X><Y>560</Y>
+					<X>940</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10912,7 +12148,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601295</Id>
 					<Name><![CDATA[connector36]]></Name>
-					<X>1200</X><Y>560</Y>
+					<X>1060</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10945,7 +12181,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971601297</Id>
 					<Name><![CDATA[connector37]]></Name>
-					<X>610</X><Y>560</Y>
+					<X>470</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10978,7 +12214,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699274</Id>
 					<Name><![CDATA[connector98]]></Name>
-					<X>1210</X><Y>660</Y>
+					<X>1070</X><Y>620</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11011,7 +12247,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699277</Id>
 					<Name><![CDATA[connector99]]></Name>
-					<X>1090</X><Y>660</Y>
+					<X>950</X><Y>620</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11045,7 +12281,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699279</Id>
 					<Name><![CDATA[connector38]]></Name>
-					<X>1400</X><Y>740</Y>
+					<X>1260</X><Y>700</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11078,7 +12314,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699281</Id>
 					<Name><![CDATA[connector86]]></Name>
-					<X>1350</X><Y>660</Y>
+					<X>1210</X><Y>620</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11111,7 +12347,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699283</Id>
 					<Name><![CDATA[connector39]]></Name>
-					<X>850</X><Y>740</Y>
+					<X>710</X><Y>700</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11144,7 +12380,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699285</Id>
 					<Name><![CDATA[connector40]]></Name>
-					<X>160</X><Y>540</Y>
+					<X>20</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11177,7 +12413,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699287</Id>
 					<Name><![CDATA[connector41]]></Name>
-					<X>730</X><Y>730</Y>
+					<X>590</X><Y>690</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11212,7 +12448,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699289</Id>
 					<Name><![CDATA[connector42]]></Name>
-					<X>910</X><Y>740</Y>
+					<X>770</X><Y>700</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11245,7 +12481,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699291</Id>
 					<Name><![CDATA[connector43]]></Name>
-					<X>990</X><Y>740</Y>
+					<X>850</X><Y>700</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11278,7 +12514,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699293</Id>
 					<Name><![CDATA[connector87]]></Name>
-					<X>1480</X><Y>740</Y>
+					<X>1340</X><Y>700</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11311,7 +12547,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699295</Id>
 					<Name><![CDATA[connector44]]></Name>
-					<X>1310</X><Y>740</Y>
+					<X>1170</X><Y>700</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11344,7 +12580,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699297</Id>
 					<Name><![CDATA[connector45]]></Name>
-					<X>160</X><Y>540</Y>
+					<X>20</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11377,7 +12613,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699299</Id>
 					<Name><![CDATA[connector46]]></Name>
-					<X>160</X><Y>540</Y>
+					<X>20</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11410,7 +12646,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699301</Id>
 					<Name><![CDATA[connector47]]></Name>
-					<X>1080</X><Y>740</Y>
+					<X>940</X><Y>700</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11443,7 +12679,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699304</Id>
 					<Name><![CDATA[connector48]]></Name>
-					<X>1200</X><Y>740</Y>
+					<X>1060</X><Y>700</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11476,7 +12712,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971699306</Id>
 					<Name><![CDATA[connector49]]></Name>
-					<X>610</X><Y>740</Y>
+					<X>470</X><Y>700</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11509,7 +12745,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788799</Id>
 					<Name><![CDATA[connector100]]></Name>
-					<X>1210</X><Y>840</Y>
+					<X>1070</X><Y>800</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11542,7 +12778,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788801</Id>
 					<Name><![CDATA[connector101]]></Name>
-					<X>1090</X><Y>840</Y>
+					<X>950</X><Y>800</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11576,7 +12812,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788803</Id>
 					<Name><![CDATA[connector50]]></Name>
-					<X>1400</X><Y>920</Y>
+					<X>1260</X><Y>880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11609,7 +12845,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788805</Id>
 					<Name><![CDATA[connector88]]></Name>
-					<X>1350</X><Y>840</Y>
+					<X>1210</X><Y>800</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11642,7 +12878,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788807</Id>
 					<Name><![CDATA[connector51]]></Name>
-					<X>850</X><Y>920</Y>
+					<X>710</X><Y>880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11675,7 +12911,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788809</Id>
 					<Name><![CDATA[connector52]]></Name>
-					<X>160</X><Y>720</Y>
+					<X>20</X><Y>680</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11708,7 +12944,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788811</Id>
 					<Name><![CDATA[connector53]]></Name>
-					<X>730</X><Y>910</Y>
+					<X>590</X><Y>870</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11743,7 +12979,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788813</Id>
 					<Name><![CDATA[connector54]]></Name>
-					<X>910</X><Y>920</Y>
+					<X>770</X><Y>880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11776,7 +13012,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788815</Id>
 					<Name><![CDATA[connector55]]></Name>
-					<X>990</X><Y>920</Y>
+					<X>850</X><Y>880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11809,7 +13045,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788817</Id>
 					<Name><![CDATA[connector89]]></Name>
-					<X>1480</X><Y>920</Y>
+					<X>1340</X><Y>880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11842,7 +13078,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788820</Id>
 					<Name><![CDATA[connector56]]></Name>
-					<X>1310</X><Y>920</Y>
+					<X>1170</X><Y>880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11875,7 +13111,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788822</Id>
 					<Name><![CDATA[connector57]]></Name>
-					<X>160</X><Y>720</Y>
+					<X>20</X><Y>680</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11908,7 +13144,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788824</Id>
 					<Name><![CDATA[connector58]]></Name>
-					<X>160</X><Y>720</Y>
+					<X>20</X><Y>680</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11941,7 +13177,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788827</Id>
 					<Name><![CDATA[connector59]]></Name>
-					<X>1080</X><Y>920</Y>
+					<X>940</X><Y>880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11974,7 +13210,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788829</Id>
 					<Name><![CDATA[connector60]]></Name>
-					<X>1200</X><Y>920</Y>
+					<X>1060</X><Y>880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12007,7 +13243,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522971788832</Id>
 					<Name><![CDATA[connector61]]></Name>
-					<X>610</X><Y>920</Y>
+					<X>470</X><Y>880</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12040,7 +13276,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011358</Id>
 					<Name><![CDATA[connector102]]></Name>
-					<X>1210</X><Y>1020</Y>
+					<X>1070</X><Y>980</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12073,7 +13309,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011361</Id>
 					<Name><![CDATA[connector103]]></Name>
-					<X>1090</X><Y>1020</Y>
+					<X>950</X><Y>980</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12107,7 +13343,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011365</Id>
 					<Name><![CDATA[connector62]]></Name>
-					<X>1400</X><Y>1100</Y>
+					<X>1260</X><Y>1060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12140,7 +13376,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011368</Id>
 					<Name><![CDATA[connector90]]></Name>
-					<X>1350</X><Y>1020</Y>
+					<X>1210</X><Y>980</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12173,7 +13409,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011371</Id>
 					<Name><![CDATA[connector63]]></Name>
-					<X>850</X><Y>1100</Y>
+					<X>710</X><Y>1060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12206,7 +13442,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011374</Id>
 					<Name><![CDATA[connector64]]></Name>
-					<X>160</X><Y>900</Y>
+					<X>20</X><Y>860</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12239,7 +13475,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011376</Id>
 					<Name><![CDATA[connector65]]></Name>
-					<X>730</X><Y>1090</Y>
+					<X>590</X><Y>1050</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12274,7 +13510,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011379</Id>
 					<Name><![CDATA[connector66]]></Name>
-					<X>910</X><Y>1100</Y>
+					<X>770</X><Y>1060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12307,7 +13543,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011381</Id>
 					<Name><![CDATA[connector67]]></Name>
-					<X>990</X><Y>1100</Y>
+					<X>850</X><Y>1060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12340,7 +13576,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011384</Id>
 					<Name><![CDATA[connector91]]></Name>
-					<X>1480</X><Y>1100</Y>
+					<X>1340</X><Y>1060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12373,7 +13609,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011386</Id>
 					<Name><![CDATA[connector69]]></Name>
-					<X>1310</X><Y>1100</Y>
+					<X>1170</X><Y>1060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12406,7 +13642,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011389</Id>
 					<Name><![CDATA[connector70]]></Name>
-					<X>160</X><Y>900</Y>
+					<X>20</X><Y>860</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12439,7 +13675,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011391</Id>
 					<Name><![CDATA[connector71]]></Name>
-					<X>160</X><Y>900</Y>
+					<X>20</X><Y>860</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12472,7 +13708,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011393</Id>
 					<Name><![CDATA[connector72]]></Name>
-					<X>1080</X><Y>1100</Y>
+					<X>940</X><Y>1060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12505,7 +13741,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011395</Id>
 					<Name><![CDATA[connector73]]></Name>
-					<X>1200</X><Y>1100</Y>
+					<X>1060</X><Y>1060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12538,7 +13774,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522972011397</Id>
 					<Name><![CDATA[connector74]]></Name>
-					<X>610</X><Y>1100</Y>
+					<X>470</X><Y>1060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12573,7 +13809,7 @@ del Producto]]></Text>
 				<Event>
 					<Id>1522333146293</Id>
 					<Name><![CDATA[dailyEvent]]></Name>
-					<X>-100</X><Y>20</Y>
+					<X>-310</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12606,7 +13842,7 @@ statePline = 0;]]></Action>
 				<Event>
 					<Id>1522978821861</Id>
 					<Name><![CDATA[monthlyEvent]]></Name>
-					<X>-630</X><Y>60</Y>
+					<X>-310</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12788,7 +14024,7 @@ if( month < 12 ){
 				<DynamicEventClass>
 					<Id>1522333146122</Id>
 					<Name><![CDATA[ActivatePackLine]]></Name>
-					<X>-440</X><Y>60</Y>
+					<X>-180</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12814,7 +14050,7 @@ if( month < 12 ){
 					<ReturnType><![CDATA[int]]></ReturnType>
 					<Id>1522333146068</Id>
 					<Name><![CDATA[getHighPriorsLine]]></Name>
-					<X>199</X><Y>-272</Y>
+					<X>-190</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12834,14 +14070,14 @@ return result;]]></Body>
 					<ReturnType><![CDATA[SelectOutputOut]]></ReturnType>
 					<Id>1522970239154</Id>
 					<Name><![CDATA[chooseOutput]]></Name>
-					<X>340</X><Y>520</Y>
+					<X>200</X><Y>480</Y>
 					<Label><X>-40</X><Y>20</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[agent]]></Name>
-						<Type><![CDATA[SKU]]></Type>
+						<Type><![CDATA[Lote]]></Type>
 					</Parameter>
 					<Body><![CDATA[if (agent.line == 1)
 	return selectOutputOut1;
@@ -13355,7 +14591,7 @@ else return selectOutputOut2;	]]></Body>
     			<DataSet>
 					<Id>1522333146038</Id>
 					<Name><![CDATA[stateDataset]]></Name>
-					<X>-240</X><Y>20</Y>
+					<X>-320</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13403,7 +14639,7 @@ else return selectOutputOut2;	]]></Body>
 				<ContainerLink>
 					<Id>1522870707902</Id>
 					<Name><![CDATA[main]]></Name>
-					<X>40</X><Y>-350</Y>
+					<X>-400</X><Y>-60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13418,7 +14654,7 @@ else return selectOutputOut2;	]]></Body>
 				<EmbeddedObject>
 					<Id>1522333146126</Id>
 					<Name><![CDATA[priorityLine]]></Name>
-					<X>248</X><Y>430</Y>
+					<X>108</X><Y>390</Y>
 					<Label><X>-8</X><Y>50</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13433,9 +14669,6 @@ else return selectOutputOut2;	]]></Body>
 							<ClassName><![CDATA[Queue]]></ClassName>
 							<ItemName><![CDATA[1412336242932]]></ItemName>
 						</GenericParameterSubstituteReference>
-						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[SKU]]></Code>
-						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -13542,7 +14775,7 @@ else return selectOutputOut2;	]]></Body>
 				<EmbeddedObject>
 					<Id>1522333146130</Id>
 					<Name><![CDATA[queue]]></Name>
-					<X>350</X><Y>430</Y>
+					<X>210</X><Y>390</Y>
 					<Label><X>4</X><Y>-2</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13557,9 +14790,6 @@ else return selectOutputOut2;	]]></Body>
 							<ClassName><![CDATA[Queue]]></ClassName>
 							<ItemName><![CDATA[1412336242932]]></ItemName>
 						</GenericParameterSubstituteReference>
-						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[SKU]]></Code>
-						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -13673,7 +14903,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522333146186</Id>
 					<Name><![CDATA[timeMeasureStart1]]></Name>
-					<X>650</X><Y>180</Y>
+					<X>510</X><Y>140</Y>
 					<Label><X>-38</X><Y>-7</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13688,9 +14918,6 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ClassName><![CDATA[TimeMeasureStart]]></ClassName>
 							<ItemName><![CDATA[1412336243204]]></ItemName>
 						</GenericParameterSubstituteReference>
-						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[Lote]]></Code>
-						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -13743,7 +14970,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522333146222</Id>
 					<Name><![CDATA[timeMeasureEnd1]]></Name>
-					<X>880</X><Y>180</Y>
+					<X>740</X><Y>140</Y>
 					<Label><X>-34</X><Y>-7</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13822,7 +15049,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522333146238</Id>
 					<Name><![CDATA[queueBO]]></Name>
-					<X>1050</X><Y>100</Y>
+					<X>910</X><Y>60</Y>
 					<Label><X>5</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13837,9 +15064,6 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ClassName><![CDATA[Queue]]></ClassName>
 							<ItemName><![CDATA[1412336242932]]></ItemName>
 						</GenericParameterSubstituteReference>
-						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[SKU]]></Code>
-						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -13949,7 +15173,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522333146250</Id>
 					<Name><![CDATA[holdBO4]]></Name>
-					<X>1190</X><Y>110</Y>
+					<X>1050</X><Y>70</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14034,7 +15258,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522333146266</Id>
 					<Name><![CDATA[in_productsChile]]></Name>
-					<X>180</X><Y>440</Y>
+					<X>40</X><Y>400</Y>
 					<Label><X>-19</X><Y>-21</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14050,7 +15274,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ItemName><![CDATA[1412336242933]]></ItemName>
 						</GenericParameterSubstituteReference>
 						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[Agent]]></Code>
+							<Code><![CDATA[Lote]]></Code>
 						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
@@ -14155,7 +15379,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522333371898</Id>
 					<Name><![CDATA[prodAttained1]]></Name>
-					<X>1360</X><Y>180</Y>
+					<X>1220</X><Y>140</Y>
 					<Label><X>-10</X><Y>40</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14171,7 +15395,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ItemName><![CDATA[1412336242932]]></ItemName>
 						</GenericParameterSubstituteReference>
 						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[SKU]]></Code>
+							<Code><![CDATA[Lote]]></Code>
 						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
@@ -14276,7 +15500,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522335354699</Id>
 					<Name><![CDATA[hold11]]></Name>
-					<X>1330</X><Y>110</Y>
+					<X>1190</X><Y>70</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14361,7 +15585,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522335354723</Id>
 					<Name><![CDATA[sink3]]></Name>
-					<X>1380</X><Y>110</Y>
+					<X>1240</X><Y>70</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14376,9 +15600,6 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ClassName><![CDATA[Sink]]></ClassName>
 							<ItemName><![CDATA[1412336242929]]></ItemName>
 						</GenericParameterSubstituteReference>
-						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[Lote]]></Code>
-						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -14434,7 +15655,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522337615250</Id>
 					<Name><![CDATA[delayArranque]]></Name>
-					<X>810</X><Y>180</Y>
+					<X>670</X><Y>140</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14538,7 +15759,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522361133004</Id>
 					<Name><![CDATA[queue1]]></Name>
-					<X>700</X><Y>180</Y>
+					<X>560</X><Y>140</Y>
 					<Label><X>4</X><Y>-2</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14553,9 +15774,6 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ClassName><![CDATA[Queue]]></ClassName>
 							<ItemName><![CDATA[1412336242932]]></ItemName>
 						</GenericParameterSubstituteReference>
-						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[SKU]]></Code>
-						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -14687,7 +15905,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522361967285</Id>
 					<Name><![CDATA[delayChangeSize]]></Name>
-					<X>950</X><Y>180</Y>
+					<X>810</X><Y>140</Y>
 					<Label><X>-25</X><Y>55</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14702,6 +15920,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ClassName><![CDATA[Delay]]></ClassName>
 							<ItemName><![CDATA[1412336242930]]></ItemName>
 						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Lote]]></Code>
+						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -14791,7 +16012,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522361980778</Id>
 					<Name><![CDATA[delayChangePackSize]]></Name>
-					<X>1040</X><Y>180</Y>
+					<X>900</X><Y>140</Y>
 					<Label><X>-35</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14895,7 +16116,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522610077015</Id>
 					<Name><![CDATA[hold12]]></Name>
-					<X>1460</X><Y>190</Y>
+					<X>1320</X><Y>150</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14980,7 +16201,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522610077086</Id>
 					<Name><![CDATA[sink4]]></Name>
-					<X>1510</X><Y>190</Y>
+					<X>1370</X><Y>150</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14995,9 +16216,6 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ClassName><![CDATA[Sink]]></ClassName>
 							<ItemName><![CDATA[1412336242929]]></ItemName>
 						</GenericParameterSubstituteReference>
-						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[Lote]]></Code>
-						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -15053,7 +16271,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522945749306</Id>
 					<Name><![CDATA[restrictedAreaEnd4]]></Name>
-					<X>1290</X><Y>180</Y>
+					<X>1150</X><Y>140</Y>
 					<Label><X>-43</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15129,7 +16347,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522946019272</Id>
 					<Name><![CDATA[restrictedAreaStart1]]></Name>
-					<X>770</X><Y>180</Y>
+					<X>630</X><Y>140</Y>
 					<Label><X>-10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15145,7 +16363,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ItemName><![CDATA[1412336243130]]></ItemName>
 						</GenericParameterSubstituteReference>
 						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[Agent]]></Code>
+							<Code><![CDATA[Lote]]></Code>
 						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
@@ -15205,7 +16423,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522950015452</Id>
 					<Name><![CDATA[productionTime]]></Name>
-					<X>1160</X><Y>180</Y>
+					<X>1020</X><Y>140</Y>
 					<Label><X>-25</X><Y>55</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15309,7 +16527,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522969459754</Id>
 					<Name><![CDATA[selectOutputOut1]]></Name>
-					<X>590</X><Y>190</Y>
+					<X>450</X><Y>150</Y>
 					<Label><X>-45</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15324,6 +16542,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ClassName><![CDATA[SelectOutputOut]]></ClassName>
 							<ItemName><![CDATA[1412336243166]]></ItemName>
 						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Lote]]></Code>
+						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -15385,7 +16606,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522969637027</Id>
 					<Name><![CDATA[selectOutputIn]]></Name>
-					<X>440</X><Y>440</Y>
+					<X>300</X><Y>400</Y>
 					<Label><X>-40</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15464,7 +16685,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574519</Id>
 					<Name><![CDATA[timeMeasureStart2]]></Name>
-					<X>650</X><Y>360</Y>
+					<X>510</X><Y>320</Y>
 					<Label><X>-38</X><Y>-7</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15534,7 +16755,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574545</Id>
 					<Name><![CDATA[timeMeasureEnd2]]></Name>
-					<X>880</X><Y>360</Y>
+					<X>740</X><Y>320</Y>
 					<Label><X>-34</X><Y>-7</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15613,7 +16834,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574572</Id>
 					<Name><![CDATA[queueBO1]]></Name>
-					<X>1050</X><Y>280</Y>
+					<X>910</X><Y>240</Y>
 					<Label><X>5</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15740,7 +16961,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574603</Id>
 					<Name><![CDATA[holdBO5]]></Name>
-					<X>1190</X><Y>290</Y>
+					<X>1050</X><Y>250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15825,7 +17046,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574627</Id>
 					<Name><![CDATA[prodAttained2]]></Name>
-					<X>1360</X><Y>360</Y>
+					<X>1220</X><Y>320</Y>
 					<Label><X>-10</X><Y>40</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15946,7 +17167,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574673</Id>
 					<Name><![CDATA[hold13]]></Name>
-					<X>1330</X><Y>290</Y>
+					<X>1190</X><Y>250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16031,7 +17252,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574696</Id>
 					<Name><![CDATA[sink5]]></Name>
-					<X>1380</X><Y>290</Y>
+					<X>1240</X><Y>250</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16104,7 +17325,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574719</Id>
 					<Name><![CDATA[delayArranque1]]></Name>
-					<X>810</X><Y>360</Y>
+					<X>670</X><Y>320</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16208,7 +17429,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574748</Id>
 					<Name><![CDATA[queue2]]></Name>
-					<X>700</X><Y>360</Y>
+					<X>560</X><Y>320</Y>
 					<Label><X>4</X><Y>-2</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16357,7 +17578,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574772</Id>
 					<Name><![CDATA[delayChangeSize1]]></Name>
-					<X>950</X><Y>360</Y>
+					<X>810</X><Y>320</Y>
 					<Label><X>-25</X><Y>55</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16461,7 +17682,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574801</Id>
 					<Name><![CDATA[delayChangePackSize1]]></Name>
-					<X>1040</X><Y>360</Y>
+					<X>900</X><Y>320</Y>
 					<Label><X>-35</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16565,7 +17786,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574833</Id>
 					<Name><![CDATA[hold14]]></Name>
-					<X>1460</X><Y>370</Y>
+					<X>1320</X><Y>330</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16650,7 +17871,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574890</Id>
 					<Name><![CDATA[sink6]]></Name>
-					<X>1510</X><Y>370</Y>
+					<X>1370</X><Y>330</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16723,7 +17944,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574916</Id>
 					<Name><![CDATA[restrictedAreaEnd5]]></Name>
-					<X>1290</X><Y>360</Y>
+					<X>1150</X><Y>320</Y>
 					<Label><X>-43</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16799,7 +18020,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574942</Id>
 					<Name><![CDATA[restrictedAreaStart2]]></Name>
-					<X>770</X><Y>360</Y>
+					<X>630</X><Y>320</Y>
 					<Label><X>-10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16875,7 +18096,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574968</Id>
 					<Name><![CDATA[productionTime1]]></Name>
-					<X>1160</X><Y>360</Y>
+					<X>1020</X><Y>320</Y>
 					<Label><X>-25</X><Y>55</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16979,7 +18200,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522970574998</Id>
 					<Name><![CDATA[selectOutputOut2]]></Name>
-					<X>590</X><Y>370</Y>
+					<X>450</X><Y>330</Y>
 					<Label><X>-45</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17055,7 +18276,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971600804</Id>
 					<Name><![CDATA[timeMeasureStart3]]></Name>
-					<X>650</X><Y>540</Y>
+					<X>510</X><Y>500</Y>
 					<Label><X>-38</X><Y>-7</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17125,7 +18346,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971600849</Id>
 					<Name><![CDATA[timeMeasureEnd3]]></Name>
-					<X>880</X><Y>540</Y>
+					<X>740</X><Y>500</Y>
 					<Label><X>-34</X><Y>-7</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17204,7 +18425,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971600868</Id>
 					<Name><![CDATA[queueBO2]]></Name>
-					<X>1050</X><Y>460</Y>
+					<X>910</X><Y>420</Y>
 					<Label><X>5</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17331,7 +18552,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971600899</Id>
 					<Name><![CDATA[holdBO6]]></Name>
-					<X>1190</X><Y>470</Y>
+					<X>1050</X><Y>430</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17416,7 +18637,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971600924</Id>
 					<Name><![CDATA[prodAttained3]]></Name>
-					<X>1360</X><Y>540</Y>
+					<X>1220</X><Y>500</Y>
 					<Label><X>-10</X><Y>40</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17537,7 +18758,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971600954</Id>
 					<Name><![CDATA[hold15]]></Name>
-					<X>1330</X><Y>470</Y>
+					<X>1190</X><Y>430</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17622,7 +18843,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971600979</Id>
 					<Name><![CDATA[sink7]]></Name>
-					<X>1380</X><Y>470</Y>
+					<X>1240</X><Y>430</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17695,7 +18916,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971601003</Id>
 					<Name><![CDATA[delayArranque2]]></Name>
-					<X>810</X><Y>540</Y>
+					<X>670</X><Y>500</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17799,7 +19020,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971601034</Id>
 					<Name><![CDATA[queue3]]></Name>
-					<X>700</X><Y>540</Y>
+					<X>560</X><Y>500</Y>
 					<Label><X>4</X><Y>-2</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17948,7 +19169,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971601056</Id>
 					<Name><![CDATA[delayChangeSize2]]></Name>
-					<X>950</X><Y>540</Y>
+					<X>810</X><Y>500</Y>
 					<Label><X>-25</X><Y>55</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18052,7 +19273,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971601082</Id>
 					<Name><![CDATA[delayChangePackSize2]]></Name>
-					<X>1040</X><Y>540</Y>
+					<X>900</X><Y>500</Y>
 					<Label><X>-35</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18156,7 +19377,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971601108</Id>
 					<Name><![CDATA[hold16]]></Name>
-					<X>1460</X><Y>550</Y>
+					<X>1320</X><Y>510</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18241,7 +19462,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971601133</Id>
 					<Name><![CDATA[sink8]]></Name>
-					<X>1510</X><Y>550</Y>
+					<X>1370</X><Y>510</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18314,7 +19535,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971601158</Id>
 					<Name><![CDATA[restrictedAreaEnd6]]></Name>
-					<X>1290</X><Y>540</Y>
+					<X>1150</X><Y>500</Y>
 					<Label><X>-43</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18390,7 +19611,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971601182</Id>
 					<Name><![CDATA[restrictedAreaStart3]]></Name>
-					<X>770</X><Y>540</Y>
+					<X>630</X><Y>500</Y>
 					<Label><X>-10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18466,7 +19687,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971601205</Id>
 					<Name><![CDATA[productionTime2]]></Name>
-					<X>1160</X><Y>540</Y>
+					<X>1020</X><Y>500</Y>
 					<Label><X>-25</X><Y>55</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18570,7 +19791,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971601234</Id>
 					<Name><![CDATA[selectOutputOut3]]></Name>
-					<X>590</X><Y>550</Y>
+					<X>450</X><Y>510</Y>
 					<Label><X>-45</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18646,7 +19867,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971698840</Id>
 					<Name><![CDATA[timeMeasureStart4]]></Name>
-					<X>650</X><Y>720</Y>
+					<X>510</X><Y>680</Y>
 					<Label><X>-38</X><Y>-7</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18716,7 +19937,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971698861</Id>
 					<Name><![CDATA[timeMeasureEnd4]]></Name>
-					<X>880</X><Y>720</Y>
+					<X>740</X><Y>680</Y>
 					<Label><X>-34</X><Y>-7</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18795,7 +20016,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971698880</Id>
 					<Name><![CDATA[queueBO3]]></Name>
-					<X>1050</X><Y>640</Y>
+					<X>910</X><Y>600</Y>
 					<Label><X>5</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18922,7 +20143,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971698907</Id>
 					<Name><![CDATA[holdBO7]]></Name>
-					<X>1190</X><Y>650</Y>
+					<X>1050</X><Y>610</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -19007,7 +20228,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971698929</Id>
 					<Name><![CDATA[prodAttained4]]></Name>
-					<X>1360</X><Y>720</Y>
+					<X>1220</X><Y>680</Y>
 					<Label><X>-10</X><Y>40</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -19128,7 +20349,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971698959</Id>
 					<Name><![CDATA[hold17]]></Name>
-					<X>1330</X><Y>650</Y>
+					<X>1190</X><Y>610</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -19213,7 +20434,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971698982</Id>
 					<Name><![CDATA[sink9]]></Name>
-					<X>1380</X><Y>650</Y>
+					<X>1240</X><Y>610</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -19286,7 +20507,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971699002</Id>
 					<Name><![CDATA[delayArranque3]]></Name>
-					<X>810</X><Y>720</Y>
+					<X>670</X><Y>680</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -19390,7 +20611,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971699030</Id>
 					<Name><![CDATA[queue4]]></Name>
-					<X>700</X><Y>720</Y>
+					<X>560</X><Y>680</Y>
 					<Label><X>4</X><Y>-2</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -19539,7 +20760,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971699055</Id>
 					<Name><![CDATA[delayChangeSize3]]></Name>
-					<X>950</X><Y>720</Y>
+					<X>810</X><Y>680</Y>
 					<Label><X>-25</X><Y>55</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -19643,7 +20864,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971699088</Id>
 					<Name><![CDATA[delayChangePackSize3]]></Name>
-					<X>1040</X><Y>720</Y>
+					<X>900</X><Y>680</Y>
 					<Label><X>-35</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -19747,7 +20968,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971699115</Id>
 					<Name><![CDATA[hold18]]></Name>
-					<X>1460</X><Y>730</Y>
+					<X>1320</X><Y>690</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -19832,7 +21053,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971699139</Id>
 					<Name><![CDATA[sink10]]></Name>
-					<X>1510</X><Y>730</Y>
+					<X>1370</X><Y>690</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -19905,7 +21126,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971699166</Id>
 					<Name><![CDATA[restrictedAreaEnd7]]></Name>
-					<X>1290</X><Y>720</Y>
+					<X>1150</X><Y>680</Y>
 					<Label><X>-43</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -19981,7 +21202,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971699192</Id>
 					<Name><![CDATA[restrictedAreaStart4]]></Name>
-					<X>770</X><Y>720</Y>
+					<X>630</X><Y>680</Y>
 					<Label><X>-10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -20057,7 +21278,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971699214</Id>
 					<Name><![CDATA[productionTime3]]></Name>
-					<X>1160</X><Y>720</Y>
+					<X>1020</X><Y>680</Y>
 					<Label><X>-25</X><Y>55</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -20161,7 +21382,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971699247</Id>
 					<Name><![CDATA[selectOutputOut4]]></Name>
-					<X>590</X><Y>730</Y>
+					<X>450</X><Y>690</Y>
 					<Label><X>-45</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -20237,7 +21458,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788367</Id>
 					<Name><![CDATA[timeMeasureStart5]]></Name>
-					<X>650</X><Y>900</Y>
+					<X>510</X><Y>860</Y>
 					<Label><X>-38</X><Y>-7</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -20307,7 +21528,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788387</Id>
 					<Name><![CDATA[timeMeasureEnd5]]></Name>
-					<X>880</X><Y>900</Y>
+					<X>740</X><Y>860</Y>
 					<Label><X>-34</X><Y>-7</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -20386,7 +21607,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788408</Id>
 					<Name><![CDATA[queueBO4]]></Name>
-					<X>1050</X><Y>820</Y>
+					<X>910</X><Y>780</Y>
 					<Label><X>5</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -20513,7 +21734,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788437</Id>
 					<Name><![CDATA[holdBO8]]></Name>
-					<X>1190</X><Y>830</Y>
+					<X>1050</X><Y>790</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -20598,7 +21819,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788464</Id>
 					<Name><![CDATA[prodAttained5]]></Name>
-					<X>1360</X><Y>900</Y>
+					<X>1220</X><Y>860</Y>
 					<Label><X>-10</X><Y>40</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -20719,7 +21940,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788495</Id>
 					<Name><![CDATA[hold19]]></Name>
-					<X>1330</X><Y>830</Y>
+					<X>1190</X><Y>790</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -20804,7 +22025,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788516</Id>
 					<Name><![CDATA[sink11]]></Name>
-					<X>1380</X><Y>830</Y>
+					<X>1240</X><Y>790</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -20877,7 +22098,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788538</Id>
 					<Name><![CDATA[delayArranque4]]></Name>
-					<X>810</X><Y>900</Y>
+					<X>670</X><Y>860</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -20981,7 +22202,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788570</Id>
 					<Name><![CDATA[queue5]]></Name>
-					<X>700</X><Y>900</Y>
+					<X>560</X><Y>860</Y>
 					<Label><X>4</X><Y>-2</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21130,7 +22351,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788595</Id>
 					<Name><![CDATA[delayChangeSize4]]></Name>
-					<X>950</X><Y>900</Y>
+					<X>810</X><Y>860</Y>
 					<Label><X>-25</X><Y>55</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21234,7 +22455,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788624</Id>
 					<Name><![CDATA[delayChangePackSize4]]></Name>
-					<X>1040</X><Y>900</Y>
+					<X>900</X><Y>860</Y>
 					<Label><X>-35</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21338,7 +22559,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788658</Id>
 					<Name><![CDATA[hold20]]></Name>
-					<X>1460</X><Y>910</Y>
+					<X>1320</X><Y>870</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21423,7 +22644,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788685</Id>
 					<Name><![CDATA[sink12]]></Name>
-					<X>1510</X><Y>910</Y>
+					<X>1370</X><Y>870</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21496,7 +22717,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788705</Id>
 					<Name><![CDATA[restrictedAreaEnd8]]></Name>
-					<X>1290</X><Y>900</Y>
+					<X>1150</X><Y>860</Y>
 					<Label><X>-43</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21572,7 +22793,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788726</Id>
 					<Name><![CDATA[restrictedAreaStart5]]></Name>
-					<X>770</X><Y>900</Y>
+					<X>630</X><Y>860</Y>
 					<Label><X>-10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21648,7 +22869,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788746</Id>
 					<Name><![CDATA[productionTime4]]></Name>
-					<X>1160</X><Y>900</Y>
+					<X>1020</X><Y>860</Y>
 					<Label><X>-25</X><Y>55</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21752,7 +22973,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522971788774</Id>
 					<Name><![CDATA[selectOutputOut5]]></Name>
-					<X>590</X><Y>910</Y>
+					<X>450</X><Y>870</Y>
 					<Label><X>-45</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21828,7 +23049,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972010896</Id>
 					<Name><![CDATA[timeMeasureStart6]]></Name>
-					<X>650</X><Y>1080</Y>
+					<X>510</X><Y>1040</Y>
 					<Label><X>-38</X><Y>-7</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21898,7 +23119,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972010921</Id>
 					<Name><![CDATA[timeMeasureEnd6]]></Name>
-					<X>880</X><Y>1080</Y>
+					<X>740</X><Y>1040</Y>
 					<Label><X>-34</X><Y>-7</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21977,7 +23198,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972010944</Id>
 					<Name><![CDATA[queueBO5]]></Name>
-					<X>1050</X><Y>1000</Y>
+					<X>910</X><Y>960</Y>
 					<Label><X>5</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -22104,7 +23325,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972010975</Id>
 					<Name><![CDATA[holdBO9]]></Name>
-					<X>1190</X><Y>1010</Y>
+					<X>1050</X><Y>970</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -22189,7 +23410,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972010999</Id>
 					<Name><![CDATA[prodAttained6]]></Name>
-					<X>1360</X><Y>1080</Y>
+					<X>1220</X><Y>1040</Y>
 					<Label><X>-10</X><Y>40</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -22310,7 +23531,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972011029</Id>
 					<Name><![CDATA[hold21]]></Name>
-					<X>1330</X><Y>1010</Y>
+					<X>1190</X><Y>970</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -22395,7 +23616,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972011053</Id>
 					<Name><![CDATA[sink13]]></Name>
-					<X>1380</X><Y>1010</Y>
+					<X>1240</X><Y>970</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -22468,7 +23689,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972011083</Id>
 					<Name><![CDATA[delayArranque5]]></Name>
-					<X>810</X><Y>1080</Y>
+					<X>670</X><Y>1040</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -22572,7 +23793,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972011119</Id>
 					<Name><![CDATA[queue6]]></Name>
-					<X>700</X><Y>1080</Y>
+					<X>560</X><Y>1040</Y>
 					<Label><X>4</X><Y>-2</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -22721,7 +23942,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972011149</Id>
 					<Name><![CDATA[delayChangeSize5]]></Name>
-					<X>950</X><Y>1080</Y>
+					<X>810</X><Y>1040</Y>
 					<Label><X>-25</X><Y>55</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -22825,7 +24046,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972011181</Id>
 					<Name><![CDATA[delayChangePackSize5]]></Name>
-					<X>1040</X><Y>1080</Y>
+					<X>900</X><Y>1040</Y>
 					<Label><X>-35</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -22929,7 +24150,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972011212</Id>
 					<Name><![CDATA[hold22]]></Name>
-					<X>1460</X><Y>1090</Y>
+					<X>1320</X><Y>1050</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23014,7 +24235,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972011234</Id>
 					<Name><![CDATA[sink14]]></Name>
-					<X>1510</X><Y>1090</Y>
+					<X>1370</X><Y>1050</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23087,7 +24308,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972011256</Id>
 					<Name><![CDATA[restrictedAreaEnd9]]></Name>
-					<X>1290</X><Y>1080</Y>
+					<X>1150</X><Y>1040</Y>
 					<Label><X>-43</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23163,7 +24384,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972011278</Id>
 					<Name><![CDATA[restrictedAreaStart6]]></Name>
-					<X>770</X><Y>1080</Y>
+					<X>630</X><Y>1040</Y>
 					<Label><X>-10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23239,7 +24460,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972011299</Id>
 					<Name><![CDATA[productionTime5]]></Name>
-					<X>1160</X><Y>1080</Y>
+					<X>1020</X><Y>1040</Y>
 					<Label><X>-25</X><Y>55</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23343,7 +24564,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1522972011327</Id>
 					<Name><![CDATA[selectOutputOut6]]></Name>
-					<X>590</X><Y>1090</Y>
+					<X>450</X><Y>1050</Y>
 					<Label><X>-45</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23422,7 +24643,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<Text>
 					<Id>1522333146102</Id>
 					<Name><![CDATA[text67]]></Name>
-					<X>250</X><Y>120</Y>
+					<X>110</X><Y>80</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23488,7 +24709,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<Text>
 					<Id>1522333146112</Id>
 					<Name><![CDATA[text72]]></Name>
-					<X>350</X><Y>120</Y>
+					<X>210</X><Y>80</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23549,7 +24770,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<Rectangle>
 					<Id>1522971157338</Id>
 					<Name><![CDATA[rectangle]]></Name>
-					<X>520</X><Y>80</Y>
+					<X>380</X><Y>40</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23572,7 +24793,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<Rectangle>
 					<Id>1522971234565</Id>
 					<Name><![CDATA[rectangle1]]></Name>
-					<X>520</X><Y>260</Y>
+					<X>380</X><Y>220</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23595,7 +24816,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<Rectangle>
 					<Id>1522971600798</Id>
 					<Name><![CDATA[rectangle2]]></Name>
-					<X>520</X><Y>440</Y>
+					<X>380</X><Y>400</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23618,7 +24839,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<Rectangle>
 					<Id>1522971698834</Id>
 					<Name><![CDATA[rectangle3]]></Name>
-					<X>520</X><Y>620</Y>
+					<X>380</X><Y>580</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23641,7 +24862,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<Rectangle>
 					<Id>1522971788362</Id>
 					<Name><![CDATA[rectangle4]]></Name>
-					<X>520</X><Y>800</Y>
+					<X>380</X><Y>760</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23664,7 +24885,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<Rectangle>
 					<Id>1522972010890</Id>
 					<Name><![CDATA[rectangle5]]></Name>
-					<X>520</X><Y>980</Y>
+					<X>380</X><Y>940</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23687,7 +24908,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<Text>
 					<Id>1523025038336</Id>
 					<Name><![CDATA[text]]></Name>
-					<X>520</X><Y>50</Y>
+					<X>380</X><Y>10</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23709,7 +24930,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<Rectangle>
 					<Id>1523025179853</Id>
 					<Name><![CDATA[rectangle6]]></Name>
-					<X>550</X><Y>120</Y>
+					<X>410</X><Y>80</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23732,7 +24953,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<Text>
 					<Id>1523025241660</Id>
 					<Name><![CDATA[text73]]></Name>
-					<X>557</X><Y>130</Y>
+					<X>417</X><Y>90</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23755,7 +24976,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<Text>
 					<Id>1523025358081</Id>
 					<Name><![CDATA[text1]]></Name>
-					<X>560</X><Y>100</Y>
+					<X>420</X><Y>60</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -23767,6 +24988,28 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<Rotation>0.0</Rotation>
 					<Color>-9868951</Color>
 					<Text><![CDATA[RATE]]></Text>
+					<Font>
+						<Name>Calibri</Name>
+						<Size>12</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523285727900</Id>
+					<Name><![CDATA[text2]]></Name>
+					<X>400</X><Y>200</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-9868951</Color>
+					<Text><![CDATA[LINEA 1= L1]]></Text>
 					<Font>
 						<Name>Calibri</Name>
 						<Size>12</Size>
@@ -24565,6 +25808,172 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523196630710</Id>
+					<Name><![CDATA[line]]></Name>
+					<X>180</X><Y>350</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523196630708</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523287631409</Id>
+					<Name><![CDATA[countryD]]></Name>
+					<Description><![CDATA[Pais de demanda]]></Description>
+					<X>50.476</X><Y>285.714</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["empty"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523287631407</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523287631416</Id>
+					<Name><![CDATA[countryD_code]]></Name>
+					<Description><![CDATA[Codigo numerico de pais]]></Description>
+					<X>50</X><Y>322</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523287631414</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523287631421</Id>
+					<Name><![CDATA[countryP]]></Name>
+					<Description><![CDATA[Pais donde se produce]]></Description>
+					<X>770</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA["empty"]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523287631419</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523287681476</Id>
+					<Name><![CDATA[countryP_code]]></Name>
+					<Description><![CDATA[Codigo numerico de pais]]></Description>
+					<X>160</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523287681474</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523288187988</Id>
+					<Name><![CDATA[nomRate]]></Name>
+					<X>-680</X><Y>160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1523288187986</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523291018191</Id>
+					<Name><![CDATA[rateskuL]]></Name>
+					<X>180</X><Y>410</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1523291018189</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<Functions>
 				<Function AccessType="public" StaticFunction="false">
@@ -24887,6 +26296,36 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				<Parameter>
 					<ParameterName><![CDATA[sku_packsize]]></ParameterName>
 				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[mape]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[mapeMax]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[mapeMin]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[mapeMod]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[minForLote]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[totInv]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[totInvCost]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[totInvPal]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[prodLines]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[daysForwardCoverage]]></ParameterName>
+				</Parameter>
 			</Parameters>			
 			<PresentationProperties 
 				EnableAdaptiveFrameManagement="true" 
@@ -24932,12 +26371,6 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 		<VersionMajor>8</VersionMajor>
 		<VersionMinor>0</VersionMinor>
 		<VersionBuild>5</VersionBuild>
-    </RequiredLibraryReference>
-    <RequiredLibraryReference>
-		<LibraryName><![CDATA[sku_version_Version23Excel]]></LibraryName>
-		<VersionMajor>0</VersionMajor>
-		<VersionMinor>0</VersionMinor>
-		<VersionBuild>0</VersionBuild>
     </RequiredLibraryReference>
 </Model>
 </AnyLogicWorkspace>
