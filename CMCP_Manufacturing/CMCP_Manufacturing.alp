@@ -127,7 +127,8 @@
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
-			<StartupCode><![CDATA[readData();]]></StartupCode>
+			<StartupCode><![CDATA[readData();
+create_prod_order();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1519223879331</Id>
@@ -3569,7 +3570,7 @@ Guarda el mes calculado en la variable: monthestimated. modulo 12]]></Descriptio
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
-						<Name><![CDATA[item]]></Name>
+						<Name><![CDATA[s]]></Name>
 						<Type><![CDATA[SKU]]></Type>
 					</Parameter>
 					<Parameter>
@@ -3582,7 +3583,7 @@ Guarda el mes calculado en la variable: monthestimated. modulo 12]]></Descriptio
 					</Parameter>
 					<Body><![CDATA[double time_of_production = 
 	time_since_start(start_year,month_num) -
-	item.leadTime[month_num]*day();
+	s.leadTimeD_P[month_num-1]*day();
 
 double time = toDateInMillis(start_year, start_month, 1, 1, 1, 1);
 time = time + time_of_production;
@@ -3617,9 +3618,10 @@ Date start = toDate(start_year, start_month, 1, 1, 1, 1);
 double startTime = start.getTime();
 double endTime = demand.getTime();
 double diffTime = endTime - startTime;
-double diffDays = diffTime / (1000 * 60 * 60 * 24);
 
-return diffDays;]]></Body>
+System.out.println(diffTime);
+System.out.println(diffTime / 1000*60*60*24);
+return diffTime;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -3634,10 +3636,17 @@ return diffDays;]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[for ( SKU s : sku ){
+	for ( int m = 1; m < 13; m++){
+		int estimated_month = estimate_month_of_production(s,2,m);
+		double estimated_demand = estimate_demand_amount(s,m);
+		s.real_demand[estimated_month-1] += estimated_demand;
+	}
+}]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[int]]></ReturnType>
+					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1523378670732</Id>
 					<Name><![CDATA[estimate_demand_amount]]></Name>
 					<Description><![CDATA[Recibe un SKU y calcula la cantidad a producir, teniendo en cuenta DOH
@@ -3651,13 +3660,17 @@ Restar A a X ]]></Description>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
-						<Name><![CDATA[item]]></Name>
+						<Name><![CDATA[s]]></Name>
 						<Type><![CDATA[SKU]]></Type>
 					</Parameter>
 					<Parameter>
 						<Name><![CDATA[month_num]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
+					<Body><![CDATA[int doh = 0; // TODO
+int rate = 0; // TODO
+int forward_coverage = doh*rate; // TODO
+return s.demand[month_num-1] + forward_coverage;]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
