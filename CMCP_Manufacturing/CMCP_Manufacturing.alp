@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291329" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291251" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMCP_Manufacturing]]></Name>
@@ -241,21 +241,6 @@
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1523191316844</Id>
-					<Name><![CDATA[iteration]]></Name>
-					<X>-290</X><Y>-110</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
-						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -591,7 +576,7 @@
 				<Variable Class="PlainVariable">
 					<Id>1523191316962</Id>
 					<Name><![CDATA[skuPointer]]></Name>
-					<X>-670</X><Y>-220</Y>
+					<X>-690</X><Y>-220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2506,6 +2491,74 @@
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523364409951</Id>
+					<Name><![CDATA[vF]]></Name>
+					<X>-670</X><Y>-50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523364409949</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523371617729</Id>
+					<Name><![CDATA[start_month]]></Name>
+					<Description><![CDATA[Mes de inicio de la simulación]]></Description>
+					<X>-540</X><Y>-140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1523371617727</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523374505516</Id>
+					<Name><![CDATA[start_year]]></Name>
+					<Description><![CDATA[Año de inicio de la simulación]]></Description>
+					<X>-540</X><Y>-160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1523374505514</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1522612589504</Id>
 					<Name><![CDATA[tempSKU]]></Name>
@@ -3288,7 +3341,7 @@ tempSKU.remove(s); // Delete SKU from temp list]]></Action>
 	Populate SKUs' parameters
 	Stockout Anticipation
 	Backorder Anticipation]]></Description>
-					<X>-190</X><Y>-90</Y>
+					<X>-190</X><Y>-110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3304,7 +3357,6 @@ tempSKU.remove(s); // Delete SKU from temp list]]></Action>
 		populateDemandSKU(s, rows, i);
 	}
 	populateSKU(s, rows.get(0));
-	calculateRealDemand(s);
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -3313,7 +3365,7 @@ tempSKU.remove(s); // Delete SKU from temp list]]></Action>
 					<Id>1522163931738</Id>
 					<Name><![CDATA[populateSKU]]></Name>
 					<Description><![CDATA[Populates SKUs' parameters with data from the input_output table]]></Description>
-					<X>-170</X><Y>-50</Y>
+					<X>-170</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3339,7 +3391,7 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 					<Id>1522164614223</Id>
 					<Name><![CDATA[populateDemandSKU]]></Name>
 					<Description><![CDATA[Populates SKUs' demand with data from the input_output table]]></Description>
-					<X>-170</X><Y>-70</Y>
+					<X>-170</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3364,7 +3416,7 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 					<Id>1522175936525</Id>
 					<Name><![CDATA[country2code]]></Name>
 					<Description><![CDATA[Receives a country's initials and returns the code as int]]></Description>
-					<X>-340</X><Y>-90</Y>
+					<X>-340</X><Y>-110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3391,7 +3443,7 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 					<Id>1522176441485</Id>
 					<Name><![CDATA[size_str2int]]></Name>
 					<Description><![CDATA[Receives a size's initials and returns the code as int]]></Description>
-					<X>-340</X><Y>-70</Y>
+					<X>-340</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3408,22 +3460,6 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 	case "P": return 6;
 	default: return 0;
 }]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1522176633069</Id>
-					<Name><![CDATA[calculateRealDemand]]></Name>
-					<Description><![CDATA[Calculates real demand, taking into account lead times.]]></Description>
-					<X>-170</X><Y>-30</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[s]]></Name>
-						<Type><![CDATA[SKU]]></Type>
-					</Parameter>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -3444,6 +3480,184 @@ for( SKU s : tempSKU )
 	if( result.proPri[month] < s.proPri[month] )
 		result = s;
 return result;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1523362834653</Id>
+					<Name><![CDATA[estimate_prod_capacity]]></Name>
+					<Description><![CDATA[Calcula para cada país cual es la capacidad máxima y lo guarda en dos parámetros calculados: capacidad según escenario: 
+- capmaxhoras
+- capmax en cantidad numérica de pañales a producir
+Dentro del agente: productionLine, para cada línea. 
+Es decir están las variables:  capmaxhorasL1, capmaxhorasL2, capmaxhorasL3, capmaxhorasL4, capmaxhorasL5, capmaxhorasL6, capmax L1, cap max L2, cap max L3, cap max L4, cap max L5, cap max L6.
+]]></Description>
+					<X>-540</X><Y>-110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1523363202331</Id>
+					<Name><![CDATA[sort_sku]]></Name>
+					<Description><![CDATA[Recibe dos posibles formas de ordenamiento según vF en el main (desde input).
+	vF=1 
+		Ordenamiento1 : de mayor Size a menor Size y dentro del size de mayor pack size a 		menor pack size.
+	vF= 2 
+		Ordenamiento 2 : de mayor cantidad demandada a menor cantidad demandada.]]></Description>
+					<X>-690</X><Y>-110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[if (vF == 1)
+	sort_sku_size();
+else if (vF == 2)
+	sort_sku_demand();]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1523363468324</Id>
+					<Name><![CDATA[sort_sku_size]]></Name>
+					<Description><![CDATA[Ordena el paquete de SKU de mayor Size a menor Size y dentro del size de mayor pack size a menor pack size.
+
+Primero los XXG, dentro de esta categoría que es la variable sku_size, hay que ordenar también de mayor a menor por la variable pack_size .
+
+Los ordenamos dejando la fila ordenada según este concepto para cada mes, en una collection: SKUsvF1 ( no se si 12 collections o una que se pisa).
+]]></Description>
+					<X>-670</X><Y>-90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1523363529687</Id>
+					<Name><![CDATA[sort_sku_demand]]></Name>
+					<Description><![CDATA[Ordena el paquete de SKU de mayor cantidad demandada a menor cantidad demandada.
+Tomando el mes real, sin leads time.
+
+Los ordenamos dejando la fila ordenada según este concepto para cada mes, en una collection: SKUsvF2 ( no se si 12 collections o una que se pisa)]]></Description>
+					<X>-670</X><Y>-70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1523363976268</Id>
+					<Name><![CDATA[estimate_month_of_production]]></Name>
+					<Description><![CDATA[Recibe un SKU y un pais de produccion y calcula el mes en el que deberia ser producido.
+
+Dias desde el comienzo hasta el mes de demanda
+Restar lead time planificación
+Restar lead time país demanda/país 1
+
+Devuelve el mes calculado
+Guarda el mes calculado en la variable: monthestimated. modulo 12]]></Description>
+					<X>-540</X><Y>-90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[item]]></Name>
+						<Type><![CDATA[SKU]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[country]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[month_num]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[double time_of_production = 
+	time_since_start(start_year,month_num) -
+	item.leadTime[month_num]*day();
+
+double time = toDateInMillis(start_year, start_month, 1, 1, 1, 1);
+time = time + time_of_production;
+Date date_of_production = timeToDate(time);
+
+System.out.println(date_of_production.getMonth());
+
+return date_of_production.getMonth() + 1;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1523364088468</Id>
+					<Name><![CDATA[time_since_start]]></Name>
+					<Description><![CDATA[Recibe un mes y un año.
+Devuelve la cantidad de días desde el inicio de la simulación.]]></Description>
+					<X>-520</X><Y>-70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[month_num]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[year_num]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[Date demand = toDate(year_num, month_num, 1, 1, 1, 1);
+Date start = toDate(start_year, start_month, 1, 1, 1, 1);
+double startTime = start.getTime();
+double endTime = demand.getTime();
+double diffTime = endTime - startTime;
+double diffDays = diffTime / (1000 * 60 * 60 * 24);
+
+return diffDays;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1523369678618</Id>
+					<Name><![CDATA[create_prod_order]]></Name>
+					<Description><![CDATA[Para cada SKU
+	rellenar la demanda real (proRealDemand)
+	rellenar linea donde se produce]]></Description>
+					<X>-840</X><Y>-110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1523378670732</Id>
+					<Name><![CDATA[estimate_demand_amount]]></Name>
+					<Description><![CDATA[Recibe un SKU y calcula la cantidad a producir, teniendo en cuenta DOH
+
+Restar DOH ( days of hand o forward coverage )  a X
+Multiplicar el coeficiente de grupo de sustitución por DOH=A
+Restar A a X ]]></Description>
+					<X>-540</X><Y>-50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[item]]></Name>
+						<Type><![CDATA[SKU]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[month_num]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -26325,6 +26539,15 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[daysForwardCoverage]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[vF]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[start_month]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[start_year]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties 
