@@ -3543,9 +3543,9 @@ Es decir están las variables:  capmaxhorasL1, capmaxhorasL2, capmaxhorasL3, cap
 						<Name><![CDATA[m]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[if (vF == 1)
+					<Body><![CDATA[if (vF == 0)
 	sort_sku_size();
-else if (vF == 2)
+else if (vF == 1)
 	sort_sku_demand(m);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -26522,6 +26522,23 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 			<VmArgs><![CDATA[]]></VmArgs>
 			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
 			<SnapshotFile></SnapshotFile>
+			<Variables>
+				<Variable Class="PlainVariable">
+					<Id>1523458501090</Id>
+					<Name><![CDATA[sorting_arrangement]]></Name>
+					<X>-180</X><Y>80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+			</Variables>
 
 			<Shapes>
 				<Text>
@@ -26543,6 +26560,28 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Name>SansSerif</Name>
 						<Size>24</Size>
 						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523459195996</Id>
+					<Name><![CDATA[sku_sorting]]></Name>
+					<X>40</X><Y>160</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[SKU Sorting Arrangement]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
@@ -26573,6 +26612,31 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 						<LabelCode><![CDATA[getState() == IDLE ?
 	"Run" :
 	"Top level agent"]]></LabelCode>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="RadioButtons">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1523458328851</Id>
+					<Name><![CDATA[sorting_buttons]]></Name>
+					<X>40</X><Y>180</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="150" Height="100" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<Orientation>VERTICAL</Orientation>
+						<Button><![CDATA[by Size]]></Button>
+						<Button><![CDATA[by Demand]]></Button>
+						<LinkTo>true</LinkTo>
+						<Link>sorting_arrangement</Link>
 					</ExtendedProperties>
 				</Control>
 			</Controls>
@@ -26760,6 +26824,9 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[vF]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[sorting_arrangement]]></Code>
+					</ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[start_month]]></ParameterName>
