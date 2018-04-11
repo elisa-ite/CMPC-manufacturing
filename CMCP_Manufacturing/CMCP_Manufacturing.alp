@@ -2529,6 +2529,9 @@ create_prod_order();]]></StartupCode>
 						<Type><![CDATA[int]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
 						<ParameterEditor>
 							<Id>1523371617727</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -2551,6 +2554,9 @@ create_prod_order();]]></StartupCode>
 						<Type><![CDATA[int]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[2019]]></Code>
+						</DefaultValue>
 						<ParameterEditor>
 							<Id>1523374505514</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -3578,50 +3584,23 @@ Guarda el mes calculado en la variable: monthestimated. modulo 12]]></Descriptio
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
 					<Parameter>
-						<Name><![CDATA[month_num]]></Name>
-						<Type><![CDATA[int]]></Type>
-					</Parameter>
-					<Body><![CDATA[double time_of_production = 
-	time_since_start(start_year,month_num) -
-	s.leadTimeD_P[month_num-1]*day();
-
-double time = toDateInMillis(start_year, start_month, 1, 1, 1, 1);
-time = time + time_of_production;
-Date date_of_production = timeToDate(time);
-
-System.out.println(date_of_production.getMonth());
-
-return date_of_production.getMonth() + 1;]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1523364088468</Id>
-					<Name><![CDATA[time_since_start]]></Name>
-					<Description><![CDATA[Recibe un mes y un año.
-Devuelve la cantidad de días desde el inicio de la simulación.]]></Description>
-					<X>-520</X><Y>-70</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[month_num]]></Name>
-						<Type><![CDATA[int]]></Type>
-					</Parameter>
-					<Parameter>
 						<Name><![CDATA[year_num]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[Date demand = toDate(year_num, month_num, 1, 1, 1, 1);
-Date start = toDate(start_year, start_month, 1, 1, 1, 1);
-double startTime = start.getTime();
-double endTime = demand.getTime();
-double diffTime = endTime - startTime;
+					<Parameter>
+						<Name><![CDATA[month_num]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[int days_of_lead_time = (int)s.leadTimeD_P[month_num-1];
 
-System.out.println(diffTime);
-System.out.println(diffTime / 1000*60*60*24);
-return diffTime;]]></Body>
+Calendar date_of_production = Calendar.getInstance();
+date_of_production.setTime(toDate(start_year, month_num-1, 1, 1, 1, 1));
+date_of_production.add(Calendar.DAY_OF_MONTH, -days_of_lead_time);
+
+int month_of_production = date_of_production.get(Calendar.MONTH)+1;
+int year_of_production = date_of_production.get(Calendar.YEAR);
+
+return month_of_production;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -3638,8 +3617,9 @@ return diffTime;]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[for ( SKU s : sku ){
 	for ( int m = 1; m < 13; m++){
-		int estimated_month = estimate_month_of_production(s,2,m);
+		int estimated_month = estimate_month_of_production(s,2,2019,m);
 		double estimated_demand = estimate_demand_amount(s,m);
+	
 		s.real_demand[estimated_month-1] += estimated_demand;
 	}
 }]]></Body>
@@ -3654,7 +3634,7 @@ return diffTime;]]></Body>
 Restar DOH ( days of hand o forward coverage )  a X
 Multiplicar el coeficiente de grupo de sustitución por DOH=A
 Restar A a X ]]></Description>
-					<X>-540</X><Y>-50</Y>
+					<X>-540</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
