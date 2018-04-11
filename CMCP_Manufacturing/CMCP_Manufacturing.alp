@@ -2581,6 +2581,24 @@ create_prod_order();]]></StartupCode>
 					</Properties>
 
 				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1523456719224</Id>
+					<Name><![CDATA[sorted_sku]]></Name>
+					<Description><![CDATA[Sorted collection of SKU, replaced by month.
+Used during PreCalculation.
+Should be used also on simulation, as tempSKU.]]></Description>
+					<X>-680</X><Y>-140</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[SKU]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
 			</Variables>
 			<Connectors>
 				<Connector>
@@ -3389,6 +3407,7 @@ tempSKU.remove(s); // Delete SKU from temp list]]></Action>
 s.countryD = 		rows.get( input_tablecmpc.country_d );
 s.sku_packsize = 	rows.get( input_tablecmpc.sku_packsize );
 s.sku_size = 		rows.get( input_tablecmpc.sku_size );
+s.sku_size_code =	size_str2int(s.sku_size);
 s.sku_model = 		rows.get( input_tablecmpc.sbk_model );
 s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 				</Function>
@@ -3520,10 +3539,14 @@ Es decir están las variables:  capmaxhorasL1, capmaxhorasL2, capmaxhorasL3, cap
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
 					<Body><![CDATA[if (vF == 1)
 	sort_sku_size();
 else if (vF == 2)
-	sort_sku_demand();]]></Body>
+	sort_sku_demand(m);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -3541,6 +3564,29 @@ Los ordenamos dejando la fila ordenada según este concepto para cada mes, en un
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[class SKUPackSizeComparator implements Comparator<SKU> {
+    public int compare(SKU s1, SKU s2) {
+    	if (s1.sku_packsize < s2.sku_packsize)
+    		return 1;
+    	if (s1.sku_packsize > s2.sku_packsize)
+    		return -1;
+    	return 0;
+    }
+}
+
+class SKUSizeComparator implements Comparator<SKU> {
+    public int compare(SKU s1, SKU s2) {
+    	if (s1.sku_size_code < s2.sku_size_code)
+    		return 1;
+    	if (s1.sku_size_code > s2.sku_size_code)
+    		return -1;
+    	return 0;
+    }
+}
+
+Collections.sort(sorted_sku,new SKUPackSizeComparator());
+Collections.sort(sorted_sku,new SKUSizeComparator());
+]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -3556,6 +3602,22 @@ Los ordenamos dejando la fila ordenada según este concepto para cada mes, en un
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[class SKUDemandComparator implements Comparator<SKU> {
+    public int compare(SKU s1, SKU s2) {
+    	if (s1.real_demand[m-1] < s2.real_demand[m-1])
+    		return 1;
+    	if (s1.real_demand[m-1] > s2.real_demand[m-1])
+    		return -1;
+    	return 0;
+    }
+}
+
+Collections.sort(sorted_sku,new SKUDemandComparator());
+]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -3622,6 +3684,10 @@ return month_of_production;]]></Body>
 	
 		s.real_demand[estimated_month-1] += estimated_demand;
 	}
+	sorted_sku.add(s);
+}
+for ( int m = 1; m < 13; m++){
+	sort_sku(m);	
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -5592,6 +5658,9 @@ return s.demand[month_num-1] + forward_coverage;]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[rateLinea3]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[sku_size_code]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -7967,7 +8036,7 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 					<Id>1519227096023</Id>
 					<Name><![CDATA[sku_size]]></Name>
 					<Description><![CDATA[Tamano del SKU]]></Description>
-					<X>50</X><Y>150</Y>
+					<X>50</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7993,7 +8062,7 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 					<Id>1519227096029</Id>
 					<Name><![CDATA[sku_type]]></Name>
 					<Description><![CDATA[Tipo de SKu]]></Description>
-					<X>50</X><Y>180</Y>
+					<X>50</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8406,6 +8475,27 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523453884267</Id>
+					<Name><![CDATA[sku_size_code]]></Name>
+					<X>50</X><Y>160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1523453884265</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<AgentLinks>
 				<AgentLink>
@@ -8449,7 +8539,7 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 				<Rectangle>
 					<Id>1519227066363</Id>
 					<Name><![CDATA[rectangle]]></Name>
-					<X>0</X><Y>-30</Y>
+					<X>0</X><Y>-40</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
