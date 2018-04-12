@@ -128,7 +128,7 @@
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
 			<StartupCode><![CDATA[readData();
-create_prod_order();]]></StartupCode>
+pre_calc();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1519223879331</Id>
@@ -2588,7 +2588,7 @@ create_prod_order();]]></StartupCode>
 Used during PreCalculation.
 Should be used also on simulation, as tempSKU.]]></Description>
 					<X>-680</X><Y>-140</Y>
-					<Label><X>10</X><Y>10</Y></Label>
+					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -3540,7 +3540,7 @@ Es decir están las variables:  capmaxhorasL1, capmaxhorasL2, capmaxhorasL3, cap
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[// TODO
 for (int line = 0 ; line < 6 ; line++)
-	productionLineChile.line_capacities[line] = 50;]]></Body>
+	productionLineChile.line_capacities[line] = 5000;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -3747,9 +3747,7 @@ Para cada mes:
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[load_real_demand();
-estimate_prod_capacity();
-for ( int m = 1; m < 13; m++){
+					<Body><![CDATA[for (int m = 1; m < 13; m++){
 	for ( SKU s : sku )
 		sorted_sku.add(s);
 	sort_sku(m);
@@ -3769,7 +3767,7 @@ Si no quedan líneas, mandar el sobrante a una collection de BO.]]></Description
 					<X>-830</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[m]]></Name>
@@ -3809,7 +3807,7 @@ for (int line = 0 ; line < 6 ; line++){
 			line_capacities[line] -= cost_of_producing;
 			last_packsize = s.sku_packsize;
 			last_size = s.sku_size_code;
-			s.line = line+1;
+			s.monthly_line[m-1] = line+1;
 			sorted_sku.remove(i);
 		}
 	}
@@ -3848,7 +3846,22 @@ sorted_sku.clear();]]></Body>
 						<Type><![CDATA[SKU]]></Type>
 					</Parameter>
 					<Body><![CDATA[// TODO
-return 10;]]></Body>
+return (int)s.real_demand[m-1];]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1523543116158</Id>
+					<Name><![CDATA[pre_calc]]></Name>
+					<Description><![CDATA[Run Precalculation]]></Description>
+					<X>-840</X><Y>-170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[load_real_demand();
+estimate_prod_capacity();
+create_prod_order();]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -5793,6 +5806,9 @@ return 10;]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[sku_size_code]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[monthly_line]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -8627,6 +8643,30 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 						<SdArray>false</SdArray>
 						<ParameterEditor>
 							<Id>1523453884265</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523543365180</Id>
+					<Name><![CDATA[monthly_line]]></Name>
+					<X>180</X><Y>230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[]{1,1,1,1,1,1,1,1,1,1,1,1}]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523543365178</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
