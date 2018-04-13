@@ -128,8 +128,9 @@
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
 			<StartupCode><![CDATA[readData();
-pre_calc();
-calculate_working_days();]]></StartupCode>
+calculate_working_days();
+load_real_demand();
+pre_calc();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1519223879331</Id>
@@ -2615,6 +2616,54 @@ calculate_working_days();]]></StartupCode>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523638363342</Id>
+					<Name><![CDATA[prod_lines_chile]]></Name>
+					<X>-280</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[]{0,0,0,0,0,0}]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523638363340</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1523639511656</Id>
+					<Name><![CDATA[rate_lines_chile]]></Name>
+					<X>-280</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[]{800,600,400,400,400,400}]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1523639511654</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1522612589504</Id>
 					<Name><![CDATA[tempSKU]]></Name>
@@ -3498,7 +3547,8 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 						<Name><![CDATA[i]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[s.demand[i] = rows.get(i).get( input_tablecmpc.demand );]]></Body>
+					<Body><![CDATA[// Si la demanda está dividida por 1000. Lo multiplico
+s.demand[i] = rows.get(i).get( input_tablecmpc.demand )*1000;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -3579,9 +3629,7 @@ return result;]]></Body>
 					<Description><![CDATA[Calcula para cada país cual es la capacidad máxima y lo guarda en dos parámetros calculados: capacidad según escenario: 
 - capmaxhoras
 - capmax en cantidad numérica de pañales a producir
-Dentro del agente: productionLine, para cada línea. 
-Es decir están las variables:  capmaxhorasL1, capmaxhorasL2, capmaxhorasL3, capmaxhorasL4, capmaxhorasL5, capmaxhorasL6, capmax L1, cap max L2, cap max L3, cap max L4, cap max L5, cap max L6.
-]]></Description>
+Dentro del agente: productionLine, para cada línea. ]]></Description>
 					<X>-830</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3589,7 +3637,7 @@ Es decir están las variables:  capmaxhorasL1, capmaxhorasL2, capmaxhorasL3, cap
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[// TODO independizar de Chile
 for (int line = 0 ; line < 6 ; line++){
-	double capacity = productionLineChile.rate;
+	int capacity = rate_lines_chile[line];
 	capacity *= productionLineChile.efficiency;
 	capacity *= 60;
 	capacity *= productionLineChile.shifts_amount;
@@ -3597,6 +3645,7 @@ for (int line = 0 ; line < 6 ; line++){
 	capacity *= working_days_year;
 	capacity /= 12;
 	productionLineChile.line_capacities[line] = capacity;
+	// System.out.println(line + ' ' + capacity);
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -3728,12 +3777,13 @@ Guarda el mes calculado en la variable: monthestimated. modulo 12]]></Descriptio
 						<Name><![CDATA[month_num]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[int days_of_lead_time = (int)s.leadTimeD_P[month_num-1];
+					<Body><![CDATA[// TODO lead time de planning
+int days_of_lead_time = (int)s.leadTimeD_P[month_num-1];
+// TODO Lead time de logística por país
 //int days_of_lead_time = (int)s.leadTimeD_L[month_num-1];
 
 Calendar date_of_production = Calendar.getInstance();
 date_of_production.setTime(toDate(start_year, month_num-1, 1, 1, 1, 1));
-// TODO Lead times
 date_of_production.add(Calendar.DAY_OF_MONTH, -days_of_lead_time);
 
 int month_of_production = date_of_production.get(Calendar.MONTH)+1;
@@ -3845,27 +3895,29 @@ for (int line = 0 ; line < 6 ; line++){
 	boolean first_in_line = true;
 	int last_packsize = 0;
 	int last_size = 0;
-
-	for (int i = 0 ; i < sorted_sku.size() ; i++){
-		SKU s = sorted_sku.get(i);
-		
-		// Calculate cost of producing one item
-		double cost_of_producing = calculate_prod_hours(m,line,s);
-		
-		// If it fits, it produces
-		if (line_capacities[line] - cost_of_producing > 0){
-			if (!first_in_line){
-				if (s.sku_packsize < last_packsize)
-					cost_of_producing -= delay_packsize;
-				if (s.sku_size_code < last_size)
-					cost_of_producing -= delay_size;
+	
+	if (prod_lines_chile[line] != 0){
+		for (int i = 0 ; i < sorted_sku.size() ; i++){
+			SKU s = sorted_sku.get(i);
+			
+			// Calculate cost of producing one item
+			double cost_of_producing = calculate_prod_hours(m,line,s);
+			
+			// If it fits, it produces
+			if (line_capacities[line] - cost_of_producing > 0){
+				if (!first_in_line){
+					if (s.sku_packsize < last_packsize)
+						cost_of_producing -= delay_packsize;
+					if (s.sku_size_code < last_size)
+						cost_of_producing -= delay_size;
+				}
+				first_in_line = false;
+				line_capacities[line] -= cost_of_producing;
+				last_packsize = s.sku_packsize;
+				last_size = s.sku_size_code;
+				s.monthly_line[m-1] = line+1;
+				sorted_sku.remove(i);
 			}
-			first_in_line = false;
-			line_capacities[line] -= cost_of_producing;
-			last_packsize = s.sku_packsize;
-			last_size = s.sku_size_code;
-			s.monthly_line[m-1] = line+1;
-			sorted_sku.remove(i);
 		}
 	}
 }
@@ -3916,8 +3968,7 @@ return s.real_demand[m-1];]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[load_real_demand();
-estimate_prod_capacity();
+					<Body><![CDATA[estimate_prod_capacity();
 create_prod_order();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -6229,9 +6280,6 @@ for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1)
 							<Name><![CDATA[line_capacities]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[rate]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[efficiency]]></Name>
 						</Parameter>
 						<Parameter>
@@ -6822,9 +6870,6 @@ for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1)
 							<Name><![CDATA[line_capacities]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[rate]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[efficiency]]></Name>
 						</Parameter>
 						<Parameter>
@@ -7241,6 +7286,30 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
+				<RoundedRectangle>
+					<Id>1523638644106</Id>
+					<Name><![CDATA[roundRectangle1]]></Name>
+					<X>-300</X><Y>400</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>160</Width>
+					<Height>60</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<ArcRadius>10</ArcRadius>
+				</RoundedRectangle>
 			</Shapes>
 
 		</ActiveObjectClass>
@@ -11317,30 +11386,6 @@ del Producto]]></Text>
 						<ParameterEditor>
 							<Id>1523537021454</Id>
 							<Label><![CDATA[line_capacities]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1523554974300</Id>
-					<Name><![CDATA[rate]]></Name>
-					<X>-430</X><Y>710</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[800]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1523554974298</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -27151,6 +27196,186 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523638247563</Id>
+					<Name><![CDATA[type_line_ch1]]></Name>
+					<X>-180</X><Y>170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523638259432</Id>
+					<Name><![CDATA[type_line_ch2]]></Name>
+					<X>-180</X><Y>190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523638261422</Id>
+					<Name><![CDATA[type_line_ch3]]></Name>
+					<X>-180</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523638263285</Id>
+					<Name><![CDATA[type_line_ch4]]></Name>
+					<X>-180</X><Y>230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523638265326</Id>
+					<Name><![CDATA[type_line_ch5]]></Name>
+					<X>-180</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523638267332</Id>
+					<Name><![CDATA[type_line_ch6]]></Name>
+					<X>-180</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523639300802</Id>
+					<Name><![CDATA[rate_line_ch1]]></Name>
+					<X>-290</X><Y>170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[800]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523639321007</Id>
+					<Name><![CDATA[rate_line_ch2]]></Name>
+					<X>-290</X><Y>190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[600]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523639323775</Id>
+					<Name><![CDATA[rate_line_ch3]]></Name>
+					<X>-290</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[400]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523639326053</Id>
+					<Name><![CDATA[rate_line_ch4]]></Name>
+					<X>-290</X><Y>230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[400]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523639327932</Id>
+					<Name><![CDATA[rate_line_ch5]]></Name>
+					<X>-290</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[400]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1523639330973</Id>
+					<Name><![CDATA[rate_line_ch6]]></Name>
+					<X>-290</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[400]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 			</Variables>
 
 			<Shapes>
@@ -27239,6 +27464,292 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523631528352</Id>
+					<Name><![CDATA[line_text1]]></Name>
+					<X>400</X><Y>100</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Línea 1]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>18</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523631569879</Id>
+					<Name><![CDATA[line_text2]]></Name>
+					<X>500</X><Y>100</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Línea 2]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>18</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523631572729</Id>
+					<Name><![CDATA[line_text3]]></Name>
+					<X>600</X><Y>100</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Línea 3]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>18</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523631581903</Id>
+					<Name><![CDATA[line_text4]]></Name>
+					<X>700</X><Y>100</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Línea 4]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>18</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523631581905</Id>
+					<Name><![CDATA[line_text5]]></Name>
+					<X>800</X><Y>100</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Línea 5]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>18</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523631581907</Id>
+					<Name><![CDATA[line_text6]]></Name>
+					<X>900</X><Y>100</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Línea 6]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>18</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523639368731</Id>
+					<Name><![CDATA[text1]]></Name>
+					<X>420</X><Y>240</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[ppm]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523639386831</Id>
+					<Name><![CDATA[text2]]></Name>
+					<X>520</X><Y>240</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[ppm]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523639389669</Id>
+					<Name><![CDATA[text3]]></Name>
+					<X>620</X><Y>240</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[ppm]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523639391942</Id>
+					<Name><![CDATA[text4]]></Name>
+					<X>720</X><Y>240</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[ppm]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523639393908</Id>
+					<Name><![CDATA[text5]]></Name>
+					<X>820</X><Y>240</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[ppm]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523639395560</Id>
+					<Name><![CDATA[text6]]></Name>
+					<X>920</X><Y>240</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[ppm]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1523639855891</Id>
+					<Name><![CDATA[chile_lines]]></Name>
+					<X>398</X><Y>60</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Líneas de Chile]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>24</Size>
 						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -27342,6 +27853,300 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 						<DefaultValueCode><![CDATA[1]]></DefaultValueCode>
 						<LinkTo>true</LinkTo>
 						<Link>initial_month</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="RadioButtons">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1523631418090</Id>
+					<Name><![CDATA[line1_radio]]></Name>
+					<X>400</X><Y>130</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="70" Height="70" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<Orientation>VERTICAL</Orientation>
+						<Button><![CDATA[Cerrada]]></Button>
+						<Button><![CDATA[Tipo A]]></Button>
+						<Button><![CDATA[Tipo B]]></Button>
+						<LinkTo>true</LinkTo>
+						<Link>type_line_ch1</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="RadioButtons">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1523631474252</Id>
+					<Name><![CDATA[line1_radio1]]></Name>
+					<X>500</X><Y>130</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="70" Height="70" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<Orientation>VERTICAL</Orientation>
+						<Button><![CDATA[Cerrada]]></Button>
+						<Button><![CDATA[Tipo A]]></Button>
+						<Button><![CDATA[Tipo B]]></Button>
+						<LinkTo>true</LinkTo>
+						<Link>type_line_ch2</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="RadioButtons">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1523631477784</Id>
+					<Name><![CDATA[line1_radio2]]></Name>
+					<X>600</X><Y>130</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="70" Height="70" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<Orientation>VERTICAL</Orientation>
+						<Button><![CDATA[Cerrada]]></Button>
+						<Button><![CDATA[Tipo A]]></Button>
+						<Button><![CDATA[Tipo B]]></Button>
+						<LinkTo>true</LinkTo>
+						<Link>type_line_ch3</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="RadioButtons">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1523631489199</Id>
+					<Name><![CDATA[line1_radio3]]></Name>
+					<X>700</X><Y>130</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="70" Height="70" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<Orientation>VERTICAL</Orientation>
+						<Button><![CDATA[Cerrada]]></Button>
+						<Button><![CDATA[Tipo A]]></Button>
+						<Button><![CDATA[Tipo B]]></Button>
+						<LinkTo>true</LinkTo>
+						<Link>type_line_ch4</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="RadioButtons">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1523631492815</Id>
+					<Name><![CDATA[line1_radio4]]></Name>
+					<X>800</X><Y>130</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="70" Height="70" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<Orientation>VERTICAL</Orientation>
+						<Button><![CDATA[Cerrada]]></Button>
+						<Button><![CDATA[Tipo A]]></Button>
+						<Button><![CDATA[Tipo B]]></Button>
+						<LinkTo>true</LinkTo>
+						<Link>type_line_ch5</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="RadioButtons">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1523631498072</Id>
+					<Name><![CDATA[line1_radio5]]></Name>
+					<X>900</X><Y>130</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="70" Height="70" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<Orientation>VERTICAL</Orientation>
+						<Button><![CDATA[Cerrada]]></Button>
+						<Button><![CDATA[Tipo A]]></Button>
+						<Button><![CDATA[Tipo B]]></Button>
+						<LinkTo>true</LinkTo>
+						<Link>type_line_ch6</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1523639271997</Id>
+					<Name><![CDATA[chile_rate]]></Name>
+					<X>400</X><Y>210</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="40" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<DefaultValueCode><![CDATA[800]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>rate_line_ch1</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1523639386834</Id>
+					<Name><![CDATA[chile_rate1]]></Name>
+					<X>500</X><Y>210</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="40" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<DefaultValueCode><![CDATA[800]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>rate_line_ch2</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1523639389671</Id>
+					<Name><![CDATA[chile_rate2]]></Name>
+					<X>600</X><Y>210</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="40" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<DefaultValueCode><![CDATA[800]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>rate_line_ch3</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1523639391944</Id>
+					<Name><![CDATA[chile_rate3]]></Name>
+					<X>700</X><Y>210</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="40" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<DefaultValueCode><![CDATA[800]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>rate_line_ch4</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1523639393910</Id>
+					<Name><![CDATA[chile_rate4]]></Name>
+					<X>800</X><Y>210</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="40" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<DefaultValueCode><![CDATA[800]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>rate_line_ch5</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1523639395562</Id>
+					<Name><![CDATA[chile_rate6]]></Name>
+					<X>900</X><Y>210</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="40" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<DefaultValueCode><![CDATA[800]]></DefaultValueCode>
+						<LinkTo>true</LinkTo>
+						<Link>rate_line_ch6</Link>
 					</ExtendedProperties>
 				</Control>
 			</Controls>
@@ -27547,6 +28352,18 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[working_days_year]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[prod_lines_chile]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[new int[]{type_line_ch1,type_line_ch2,type_line_ch3,type_line_ch4,type_line_ch5,type_line_ch6}]]></Code>
+					</ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[rate_lines_chile]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[new int[]{rate_line_ch1,rate_line_ch2,rate_line_ch3,rate_line_ch4,rate_line_ch5,rate_line_ch6}]]></Code>
+					</ParameterValue>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties 
