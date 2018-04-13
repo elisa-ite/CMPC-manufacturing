@@ -3591,6 +3591,7 @@ Es decir están las variables:  capmaxhorasL1, capmaxhorasL2, capmaxhorasL3, cap
 for (int line = 0 ; line < 6 ; line++){
 	double capacity = productionLineChile.rate;
 	capacity *= productionLineChile.efficiency;
+	capacity *= 60;
 	capacity *= productionLineChile.shifts_amount;
 	capacity *= productionLineChile.shift_duration;
 	capacity *= working_days_year;
@@ -3728,6 +3729,7 @@ Guarda el mes calculado en la variable: monthestimated. modulo 12]]></Descriptio
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
 					<Body><![CDATA[int days_of_lead_time = (int)s.leadTimeD_P[month_num-1];
+//int days_of_lead_time = (int)s.leadTimeD_L[month_num-1];
 
 Calendar date_of_production = Calendar.getInstance();
 date_of_production.setTime(toDate(start_year, month_num-1, 1, 1, 1, 1));
@@ -3835,32 +3837,30 @@ for (int line = 0 ; line < 6 ; line++)
 	// TODO independizar de chile
 	line_capacities[line] = productionLineChile.line_capacities[line];
 
-int last_packsize = 0;
-int last_size = 0;
-for (SKU s : sku){
-	if (s.sku_packsize > last_packsize)
-		last_packsize = s.sku_packsize;
-	if (s.sku_size_code > last_size)
-		last_size = s.sku_size_code;
-}
-
 // TODO get real delays
-double delay_packsize = productionLineChile.delay_packsize*800;
-double delay_size = productionLineChile.delay_size*800;
+double delay_packsize = productionLineChile.delay_packsize*60*800*productionLineChile.efficiency;
+double delay_size = productionLineChile.delay_size*60*800*productionLineChile.efficiency;
 
 for (int line = 0 ; line < 6 ; line++){
+	boolean first_in_line = true;
+	int last_packsize = 0;
+	int last_size = 0;
+
 	for (int i = 0 ; i < sorted_sku.size() ; i++){
 		SKU s = sorted_sku.get(i);
 		
 		// Calculate cost of producing one item
 		double cost_of_producing = calculate_prod_hours(m,line,s);
-		if (s.sku_packsize < last_packsize)
-			cost_of_producing += delay_packsize;
-		if (s.sku_size_code < last_size)
-			cost_of_producing += delay_size;
 		
 		// If it fits, it produces
 		if (line_capacities[line] - cost_of_producing > 0){
+			if (!first_in_line){
+				if (s.sku_packsize < last_packsize)
+					cost_of_producing -= delay_packsize;
+				if (s.sku_size_code < last_size)
+					cost_of_producing -= delay_size;
+			}
+			first_in_line = false;
 			line_capacities[line] -= cost_of_producing;
 			last_packsize = s.sku_packsize;
 			last_size = s.sku_size_code;
