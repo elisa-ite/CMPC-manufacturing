@@ -3953,17 +3953,16 @@ for (int line = 0 ; line < 6 ; line++){
 			
 			// Calculate cost of producing one item
 			int cost_of_producing = calculate_prod_hours(m,line,s);
-			
+			if (!first_in_line){
+				if (s.sku_packsize < last_packsize)
+					cost_of_producing += delay_packsize;
+				if (s.sku_size_code < last_size)
+					cost_of_producing += delay_size;
+			}
 			// If it fits, it produces
 			if (line_capacities[line] - cost_of_producing > 0){
 				acc_demand[line] += cost_of_producing; 
 			
-				if (!first_in_line){
-					if (s.sku_packsize < last_packsize)
-						cost_of_producing -= delay_packsize;
-					if (s.sku_size_code < last_size)
-						cost_of_producing -= delay_size;
-				}
 				first_in_line = false;
 				line_capacities[line] -= cost_of_producing;
 				last_packsize = s.sku_packsize;
