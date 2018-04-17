@@ -15404,14 +15404,13 @@ return result;]]></Body>
 //else return selectOutputOut2;	
 month = main.month;
 int line = agent.monthly_line[month-1];
-System.out.println(month);
 switch (line){
 	case 1: return selectOutputOut1;
-	case 2: return selectOutputOut1;
-	case 3: return selectOutputOut1;
-	case 4: return selectOutputOut1;
-	case 5: return selectOutputOut1;
-	case 6: return selectOutputOut1;
+	case 2: return selectOutputOut2;
+	case 3: return selectOutputOut3;
+	case 4: return selectOutputOut4;
+	case 5: return selectOutputOut5;
+	case 6: return selectOutputOut6;
 	default: return selectOutputOut1;
 }]]></Body>
 				</Function>
@@ -18152,7 +18151,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[startObjects]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[{timeMeasureStart1}]]></Code>
+								<Code><![CDATA[{ timeMeasureStart2 }]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -18224,7 +18223,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ItemName><![CDATA[1412336242932]]></ItemName>
 						</GenericParameterSubstituteReference>
 						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[SKU]]></Code>
+							<Code><![CDATA[Lote]]></Code>
 						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
@@ -18641,9 +18640,6 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ClassName><![CDATA[Sink]]></ClassName>
 							<ItemName><![CDATA[1412336242929]]></ItemName>
 						</GenericParameterSubstituteReference>
-						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[Lote]]></Code>
-						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -18967,6 +18963,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ClassName><![CDATA[Delay]]></ClassName>
 							<ItemName><![CDATA[1412336242930]]></ItemName>
 						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Lote]]></Code>
+						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -18975,7 +18974,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[triangular( 0.5, 1, 1.5 )]]></Code>
+								<Code><![CDATA[delay_change_size(agent.size)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -19079,8 +19078,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[triangular( 0.5, 1, 1.5 )]]></Code>
-								<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+								<Code><![CDATA[delay_change_packsize(agent.packsize)]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -19260,9 +19259,6 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ClassName><![CDATA[Sink]]></ClassName>
 							<ItemName><![CDATA[1412336242929]]></ItemName>
 						</GenericParameterSubstituteReference>
-						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[Lote]]></Code>
-						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -19341,7 +19337,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[restrictedAreaStart]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[restrictedAreaStart1]]></Code>
+								<Code><![CDATA[restrictedAreaStart2]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -19410,7 +19406,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<ItemName><![CDATA[1412336243130]]></ItemName>
 						</GenericParameterSubstituteReference>
 						<GenericParameterSubstituteValue Class="CodeValue">
-							<Code><![CDATA[Agent]]></Code>
+							<Code><![CDATA[Lote]]></Code>
 						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
@@ -19746,7 +19742,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[startObjects]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[{timeMeasureStart1}]]></Code>
+								<Code><![CDATA[{ timeMeasureStart3 }]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -20935,7 +20931,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[restrictedAreaStart]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[restrictedAreaStart1]]></Code>
+								<Code><![CDATA[restrictedAreaStart3]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -21340,7 +21336,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[startObjects]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[{timeMeasureStart1}]]></Code>
+								<Code><![CDATA[{ timeMeasureStart4 }]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -22529,7 +22525,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[restrictedAreaStart]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[restrictedAreaStart1]]></Code>
+								<Code><![CDATA[restrictedAreaStart4]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -22934,7 +22930,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[startObjects]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[{timeMeasureStart1}]]></Code>
+								<Code><![CDATA[{ timeMeasureStart5 }]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -24123,7 +24119,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[restrictedAreaStart]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[restrictedAreaStart1]]></Code>
+								<Code><![CDATA[restrictedAreaStart5]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -24528,7 +24524,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[startObjects]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[{timeMeasureStart1}]]></Code>
+								<Code><![CDATA[{ timeMeasureStart6 }]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -25717,7 +25713,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[restrictedAreaStart]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[restrictedAreaStart1]]></Code>
+								<Code><![CDATA[restrictedAreaStart6]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
