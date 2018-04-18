@@ -577,18 +577,6 @@ pre_calc();]]></StartupCode>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1523191316962</Id>
-					<Name><![CDATA[skuPointer]]></Name>
-					<X>-690</X><Y>-220</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[SKU]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
 					<Id>1523191316966</Id>
 					<Name><![CDATA[skuPPB]]></Name>
 					<X>-950</X><Y>280</Y>
@@ -2497,7 +2485,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1523364409951</Id>
 					<Name><![CDATA[sorting_arrangement]]></Name>
-					<X>-670</X><Y>-50</Y>
+					<X>-350</X><Y>-210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2522,7 +2510,7 @@ pre_calc();]]></StartupCode>
 					<Id>1523371617729</Id>
 					<Name><![CDATA[start_month]]></Name>
 					<Description><![CDATA[Mes de inicio de la simulación]]></Description>
-					<X>-540</X><Y>-140</Y>
+					<X>-340</X><Y>-50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2547,7 +2535,7 @@ pre_calc();]]></StartupCode>
 					<Id>1523374505516</Id>
 					<Name><![CDATA[start_year]]></Name>
 					<Description><![CDATA[Año de inicio de la simulación]]></Description>
-					<X>-540</X><Y>-160</Y>
+					<X>-340</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2571,7 +2559,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1523545345356</Id>
 					<Name><![CDATA[working_days_amount]]></Name>
-					<X>-430</X><Y>-140</Y>
+					<X>-170</X><Y>-30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2595,7 +2583,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1523555446129</Id>
 					<Name><![CDATA[working_days_year]]></Name>
-					<X>-430</X><Y>-160</Y>
+					<X>-170</X><Y>-50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2692,7 +2680,7 @@ pre_calc();]]></StartupCode>
 					<Id>1523644811127</Id>
 					<Name><![CDATA[acc_demand]]></Name>
 					<Description><![CDATA[Acumulado de demanda anual para graficar.]]></Description>
-					<X>-540</X><Y>-200</Y>
+					<X>-490</X><Y>-100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2716,7 +2704,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1523887689512</Id>
 					<Name><![CDATA[doh]]></Name>
-					<X>-430</X><Y>-180</Y>
+					<X>-490</X><Y>-80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2758,7 +2746,7 @@ pre_calc();]]></StartupCode>
 					<Description><![CDATA[Sorted collection of SKU, replaced by month.
 Used during PreCalculation.
 Should be used also on simulation, as tempSKU.]]></Description>
-					<X>-680</X><Y>-140</Y>
+					<X>-490</X><Y>-40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2773,7 +2761,7 @@ Should be used also on simulation, as tempSKU.]]></Description>
 				<Variable Class="CollectionVariable">
 					<Id>1523539367645</Id>
 					<Name><![CDATA[backorder_sku]]></Name>
-					<X>-680</X><Y>-165</Y>
+					<X>-490</X><Y>-60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2789,7 +2777,7 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					<Id>1523884652707</Id>
 					<Name><![CDATA[inventory]]></Name>
 					<Description><![CDATA[Inventario mensual de SKUs para precálculo]]></Description>
-					<X>-540</X><Y>-220</Y>
+					<X>-490</X><Y>-120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3572,7 +3560,7 @@ tempSKU.remove(s); // Delete SKU from temp list]]></Action>
 	Populate SKUs' parameters
 	Stockout Anticipation
 	Backorder Anticipation]]></Description>
-					<X>-190</X><Y>-110</Y>
+					<X>-180</X><Y>-260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3596,7 +3584,7 @@ tempSKU.remove(s); // Delete SKU from temp list]]></Action>
 					<Id>1522163931738</Id>
 					<Name><![CDATA[populateSKU]]></Name>
 					<Description><![CDATA[Populates SKUs' parameters with data from the input_output table]]></Description>
-					<X>-170</X><Y>-70</Y>
+					<X>-160</X><Y>-220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3615,7 +3603,8 @@ s.sku_packsize = 	rows.get( input_tablecmpc.sku_packsize );
 s.sku_size = 		rows.get( input_tablecmpc.sku_size );
 s.sku_size_code =	size_str2int(s.sku_size);
 s.sku_model = 		rows.get( input_tablecmpc.sbk_model );
-s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
+s.sku_type = 		rows.get( input_tablecmpc.sku_type );
+s.line_type = 		rows.get( input_tablecmpc.line_type);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -3623,7 +3612,7 @@ s.sku_type = 		rows.get( input_tablecmpc.sku_type );]]></Body>
 					<Id>1522164614223</Id>
 					<Name><![CDATA[populateDemandSKU]]></Name>
 					<Description><![CDATA[Populates SKUs' demand with data from the input_output table]]></Description>
-					<X>-170</X><Y>-90</Y>
+					<X>-160</X><Y>-240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3649,7 +3638,7 @@ s.demand[i] = rows.get(i).get( input_tablecmpc.demand )*1000;]]></Body>
 					<Id>1522175936525</Id>
 					<Name><![CDATA[country2code]]></Name>
 					<Description><![CDATA[Receives a country's initials and returns the code as int]]></Description>
-					<X>-300</X><Y>-90</Y>
+					<X>-190</X><Y>-110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3676,7 +3665,7 @@ s.demand[i] = rows.get(i).get( input_tablecmpc.demand )*1000;]]></Body>
 					<Id>1522176441485</Id>
 					<Name><![CDATA[size_str2int]]></Name>
 					<Description><![CDATA[Receives a size's initials and returns the code as int]]></Description>
-					<X>-300</X><Y>-70</Y>
+					<X>-190</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3723,7 +3712,7 @@ return result;]]></Body>
 - capmaxhoras
 - capmax en cantidad numérica de pañales a producir
 Dentro del agente: productionLine, para cada línea. ]]></Description>
-					<X>-830</X><Y>-90</Y>
+					<X>-660</X><Y>-80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3750,7 +3739,7 @@ for (int line = 0 ; line < 6 ; line++){
 		Ordenamiento1 : de mayor Size a menor Size y dentro del size de mayor pack size a 		menor pack size.
 	vF= 2 
 		Ordenamiento 2 : de mayor cantidad demandada a menor cantidad demandada.]]></Description>
-					<X>-690</X><Y>-110</Y>
+					<X>-370</X><Y>-270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3779,7 +3768,7 @@ Primero los XXG, dentro de esta categoría que es la variable sku_size, hay que 
 
 Los ordenamos dejando la fila ordenada según este concepto para cada mes, en una collection: SKUsvF1 ( no se si 12 collections o una que se pisa).
 ]]></Description>
-					<X>-670</X><Y>-90</Y>
+					<X>-350</X><Y>-250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3821,7 +3810,7 @@ Collections.sort(sorted_sku,new SKUSizeComparator());
 Tomando el mes real, sin leads time.
 
 Los ordenamos dejando la fila ordenada según este concepto para cada mes, en una collection: SKUsvF2 ( no se si 12 collections o una que se pisa)]]></Description>
-					<X>-670</X><Y>-70</Y>
+					<X>-350</X><Y>-230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3860,7 +3849,7 @@ Restar lead time país demanda/país 1
 
 Devuelve el mes calculado
 Guarda el mes calculado en la variable: monthestimated. modulo 12]]></Description>
-					<X>-520</X><Y>-90</Y>
+					<X>-600</X><Y>-230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3902,7 +3891,7 @@ return month_of_production;]]></Body>
 					<Name><![CDATA[load_real_demand]]></Name>
 					<Description><![CDATA[Para cada SKU
 	Rellenar la demanda real de cada mes]]></Description>
-					<X>-540</X><Y>-110</Y>
+					<X>-620</X><Y>-250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3926,7 +3915,7 @@ return month_of_production;]]></Body>
 Restar DOH ( days of hand o forward coverage )  a X
 Multiplicar el coeficiente de grupo de sustitución por DOH=A
 Restar A a X ]]></Description>
-					<X>-520</X><Y>-70</Y>
+					<X>-600</X><Y>-210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3954,7 +3943,7 @@ Para cada mes:
 	Rellenar la Collection de SKU ordenados.
 	Ordenar los SKU según sorting_arrangement en input.
 	Rellenar la linea de produccion de cada SKU.]]></Description>
-					<X>-840</X><Y>-110</Y>
+					<X>-670</X><Y>-100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3977,7 +3966,7 @@ Para cada mes:
 	Si hay cambio de size o packsize, agregar delay.
 	Si se acaba la capacidad, cambiar a la siguiente línea.
 Si no quedan líneas, mandar el sobrante a una collection de BO.]]></Description>
-					<X>-830</X><Y>-70</Y>
+					<X>-660</X><Y>-60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4021,7 +4010,8 @@ for (int line = 0 ; line < 6 ; line++){
 					cost_delay += delay_size;
 			}
 			// If it fits, it produces
-			if (line_capacities[line] - (cost_of_producing+cost_delay) > 0){
+			if ( (line_capacities[line] - (cost_of_producing+cost_delay) > 0) 
+				 && (s.line_type == prod_lines_chile[line]) ){
 				acc_demand[line] += cost_of_producing; 
 			
 				first_in_line = false;
@@ -4067,7 +4057,7 @@ sorted_sku.clear();]]></Body>
 					<Id>1523538589146</Id>
 					<Name><![CDATA[calculate_prod_hours]]></Name>
 					<Description><![CDATA[Calcula horas de producción para una demanda particular, según línea.]]></Description>
-					<X>-820</X><Y>-50</Y>
+					<X>-650</X><Y>-40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4093,7 +4083,7 @@ return s.real_demand[m-1];]]></Body>
 					<Id>1523543116158</Id>
 					<Name><![CDATA[pre_calc]]></Name>
 					<Description><![CDATA[Run Precalculation]]></Description>
-					<X>-840</X><Y>-170</Y>
+					<X>-670</X><Y>-150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4107,7 +4097,7 @@ create_prod_order();]]></Body>
 					<Id>1523545482347</Id>
 					<Name><![CDATA[calculate_working_days]]></Name>
 					<Description><![CDATA[Calcula la cantidad de días hábiles por mes.]]></Description>
-					<X>-300</X><Y>-50</Y>
+					<X>-190</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6075,6 +6065,9 @@ for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1)
 						<Parameter>
 							<Name><![CDATA[days_of_hand]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_type]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -7403,7 +7396,7 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 				<RoundedRectangle>
 					<Id>1523556868171</Id>
 					<Name><![CDATA[roundRectangle]]></Name>
-					<X>-860</X><Y>-240</Y>
+					<X>-690</X><Y>-180</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7417,8 +7410,8 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 					<LineColor>-16777216</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>840</Width>
-					<Height>220</Height>
+					<Width>310</Width>
+					<Height>170</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -7427,7 +7420,7 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 				<Text>
 					<Id>1523556876178</Id>
 					<Name><![CDATA[precalc_text]]></Name>
-					<X>-140</X><Y>-220</Y>
+					<X>-490</X><Y>-170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7440,7 +7433,7 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 					<Color>-16777216</Color>
 					<Text><![CDATA[PreCálculo]]></Text>
 					<Font>
-						<Name>SansSerif</Name>
+						<Name>Helvetica</Name>
 						<Size>20</Size>
 						<Style>0</Style>
 					</Font>
@@ -7470,6 +7463,236 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 					<FillMaterial>null</FillMaterial>
 					<ArcRadius>10</ArcRadius>
 				</RoundedRectangle>
+				<RoundedRectangle>
+					<Id>1524075080332</Id>
+					<Name><![CDATA[roundRectangle2]]></Name>
+					<X>-200</X><Y>-320</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>180</Width>
+					<Height>130</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<ArcRadius>10</ArcRadius>
+				</RoundedRectangle>
+				<Text>
+					<Id>1524075091023</Id>
+					<Name><![CDATA[input_text]]></Name>
+					<X>-70</X><Y>-310</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Input]]></Text>
+					<Font>
+						<Name>Helvetica</Name>
+						<Size>20</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<RoundedRectangle>
+					<Id>1524075218989</Id>
+					<Name><![CDATA[roundRectangle3]]></Name>
+					<X>-390</X><Y>-320</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>180</Width>
+					<Height>130</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<ArcRadius>10</ArcRadius>
+				</RoundedRectangle>
+				<Text>
+					<Id>1524075224619</Id>
+					<Name><![CDATA[sort_text]]></Name>
+					<X>-330</X><Y>-310</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Sorting SKU]]></Text>
+					<Font>
+						<Name>Helvetica</Name>
+						<Size>20</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<RoundedRectangle>
+					<Id>1524075285433</Id>
+					<Name><![CDATA[roundRectangle4]]></Name>
+					<X>-640</X><Y>-320</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>240</Width>
+					<Height>130</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<ArcRadius>10</ArcRadius>
+				</RoundedRectangle>
+				<Text>
+					<Id>1524075293503</Id>
+					<Name><![CDATA[rdemand_text]]></Name>
+					<X>-540</X><Y>-310</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Real Demand]]></Text>
+					<Font>
+						<Name>Helvetica</Name>
+						<Size>20</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<RoundedRectangle>
+					<Id>1524075441035</Id>
+					<Name><![CDATA[roundRectangle5]]></Name>
+					<X>-210</X><Y>-180</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>190</Width>
+					<Height>170</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<ArcRadius>10</ArcRadius>
+				</RoundedRectangle>
+				<Text>
+					<Id>1524075454353</Id>
+					<Name><![CDATA[text10]]></Name>
+					<X>-80</X><Y>-160</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Tools]]></Text>
+					<Font>
+						<Name>Helvetica</Name>
+						<Size>20</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<RoundedRectangle>
+					<Id>1524075564193</Id>
+					<Name><![CDATA[roundRectangle6]]></Name>
+					<X>-370</X><Y>-180</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>150</Width>
+					<Height>170</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<ArcRadius>10</ArcRadius>
+				</RoundedRectangle>
+				<Text>
+					<Id>1524075571223</Id>
+					<Name><![CDATA[text11]]></Name>
+					<X>-340</X><Y>-160</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Model Units]]></Text>
+					<Font>
+						<Name>Helvetica</Name>
+						<Size>20</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Shapes>
 			<Charts>
     			<BarChart>
@@ -8480,7 +8703,7 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 				<Variable Class="Parameter">
 					<Id>1519227095973</Id>
 					<Name><![CDATA[proSubDemand]]></Name>
-					<X>170</X><Y>560</Y>
+					<X>140</X><Y>570</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8625,7 +8848,7 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 				<Variable Class="Parameter">
 					<Id>1519227096011</Id>
 					<Name><![CDATA[purPlanAdj]]></Name>
-					<X>170</X><Y>530</Y>
+					<X>140</X><Y>550</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8948,7 +9171,7 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 				<Variable Class="Parameter">
 					<Id>1523289418253</Id>
 					<Name><![CDATA[tipoLinea1]]></Name>
-					<X>180</X><Y>110</Y>
+					<X>140</X><Y>490</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8996,7 +9219,7 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 				<Variable Class="Parameter">
 					<Id>1523296596653</Id>
 					<Name><![CDATA[tipoLinea2]]></Name>
-					<X>180</X><Y>130</Y>
+					<X>140</X><Y>510</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9020,7 +9243,7 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 				<Variable Class="Parameter">
 					<Id>1523296605027</Id>
 					<Name><![CDATA[tipoLinea3]]></Name>
-					<X>180</X><Y>150</Y>
+					<X>140</X><Y>530</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9175,6 +9398,30 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1523886839085</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1524074204302</Id>
+					<Name><![CDATA[line_type]]></Name>
+					<X>180</X><Y>110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1524074204300</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
