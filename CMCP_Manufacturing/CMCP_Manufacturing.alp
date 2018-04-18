@@ -7086,53 +7086,6 @@ for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1)
 
 			<Shapes>
 				<Rectangle>
-					<Id>1519242542988</Id>
-					<Name><![CDATA[rectangle]]></Name>
-					<X>100</X><Y>400</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-16777216</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<Width>300</Width>
-					<Height>60</Height>
-					<Rotation>0.0</Rotation>
-					<FillColor>-1</FillColor>
-					<FillMaterial>null</FillMaterial>
-				</Rectangle>
-				<Text>
-					<Id>1519242321291</Id>
-					<Name><![CDATA[text]]></Name>
-					<X>110</X><Y>410</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[La asiganacion de codigo pais productor
-se realiza al inicio, posterior a ese paso 
-es el ordenamiento de acuerdo a la prioridad]]></Text>
-					<Font>
-						<Name>Arial</Name>
-						<Size>14</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Rectangle>
 					<Id>1519243686575</Id>
 					<Name><![CDATA[rectangle1]]></Name>
 					<X>100</X><Y>40</Y>
@@ -7356,7 +7309,7 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 				<EmbeddedObjectPresentation>
 					<Id>1522870707871</Id>
 					<Name><![CDATA[productionLine_presentation]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>-130</X><Y>-830</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7376,9 +7329,9 @@ es el ordenamiento de acuerdo a la prioridad]]></Text>
 				<EmbeddedObjectPresentation>
 					<Id>1522929522292</Id>
 					<Name><![CDATA[productionLineChile_presentation]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>-130</X><Y>-830</Y>
 					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
+					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
