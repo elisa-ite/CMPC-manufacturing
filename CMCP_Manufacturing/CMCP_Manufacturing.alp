@@ -3284,7 +3284,8 @@ if( month < 12 ){
 			
 	//traceln("Month "+month);
 	for(SKU s : sku)
-		tempSKU.add( s);
+		tempSKU.add(s);
+		sort_sku(tempSKU,month);
 
 	for( int i=0; i<sku.size(); i++ ){
 		create_SendToProductionLine( i+1 );	
@@ -3755,13 +3756,17 @@ for (int line = 0 ; line < 6 ; line++){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
+						<Name><![CDATA[sku_list]]></Name>
+						<Type><![CDATA[ArrayList<SKU>]]></Type>
+					</Parameter>
+					<Parameter>
 						<Name><![CDATA[m]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
 					<Body><![CDATA[if (sorting_arrangement == 0)
-	sort_sku_size();
+	sort_sku_size(sku_list);
 else if (sorting_arrangement == 1)
-	sort_sku_demand(m);]]></Body>
+	sort_sku_demand(sku_list,m);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -3779,6 +3784,10 @@ Los ordenamos dejando la fila ordenada según este concepto para cada mes, en un
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[sku_list]]></Name>
+						<Type><![CDATA[ArrayList<SKU>]]></Type>
+					</Parameter>
 					<Body><![CDATA[class SKUPackSizeComparator implements Comparator<SKU> {
     public int compare(SKU s1, SKU s2) {
     	if (s1.sku_packsize < s2.sku_packsize)
@@ -3817,6 +3826,10 @@ Los ordenamos dejando la fila ordenada según este concepto para cada mes, en un
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[sku_list]]></Name>
+						<Type><![CDATA[ArrayList<SKU>]]></Type>
+					</Parameter>
 					<Parameter>
 						<Name><![CDATA[m]]></Name>
 						<Type><![CDATA[int]]></Type>
@@ -3949,7 +3962,7 @@ Para cada mes:
 					<Body><![CDATA[for (int m = 1; m < 13; m++){
 	for ( SKU s : sku )
 		sorted_sku.add(s);
-	sort_sku(m);	
+	sort_sku(sorted_sku,m);	
 	load_production_line(m);
 	
 }]]></Body>
@@ -11743,7 +11756,7 @@ del Producto]]></Text>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[3]]></Code>
+							<Code><![CDATA[2]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1523556167616</Id>
