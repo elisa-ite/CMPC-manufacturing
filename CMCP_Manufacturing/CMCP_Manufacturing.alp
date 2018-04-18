@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291329" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291251" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMCP_Manufacturing]]></Name>
@@ -2677,7 +2677,7 @@ pre_calc();]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[3]]></Code>
+							<Code><![CDATA[2]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1523642197569</Id>
@@ -3534,10 +3534,8 @@ for( int i = 0 ; i < lotees ; i++ ){
 	n.code = s.code;
 	n.size = s.sku_size_code;
 	n.packsize = s.sku_packsize;
-	for (int j = 0; j < 6; j++){
-		n.monthly_line[j] = s.monthly_line[j];
-	}
-
+	n.line = s.monthly_line[month-1];
+	n.real_demand = s.real_demand[month-1];
 	n.loteNumber = i+1;
 	
 	//traceln(" n = "+ n);
@@ -6422,6 +6420,9 @@ for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1)
 						<Parameter>
 							<Name><![CDATA[last_packsize]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[turno_actual]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -6562,7 +6563,7 @@ for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1)
 							<Name><![CDATA[packsize]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[monthly_line]]></Name>
+							<Name><![CDATA[real_demand]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -7026,6 +7027,9 @@ for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1)
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[last_packsize]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[turno_actual]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -11822,6 +11826,27 @@ del Producto]]></Text>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1524054408192</Id>
+					<Name><![CDATA[turno_actual]]></Name>
+					<X>680</X><Y>-60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1524054408190</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1522333146064</Id>
 					<Name><![CDATA[sLine]]></Name>
@@ -12307,7 +12332,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1522946045882</Id>
 					<Name><![CDATA[connector6]]></Name>
-					<X>20</X><Y>-40</Y>
+					<X>650</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12333,8 +12358,8 @@ del Producto]]></Text>
 						<ItemName><![CDATA[in]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
-						<Point><X>630</X><Y>200</Y></Point>
-						<Point><X>650</X><Y>200</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>20</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -15399,12 +15424,7 @@ return result;]]></Body>
 						<Name><![CDATA[agent]]></Name>
 						<Type><![CDATA[Lote]]></Type>
 					</Parameter>
-					<Body><![CDATA[//if (agent.line == 1)
-//	return selectOutputOut1;
-//else return selectOutputOut2;	
-month = main.month;
-int line = agent.monthly_line[month-1];
-switch (line){
+					<Body><![CDATA[switch (agent.line){
 	case 1: return selectOutputOut1;
 	case 2: return selectOutputOut2;
 	case 3: return selectOutputOut3;
@@ -15455,6 +15475,37 @@ if (packsize != last_packsize){
 	delay = delay_packsize;
 }
 return delay;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1524054360472</Id>
+					<Name><![CDATA[delay_arranque]]></Name>
+					<X>680</X><Y>-30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1524056746220</Id>
+					<Name><![CDATA[delay_production]]></Name>
+					<X>1010</X><Y>-20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[agent]]></Name>
+						<Type><![CDATA[Lote]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[rate]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[return agent.real_demand / rate;]]></Body>
 				</Function>
 			</Functions>
 			<AnalysisData>
@@ -17029,7 +17080,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<Id>1522337615250</Id>
 					<Name><![CDATA[delayArranque]]></Name>
 					<X>670</X><Y>140</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
+					<Label><X>-20</X><Y>-15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -17819,8 +17870,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[triangular( 0.5, 1, 1.5 )]]></Code>
-								<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+								<Code><![CDATA[delay_production(agent, main.rate_lines_chile[0])]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -19328,7 +19379,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[restrictedAreaStart]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[restrictedAreaStart1]]></Code>
+								<Code><![CDATA[restrictedAreaStart2]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -19480,8 +19531,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[triangular( 0.5, 1, 1.5 )]]></Code>
-								<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+								<Code><![CDATA[delay_production(agent, main.rate_lines_chile[1])]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -20910,7 +20961,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[restrictedAreaStart]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[restrictedAreaStart1]]></Code>
+								<Code><![CDATA[restrictedAreaStart3]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -21062,8 +21113,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[triangular( 0.5, 1, 1.5 )]]></Code>
-								<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+								<Code><![CDATA[delay_production(agent, main.rate_lines_chile[2])]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -22492,7 +22543,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[restrictedAreaStart]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[restrictedAreaStart1]]></Code>
+								<Code><![CDATA[restrictedAreaStart4]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -22644,8 +22695,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[triangular( 0.5, 1, 1.5 )]]></Code>
-								<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+								<Code><![CDATA[delay_production(agent, main.rate_lines_chile[3])]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -24074,7 +24125,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[restrictedAreaStart]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[restrictedAreaStart1]]></Code>
+								<Code><![CDATA[restrictedAreaStart5]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -24226,8 +24277,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[triangular( 0.5, 1, 1.5 )]]></Code>
-								<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+								<Code><![CDATA[delay_production(agent, main.rate_lines_chile[4])]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -25656,7 +25707,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[restrictedAreaStart]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[restrictedAreaStart1]]></Code>
+								<Code><![CDATA[restrictedAreaStart6]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -25808,8 +25859,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[triangular( 0.5, 1, 1.5 )]]></Code>
-								<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+								<Code><![CDATA[delay_production(agent, main.rate_lines_chile[5])]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -26293,7 +26344,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<Rotation>0.0</Rotation>
 					<Color>-8355712</Color>
 					<Text><![CDATA[text]]></Text>
-					<TextCode><![CDATA[getName()]]></TextCode>
+					<TextCode><![CDATA[main.rate_lines_chile[0]]]></TextCode>
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>14</Size>
@@ -26429,7 +26480,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<Rotation>0.0</Rotation>
 					<Color>-8355712</Color>
 					<Text><![CDATA[text]]></Text>
-					<TextCode><![CDATA[getName()]]></TextCode>
+					<TextCode><![CDATA[main.rate_lines_chile[1]]]></TextCode>
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>14</Size>
@@ -26541,7 +26592,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<Rotation>0.0</Rotation>
 					<Color>-8355712</Color>
 					<Text><![CDATA[text]]></Text>
-					<TextCode><![CDATA[getName()]]></TextCode>
+					<TextCode><![CDATA[main.rate_lines_chile[2]]]></TextCode>
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>14</Size>
@@ -26631,7 +26682,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<Rotation>0.0</Rotation>
 					<Color>-8355712</Color>
 					<Text><![CDATA[text]]></Text>
-					<TextCode><![CDATA[getName()]]></TextCode>
+					<TextCode><![CDATA[main.rate_lines_chile[3]]]></TextCode>
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>14</Size>
@@ -26721,7 +26772,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<Rotation>0.0</Rotation>
 					<Color>-8355712</Color>
 					<Text><![CDATA[text]]></Text>
-					<TextCode><![CDATA[getName()]]></TextCode>
+					<TextCode><![CDATA[main.rate_lines_chile[4]]]></TextCode>
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>14</Size>
@@ -26811,7 +26862,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<Rotation>0.0</Rotation>
 					<Color>-8355712</Color>
 					<Text><![CDATA[text]]></Text>
-					<TextCode><![CDATA[getName()]]></TextCode>
+					<TextCode><![CDATA[main.rate_lines_chile[5]]]></TextCode>
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>14</Size>
@@ -27869,22 +27920,22 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1523986448061</Id>
-					<Name><![CDATA[monthly_line]]></Name>
+					<Id>1524057107020</Id>
+					<Name><![CDATA[real_demand]]></Name>
 					<X>150</X><Y>840</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
+						<Type><![CDATA[double]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[]{1,1,1,1,1,1,1,1,1,1,1,1}]]></Code>
+							<Code><![CDATA[0]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
-							<Id>1523986448059</Id>
+							<Id>1524057107018</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -28246,7 +28297,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[3]]></Code>
+							<Code><![CDATA[2]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
