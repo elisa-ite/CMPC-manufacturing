@@ -2281,7 +2281,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1523190969999</Id>
 					<Name><![CDATA[mapeMax]]></Name>
-					<X>508</X><Y>-380</Y>
+					<X>510</X><Y>-380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2437,7 +2437,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1523191134710</Id>
 					<Name><![CDATA[prodLines]]></Name>
-					<X>-270</X><Y>340</Y>
+					<X>-280</X><Y>370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2461,7 +2461,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1523191662237</Id>
 					<Name><![CDATA[daysForwardCoverage]]></Name>
-					<X>-270</X><Y>360</Y>
+					<X>-280</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2607,7 +2607,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1523638363342</Id>
 					<Name><![CDATA[prod_lines_chile]]></Name>
-					<X>-280</X><Y>420</Y>
+					<X>-280</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2631,7 +2631,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1523639511656</Id>
 					<Name><![CDATA[rate_lines_chile]]></Name>
-					<X>-280</X><Y>440</Y>
+					<X>-280</X><Y>430</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2655,7 +2655,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1523642197571</Id>
 					<Name><![CDATA[turnos_chile]]></Name>
-					<X>-280</X><Y>460</Y>
+					<X>-280</X><Y>450</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2728,7 +2728,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="CollectionVariable">
 					<Id>1522612589504</Id>
 					<Name><![CDATA[tempSKU]]></Name>
-					<X>410</X><Y>-100</Y>
+					<X>20</X><Y>-270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2760,7 +2760,7 @@ Should be used also on simulation, as tempSKU.]]></Description>
 				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1523539367645</Id>
-					<Name><![CDATA[backorder_sku]]></Name>
+					<Name><![CDATA[pc_backorder_col]]></Name>
 					<X>-490</X><Y>-60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2768,7 +2768,7 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
+						<ElementClass><![CDATA[Double]]></ElementClass>
 						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
 					</Properties>
 
@@ -2785,6 +2785,21 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
 						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1524159194774</Id>
+					<Name><![CDATA[pc_prodatt_col]]></Name>
+					<X>-490</X><Y>-80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[Double]]></ElementClass>
 						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
 					</Properties>
 
@@ -3126,7 +3141,7 @@ Should be used also on simulation, as tempSKU.]]></Description>
 				<Event>
 					<Id>1522611196835</Id>
 					<Name><![CDATA[monthlyEvent]]></Name>
-					<X>270</X><Y>-30</Y>
+					<X>20</X><Y>-210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3309,7 +3324,7 @@ if( month < 12 ){
 				<DynamicEventClass>
 					<Id>1522611240358</Id>
 					<Name><![CDATA[SendToProductionLine]]></Name>
-					<X>380</X><Y>-30</Y>
+					<X>20</X><Y>-240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3689,7 +3704,7 @@ s.demand[i] = rows.get(i).get( input_tablecmpc.demand )*1000;]]></Body>
 					<ReturnType><![CDATA[SKU]]></ReturnType>
 					<Id>1522612435082</Id>
 					<Name><![CDATA[getHighPriorSKU]]></Name>
-					<X>270</X><Y>-120</Y>
+					<X>20</X><Y>-300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3954,7 +3969,7 @@ Para cada mes:
 		sorted_sku.add(s);
 	sort_sku(sorted_sku,m);	
 	load_production_line(m);
-	
+	pc_dataset_refresh();
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -3984,7 +3999,7 @@ for (int line = 0 ; line < 6 ; line++)
 // TODO get real delays
 double delay_packsize = productionLineChile.delay_packsize*60*800*productionLineChile.efficiency;
 double delay_size = productionLineChile.delay_size*60*800*productionLineChile.efficiency;
-
+double time = dateToTime(toDate(start_year,m-1,1,1,1,1));
 for (int line = 0 ; line < 6 ; line++){
 	boolean first_in_line = true;
 	int last_packsize = 0;
@@ -4038,16 +4053,16 @@ for (int line = 0 ; line < 6 ; line++){
 		
 		for (SKU s : sku_to_remove){
 			sorted_sku.remove(s);
+			add_acc(pc_prodatt_col, time, s.real_demand[m-1]);
 		}
 	}
 }
 
 for (SKU s : sorted_sku){
 	//System.out.println(s.code + " no producido en el mes: " + m);
-	double backorders = s.real_demand[m-1];
-	if (backorder_sku.containsKey(s.code)) 
-      backorders += backorder_sku.get(s.code);
-	backorder_sku.put(s.code, backorders);
+	add_acc(pc_backorder_col, time, s.real_demand[m-1]);
+	for (int monthly = 1 ; monthly < 12 ; monthly++)
+		s.monthly_line[monthly-1] = 1;
 }
 
 sorted_sku.clear();]]></Body>
@@ -4116,7 +4131,117 @@ for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1)
     	working_days_amount[cal.get(Calendar.MONTH)] += 1;
 }]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1524156472116</Id>
+					<Name><![CDATA[add_accum_collection]]></Name>
+					<X>-190</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[dataset]]></Name>
+						<Type><![CDATA[DataSet]]></Type>
+					</Parameter>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1524159064278</Id>
+					<Name><![CDATA[add_acc]]></Name>
+					<X>-340</X><Y>-120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[collection]]></Name>
+						<Type><![CDATA[LinkedHashMap]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[key]]></Name>
+						<Type><![CDATA[Object]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[value]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Body><![CDATA[double accumulated = value;
+if (collection.containsKey(key)) 
+  accumulated += (double)collection.get(key);
+collection.put(key, accumulated);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1524159491885</Id>
+					<Name><![CDATA[pc_dataset_refresh]]></Name>
+					<X>-660</X><Y>-20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[pc_backorder.reset();
+for (double sku : pc_backorder_col.keySet()){
+	double value = pc_backorder_col.get(sku);
+	pc_backorder.add(sku, value);
+}
+
+pc_prodatt.reset();
+for (double sku : pc_prodatt_col.keySet()){
+	double value = pc_prodatt_col.get(sku);
+	pc_prodatt.add(sku, value);
+}]]></Body>
+				</Function>
 			</Functions>
+			<AnalysisData>
+    			<DataSet>
+					<Id>1524152121727</Id>
+					<Name><![CDATA[pc_backorder]]></Name>
+					<X>-590</X><Y>-160</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>false</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1524211200000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</RecurrenceCode>
+					<FreezeXAxis>false</FreezeXAxis>
+					<SamplesToKeep>1000</SamplesToKeep>
+				</DataSet>
+    			<DataSet>
+					<Id>1524152143793</Id>
+					<Name><![CDATA[pc_prodatt]]></Name>
+					<X>-590</X><Y>-140</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>false</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1524211200000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</RecurrenceCode>
+					<FreezeXAxis>false</FreezeXAxis>
+					<SamplesToKeep>2000</SamplesToKeep>
+				</DataSet>
+			</AnalysisData>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1519223879328</Id>
@@ -7310,7 +7435,7 @@ for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1)
 				<EmbeddedObjectPresentation>
 					<Id>1522870707871</Id>
 					<Name><![CDATA[productionLine_presentation]]></Name>
-					<X>-130</X><Y>-830</Y>
+					<X>-360</X><Y>-1600</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7330,7 +7455,7 @@ for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1)
 				<EmbeddedObjectPresentation>
 					<Id>1522929522292</Id>
 					<Name><![CDATA[productionLineChile_presentation]]></Name>
-					<X>-130</X><Y>-830</Y>
+					<X>-360</X><Y>-1600</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7396,7 +7521,7 @@ for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1)
 				<RoundedRectangle>
 					<Id>1523638644106</Id>
 					<Name><![CDATA[roundRectangle1]]></Name>
-					<X>-300</X><Y>400</Y>
+					<X>-300</X><Y>350</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7411,7 +7536,7 @@ for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1)
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
 					<Width>160</Width>
-					<Height>70</Height>
+					<Height>120</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -12079,6 +12204,36 @@ del Producto]]></Text>
 					</Properties>
 
 				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1524156918922</Id>
+					<Name><![CDATA[backorder_collection]]></Name>
+					<X>-580</X><Y>760</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[Double]]></ElementClass>
+						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1524156977363</Id>
+					<Name><![CDATA[prodatt_collection]]></Name>
+					<X>-580</X><Y>780</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[Double]]></ElementClass>
+						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
 			</Variables>
 			<Connectors>
 				<Connector>
@@ -15581,6 +15736,47 @@ if( month < 12 ){
 //	countR1Bo = 0;			
 }]]></Action>
 				</Event>
+				<Event>
+					<Id>1524157957285</Id>
+					<Name><![CDATA[dataset_refresh]]></Name>
+					<X>-580</X><Y>840</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1524211200000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MONTH]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[datasetProd.reset();
+for (double time : prodatt_collection.keySet()){
+	int value = prodatt_collection.get(time);
+	datasetProd.add(time, value);
+}
+
+datasetBO.reset();
+for (double time : backorder_collection.keySet()){
+	int value = backorder_collection.get(time);
+	datasetBO.add(time, value);
+}]]></Action>
+				</Event>
 			</Events>
 			<DynamicEvents>
 				<DynamicEventClass>
@@ -15754,6 +15950,33 @@ holdL3.block();
 holdL4.block();
 holdL5.block();
 holdL6.block();]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1524157070624</Id>
+					<Name><![CDATA[add_acc]]></Name>
+					<X>-580</X><Y>800</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[collection]]></Name>
+						<Type><![CDATA[LinkedHashMap]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[key]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[value]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[int accumulated = value;
+if (collection.containsKey(key)) 
+  accumulated += (int)collection.get(key);
+collection.put(key, accumulated);]]></Body>
 				</Function>
 			</Functions>
 			<Schedules>
@@ -16547,7 +16770,7 @@ if (shifts_amount == 2){
     			<DataSet>
 					<Id>1522333146014</Id>
 					<Name><![CDATA[datasetProd]]></Name>
-					<X>-317</X><Y>320</Y>
+					<X>-680</X><Y>780</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16564,12 +16787,12 @@ if (shifts_amount == 2){
 						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 					</RecurrenceCode>
 					<FreezeXAxis>false</FreezeXAxis>
-					<SamplesToKeep>1000</SamplesToKeep>
+					<SamplesToKeep>2000</SamplesToKeep>
 				</DataSet>
     			<DataSet>
 					<Id>1522333146017</Id>
 					<Name><![CDATA[datasetBO]]></Name>
-					<X>-317</X><Y>340</Y>
+					<X>-680</X><Y>760</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16586,7 +16809,7 @@ if (shifts_amount == 2){
 						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 					</RecurrenceCode>
 					<FreezeXAxis>false</FreezeXAxis>
-					<SamplesToKeep>1000</SamplesToKeep>
+					<SamplesToKeep>2000</SamplesToKeep>
 				</DataSet>
     			<DataSet>
 					<Id>1522333146020</Id>
@@ -16743,6 +16966,28 @@ if (shifts_amount == 2){
 					<HorizontalAxisExpression><![CDATA[day-1]]></HorizontalAxisExpression>
 					<VerticalAxisExpression><![CDATA[statePline]]></VerticalAxisExpression>
 					<SamplesToKeep>365</SamplesToKeep>
+				</DataSet>
+    			<DataSet>
+					<Id>1524164629112</Id>
+					<Name><![CDATA[ds_gantt_l1]]></Name>
+					<X>1020</X><Y>-120</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>false</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1524211200000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</RecurrenceCode>
+					<FreezeXAxis>true</FreezeXAxis>
+					<SamplesToKeep>2000</SamplesToKeep>
 				</DataSet>
 			</AnalysisData>
 			<AgentLinks>
@@ -17208,7 +17453,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodBO = (int)agent.real_demand;
-datasetBO.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agent.prodBO);]]></Code>
+double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
+add_acc(backorder_collection,time,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -17548,7 +17794,8 @@ datasetBO.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agen
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodAtt = (int)agent.real_demand;
-datasetProd.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agent.prodAtt);]]></Code>
+double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
+add_acc(prodatt_collection,time,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -17848,6 +18095,9 @@ datasetProd.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), ag
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ds_gantt_l1.add(dateToTime(date()),1);]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -17855,7 +18105,8 @@ datasetProd.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), ag
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[arranque[0] = 0;]]></Code>
+								<Code><![CDATA[arranque[0] = 0;
+ds_gantt_l1.add(dateToTime(date()),0);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -18104,6 +18355,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ds_gantt_l1.add(dateToTime(date()),2);]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -18214,6 +18468,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ds_gantt_l1.add(dateToTime(date()),0);]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onRemove]]></Name>
@@ -18619,12 +18876,18 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ds_gantt_l1.add(dateToTime(date()),3);]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[ds_gantt_l1.add(dateToTime(date()),3);]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onRemove]]></Name>
@@ -19010,7 +19273,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodBO = (int)agent.real_demand;
-datasetBO.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agent.prodBO);]]></Code>
+double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
+add_acc(backorder_collection,time,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -19226,7 +19490,8 @@ datasetBO.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agen
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodAtt = (int)agent.real_demand;
-datasetProd.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agent.prodAtt);]]></Code>
+double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
+add_acc(prodatt_collection,time,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -20606,7 +20871,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodBO = (int)agent.real_demand;
-datasetBO.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agent.prodBO);]]></Code>
+double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
+add_acc(backorder_collection,time,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -20822,7 +21088,8 @@ datasetBO.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agen
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodAtt = (int)agent.real_demand;
-datasetProd.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agent.prodAtt);]]></Code>
+double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
+add_acc(prodatt_collection,time,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -22202,7 +22469,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodBO = (int)agent.real_demand;
-datasetBO.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agent.prodBO);]]></Code>
+double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
+add_acc(backorder_collection,time,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -22418,7 +22686,8 @@ datasetBO.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agen
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodAtt = (int)agent.real_demand;
-datasetProd.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agent.prodAtt);]]></Code>
+double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
+add_acc(prodatt_collection,time,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -23798,7 +24067,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodBO = (int)agent.real_demand;
-datasetBO.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agent.prodBO);]]></Code>
+double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
+add_acc(backorder_collection,time,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -24014,7 +24284,8 @@ datasetBO.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agen
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodAtt = (int)agent.real_demand;
-datasetProd.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agent.prodAtt);]]></Code>
+double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
+add_acc(prodatt_collection,time,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -25394,7 +25665,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodBO = (int)agent.real_demand;
-datasetBO.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agent.prodBO);]]></Code>
+double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
+add_acc(backorder_collection,time,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -25610,7 +25882,8 @@ datasetBO.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agen
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodAtt = (int)agent.real_demand;
-datasetProd.add(dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1)), agent.prodAtt);]]></Code>
+double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
+add_acc(prodatt_collection,time,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -27847,6 +28120,50 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
+				<Text>
+					<Id>1524152397733</Id>
+					<Name><![CDATA[text70]]></Name>
+					<X>-640</X><Y>1860</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Production Ratios]]></Text>
+					<Font>
+						<Name>Helvetica</Name>
+						<Size>20</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
+				<Text>
+					<Id>1524152407710</Id>
+					<Name><![CDATA[text71]]></Name>
+					<X>-640</X><Y>2160</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[PreCalc Ratios]]></Text>
+					<Font>
+						<Name>Helvetica</Name>
+						<Size>20</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>CENTER</Alignment>
+				</Text>
 			</Shapes>
 			<Charts>
     			<TimeStackChart>
@@ -28139,6 +28456,373 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<VerScaleType>AUTO</VerScaleType>
 					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
     			</TimeStackChart>
+    			<TimeStackChart>
+					<Id>1524152334074</Id>
+					<Name><![CDATA[chart1]]></Name>
+					<X>-980</X><Y>1880</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1444809600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[WEEK]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>660</Width>
+					<Height>280</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>80</XOffset>
+						<YOffset>20</YOffset>
+						<Width>570</Width>
+						<Height>210</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>20</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<Persistent>true</Persistent>
+					<ShowLegend>true</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_DATA</TimeWindowsMovementType>		
+					<TimeWindowUnits>MONTH</TimeWindowUnits>
+					<TimeWindowExpression><![CDATA[11]]></TimeWindowExpression>
+					<DatasetExpression>
+					<Expression><![CDATA[datasetProd]]></Expression>
+					<Color>-16744320</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>false</Expression2Flag>  
+							<Title><![CDATA[Production]]></Title>
+					</DatasetExpression>
+					<DatasetExpression>
+					<Expression><![CDATA[datasetBO]]></Expression>
+					<Color>-8097537</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>false</Expression2Flag>  
+							<Title><![CDATA[BackOrder]]></Title>
+					</DatasetExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<VerScaleToExpression><![CDATA[250]]></VerScaleToExpression>
+					<VerScaleType>HUNDRED_PERCENTS</VerScaleType>
+					<LabelFormat>MMM</LabelFormat>
+    			</TimeStackChart>
+    			<TimeStackChart>
+					<Id>1524152349017</Id>
+					<Name><![CDATA[chart2]]></Name>
+					<X>-980</X><Y>2180</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1444809600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[WEEK]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>660</Width>
+					<Height>280</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>80</XOffset>
+						<YOffset>20</YOffset>
+						<Width>570</Width>
+						<Height>210</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>20</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<Persistent>true</Persistent>
+					<ShowLegend>true</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_DATA</TimeWindowsMovementType>		
+					<TimeWindowUnits>MONTH</TimeWindowUnits>
+					<TimeWindowExpression><![CDATA[11]]></TimeWindowExpression>
+					<DatasetExpression>
+					<Expression><![CDATA[main.pc_prodatt]]></Expression>
+					<Color>-16744320</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>false</Expression2Flag>  
+							<Title><![CDATA[Production]]></Title>
+					</DatasetExpression>
+					<DatasetExpression>
+					<Expression><![CDATA[main.pc_backorder]]></Expression>
+					<Color>-8097537</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>false</Expression2Flag>  
+							<Title><![CDATA[BackOrder]]></Title>
+					</DatasetExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<VerScaleToExpression><![CDATA[250]]></VerScaleToExpression>
+					<VerScaleType>HUNDRED_PERCENTS</VerScaleType>
+					<LabelFormat>MMM</LabelFormat>
+    			</TimeStackChart>
+    			<TimePlot>
+					<Id>1524152484823</Id>
+					<Name><![CDATA[plot]]></Name>
+					<X>-1460</X><Y>1880</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1524211200000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[WEEK]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>500</Width>
+					<Height>370</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>420</Width>
+						<Height>280</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<Persistent>true</Persistent>
+					<ShowLegend>true</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MONTH</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Production Sim]]></Title>
+					<Expression><![CDATA[datasetProd]]></Expression>
+					<Color>-16711681</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>false</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Production PC]]></Title>
+					<Expression><![CDATA[main.pc_prodatt]]></Expression>
+					<Color>-65536</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>false</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<SamplesToKeep>1000</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[11]]></TimeWindowExpression>
+					<FillAreaUnderLine>true</FillAreaUnderLine>
+					<LabelFormat>MMM</LabelFormat>
+    			</TimePlot>
+    			<TimePlot>
+					<Id>1524153095118</Id>
+					<Name><![CDATA[plot2]]></Name>
+					<X>-1460</X><Y>2240</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1524211200000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[WEEK]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>500</Width>
+					<Height>370</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>420</Width>
+						<Height>280</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<Persistent>true</Persistent>
+					<ShowLegend>true</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MONTH</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[BackOrder Sim]]></Title>
+					<Expression><![CDATA[datasetBO]]></Expression>
+					<Color>-16711681</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>false</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[BackOrder PC]]></Title>
+					<Expression><![CDATA[main.pc_backorder]]></Expression>
+					<Color>-65536</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>false</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<SamplesToKeep>1000</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[11]]></TimeWindowExpression>
+					<FillAreaUnderLine>true</FillAreaUnderLine>
+					<LabelFormat>MMM</LabelFormat>
+    			</TimePlot>
+    			<TimeColorChart>
+					<Id>1524165431022</Id>
+					<Name><![CDATA[chart4]]></Name>
+					<X>1420</X><Y>20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1524211200000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[WEEK]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>540</Width>
+					<Height>210</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>460</Width>
+						<Height>120</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<Persistent>true</Persistent>
+					<ShowLegend>true</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MONTH</TimeWindowUnits>
+					<TimeWindowExpression><![CDATA[1]]></TimeWindowExpression>
+					<DatasetExpression>
+					<Expression><![CDATA[ds_gantt_l1]]></Expression>
+					<Color>-12004916</Color>
+					<Expression2><![CDATA[0]]></Expression2>
+					<Expression2Flag>false</Expression2Flag>  
+							<Title><![CDATA[Line 1]]></Title>
+					</DatasetExpression>
+					<DefaultColor/>
+					<Bars>
+						<Direction>RIGHT</Direction>
+						<RelativeWidth>0.6</RelativeWidth>
+					</Bars>
+					<SamplesToKeep>1000</SamplesToKeep>
+					<ColorConditionExpression>
+						<CompareType>EQUALS</CompareType>
+						<Color/>
+						<Expression><![CDATA[0]]></Expression>
+					</ColorConditionExpression>
+					<ColorConditionExpression>
+						<CompareType>EQUALS</CompareType>
+						<Color>-65536</Color>
+						<Expression><![CDATA[1]]></Expression>
+					</ColorConditionExpression>
+					<ColorConditionExpression>
+						<CompareType>EQUALS</CompareType>
+						<Color>-13447886</Color>
+						<Expression><![CDATA[2]]></Expression>
+					</ColorConditionExpression>
+					<ColorConditionExpression>
+						<CompareType>EQUALS</CompareType>
+						<Color>-16776961</Color>
+						<Expression><![CDATA[3]]></Expression>
+					</ColorConditionExpression>
+					<LabelFormat>dd_MM</LabelFormat>
+    			</TimeColorChart>
 			</Charts>
 			<Areas>
 				<Area>
@@ -30380,10 +31064,10 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 			</PresentationProperties>
 			<ModelTimeProperties>
 				<StopOption><![CDATA[Stop at specified date]]></StopOption>
-				<InitialDate><![CDATA[1577836800000]]></InitialDate>	
+				<InitialDate><![CDATA[1546300800000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
-				<FinalDate><![CDATA[1609455945000]]></FinalDate>	
-				<FinalTime><![CDATA[526985.75]]></FinalTime>	
+				<FinalDate><![CDATA[1577833545000]]></FinalDate>	
+				<FinalTime><![CDATA[525545.75]]></FinalTime>	
 			</ModelTimeProperties>
 		</SimulationExperiment>	
 	</Experiments>
