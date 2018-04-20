@@ -2968,7 +2968,7 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>90</X><Y>0</Y></Point>
+						<Point><X>80</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -4099,7 +4099,7 @@ return s.real_demand[m-1];]]></Body>
 					<Id>1523543116158</Id>
 					<Name><![CDATA[pre_calc]]></Name>
 					<Description><![CDATA[Run Precalculation]]></Description>
-					<X>-670</X><Y>-150</Y>
+					<X>-780</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4200,7 +4200,7 @@ for (double sku : pc_prodatt_col.keySet()){
     			<DataSet>
 					<Id>1524152121727</Id>
 					<Name><![CDATA[pc_backorder]]></Name>
-					<X>-590</X><Y>-160</Y>
+					<X>-780</X><Y>-160</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4222,7 +4222,7 @@ for (double sku : pc_prodatt_col.keySet()){
     			<DataSet>
 					<Id>1524152143793</Id>
 					<Name><![CDATA[pc_prodatt]]></Name>
-					<X>-590</X><Y>-140</Y>
+					<X>-780</X><Y>-130</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6258,7 +6258,7 @@ for (double sku : pc_prodatt_col.keySet()){
 				<EmbeddedObject>
 					<Id>1522870702380</Id>
 					<Name><![CDATA[productionLine]]></Name>
-					<X>-80</X><Y>120</Y>
+					<X>-90</X><Y>120</Y>
 					<Label><X>-50</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6603,7 +6603,7 @@ for (double sku : pc_prodatt_col.keySet()){
 				<EmbeddedObject>
 					<Id>1522873899109</Id>
 					<Name><![CDATA[lote]]></Name>
-					<X>-80</X><Y>190</Y>
+					<X>-90</X><Y>185</Y>
 					<Label><X>-15</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6745,7 +6745,7 @@ for (double sku : pc_prodatt_col.keySet()){
 				<EmbeddedObject>
 					<Id>1522926785183</Id>
 					<Name><![CDATA[plantChile]]></Name>
-					<X>640</X><Y>110</Y>
+					<X>630</X><Y>110</Y>
 					<Label><X>-5</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7475,7 +7475,7 @@ for (double sku : pc_prodatt_col.keySet()){
 				<RoundedRectangle>
 					<Id>1523556868171</Id>
 					<Name><![CDATA[roundRectangle]]></Name>
-					<X>-690</X><Y>-180</Y>
+					<X>-800</X><Y>-180</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7489,7 +7489,7 @@ for (double sku : pc_prodatt_col.keySet()){
 					<LineColor>-16777216</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>310</Width>
+					<Width>420</Width>
 					<Height>170</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
@@ -7707,7 +7707,7 @@ for (double sku : pc_prodatt_col.keySet()){
 				<Text>
 					<Id>1524075454353</Id>
 					<Name><![CDATA[text10]]></Name>
-					<X>-80</X><Y>-160</Y>
+					<X>-80</X><Y>-170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -28324,7 +28324,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Production Ratios]]></Text>
+					<Text><![CDATA[Simulation Ratios]]></Text>
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>20</Size>
@@ -29499,6 +29499,18 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<Title><![CDATA[]]></Title>
 					<Width>1900</Width>
 					<Height>1200</Height>
+				</Area>
+				<Area>
+					<Id>1524232020746</Id>
+					<Name><![CDATA[xvalidation_precalc]]></Name>
+					<X>-1400</X><Y>1800</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Title><![CDATA[Cross Validation with Precalculation]]></Title>
+					<Width>1120</Width>
+					<Height>680</Height>
 				</Area>
 			</Areas>
 
@@ -31688,23 +31700,23 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				EnableAntiAliasing="true"
 				EnableEnhancedModelElementsAnimation="true"
 				ToolbarCustomizableAtRuntime="true">
-				<Maximized>false</Maximized>
+				<Maximized>true</Maximized>
 				<CloseConfirmation>false</CloseConfirmation>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
 				<ExecutionMode><![CDATA[realTimeScaled]]></ExecutionMode>
-				<CpuRatio><![CDATA[ratio_1_2]]></CpuRatio>	        
+				<CpuRatio><![CDATA[ratio_2_1]]></CpuRatio>	        
 				<Title><![CDATA[CMCP_Manufacturing.1 : Simulation]]></Title>	
 				<FramesPerSecond><![CDATA[20.0]]></FramesPerSecond>
 				<RealTimeScale>1.0</RealTimeScale>
 				<UIProperty Name="Experiment Progress" Value="true"/>
 				<UIProperty Name="Simulation Progress" Value="true"/>
-				<UIProperty Name="Statusbar Events Per Second" Value="false"/>
+				<UIProperty Name="Statusbar Events Per Second" Value="true"/>
 				<UIProperty Name="Statusbar Frames Per Second" Value="false"/>
 				<UIProperty Name="Statusbar Memory" Value="true"/>
 				<UIProperty Name="Statusbar Model Date" Value="true"/>
 				<UIProperty Name="Statusbar Model Step" Value="false"/>
 				<UIProperty Name="Statusbar Model Time" Value="true"/>
-				<UIProperty Name="Statusbar Real Time Of Simulation" Value="false"/>
+				<UIProperty Name="Statusbar Real Time Of Simulation" Value="true"/>
 				<UIProperty Name="Statusbar Status" Value="true"/>
 				<UIProperty Name="Toolbar Animation setup" Value="false"/>
 				<UIProperty Name="Toolbar Execution control" Value="true"/>
