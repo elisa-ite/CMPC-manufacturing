@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291329" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291251" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMCP_Manufacturing]]></Name>
@@ -4195,141 +4195,36 @@ for (double sku : pc_prodatt_col.keySet()){
 	pc_prodatt.add(sku, value);
 }]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1524490183955</Id>
+					<Name><![CDATA[lead_time]]></Name>
+					<X>-630</X><Y>-580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[origin]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[destination]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Body><![CDATA[SelectQuery lead_time = selectFrom( lead_times ).
+      where( lead_times.name.eq( origin ) );
+      
+switch (destination) {
+	case "Chile": return lead_time.uniqueResult(lead_times.chile);
+	case "Argentina": return lead_time.uniqueResult(lead_times.argentina);
+	case "Peru": return lead_time.uniqueResult(lead_times.peru);
+	case "Colombia": return lead_time.uniqueResult(lead_times.colombia);
+	default: return 0;
+}]]></Body>
+				</Function>
 			</Functions>
-			<TableFunctions>
-				<TableFunction AccessType="public" StaticFunction="true">
-					<Id>1524470578719</Id>
-					<Name><![CDATA[tableFunctionChile]]></Name>
-					<X>-630</X><Y>-600</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<InterpolationMethod>NONE</InterpolationMethod>
-					<OutOfRangeBehaviour>ERROR</OutOfRangeBehaviour>
-					<OutOfRangeCustomValue><![CDATA[0.0]]></OutOfRangeCustomValue>
-					<ApproximationOrder><![CDATA[1]]></ApproximationOrder>
-					<LoadFromDatabase><![CDATA[true]]></LoadFromDatabase>
-					<ValuesQuery>
-						<TableReference>
-							<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-							<ClassName><![CDATA[leadtimes]]></ClassName>
-						</TableReference>
-							<ArgumentColumnReference>
-								<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-								<ClassName><![CDATA[leadtimes]]></ClassName>
-								<ItemName><![CDATA[chile]]></ItemName>
-							</ArgumentColumnReference>
-							<ValueColumnReference>
-								<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-								<ClassName><![CDATA[leadtimes]]></ClassName>
-								<ItemName><![CDATA[chile]]></ItemName>
-							</ValueColumnReference>
-					</ValuesQuery>
-// arguments and values
-					<Argument><![CDATA[0.0]]></Argument>
-					<Value><![CDATA[0.0]]></Value>
-				</TableFunction>
-				<TableFunction AccessType="public" StaticFunction="true">
-					<Id>1524470798093</Id>
-					<Name><![CDATA[tableFunctionPeru]]></Name>
-					<X>-630</X><Y>-560</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<InterpolationMethod>NONE</InterpolationMethod>
-					<OutOfRangeBehaviour>ERROR</OutOfRangeBehaviour>
-					<OutOfRangeCustomValue><![CDATA[0.0]]></OutOfRangeCustomValue>
-					<ApproximationOrder><![CDATA[1]]></ApproximationOrder>
-					<LoadFromDatabase><![CDATA[true]]></LoadFromDatabase>
-					<ValuesQuery>
-						<TableReference>
-							<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-							<ClassName><![CDATA[leadtimes]]></ClassName>
-						</TableReference>
-							<ArgumentColumnReference>
-								<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-								<ClassName><![CDATA[leadtimes]]></ClassName>
-								<ItemName><![CDATA[chile]]></ItemName>
-							</ArgumentColumnReference>
-							<ValueColumnReference>
-								<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-								<ClassName><![CDATA[leadtimes]]></ClassName>
-								<ItemName><![CDATA[peru]]></ItemName>
-							</ValueColumnReference>
-					</ValuesQuery>
-// arguments and values
-					<Argument><![CDATA[0.0]]></Argument>
-					<Value><![CDATA[0.0]]></Value>
-				</TableFunction>
-				<TableFunction AccessType="public" StaticFunction="true">
-					<Id>1524470828809</Id>
-					<Name><![CDATA[tableFunctionArgentina]]></Name>
-					<X>-630</X><Y>-520</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<InterpolationMethod>NONE</InterpolationMethod>
-					<OutOfRangeBehaviour>ERROR</OutOfRangeBehaviour>
-					<OutOfRangeCustomValue><![CDATA[0.0]]></OutOfRangeCustomValue>
-					<ApproximationOrder><![CDATA[1]]></ApproximationOrder>
-					<LoadFromDatabase><![CDATA[true]]></LoadFromDatabase>
-					<ValuesQuery>
-						<TableReference>
-							<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-							<ClassName><![CDATA[leadtimes]]></ClassName>
-						</TableReference>
-							<ArgumentColumnReference>
-								<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-								<ClassName><![CDATA[leadtimes]]></ClassName>
-								<ItemName><![CDATA[chile]]></ItemName>
-							</ArgumentColumnReference>
-							<ValueColumnReference>
-								<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-								<ClassName><![CDATA[leadtimes]]></ClassName>
-								<ItemName><![CDATA[argentina]]></ItemName>
-							</ValueColumnReference>
-					</ValuesQuery>
-// arguments and values
-					<Argument><![CDATA[0.0]]></Argument>
-					<Value><![CDATA[0.0]]></Value>
-				</TableFunction>
-				<TableFunction AccessType="public" StaticFunction="true">
-					<Id>1524470858751</Id>
-					<Name><![CDATA[tableFunctionColombia]]></Name>
-					<X>-630</X><Y>-480</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<InterpolationMethod>NONE</InterpolationMethod>
-					<OutOfRangeBehaviour>ERROR</OutOfRangeBehaviour>
-					<OutOfRangeCustomValue><![CDATA[0.0]]></OutOfRangeCustomValue>
-					<ApproximationOrder><![CDATA[1]]></ApproximationOrder>
-					<LoadFromDatabase><![CDATA[true]]></LoadFromDatabase>
-					<ValuesQuery>
-						<TableReference>
-							<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-							<ClassName><![CDATA[leadtimes]]></ClassName>
-						</TableReference>
-							<ArgumentColumnReference>
-								<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-								<ClassName><![CDATA[leadtimes]]></ClassName>
-								<ItemName><![CDATA[chile]]></ItemName>
-							</ArgumentColumnReference>
-							<ValueColumnReference>
-								<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-								<ClassName><![CDATA[leadtimes]]></ClassName>
-								<ItemName><![CDATA[argentina]]></ItemName>
-							</ValueColumnReference>
-					</ValuesQuery>
-// arguments and values
-					<Argument><![CDATA[0.0]]></Argument>
-					<Value><![CDATA[0.0]]></Value>
-				</TableFunction>
-			</TableFunctions>
 			<AnalysisData>
     			<DataSet>
 					<Id>1524152121727</Id>
@@ -33011,7 +32906,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 		<AutoExport>false</AutoExport>
 		<ImportSettings>
 			<ExternalConnection>
-				<Id>1524470413403</Id>
+				<Id>1524488256889</Id>
 				<Name><![CDATA[database]]></Name>
 				<X>0</X><Y>0</Y>
 				<Label><X>10</X><Y>0</Y></Label>
@@ -33022,7 +32917,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<ConnectionURL><![CDATA[]]></ConnectionURL>
 				<ConnectOnStartup>true</ConnectOnStartup>
 				<DatabaseName><![CDATA[]]></DatabaseName>
-				<DbFileName><![CDATA[/Users/elisaelena/Documents/Trabajo/Anylogic/Models/CMPC-manufacturing/LeadTimes1.xlsx]]></DbFileName>
+				<DbFileName><![CDATA[C:/Users/Ite02/Documents/Gaston/CMPC-manufacturing/LeadTimes1.xlsx]]></DbFileName>
 				<Host><![CDATA[localhost]]></Host>
 				<JdbcDriverClassName><![CDATA[net.sourceforge.jtds.jdbc.Driver]]></JdbcDriverClassName>
 				<Login><![CDATA[]]></Login>
@@ -33031,7 +32926,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 			<TableImportSettings>
 				<TableReference>
 					<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-					<ClassName><![CDATA[leadtimes]]></ClassName>
+					<ClassName><![CDATA[lead_times]]></ClassName>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
 				<ExternalTableName><![CDATA["Sheet1"]]></ExternalTableName>
