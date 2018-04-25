@@ -12658,6 +12658,96 @@ del Producto]]></Text>
 						<Type><![CDATA[double]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1524671138891</Id>
+					<Name><![CDATA[activity_l1]]></Name>
+					<X>970</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1524675516137</Id>
+					<Name><![CDATA[activity_l2]]></Name>
+					<X>970</X><Y>-110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1524675517211</Id>
+					<Name><![CDATA[activity_l3]]></Name>
+					<X>970</X><Y>-90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1524675518322</Id>
+					<Name><![CDATA[activity_l4]]></Name>
+					<X>970</X><Y>-70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1524675523403</Id>
+					<Name><![CDATA[activity_l5]]></Name>
+					<X>970</X><Y>-50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1524675525574</Id>
+					<Name><![CDATA[activity_l6]]></Name>
+					<X>970</X><Y>-30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1522333146384</Id>
 					<Name><![CDATA[dayOfMonth]]></Name>
@@ -19551,138 +19641,6 @@ shift_start();]]></Action>
 					<HorizontalAxisExpression><![CDATA[day-1]]></HorizontalAxisExpression>
 					<VerticalAxisExpression><![CDATA[statePline]]></VerticalAxisExpression>
 					<SamplesToKeep>365</SamplesToKeep>
-				</DataSet>
-    			<DataSet>
-					<Id>1524164629112</Id>
-					<Name><![CDATA[ds_gantt_l1]]></Name>
-					<X>970</X><Y>-130</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<AutoUpdate>false</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1524211200000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</RecurrenceCode>
-					<FreezeXAxis>true</FreezeXAxis>
-					<SamplesToKeep>2000</SamplesToKeep>
-				</DataSet>
-    			<DataSet>
-					<Id>1524226386416</Id>
-					<Name><![CDATA[ds_gantt_l2]]></Name>
-					<X>970</X><Y>-110</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<AutoUpdate>false</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1524211200000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</RecurrenceCode>
-					<FreezeXAxis>true</FreezeXAxis>
-					<SamplesToKeep>2000</SamplesToKeep>
-				</DataSet>
-    			<DataSet>
-					<Id>1524226389354</Id>
-					<Name><![CDATA[ds_gantt_l3]]></Name>
-					<X>970</X><Y>-90</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<AutoUpdate>false</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1524211200000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</RecurrenceCode>
-					<FreezeXAxis>true</FreezeXAxis>
-					<SamplesToKeep>2000</SamplesToKeep>
-				</DataSet>
-    			<DataSet>
-					<Id>1524226392094</Id>
-					<Name><![CDATA[ds_gantt_l4]]></Name>
-					<X>970</X><Y>-70</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<AutoUpdate>false</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1524211200000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</RecurrenceCode>
-					<FreezeXAxis>true</FreezeXAxis>
-					<SamplesToKeep>2000</SamplesToKeep>
-				</DataSet>
-    			<DataSet>
-					<Id>1524226394641</Id>
-					<Name><![CDATA[ds_gantt_l5]]></Name>
-					<X>970</X><Y>-50</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<AutoUpdate>false</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1524211200000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</RecurrenceCode>
-					<FreezeXAxis>true</FreezeXAxis>
-					<SamplesToKeep>2000</SamplesToKeep>
-				</DataSet>
-    			<DataSet>
-					<Id>1524226398527</Id>
-					<Name><![CDATA[ds_gantt_l6]]></Name>
-					<X>970</X><Y>-30</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<AutoUpdate>false</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1524211200000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</RecurrenceCode>
-					<FreezeXAxis>true</FreezeXAxis>
-					<SamplesToKeep>2000</SamplesToKeep>
 				</DataSet>
 			</AnalysisData>
 			<AgentLinks>
@@ -26647,6 +26605,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l1 = 1;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -26666,7 +26627,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[arranque[0] = 0;]]></Code>
+								<Code><![CDATA[arranque[0] = 0;
+activity_l1 = 0;]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -26876,6 +26838,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l1 = 3;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -26894,6 +26859,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l1 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -27102,6 +27070,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l1 = 4;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -27120,6 +27091,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l1 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -28251,6 +28225,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l1 = 2;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -28269,6 +28246,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l1 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -33911,6 +33891,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l2 = 1;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -33930,7 +33913,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[arranque[0] = 0;]]></Code>
+								<Code><![CDATA[arranque[0] = 0;
+activity_l2 = 1;]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -34140,6 +34124,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l2 = 2;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -34158,6 +34145,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l2 = 1;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -34366,6 +34356,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l2 = 3;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -34384,6 +34377,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l2 = 1;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -34592,6 +34588,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l2 = 4;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -34610,6 +34609,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l2 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -39980,7 +39982,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
     			<TimeColorChart>
 					<Id>1524165431022</Id>
 					<Name><![CDATA[chart4]]></Name>
-					<X>1420</X><Y>20</Y>
+					<X>1420</X><Y>60</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -39993,19 +39995,19 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 					</OccurrenceTime>
 					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[WEEK]]></Unit>
+						<Code><![CDATA[0.5]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Width>540</Width>
-					<Height>210</Height>
+					<Height>1140</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>50</XOffset>
 						<YOffset>30</YOffset>
 						<Width>460</Width>
-						<Height>120</Height>
+						<Height>1050</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -40028,423 +40030,43 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<DatasetExpression>
 					<Expression><![CDATA[ds_gantt_l1]]></Expression>
 					<Color>-12004916</Color>
-					<Expression2><![CDATA[0]]></Expression2>
-					<Expression2Flag>false</Expression2Flag>  
+					<Expression2><![CDATA[activity_l1]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>  
 							<Title><![CDATA[Line 1]]></Title>
 					</DatasetExpression>
-					<DefaultColor/>
-					<Bars>
-						<Direction>RIGHT</Direction>
-						<RelativeWidth>0.6</RelativeWidth>
-					</Bars>
-					<SamplesToKeep>1000</SamplesToKeep>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color/>
-						<Expression><![CDATA[0]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-65536</Color>
-						<Expression><![CDATA[1]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-13447886</Color>
-						<Expression><![CDATA[2]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-16776961</Color>
-						<Expression><![CDATA[3]]></Expression>
-					</ColorConditionExpression>
-					<LabelFormat>dd_MMM</LabelFormat>
-    			</TimeColorChart>
-    			<TimeColorChart>
-					<Id>1524226295255</Id>
-					<Name><![CDATA[chart5]]></Name>
-					<X>1420</X><Y>200</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<AutoUpdate>true</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1524211200000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[WEEK]]></Unit>
-					</RecurrenceCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>540</Width>
-					<Height>210</Height>
-					<BackgroundColor/>
-					<BorderColor/>
-					<ChartArea>
-						<XOffset>50</XOffset>
-						<YOffset>30</YOffset>
-						<Width>460</Width>
-						<Height>120</Height>
-						<BackgroundColor>-1</BackgroundColor>
-						<BorderColor>-16777216</BorderColor>
-						<GridColor>-12566464</GridColor>
-					</ChartArea>
-					<Legend>
-						<Place>SOUTH</Place>
-						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
-					</Legend>
-					<Labels>
-						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
-						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
-						<TextColor>-12566464</TextColor>
-					</Labels>
-					<Persistent>true</Persistent>
-					<ShowLegend>true</ShowLegend>
-					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
-					<TimeWindowUnits>MONTH</TimeWindowUnits>
-					<TimeWindowExpression><![CDATA[1]]></TimeWindowExpression>
 					<DatasetExpression>
-					<Expression><![CDATA[ds_gantt_l2]]></Expression>
-					<Color>-12004916</Color>
-					<Expression2><![CDATA[0]]></Expression2>
-					<Expression2Flag>false</Expression2Flag>  
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-8097537</Color>
+					<Expression2><![CDATA[activity_l2]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>  
 							<Title><![CDATA[Line 2]]></Title>
 					</DatasetExpression>
-					<DefaultColor/>
-					<Bars>
-						<Direction>RIGHT</Direction>
-						<RelativeWidth>0.6</RelativeWidth>
-					</Bars>
-					<SamplesToKeep>1000</SamplesToKeep>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color/>
-						<Expression><![CDATA[0]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-65536</Color>
-						<Expression><![CDATA[1]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-13447886</Color>
-						<Expression><![CDATA[2]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-16776961</Color>
-						<Expression><![CDATA[3]]></Expression>
-					</ColorConditionExpression>
-					<LabelFormat>dd_MM</LabelFormat>
-    			</TimeColorChart>
-    			<TimeColorChart>
-					<Id>1524226307882</Id>
-					<Name><![CDATA[chart6]]></Name>
-					<X>1420</X><Y>380</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<AutoUpdate>true</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1524211200000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[WEEK]]></Unit>
-					</RecurrenceCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>540</Width>
-					<Height>210</Height>
-					<BackgroundColor/>
-					<BorderColor/>
-					<ChartArea>
-						<XOffset>50</XOffset>
-						<YOffset>30</YOffset>
-						<Width>460</Width>
-						<Height>120</Height>
-						<BackgroundColor>-1</BackgroundColor>
-						<BorderColor>-16777216</BorderColor>
-						<GridColor>-12566464</GridColor>
-					</ChartArea>
-					<Legend>
-						<Place>SOUTH</Place>
-						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
-					</Legend>
-					<Labels>
-						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
-						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
-						<TextColor>-12566464</TextColor>
-					</Labels>
-					<Persistent>true</Persistent>
-					<ShowLegend>true</ShowLegend>
-					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
-					<TimeWindowUnits>MONTH</TimeWindowUnits>
-					<TimeWindowExpression><![CDATA[1]]></TimeWindowExpression>
 					<DatasetExpression>
-					<Expression><![CDATA[ds_gantt_l3]]></Expression>
-					<Color>-12004916</Color>
-					<Expression2><![CDATA[0]]></Expression2>
-					<Expression2Flag>false</Expression2Flag>  
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-60269</Color>
+					<Expression2><![CDATA[activity_l3]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>  
 							<Title><![CDATA[Line 3]]></Title>
 					</DatasetExpression>
-					<DefaultColor/>
-					<Bars>
-						<Direction>RIGHT</Direction>
-						<RelativeWidth>0.6</RelativeWidth>
-					</Bars>
-					<SamplesToKeep>1000</SamplesToKeep>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color/>
-						<Expression><![CDATA[0]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-65536</Color>
-						<Expression><![CDATA[1]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-13447886</Color>
-						<Expression><![CDATA[2]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-16776961</Color>
-						<Expression><![CDATA[3]]></Expression>
-					</ColorConditionExpression>
-					<LabelFormat>dd_MM</LabelFormat>
-    			</TimeColorChart>
-    			<TimeColorChart>
-					<Id>1524226319402</Id>
-					<Name><![CDATA[chart7]]></Name>
-					<X>1420</X><Y>560</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<AutoUpdate>true</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1524211200000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[WEEK]]></Unit>
-					</RecurrenceCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>540</Width>
-					<Height>210</Height>
-					<BackgroundColor/>
-					<BorderColor/>
-					<ChartArea>
-						<XOffset>50</XOffset>
-						<YOffset>30</YOffset>
-						<Width>460</Width>
-						<Height>120</Height>
-						<BackgroundColor>-1</BackgroundColor>
-						<BorderColor>-16777216</BorderColor>
-						<GridColor>-12566464</GridColor>
-					</ChartArea>
-					<Legend>
-						<Place>SOUTH</Place>
-						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
-					</Legend>
-					<Labels>
-						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
-						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
-						<TextColor>-12566464</TextColor>
-					</Labels>
-					<Persistent>true</Persistent>
-					<ShowLegend>true</ShowLegend>
-					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
-					<TimeWindowUnits>MONTH</TimeWindowUnits>
-					<TimeWindowExpression><![CDATA[1]]></TimeWindowExpression>
 					<DatasetExpression>
-					<Expression><![CDATA[ds_gantt_l4]]></Expression>
-					<Color>-12004916</Color>
-					<Expression2><![CDATA[0]]></Expression2>
-					<Expression2Flag>false</Expression2Flag>  
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-29696</Color>
+					<Expression2><![CDATA[activity_l4]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>  
 							<Title><![CDATA[Line 4]]></Title>
 					</DatasetExpression>
-					<DefaultColor/>
-					<Bars>
-						<Direction>RIGHT</Direction>
-						<RelativeWidth>0.6</RelativeWidth>
-					</Bars>
-					<SamplesToKeep>1000</SamplesToKeep>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color/>
-						<Expression><![CDATA[0]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-65536</Color>
-						<Expression><![CDATA[1]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-13447886</Color>
-						<Expression><![CDATA[2]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-16776961</Color>
-						<Expression><![CDATA[3]]></Expression>
-					</ColorConditionExpression>
-					<LabelFormat>dd_MM</LabelFormat>
-    			</TimeColorChart>
-    			<TimeColorChart>
-					<Id>1524226347101</Id>
-					<Name><![CDATA[chart8]]></Name>
-					<X>1420</X><Y>740</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<AutoUpdate>true</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1524211200000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[WEEK]]></Unit>
-					</RecurrenceCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>540</Width>
-					<Height>210</Height>
-					<BackgroundColor/>
-					<BorderColor/>
-					<ChartArea>
-						<XOffset>50</XOffset>
-						<YOffset>30</YOffset>
-						<Width>460</Width>
-						<Height>120</Height>
-						<BackgroundColor>-1</BackgroundColor>
-						<BorderColor>-16777216</BorderColor>
-						<GridColor>-12566464</GridColor>
-					</ChartArea>
-					<Legend>
-						<Place>SOUTH</Place>
-						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
-					</Legend>
-					<Labels>
-						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
-						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
-						<TextColor>-12566464</TextColor>
-					</Labels>
-					<Persistent>true</Persistent>
-					<ShowLegend>true</ShowLegend>
-					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
-					<TimeWindowUnits>MONTH</TimeWindowUnits>
-					<TimeWindowExpression><![CDATA[1]]></TimeWindowExpression>
 					<DatasetExpression>
-					<Expression><![CDATA[ds_gantt_l5]]></Expression>
-					<Color>-12004916</Color>
-					<Expression2><![CDATA[0]]></Expression2>
-					<Expression2Flag>false</Expression2Flag>  
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-12799119</Color>
+					<Expression2><![CDATA[activity_l5]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>  
 							<Title><![CDATA[Line 5]]></Title>
 					</DatasetExpression>
-					<DefaultColor/>
-					<Bars>
-						<Direction>RIGHT</Direction>
-						<RelativeWidth>0.6</RelativeWidth>
-					</Bars>
-					<SamplesToKeep>1000</SamplesToKeep>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color/>
-						<Expression><![CDATA[0]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-65536</Color>
-						<Expression><![CDATA[1]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-13447886</Color>
-						<Expression><![CDATA[2]]></Expression>
-					</ColorConditionExpression>
-					<ColorConditionExpression>
-						<CompareType>EQUALS</CompareType>
-						<Color>-16776961</Color>
-						<Expression><![CDATA[3]]></Expression>
-					</ColorConditionExpression>
-					<LabelFormat>dd_MM</LabelFormat>
-    			</TimeColorChart>
-    			<TimeColorChart>
-					<Id>1524226353038</Id>
-					<Name><![CDATA[chart9]]></Name>
-					<X>1420</X><Y>920</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<AutoUpdate>true</AutoUpdate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1524211200000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[WEEK]]></Unit>
-					</RecurrenceCode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>540</Width>
-					<Height>210</Height>
-					<BackgroundColor/>
-					<BorderColor/>
-					<ChartArea>
-						<XOffset>50</XOffset>
-						<YOffset>30</YOffset>
-						<Width>460</Width>
-						<Height>120</Height>
-						<BackgroundColor>-1</BackgroundColor>
-						<BorderColor>-16777216</BorderColor>
-						<GridColor>-12566464</GridColor>
-					</ChartArea>
-					<Legend>
-						<Place>SOUTH</Place>
-						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
-					</Legend>
-					<Labels>
-						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
-						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
-						<TextColor>-12566464</TextColor>
-					</Labels>
-					<Persistent>true</Persistent>
-					<ShowLegend>true</ShowLegend>
-					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
-					<TimeWindowUnits>MONTH</TimeWindowUnits>
-					<TimeWindowExpression><![CDATA[1]]></TimeWindowExpression>
 					<DatasetExpression>
-					<Expression><![CDATA[ds_gantt_l6]]></Expression>
-					<Color>-12004916</Color>
-					<Expression2><![CDATA[0]]></Expression2>
-					<Expression2Flag>false</Expression2Flag>  
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-9807155</Color>
+					<Expression2><![CDATA[activity_l6]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>  
 							<Title><![CDATA[Line 6]]></Title>
 					</DatasetExpression>
 					<DefaultColor/>
@@ -40452,7 +40074,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Direction>RIGHT</Direction>
 						<RelativeWidth>0.6</RelativeWidth>
 					</Bars>
-					<SamplesToKeep>1000</SamplesToKeep>
+					<SamplesToKeep>10000</SamplesToKeep>
 					<ColorConditionExpression>
 						<CompareType>EQUALS</CompareType>
 						<Color/>
@@ -40465,15 +40087,20 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					</ColorConditionExpression>
 					<ColorConditionExpression>
 						<CompareType>EQUALS</CompareType>
-						<Color>-13447886</Color>
+						<Color>-3308225</Color>
 						<Expression><![CDATA[2]]></Expression>
 					</ColorConditionExpression>
 					<ColorConditionExpression>
 						<CompareType>EQUALS</CompareType>
-						<Color>-16776961</Color>
+						<Color>-10496</Color>
 						<Expression><![CDATA[3]]></Expression>
 					</ColorConditionExpression>
-					<LabelFormat>dd_MM</LabelFormat>
+					<ColorConditionExpression>
+						<CompareType>EQUALS</CompareType>
+						<Color>-14774017</Color>
+						<Expression><![CDATA[4]]></Expression>
+					</ColorConditionExpression>
+					<LabelFormat>dd_MMM</LabelFormat>
     			</TimeColorChart>
     			<Histogram>
 					<Id>1524646875235</Id>
