@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291329" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291251" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMCP_Manufacturing]]></Name>
@@ -3288,7 +3288,7 @@ if( month < 12 ){
 	//traceln("Month "+month);
 	for(SKU s : sku)
 		tempSKU.add(s);
-		sort_sku(tempSKU,month);
+	sort_sku(tempSKU,month);
 
 	for( int i=0; i<sku.size(); i++ ){
 		create_SendToProductionLine( i+1 );	
@@ -3813,8 +3813,8 @@ class SKUSizeComparator implements Comparator<SKU> {
     }
 }
 
-Collections.sort(sorted_sku,new SKUPackSizeComparator());
-Collections.sort(sorted_sku,new SKUSizeComparator());
+Collections.sort(sku_list,new SKUPackSizeComparator());
+Collections.sort(sku_list,new SKUSizeComparator());
 ]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -3849,7 +3849,7 @@ Los ordenamos dejando la fila ordenada según este concepto para cada mes, en un
     }
 }
 
-Collections.sort(sorted_sku,new SKUDemandComparator());
+Collections.sort(sku_list,new SKUDemandComparator());
 ]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -4200,7 +4200,6 @@ for (double sku : pc_prodatt_col.keySet()){
 					<ReturnType><![CDATA[int]]></ReturnType>
 					<Id>1524490183955</Id>
 					<Name><![CDATA[lead_time]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-630</X><Y>-580</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -4214,7 +4213,7 @@ for (double sku : pc_prodatt_col.keySet()){
 						<Name><![CDATA[destination]]></Name>
 						<Type><![CDATA[String]]></Type>
 					</Parameter>
-					<Body><![CDATA[SelectQuery lead_time = selectFrom( lead_time ).
+					<Body><![CDATA[SelectQuery lead_time = selectFrom( lead_times ).
       where( lead_times.name.eq( origin ) );
       
 switch (destination) {
