@@ -5486,6 +5486,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[productionLineCol.in_products.take( plantCol.remove( agent ) );]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -5596,6 +5599,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[productionLineEcu.in_products.take( plantEcu.remove( agent ) );]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -5867,6 +5873,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[productionLineBra.in_products.take( plantBra.remove( agent ) );]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -6059,6 +6068,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[productionLineArg.in_products.take( plantArg.remove( agent ) );]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -6251,6 +6263,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[productionLineMex.in_products.take( plantMex.remove( agent ) );]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -6443,6 +6458,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[productionLinePeru.in_products.take( plantPeru.remove( agent ) );]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -6635,6 +6653,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[productionLineUru.in_products.take( plantUru.remove( agent ) );]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -7565,7 +7586,7 @@ switch (country) {
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[productionLineChile.in_productsChile.take( plantChile.remove( agent ) );]]></Code>
+								<Code><![CDATA[productionLineChile.in_products.take( plantChile.remove( agent ) );]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -16477,7 +16498,7 @@ del Producto]]></Text>
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
 						<ClassName><![CDATA[ProductionLine]]></ClassName>
-						<ItemName><![CDATA[in_productsChile]]></ItemName>
+						<ItemName><![CDATA[in_products]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -21759,7 +21780,7 @@ add_acc(backorder_collection,time,agent.real_demand);]]></Code>
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1522333146266</Id>
-					<Name><![CDATA[in_productsChile]]></Name>
+					<Name><![CDATA[in_products]]></Name>
 					<X>40</X><Y>400</Y>
 					<Label><X>-19</X><Y>-21</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -28025,7 +28046,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Parameter>
 							<Name><![CDATA[terminatedTasksEnter]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[in_productsChile]]></Code>
+								<Code><![CDATA[in_products]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -35311,7 +35332,7 @@ activity_l1 = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[terminatedTasksEnter]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[in_productsChile]]></Code>
+								<Code><![CDATA[in_products]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -36235,7 +36256,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[terminatedTasksEnter]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[in_productsChile]]></Code>
+								<Code><![CDATA[in_products]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -37137,7 +37158,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[terminatedTasksEnter]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[in_productsChile]]></Code>
+								<Code><![CDATA[in_products]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -38039,7 +38060,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[terminatedTasksEnter]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[in_productsChile]]></Code>
+								<Code><![CDATA[in_products]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -38941,7 +38962,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[terminatedTasksEnter]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[in_productsChile]]></Code>
+								<Code><![CDATA[in_products]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
