@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291329" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291251" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMCP_Manufacturing]]></Name>
@@ -1171,11 +1171,11 @@ pre_calc();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
+						<Type><![CDATA[int]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA["empty "]]></Code>
+							<Code><![CDATA[3]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1522161149070</Id>
@@ -2461,7 +2461,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1523191662237</Id>
 					<Name><![CDATA[daysForwardCoverage]]></Name>
-					<X>-280</X><Y>390</Y>
+					<X>-310</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3243,7 +3243,7 @@ pre_calc();]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[100]]></Code>
+							<Code><![CDATA[2]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524817579417</Id>
@@ -3268,7 +3268,7 @@ pre_calc();]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[100]]></Code>
+							<Code><![CDATA[1]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524817636168</Id>
@@ -4295,8 +4295,7 @@ Dentro del agente: productionLine, para cada línea. ]]></Description>
 						<Name><![CDATA[country]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[// TODO independizar de Chile
-for (int line = 0 ; line < 6 ; line++){
+					<Body><![CDATA[for (int line = 0 ; line < 6 ; line++){
 	double capacity = get_lines_rate(country)[line];
 	capacity *= get_plant(country).efficiency;
 	capacity *= 60;
@@ -4531,7 +4530,8 @@ Para cada mes:
 		sorted_sku.add(s);
 	sort_sku(sorted_sku,m);
 	
-	int[] countries = {3,1,2,4,5,6,7,8};
+	//TODO unhardcode
+	int[] countries = {countryP,countryP2,countryP3,4,5,6,7,8};
 	for (int i = 0 ; i < 8 ; i++)
 		load_production_line(m,countries[i]);
 	pc_dataset_refresh();
@@ -43553,7 +43553,7 @@ activity_l2 = 1;]]></Code>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
+							<Code><![CDATA[2]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -43568,7 +43568,7 @@ activity_l2 = 1;]]></Code>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
+							<Code><![CDATA[1]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -43583,7 +43583,7 @@ activity_l2 = 1;]]></Code>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
+							<Code><![CDATA[3]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -46912,7 +46912,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
 			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
-			<MaximumMemory>512</MaximumMemory>
+			<MaximumMemory>4096</MaximumMemory>
 			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
 			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
 			<SeedValue>1</SeedValue>
@@ -51881,7 +51881,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				EnableAntiAliasing="true"
 				EnableEnhancedModelElementsAnimation="true"
 				ToolbarCustomizableAtRuntime="true">
-				<Maximized>false</Maximized>
+				<Maximized>true</Maximized>
 				<CloseConfirmation>false</CloseConfirmation>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
 				<CpuRatio><![CDATA[ratio_1_2]]></CpuRatio>	        
