@@ -4168,12 +4168,12 @@ tempSKU.remove(s); // Delete SKU from temp list]]></Action>
 						<Name><![CDATA[rows]]></Name>
 						<Type><![CDATA[Tuple]]></Type>
 					</Parameter>
-					<Body><![CDATA[s.price = 			rows.get( db_sku.price );
-s.countryD = 		rows.get( db_sku.country_d );
+					<Body><![CDATA[s.price = 			rows.get( db_sku.pro_price );
+s.countryD_code = 	rows.get( db_sku.country_demand );
 s.sku_packsize = 	rows.get( db_sku.sku_packsize );
 s.sku_size = 		rows.get( db_sku.sku_size );
 s.sku_size_code =	size_str2int(s.sku_size);
-s.sku_model = 		rows.get( db_sku.sbk_model );
+s.sku_model = 		rows.get( db_sku.sku_model );
 s.sku_type = 		rows.get( db_sku.sku_type );
 s.line_type = 		rows.get( db_sku.line_type);
 s.cuenta = 			rows.get( db_sku.cuenta);
@@ -4443,10 +4443,7 @@ Guarda el mes calculado en la variable: monthestimated. modulo 12]]></Descriptio
 						<Name><![CDATA[month_num]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[// TODO lead time de planning
-//int days_of_lead_time = (int)s.leadTimeD_P[month_num-1];
-// TODO Lead time de logística por país
-int days_of_lead_time = lead_time(code2country(country),code2country(s.countryD_code));
+					<Body><![CDATA[int days_of_lead_time = lead_time(code2country(country),code2country(s.countryD_code));
 
 Calendar date_of_production = Calendar.getInstance();
 date_of_production.setTime(toDate(start_year, month_num-1, 1, 1, 1, 1));
@@ -4471,7 +4468,7 @@ return month_of_production;]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[for ( SKU s : sku ){
 	for ( int m = 1; m < 13; m++){
-		int estimated_month = estimate_month_of_production(s,2,m);
+		int estimated_month = estimate_month_of_production(s,3,m);
 		double estimated_demand = estimate_demand_amount(s,m);
 	
 		s.real_demand[estimated_month-1] += estimated_demand;
@@ -42736,6 +42733,33 @@ activity_l2 = 1;]]></Code>
 		<Logging>false</Logging>
 		<AutoExport>false</AutoExport>
 		<ImportSettings>
+			<ExternalConnection>
+				<Id>1525368507449</Id>
+				<Name><![CDATA[database]]></Name>
+				<X>0</X><Y>0</Y>
+				<Label><X>10</X><Y>0</Y></Label>
+				<PublicFlag>false</PublicFlag>
+				<PresentationFlag>true</PresentationFlag>
+				<ShowLabel>true</ShowLabel>
+				<DatabaseType>EXCEL_ACCESS</DatabaseType>
+				<ConnectionURL><![CDATA[]]></ConnectionURL>
+				<ConnectOnStartup>true</ConnectOnStartup>
+				<DatabaseName><![CDATA[]]></DatabaseName>
+				<DbFileName><![CDATA[C:/Users/Ite02/Documents/Gaston/CMPC-manufacturing/InputCMPC.xlsx]]></DbFileName>
+				<Host><![CDATA[localhost]]></Host>
+				<JdbcDriverClassName><![CDATA[net.sourceforge.jtds.jdbc.Driver]]></JdbcDriverClassName>
+				<Login><![CDATA[]]></Login>
+				<Password><![CDATA[]]></Password>
+			</ExternalConnection>
+			<TableImportSettings>
+				<TableReference>
+					<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+					<ClassName><![CDATA[db_sku]]></ClassName>
+				</TableReference>
+				<ConnectionIndex>0</ConnectionIndex>
+				<ExternalTableName><![CDATA["SKU"]]></ExternalTableName>
+				<AutoImport>true</AutoImport>
+			</TableImportSettings>
 		</ImportSettings>
 		<ExportSettings>
 			<ExportExcelFilePath><![CDATA[]]></ExportExcelFilePath>
@@ -47340,7 +47364,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Rotation>0.0</Rotation>
 					<Color>-12042869</Color>
 					<Text><![CDATA[?]]></Text>
-					<TextCode><![CDATA[String.valueOf( countryP )]]></TextCode>
+					<TextCode><![CDATA[format( countryP )]]></TextCode>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>12</Size>
@@ -51258,6 +51282,98 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					</Font>
 					<Alignment>RIGHT</Alignment>
 				</Text>
+				<Text>
+					<Id>0</Id>
+					<Name><![CDATA[text184]]></Name>
+					<X>50</X><Y>1990</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[countryP2]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>0</Id>
+					<Name><![CDATA[text185]]></Name>
+					<X>270</X><Y>1990</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<VisibleCode><![CDATA[getCurrentIteration() > 0]]></VisibleCode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12042869</Color>
+					<Text><![CDATA[?]]></Text>
+					<TextCode><![CDATA[format( countryP2 )]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>RIGHT</Alignment>
+				</Text>
+				<Text>
+					<Id>0</Id>
+					<Name><![CDATA[text186]]></Name>
+					<X>50</X><Y>2010</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[countryP3]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>0</Id>
+					<Name><![CDATA[text187]]></Name>
+					<X>270</X><Y>2010</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<VisibleCode><![CDATA[getCurrentIteration() > 0]]></VisibleCode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12042869</Color>
+					<Text><![CDATA[?]]></Text>
+					<TextCode><![CDATA[format( countryP3 )]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>RIGHT</Alignment>
+				</Text>
 			</Shapes>
 			<Controls>
 				<Control Type="Button">
@@ -51582,7 +51698,16 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
 				<Id>1522161149072</Id>
-				<Type>FIXED</Type>
+				<Type>RANGE</Type>
+				<From Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</From>
+				<To Class="CodeValue">
+					<Code><![CDATA[8]]></Code>
+				</To>
+				<Step Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Step>
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
 				<Id>1522161149077</Id>
@@ -51928,10 +52053,10 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				<Id>1524817579419</Id>
 				<Type>RANGE</Type>
 				<From Class="CodeValue">
-					<Code><![CDATA[0]]></Code>
+					<Code><![CDATA[1]]></Code>
 				</From>
 				<To Class="CodeValue">
-					<Code><![CDATA[7]]></Code>
+					<Code><![CDATA[8]]></Code>
 				</To>
 				<Step Class="CodeValue">
 					<Code><![CDATA[1]]></Code>
@@ -51941,10 +52066,10 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				<Id>1524817636170</Id>
 				<Type>RANGE</Type>
 				<From Class="CodeValue">
-					<Code><![CDATA[0]]></Code>
+					<Code><![CDATA[1]]></Code>
 				</From>
 				<To Class="CodeValue">
-					<Code><![CDATA[7]]></Code>
+					<Code><![CDATA[8]]></Code>
 				</To>
 				<Step Class="CodeValue">
 					<Code><![CDATA[1]]></Code>
