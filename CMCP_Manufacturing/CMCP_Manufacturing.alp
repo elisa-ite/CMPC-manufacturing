@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291329" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291251" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMCP_Manufacturing]]></Name>
@@ -7380,6 +7380,42 @@ switch (country) {
 						<Parameter>
 							<Name><![CDATA[arranque]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obra_CO_hora]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mantenimiento_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[gastos_generales_mes]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[costosCO_CO]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[merma]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[energy]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[servicios]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[vestimenta]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -7991,6 +8027,42 @@ switch (country) {
 						<Parameter>
 							<Name><![CDATA[arranque]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obra_CO_hora]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mantenimiento_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[gastos_generales_mes]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[costosCO_CO]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[merma]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[energy]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[servicios]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[vestimenta]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -8332,6 +8404,42 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[arranque]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obra_CO_hora]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mantenimiento_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[gastos_generales_mes]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[costosCO_CO]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[merma]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[energy]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[servicios]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[vestimenta]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -8675,6 +8783,42 @@ switch (country) {
 						<Parameter>
 							<Name><![CDATA[arranque]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obra_CO_hora]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mantenimiento_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[gastos_generales_mes]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[costosCO_CO]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[merma]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[energy]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[servicios]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[vestimenta]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -9016,6 +9160,42 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[arranque]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obra_CO_hora]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mantenimiento_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[gastos_generales_mes]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[costosCO_CO]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[merma]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[energy]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[servicios]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[vestimenta]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -9359,6 +9539,42 @@ switch (country) {
 						<Parameter>
 							<Name><![CDATA[arranque]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obra_CO_hora]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mantenimiento_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[gastos_generales_mes]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[costosCO_CO]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[merma]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[energy]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[servicios]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[vestimenta]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -9700,6 +9916,42 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[arranque]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obra_CO_hora]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mantenimiento_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[gastos_generales_mes]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[costosCO_CO]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[merma]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[energy]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[servicios]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[vestimenta]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -10043,6 +10295,42 @@ switch (country) {
 						<Parameter>
 							<Name><![CDATA[arranque]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obra_CO_hora]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mantenimiento_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[gastos_generales_mes]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[costosCO_CO]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[merma]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[energy]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[servicios]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[vestimenta]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -10384,6 +10672,42 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[arranque]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraD_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_cant_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obraI_costo_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mano_obra_CO_hora]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[mantenimiento_turno]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[gastos_generales_mes]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[costosCO_CO]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[merma]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[energy]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[servicios]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[vestimenta]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -15885,6 +16209,294 @@ del Producto]]></Text>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524062958183</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1524731533629</Id>
+					<Name><![CDATA[mano_obraD_cant_turno]]></Name>
+					<X>-500</X><Y>900</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[6]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1524731533627</Id>
+							<Label><![CDATA[line_capacities]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1524731539510</Id>
+					<Name><![CDATA[mano_obraD_costo_turno]]></Name>
+					<X>-500</X><Y>930</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[6]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1524731539508</Id>
+							<Label><![CDATA[line_capacities]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1524731545341</Id>
+					<Name><![CDATA[mano_obraI_cant_turno]]></Name>
+					<X>-500</X><Y>960</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[6]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1524731545339</Id>
+							<Label><![CDATA[line_capacities]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1524731552413</Id>
+					<Name><![CDATA[mano_obraI_costo_turno]]></Name>
+					<X>-500</X><Y>990</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[6]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1524731552411</Id>
+							<Label><![CDATA[line_capacities]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1524731567320</Id>
+					<Name><![CDATA[mano_obra_CO_hora]]></Name>
+					<X>-500</X><Y>1020</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[6]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1524731567318</Id>
+							<Label><![CDATA[line_capacities]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1524731572555</Id>
+					<Name><![CDATA[mantenimiento_turno]]></Name>
+					<X>-500</X><Y>1050</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[6]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1524731572553</Id>
+							<Label><![CDATA[line_capacities]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1524731579388</Id>
+					<Name><![CDATA[gastos_generales_mes]]></Name>
+					<X>-500</X><Y>1090</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[6]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1524731579386</Id>
+							<Label><![CDATA[line_capacities]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1524731585484</Id>
+					<Name><![CDATA[costosCO_CO]]></Name>
+					<X>-500</X><Y>1130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[6]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1524731585482</Id>
+							<Label><![CDATA[line_capacities]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1524731592483</Id>
+					<Name><![CDATA[merma]]></Name>
+					<X>-500</X><Y>1160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[6]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1524731592481</Id>
+							<Label><![CDATA[line_capacities]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1524747962039</Id>
+					<Name><![CDATA[energy]]></Name>
+					<X>-380</X><Y>1110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1524747962037</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1524747962057</Id>
+					<Name><![CDATA[servicios]]></Name>
+					<X>-380</X><Y>1130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1524747962055</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1524747962072</Id>
+					<Name><![CDATA[vestimenta]]></Name>
+					<X>-380</X><Y>1150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1524747962070</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -39281,111 +39893,6 @@ activity_l2 = 1;]]></Code>
 					<QuantityColumn>
 					</QuantityColumn>
 				</EmbeddedObject>
-				<EmbeddedObject>
-					<Id>1525327833226</Id>
-					<Name><![CDATA[linea]]></Name>
-					<X>-160</X><Y>920</Y>
-					<Label><X>-20</X><Y>-25</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<PresentationId>1525327840591</PresentationId>
-					<ActiveObjectClass>
-						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-						<ClassName><![CDATA[Linea]]></ClassName>
-					</ActiveObjectClass>
-					<GenericParameterSubstitute>
-						<GenericParameterSubstituteReference>
-							<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-							<ClassName><![CDATA[Linea]]></ClassName>
-							<ItemName><![CDATA[1525276935005]]></ItemName>
-						</GenericParameterSubstituteReference>
-					</GenericParameterSubstitute>
-					<Parameters>
-						<Parameter>
-							<Name><![CDATA[mano_obraD_cant_turno]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mano_obraD_costo_turno]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mano_obraI_cant_turno]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mano_obraI_costo_turno]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mano_obra_CO_hora]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mantenimiento_turno]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[gastos_generales_mes]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[costosCO_CO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[merma]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[energy]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[servicios]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[vestimenta]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[codigo_linea]]></Name>
-						</Parameter>
-					</Parameters>
-					<ReplicationFlag>true</ReplicationFlag>
-					<Replication Class="CodeValue">
-						<Code><![CDATA[10]]></Code>
-					</Replication>
-					<CollectionType>ARRAY_LIST_BASED</CollectionType>
-					<InEnvironment>true</InEnvironment>	
-					<InitialSpeedCode Class="CodeUnitValue">
-						<Code><![CDATA[10]]></Code>
-						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
-					</InitialSpeedCode>
-					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
-					<XCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</XCode>
-					<YCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</YCode>
-					<ZCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</ZCode>
-					<ColumnCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</ColumnCode>
-					<RowCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</RowCode>
-					<LatitudeCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</LatitudeCode>
-					<LongitudeCode Class="CodeValue">
-						<Code><![CDATA[0]]></Code>
-					</LongitudeCode>
-					<LocationNameCode Class="CodeValue">
-						<Code><![CDATA[""]]></Code>
-					</LocationNameCode>
-					<InitializationType>SPECIFIED_NUMBER</InitializationType>
-					<InitializationDatabaseTableQuery>
-						<TableReference>
-						</TableReference>
-					</InitializationDatabaseTableQuery>
-					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
-					<QuantityColumn>
-					</QuantityColumn>
-				</EmbeddedObject>
 			</EmbeddedObjects>
 
 			<Shapes>
@@ -40512,26 +41019,52 @@ activity_l2 = 1;]]></Code>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-				<EmbeddedObjectPresentation>
-					<Id>1525327840591</Id>
-					<Name><![CDATA[linea_presentation]]></Name>
-					<X>0</X><Y>0</Y>
-					<Label><X>10</X><Y>0</Y></Label>
+				<RoundedRectangle>
+					<Id>1524730436067</Id>
+					<Name><![CDATA[roundRectangle5]]></Name>
+					<X>-550</X><Y>850</Y>
+					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>300</Width>
+					<Height>340</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<ArcRadius>10</ArcRadius>
+				</RoundedRectangle>
+				<Text>
+					<Id>1524730475503</Id>
+					<Name><![CDATA[text18]]></Name>
+					<X>-540</X><Y>860</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<AsObject>true</AsObject>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
-					<DrawingMode>AGENT_CURRENT_POSITION</DrawingMode>
-					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
-					<GISScaleForRealEmbeddedObjectPresentationSize>1000</GISScaleForRealEmbeddedObjectPresentationSize>
-					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
-					<Latitude>0.0</Latitude>
-					<Longitude>0.0</Longitude>
-				</EmbeddedObjectPresentation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Costos de Produccion por Linea]]></Text>
+					<Font>
+						<Name>Helvetica</Name>
+						<Size>20</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Shapes>
 			<Charts>
     			<TimeStackChart>
@@ -42185,477 +42718,6 @@ activity_l2 = 1;]]></Code>
 				</ContainerLink>
 			</ContainerLinks>
 
-
-		</ActiveObjectClass>
-		<!--   =========   Active Object Class   ========  -->
-		<ActiveObjectClass>
-			<Id>1525276935006</Id>
-			<Name><![CDATA[Linea]]></Name>
-			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
-			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
-			<IconTopGroupPersistent>true</IconTopGroupPersistent>
-			<Generic>false</Generic>
-			<GenericParameter>
-				<Id>1525276935005</Id>
-				<Name><![CDATA[1525276935005]]></Name>
-				<GenericParameterValue Class="CodeValue">
-					<Code><![CDATA[T extends Agent]]></Code>
-				</GenericParameterValue>
-				<GenericParameterLabel><![CDATA[Generic parameter:]]></GenericParameterLabel>
-			</GenericParameter>
-			<FlowChartsUsage>ENTITY</FlowChartsUsage>
-			<SamplesToKeep>100</SamplesToKeep>
-			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
-			<ElementsLimitValue>100</ElementsLimitValue>
-			<MakeDefaultViewArea>true</MakeDefaultViewArea>
-			<SceneGridColor/>
-			<SceneBackgroundColor/>
-			<AgentProperties>
-	 			<SpaceType>CONTINUOUS</SpaceType>			
-				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
-				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
-				<RotateAnimationVertically>false</RotateAnimationVertically>
-				<VelocityCode Class="CodeUnitValue">
-					<Code><![CDATA[10]]></Code>
-					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
-				</VelocityCode>
-			</AgentProperties>
-			<EnvironmentProperties>
-					<EnableSteps>false</EnableSteps>
-					<StepDurationCode Class="CodeUnitValue">
-						<Code><![CDATA[1.0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
-					</StepDurationCode>
-					<SpaceType>CONTINUOUS</SpaceType>
-					<WidthCode><![CDATA[500]]></WidthCode>
-					<HeightCode><![CDATA[500]]></HeightCode>
-					<ZHeightCode><![CDATA[0]]></ZHeightCode>
-					<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
-					<RowsCountCode><![CDATA[100]]></RowsCountCode>
-					<NeigborhoodType>MOORE</NeigborhoodType>
-					<LayoutType>USER_DEF</LayoutType>
-					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
-					<NetworkType>USER_DEF</NetworkType>
-					<NetworkTypeApplyOnStartup>true</NetworkTypeApplyOnStartup>
-					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
-					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
-					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
-					<MCode><![CDATA[10]]></MCode>
-			</EnvironmentProperties>
-			<DatasetsCreationProperties>
-				<AutoCreate>true</AutoCreate>
-					<OccurrenceAtTime>true</OccurrenceAtTime>
-					<OccurrenceDate>1525334400000</OccurrenceDate>
-					<OccurrenceTime Class="CodeUnitValue">
-						<Code><![CDATA[0]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</OccurrenceTime>
-					<RecurrenceCode Class="CodeUnitValue">
-						<Code><![CDATA[1]]></Code>
-						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-					</RecurrenceCode>
-			</DatasetsCreationProperties>
-			<ScaleRuler>
-				<Id>1525276935003</Id>
-				<Name><![CDATA[scale]]></Name>
-				<X>0</X><Y>-150</Y>
-				<PublicFlag>false</PublicFlag>
-				<PresentationFlag>false</PresentationFlag>
-				<ShowLabel>false</ShowLabel>
-				<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-				<Length>100</Length>
-				<Rotation>0</Rotation>
-				<ScaleType>BASED_ON_LENGTH</ScaleType>
-				<ModelLength>10</ModelLength>
-				<LengthUnits>METER</LengthUnits>
-				<Scale>10</Scale>
-				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
-			</ScaleRuler>
-			<ConnectionsId>1525276935002</ConnectionsId>
-			<Variables>
-				<Variable Class="Parameter">
-					<Id>1525277002236</Id>
-					<Name><![CDATA[mano_obraD_cant_turno]]></Name>
-					<X>80</X><Y>170</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1525277002234</Id>
-							<Label><![CDATA[line_capacities]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1525277002249</Id>
-					<Name><![CDATA[mano_obraD_costo_turno]]></Name>
-					<X>80</X><Y>200</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1525277002247</Id>
-							<Label><![CDATA[line_capacities]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1525277002284</Id>
-					<Name><![CDATA[mano_obraI_cant_turno]]></Name>
-					<X>80</X><Y>230</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1525277002282</Id>
-							<Label><![CDATA[line_capacities]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1525277002303</Id>
-					<Name><![CDATA[mano_obraI_costo_turno]]></Name>
-					<X>80</X><Y>260</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1525277002301</Id>
-							<Label><![CDATA[line_capacities]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1525277002325</Id>
-					<Name><![CDATA[mano_obra_CO_hora]]></Name>
-					<X>80</X><Y>290</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1525277002323</Id>
-							<Label><![CDATA[line_capacities]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1525277002345</Id>
-					<Name><![CDATA[mantenimiento_turno]]></Name>
-					<X>80</X><Y>320</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1525277002343</Id>
-							<Label><![CDATA[line_capacities]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1525277002363</Id>
-					<Name><![CDATA[gastos_generales_mes]]></Name>
-					<X>80</X><Y>360</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1525277002361</Id>
-							<Label><![CDATA[line_capacities]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1525277002383</Id>
-					<Name><![CDATA[costosCO_CO]]></Name>
-					<X>80</X><Y>400</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1525277002381</Id>
-							<Label><![CDATA[line_capacities]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1525277002401</Id>
-					<Name><![CDATA[merma]]></Name>
-					<X>80</X><Y>430</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1525277002399</Id>
-							<Label><![CDATA[line_capacities]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1525277002418</Id>
-					<Name><![CDATA[energy]]></Name>
-					<X>200</X><Y>380</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1525277002416</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1525277002436</Id>
-					<Name><![CDATA[servicios]]></Name>
-					<X>200</X><Y>400</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1525277002434</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1525277002451</Id>
-					<Name><![CDATA[vestimenta]]></Name>
-					<X>200</X><Y>420</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1525277002449</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1525327771205</Id>
-					<Name><![CDATA[codigo_linea]]></Name>
-					<X>240</X><Y>320</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1525327771203</Id>
-							<Label><![CDATA[line_capacities]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-			</Variables>
-			<AgentLinks>
-				<AgentLink>
-					<Id>1525276935002</Id>
-					<Name><![CDATA[connections]]></Name>
-					<X>50</X><Y>-50</Y>
-					<Label><X>15</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<HandleReceiveInConnections>false</HandleReceiveInConnections>
-					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
-					<AgentLinkBidirectional>true</AgentLinkBidirectional>
-					<MessageType><![CDATA[Object]]></MessageType>
-					<LineStyle>SOLID</LineStyle>
-					<LineWidth>1</LineWidth>
-					<LineColor>-16777216</LineColor>
-					<LineZOrder>UNDER_AGENTS</LineZOrder>
-					<LineArrow>NONE</LineArrow>
-					<LineArrowPosition>END</LineArrowPosition>
-				</AgentLink>
-			</AgentLinks>
-
-			<ContainerLinks>
-				<ContainerLink>
-					<Id>1525327840617</Id>
-					<Name><![CDATA[main]]></Name>
-					<X>50</X><Y>-100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<ActiveObjectClass>
-						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-					</ActiveObjectClass>
-				</ContainerLink>
-				<ContainerLink>
-					<Id>1525327840626</Id>
-					<Name><![CDATA[productionLine]]></Name>
-					<X>150</X><Y>-100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<ActiveObjectClass>
-						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-						<ClassName><![CDATA[ProductionLine]]></ClassName>
-					</ActiveObjectClass>
-				</ContainerLink>
-			</ContainerLinks>
-
-			<Shapes>
-				<RoundedRectangle>
-					<Id>1525277024652</Id>
-					<Name><![CDATA[roundRectangle5]]></Name>
-					<X>30</X><Y>110</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<ZHeight>10</ZHeight>
-					<LineWidth>1</LineWidth>
-					<LineColor>-16777216</LineColor>
-					<LineMaterial>null</LineMaterial>
-					<LineStyle>SOLID</LineStyle>
-					<Width>300</Width>
-					<Height>340</Height>
-					<Rotation>0.0</Rotation>
-					<FillColor>-1</FillColor>
-					<FillMaterial>null</FillMaterial>
-					<ArcRadius>10</ArcRadius>
-				</RoundedRectangle>
-				<Text>
-					<Id>1525277002227</Id>
-					<Name><![CDATA[text18]]></Name>
-					<X>40</X><Y>130</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[Costos de Produccion por Linea]]></Text>
-					<Font>
-						<Name>Helvetica</Name>
-						<Size>20</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-			</Shapes>
 
 		</ActiveObjectClass>
 	</ActiveObjectClasses>	
