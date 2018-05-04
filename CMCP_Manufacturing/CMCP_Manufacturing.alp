@@ -3377,39 +3377,6 @@ Should be used also on simulation, as tempSKU.]]></Description>
 			</Variables>
 			<Connectors>
 				<Connector>
-					<Id>1519240190511</Id>
-					<Name><![CDATA[connector3]]></Name>
-					<X>380</X><Y>320</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[selectOutputIn]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[SelectOutputIn]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[queue]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Queue]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-80</X><Y>0</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
 					<Id>1519240190515</Id>
 					<Name><![CDATA[connector4]]></Name>
 					<X>550</X><Y>269</Y>
@@ -3473,39 +3440,6 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					<Points>
 						<Point><X>450</X><Y>210</Y></Point>
 						<Point><X>530</X><Y>210</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
-					<Id>1519240290561</Id>
-					<Name><![CDATA[connector]]></Name>
-					<X>140</X><Y>320</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[in_products]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Enter]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-						<ClassName><![CDATA[Main]]></ClassName>
-						<ItemName><![CDATA[queue]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Queue]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>120</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
@@ -3704,6 +3638,39 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>80</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1525456537701</Id>
+					<Name><![CDATA[connector1]]></Name>
+					<X>140</X><Y>320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[in_products]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Enter]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[selectOutputIn]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[SelectOutputIn]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>240</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
@@ -5148,7 +5115,7 @@ switch (country) {
 				<EmbeddedObject>
 					<Id>1519240190338</Id>
 					<Name><![CDATA[queue]]></Name>
-					<X>260</X><Y>300</Y>
+					<X>250</X><Y>210</Y>
 					<Label><X>-5</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7416,6 +7383,9 @@ switch (country) {
 						<Parameter>
 							<Name><![CDATA[vestimenta]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_rate]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -8063,6 +8033,12 @@ switch (country) {
 						<Parameter>
 							<Name><![CDATA[vestimenta]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_rate]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[rate_lines_chile]]></Code>
+							</Value>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -8440,6 +8416,12 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[vestimenta]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_rate]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[rate_lines_arg]]></Code>
+							</Value>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -8819,6 +8801,12 @@ switch (country) {
 						<Parameter>
 							<Name><![CDATA[vestimenta]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_rate]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[rate_lines_bra]]></Code>
+							</Value>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -9196,6 +9184,12 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[vestimenta]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_rate]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[rate_lines_col]]></Code>
+							</Value>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -9575,6 +9569,12 @@ switch (country) {
 						<Parameter>
 							<Name><![CDATA[vestimenta]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_rate]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[rate_lines_peru]]></Code>
+							</Value>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -9952,6 +9952,12 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[vestimenta]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_rate]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[rate_lines_ecu]]></Code>
+							</Value>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -10331,6 +10337,12 @@ switch (country) {
 						<Parameter>
 							<Name><![CDATA[vestimenta]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_rate]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[rate_lines_mex]]></Code>
+							</Value>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -10708,6 +10720,12 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[vestimenta]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_rate]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[rate_lines_uru]]></Code>
+							</Value>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -16014,7 +16032,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1523537021456</Id>
 					<Name><![CDATA[line_capacities]]></Name>
-					<X>-430</X><Y>800</Y>
+					<X>-430</X><Y>820</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -16511,6 +16529,30 @@ del Producto]]></Text>
 						<SdArray>false</SdArray>
 						<ParameterEditor>
 							<Id>1524747962070</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525457028737</Id>
+					<Name><![CDATA[line_rate]]></Name>
+					<X>-430</X><Y>730</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[6]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525457028735</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -28620,7 +28662,7 @@ activity_l1 = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_production(agent, main.rate_lines_chile[0])]]></Code>
+								<Code><![CDATA[delay_production(agent, line_rate[0])]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
@@ -35554,7 +35596,7 @@ activity_l1 = 0;]]></Code>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[arranque[0] = 0;
-activity_l2 = 1;]]></Code>
+activity_l2 = 0;]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -35677,7 +35719,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_change_packsize(agent.packsize,agent.size,1)]]></Code>
+								<Code><![CDATA[delay_change_packsize(agent.packsize,agent.size,2)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -35909,7 +35951,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_change_size(agent.size,1)]]></Code>
+								<Code><![CDATA[delay_change_size(agent.size,2)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -36018,7 +36060,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[activity_l2 = 1;]]></Code>
+								<Code><![CDATA[activity_l2 = 0;]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -36138,7 +36180,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_production(agent, main.rate_lines_chile[1])]]></Code>
+								<Code><![CDATA[delay_production(agent, line_rate[1])]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
@@ -36455,6 +36497,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l3 = 1;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -36474,7 +36519,8 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[arranque[0] = 0;]]></Code>
+								<Code><![CDATA[arranque[0] = 0;
+activity_l3 = 0;]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -36597,7 +36643,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_change_packsize(agent.packsize,agent.size,1)]]></Code>
+								<Code><![CDATA[delay_change_packsize(agent.packsize,agent.size,3)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -36684,6 +36730,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l3 = 2;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -36702,6 +36751,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l3 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -36823,7 +36875,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_change_size(agent.size,1)]]></Code>
+								<Code><![CDATA[delay_change_size(agent.size,3)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -36910,6 +36962,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l3 = 3;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -36928,6 +36983,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l3 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -37046,7 +37104,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_production(agent, main.rate_lines_chile[2])]]></Code>
+								<Code><![CDATA[delay_production(agent, line_rate[2])]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
@@ -37136,6 +37194,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l3 = 4;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -37154,6 +37215,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l3 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -37357,6 +37421,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l4 = 1;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -37376,7 +37443,8 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[arranque[0] = 0;]]></Code>
+								<Code><![CDATA[arranque[0] = 0;
+activity_l4 = 0;]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -37499,7 +37567,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_change_packsize(agent.packsize,agent.size,1)]]></Code>
+								<Code><![CDATA[delay_change_packsize(agent.packsize,agent.size,4)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -37586,6 +37654,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l4 = 2;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -37604,6 +37675,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l4 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -37725,7 +37799,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_change_size(agent.size,1)]]></Code>
+								<Code><![CDATA[delay_change_size(agent.size,4)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -37812,6 +37886,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l4 = 3;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -37830,6 +37907,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l4 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -37948,7 +38028,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_production(agent, main.rate_lines_chile[3])]]></Code>
+								<Code><![CDATA[delay_production(agent, line_rate[3])]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
@@ -38038,6 +38118,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l4 = 4;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -38056,6 +38139,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l4 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -38259,6 +38345,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l5 = 1;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -38278,7 +38367,8 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[arranque[0] = 0;]]></Code>
+								<Code><![CDATA[arranque[0] = 0;
+activity_l5 = 0;]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -38401,7 +38491,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_change_packsize(agent.packsize,agent.size,1)]]></Code>
+								<Code><![CDATA[delay_change_packsize(agent.packsize,agent.size,5)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -38488,6 +38578,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l5 = 2;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -38506,6 +38599,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l5 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -38627,7 +38723,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_change_size(agent.size,1)]]></Code>
+								<Code><![CDATA[delay_change_size(agent.size,5)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -38714,6 +38810,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l5 = 3;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -38732,6 +38831,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l5 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -38850,7 +38952,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_production(agent, main.rate_lines_chile[4])]]></Code>
+								<Code><![CDATA[delay_production(agent, line_rate[4])]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
@@ -38940,6 +39042,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l5 = 4;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -38958,6 +39063,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l5 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -39161,6 +39269,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l6 = 1;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -39180,7 +39291,8 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[arranque[0] = 0;]]></Code>
+								<Code><![CDATA[arranque[0] = 0;
+activity_l6 = 0;]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -39303,7 +39415,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_change_packsize(agent.packsize,agent.size,1)]]></Code>
+								<Code><![CDATA[delay_change_packsize(agent.packsize,agent.size,6)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -39390,6 +39502,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l6 = 2;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -39408,6 +39523,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l6 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -39529,7 +39647,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_change_size(agent.size,1)]]></Code>
+								<Code><![CDATA[delay_change_size(agent.size,6)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -39616,6 +39734,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l6 = 3;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -39634,6 +39755,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l6 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -39752,7 +39876,7 @@ activity_l2 = 1;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_production(agent, main.rate_lines_chile[5])]]></Code>
+								<Code><![CDATA[delay_production(agent, line_rate[5])]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
@@ -39842,6 +39966,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l6 = 4;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -39860,6 +39987,9 @@ activity_l2 = 1;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_l6 = 0;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onTaskTerminated]]></Name>
@@ -40300,7 +40430,7 @@ activity_l2 = 1;]]></Code>
 				<RoundedRectangle>
 					<Id>1523554958544</Id>
 					<Name><![CDATA[roundRectangle]]></Name>
-					<X>-450</X><Y>740</Y>
+					<X>-450</X><Y>760</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -40324,7 +40454,7 @@ activity_l2 = 1;]]></Code>
 				<Text>
 					<Id>1523556912721</Id>
 					<Name><![CDATA[precalc_text]]></Name>
-					<X>-360</X><Y>750</Y>
+					<X>-360</X><Y>770</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -40833,7 +40963,7 @@ activity_l2 = 1;]]></Code>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
 					<Width>200</Width>
-					<Height>130</Height>
+					<Height>150</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -46684,6 +46814,9 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[countryP]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[countryP1v]]></Code>
+					</ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[forecast]]></ParameterName>
