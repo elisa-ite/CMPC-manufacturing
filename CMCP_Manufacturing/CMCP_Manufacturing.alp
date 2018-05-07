@@ -3948,7 +3948,7 @@ if (lotees == 0 && month <= 11) {
 //
 // Generate Lote
 //
-
+lotees = (int)(s.real_demand[month-1] / s.loteSize[month-1])+1;
 if (lotees == 0)	lotees = 1;
 
 for( int i = 0 ; i < lotees ; i++ ){
@@ -3969,7 +3969,7 @@ for( int i = 0 ; i < lotees ; i++ ){
 	n.size = s.sku_size_code;
 	n.packsize = s.sku_packsize;
 	n.line = s.monthly_line[month-1];
-	n.real_demand = (int)s.real_demand[month-1];
+	n.real_demand = (int)s.loteSize[month-1];
 	n.loteNumber = i+1;
 	n.country_of_production = s.monthly_country[month-1];
 	
@@ -11171,7 +11171,7 @@ switch (country) {
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new double[12]]]></Code>
+							<Code><![CDATA[new double[]{18000,18000,18000,18000,18000,18000,18000,18000,18000,18000,18000,18000}]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1519227095807</Id>
@@ -13350,7 +13350,7 @@ del Producto]]></Text>
 					<X>1180</X><Y>-150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double[]]]></Type>        
@@ -14917,7 +14917,7 @@ del Producto]]></Text>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new double[]{1,1,1,1,1,1}]]></Code>
+							<Code><![CDATA[new double[]{0,0,0,0,0,0}]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524062958183</Id>
@@ -15439,6 +15439,186 @@ del Producto]]></Text>
 					<Id>1525711954104</Id>
 					<Name><![CDATA[net_times_l6]]></Name>
 					<X>1180</X><Y>-30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525716038989</Id>
+					<Name><![CDATA[prod_att_l1]]></Name>
+					<X>1290</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525716039001</Id>
+					<Name><![CDATA[prod_att_l2]]></Name>
+					<X>1290</X><Y>-110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525716039011</Id>
+					<Name><![CDATA[prod_att_l3]]></Name>
+					<X>1290</X><Y>-90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525716039024</Id>
+					<Name><![CDATA[prod_att_l4]]></Name>
+					<X>1290</X><Y>-70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525716039034</Id>
+					<Name><![CDATA[prod_att_l5]]></Name>
+					<X>1290</X><Y>-50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525716039048</Id>
+					<Name><![CDATA[prod_att_l6]]></Name>
+					<X>1290</X><Y>-30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525717876434</Id>
+					<Name><![CDATA[prod_bo_l1]]></Name>
+					<X>1390</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525717908059</Id>
+					<Name><![CDATA[prod_bo_l2]]></Name>
+					<X>1390</X><Y>-110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525717910910</Id>
+					<Name><![CDATA[prod_bo_l3]]></Name>
+					<X>1390</X><Y>-90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525717913427</Id>
+					<Name><![CDATA[prod_bo_l4]]></Name>
+					<X>1390</X><Y>-70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525717915909</Id>
+					<Name><![CDATA[prod_bo_l5]]></Name>
+					<X>1390</X><Y>-50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525717918361</Id>
+					<Name><![CDATA[prod_bo_l6]]></Name>
+					<X>1390</X><Y>-30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -18985,10 +19165,10 @@ main.add_acc(times_collection, lote.code, time_consumed);]]></Body>
 					</IntervalsQuery>
 					<Action><![CDATA[if (shifts_amount > 0)
 	shift_stop();
-if (shifts_amount == 1){
-	for (int line = 0 ; line < 6 ; line++)
-		arranque[line] = 1;
-}]]></Action>
+//if (shifts_amount == 1){
+//	for (int line = 0 ; line < 6 ; line++)
+//		arranque[line] = 1;
+//}]]></Action>
 					<Intervals>
 						<Interval>
 							<Start>50340000</Start>
@@ -19139,10 +19319,10 @@ if (shifts_amount == 1){
 					</IntervalsQuery>
 					<Action><![CDATA[if (shifts_amount > 1)
 	shift_stop();
-if (shifts_amount == 2){
-	for (int line = 0 ; line < 6 ; line++)
-		arranque[line] = 1;
-}]]></Action>
+//if (shifts_amount == 2){
+//	for (int line = 0 ; line < 6 ; line++)
+//		arranque[line] = 1;
+//}]]></Action>
 					<Intervals>
 						<Interval>
 							<Start>79140000</Start>
@@ -19368,10 +19548,10 @@ if (shifts_amount == 2){
 					</IntervalsQuery>
 					<Action><![CDATA[if (shifts_amount > 0)
 	shift_stop();
-if (shifts_amount == 1){
-	for (int line = 0 ; line < 6 ; line++)
-		arranque[line] = 1;
-}
+//if (shifts_amount == 1){
+//	for (int line = 0 ; line < 6 ; line++)
+//		arranque[line] = 1;
+//}
 shift_start();]]></Action>
 					<Intervals>
 						<Interval>
@@ -19448,10 +19628,10 @@ shift_start();]]></Action>
 					</IntervalsQuery>
 					<Action><![CDATA[if (shifts_amount > 0)
 	shift_stop();
-if (shifts_amount == 1){
-	for (int line = 0 ; line < 6 ; line++)
-		arranque[line] = 1;
-}
+//if (shifts_amount == 1){
+//	for (int line = 0 ; line < 6 ; line++)
+//		arranque[line] = 1;
+//}
 shift_start();]]></Action>
 					<Intervals>
 						<Interval>
@@ -19528,10 +19708,10 @@ shift_start();]]></Action>
 					</IntervalsQuery>
 					<Action><![CDATA[if (shifts_amount > 0)
 	shift_stop();
-if (shifts_amount == 1){
-	for (int line = 0 ; line < 6 ; line++)
-		arranque[line] = 1;
-}
+//if (shifts_amount == 1){
+//	for (int line = 0 ; line < 6 ; line++)
+//		arranque[line] = 1;
+//}
 shift_start();]]></Action>
 					<Intervals>
 						<Interval>
@@ -20508,7 +20688,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 								<Code><![CDATA[agent.prodBO = (int)agent.real_demand;
 double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
 add_acc(backorder_collection,time,agent.real_demand);
-main.backorders += agent.real_demand;]]></Code>
+main.backorders += agent.real_demand;
+main.add_acc(prod_bo_l1,agent.code,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -20849,11 +21030,15 @@ main.backorders += agent.real_demand;]]></Code>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodAtt = (int)agent.real_demand;
 double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
-add_acc(prodatt_collection,time,agent.real_demand);]]></Code>
+add_acc(prodatt_collection,time,agent.real_demand);
+main.add_acc(prod_att_l1,agent.code,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[maximumCapacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[true]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -21752,7 +21937,8 @@ net_time(net_times_l1,1,agent);]]></Code>
 								<Code><![CDATA[agent.prodBO = (int)agent.real_demand;
 double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
 add_acc(backorder_collection,time,agent.real_demand);
-main.backorders += agent.real_demand;]]></Code>
+main.backorders += agent.real_demand;
+main.add_acc(prod_bo_l2,agent.code,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -21969,11 +22155,15 @@ main.backorders += agent.real_demand;]]></Code>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodAtt = (int)agent.real_demand;
 double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
-add_acc(prodatt_collection,time,agent.real_demand);]]></Code>
+add_acc(prodatt_collection,time,agent.real_demand);
+main.add_acc(prod_att_l2,agent.code,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[maximumCapacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[true]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -22790,7 +22980,8 @@ net_time(net_times_l2,2,agent);]]></Code>
 								<Code><![CDATA[agent.prodBO = (int)agent.real_demand;
 double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
 add_acc(backorder_collection,time,agent.real_demand);
-main.backorders += agent.real_demand;]]></Code>
+main.backorders += agent.real_demand;
+main.add_acc(prod_bo_l3,agent.code,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -23007,11 +23198,15 @@ main.backorders += agent.real_demand;]]></Code>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodAtt = (int)agent.real_demand;
 double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
-add_acc(prodatt_collection,time,agent.real_demand);]]></Code>
+add_acc(prodatt_collection,time,agent.real_demand);
+main.add_acc(prod_att_l3,agent.code,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[maximumCapacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[true]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -23828,7 +24023,8 @@ net_time(net_times_l3,3,agent);]]></Code>
 								<Code><![CDATA[agent.prodBO = (int)agent.real_demand;
 double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
 add_acc(backorder_collection,time,agent.real_demand);
-main.backorders += agent.real_demand;]]></Code>
+main.backorders += agent.real_demand;
+main.add_acc(prod_bo_l4,agent.code,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -24045,11 +24241,15 @@ main.backorders += agent.real_demand;]]></Code>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodAtt = (int)agent.real_demand;
 double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
-add_acc(prodatt_collection,time,agent.real_demand);]]></Code>
+add_acc(prodatt_collection,time,agent.real_demand);
+main.add_acc(prod_att_l4,agent.code,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[maximumCapacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[true]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -24866,7 +25066,8 @@ net_time(net_times_l4,4,agent);]]></Code>
 								<Code><![CDATA[agent.prodBO = (int)agent.real_demand;
 double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
 add_acc(backorder_collection,time,agent.real_demand);
-main.backorders += agent.real_demand;]]></Code>
+main.backorders += agent.real_demand;
+main.add_acc(prod_bo_l5,agent.code,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -25083,11 +25284,15 @@ main.backorders += agent.real_demand;]]></Code>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodAtt = (int)agent.real_demand;
 double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
-add_acc(prodatt_collection,time,agent.real_demand);]]></Code>
+add_acc(prodatt_collection,time,agent.real_demand);
+main.add_acc(prod_att_l5,agent.code,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[maximumCapacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[true]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -25904,7 +26109,8 @@ net_time(net_times_l5,5,agent);]]></Code>
 								<Code><![CDATA[agent.prodBO = (int)agent.real_demand;
 double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
 add_acc(backorder_collection,time,agent.real_demand);
-main.backorders += agent.real_demand;]]></Code>
+main.backorders += agent.real_demand;
+main.add_acc(prod_bo_l6,agent.code,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -26121,11 +26327,15 @@ main.backorders += agent.real_demand;]]></Code>
 							<Value Class="CodeValue">
 								<Code><![CDATA[agent.prodAtt = (int)agent.real_demand;
 double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
-add_acc(prodatt_collection,time,agent.real_demand);]]></Code>
+add_acc(prodatt_collection,time,agent.real_demand);
+main.add_acc(prod_att_l6,agent.code,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[maximumCapacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[true]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onAtExit]]></Name>
@@ -26963,7 +27173,7 @@ net_time(net_times_l6,6,agent);]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[arranque[0]]]></Code>
+								<Code><![CDATA[0]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -34253,7 +34463,7 @@ lote_net_time[0] += (agent.real_demand / line_rate[0])/60;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[arranque[1]]]></Code>
+								<Code><![CDATA[0]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -34599,7 +34809,7 @@ activity_l2 = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[onExit]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[activity_l2 = 1;]]></Code>
+								<Code><![CDATA[activity_l2 = 0;]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -35179,7 +35389,7 @@ lote_net_time[1] += (agent.real_demand / line_rate[1])/60;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[arranque[2]]]></Code>
+								<Code><![CDATA[0]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -36105,7 +36315,7 @@ lote_net_time[2] += (agent.real_demand / line_rate[2])/60;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[arranque[3]]]></Code>
+								<Code><![CDATA[0]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -37031,7 +37241,7 @@ lote_net_time[3] += (agent.real_demand / line_rate[3])/60;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[arranque[4]]]></Code>
+								<Code><![CDATA[0]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -37957,7 +38167,7 @@ lote_net_time[4] += (agent.real_demand / line_rate[4])/60;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[arranque[5]]]></Code>
+								<Code><![CDATA[0]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 							</Value>
 						</Parameter>
@@ -39924,7 +40134,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<LineColor>-16777216</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>400</Width>
+					<Width>650</Width>
 					<Height>190</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
@@ -39934,7 +40144,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524226449020</Id>
 					<Name><![CDATA[text17]]></Name>
-					<X>1260</X><Y>-190</Y>
+					<X>1510</X><Y>-190</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
