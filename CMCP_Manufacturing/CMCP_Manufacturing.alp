@@ -4426,9 +4426,7 @@ Guarda el mes calculado en la variable: monthestimated. modulo 12]]></Descriptio
 						<Name><![CDATA[month_num]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[// TODO tira error a veces, no encuentra valores en la tabla
-//int days_of_lead_time = lead_time(code2country(country),code2country(s.countryD_code));
-int days_of_lead_time = 0;
+					<Body><![CDATA[int days_of_lead_time = lead_time(code2country(country),code2country(s.countryD_code));
 
 Calendar date_of_production = Calendar.getInstance();
 date_of_production.setTime(toDate(start_year, month_num-1, 1, 1, 1, 1));
