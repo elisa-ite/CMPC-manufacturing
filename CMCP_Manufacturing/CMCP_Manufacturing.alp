@@ -4213,7 +4213,10 @@ s.demand[i] = rows.get(i).get( db_sku.demand )*1000;]]></Body>
 	case "MX": return 6;
 	case "PE": return 7;
 	case "UR": return 8;
-	default: return 0;
+	default: {
+				System.out.println("country2code: invalid country string");
+			  	return 0;
+			 }
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -4237,7 +4240,10 @@ s.demand[i] = rows.get(i).get( db_sku.demand )*1000;]]></Body>
 	case "G": return 8;
 	case "M": return 7;
 	case "P": return 6;
-	default: return 0;
+	default: {
+				System.out.println("size_str2int: invalid size string");
+			  	return 0;
+			 }
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -4916,7 +4922,10 @@ switch (country) {
 	case 6: return "Mexico";
 	case 7: return "Peru";
 	case 8: return "Uruguay";
-	default: return "NONE";
+	default: {
+				System.out.println("code2country: invalid country code");
+			  	return "NONE";
+			 }
 }]]></Body>
 				</Function>
 			</Functions>
@@ -42873,6 +42882,15 @@ activity_l6 = 0;]]></Code>
 				<Login><![CDATA[]]></Login>
 				<Password><![CDATA[]]></Password>
 			</ExternalConnection>
+			<TableImportSettings>
+				<TableReference>
+					<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+					<ClassName><![CDATA[lead_times]]></ClassName>
+				</TableReference>
+				<ConnectionIndex>0</ConnectionIndex>
+				<ExternalTableName><![CDATA["Lead Times"]]></ExternalTableName>
+				<AutoImport>true</AutoImport>
+			</TableImportSettings>
 			<TableImportSettings>
 				<TableReference>
 					<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
