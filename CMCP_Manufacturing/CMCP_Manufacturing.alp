@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291251" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291329" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMCP_Manufacturing]]></Name>
@@ -39155,6 +39155,135 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<QuantityColumn>
 					</QuantityColumn>
 				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1525727527607</Id>
+					<Name><![CDATA[table]]></Name>
+					<X>800</X><Y>1360</Y>
+					<Label><X>5</X><Y>-15</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<PresentationId>1525727541078</PresentationId>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+						<ClassName><![CDATA[Table]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+							<ClassName><![CDATA[Table]]></ClassName>
+							<ItemName><![CDATA[1525727489211]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[rows]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[150]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[columns]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[5]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[evenColumnWidths]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[columnWidth]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[columnWidths]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[cellHeight]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[border]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[borderWidth]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[borderColor]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[horizontalLines]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[verticalLines]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[innerLineWidth]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[backgroundColor]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[differentOddAndEvenRows]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[backgroundColorEven]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[headerRow]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[headers]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[new String[]{"SKU","CantProducida" , "tiempoBruto" ,"tiempoNeto" , "CostoVariable" }]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[data]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InEnvironment>true</InEnvironment>	
+					<InitialSpeedCode Class="CodeUnitValue">
+						<Code><![CDATA[10]]></Code>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</InitialSpeedCode>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
 			</EmbeddedObjects>
 
 			<Shapes>
@@ -40145,6 +40274,26 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
+				<EmbeddedObjectPresentation>
+					<Id>1525727541078</Id>
+					<Name><![CDATA[table_presentation]]></Name>
+					<X>800</X><Y>1440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<DrawingMode>AGENT_CURRENT_POSITION</DrawingMode>
+					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
+					<GISScaleForRealEmbeddedObjectPresentationSize>1000</GISScaleForRealEmbeddedObjectPresentationSize>
+					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
+					<Latitude>0.0</Latitude>
+					<Longitude>0.0</Longitude>
+				</EmbeddedObjectPresentation>
 			</Shapes>
 			<Charts>
     			<TimeStackChart>
@@ -41684,6 +41833,1039 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				</ContainerLink>
 			</ContainerLinks>
 
+
+		</ActiveObjectClass>
+		<!--   =========   Active Object Class   ========  -->
+		<ActiveObjectClass>
+			<Id>1525727489216</Id>
+			<Name><![CDATA[Table]]></Name>
+			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
+			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
+			<IconTopGroupPersistent>true</IconTopGroupPersistent>
+			<StartupCode><![CDATA[//check params
+	//TODO
+//calc widths
+xoffsets = new int[columns+1];
+xoffsets[0] = 0;
+for( int i=1; i<columns+1; i++ ) {
+	if( evenColumnWidths ) {
+		xoffsets[i] = xoffsets[i-1] + columnWidth;
+	} else {
+		if( i-1<columnWidths.length )
+			xoffsets[i] = xoffsets[i-1] + columnWidths[i-1];
+		else
+			xoffsets[i] = xoffsets[i-1] + columnWidths[columnWidths.length-1];
+	}
+}]]></StartupCode>
+			<Generic>false</Generic>
+			<GenericParameter>
+				<Id>1525727489211</Id>
+				<Name><![CDATA[1525727489211]]></Name>
+				<GenericParameterValue Class="CodeValue">
+					<Code><![CDATA[T]]></Code>
+				</GenericParameterValue>
+				<GenericParameterLabel><![CDATA[Generic parameters:]]></GenericParameterLabel>
+			</GenericParameter>
+			<FlowChartsUsage>ENTITY</FlowChartsUsage>
+			<SamplesToKeep>100</SamplesToKeep>
+			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
+			<ElementsLimitValue>100</ElementsLimitValue>
+			<MakeDefaultViewArea>false</MakeDefaultViewArea>
+			<SceneGridColor/>
+			<SceneBackgroundColor/>
+			<AgentProperties>
+	 			<SpaceType>CONTINUOUS</SpaceType>			
+				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
+				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
+				<RotateAnimationVertically>false</RotateAnimationVertically>
+				<VelocityCode Class="CodeUnitValue">
+					<Code><![CDATA[10]]></Code>
+					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+				</VelocityCode>
+			</AgentProperties>
+			<EnvironmentProperties>
+					<EnableSteps>false</EnableSteps>
+					<StepDurationCode Class="CodeUnitValue">
+						<Code><![CDATA[1.0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</StepDurationCode>
+					<SpaceType>CONTINUOUS</SpaceType>
+					<WidthCode><![CDATA[500]]></WidthCode>
+					<HeightCode><![CDATA[500]]></HeightCode>
+					<ZHeightCode><![CDATA[0]]></ZHeightCode>
+					<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
+					<RowsCountCode><![CDATA[100]]></RowsCountCode>
+					<NeigborhoodType>MOORE</NeigborhoodType>
+					<LayoutType>USER_DEF</LayoutType>
+					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
+					<NetworkType>USER_DEF</NetworkType>
+					<NetworkTypeApplyOnStartup>true</NetworkTypeApplyOnStartup>
+					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
+					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
+					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
+					<MCode><![CDATA[10]]></MCode>
+			</EnvironmentProperties>
+			<DatasetsCreationProperties>
+				<AutoCreate>true</AutoCreate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1437206400000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+			</DatasetsCreationProperties>
+			<ScaleRuler>
+				<Id>1525727489212</Id>
+				<Name><![CDATA[scale]]></Name>
+				<X>0</X><Y>-150</Y>
+				<PublicFlag>false</PublicFlag>
+				<PresentationFlag>false</PresentationFlag>
+				<ShowLabel>false</ShowLabel>
+				<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+				<Length>100</Length>
+				<Rotation>0</Rotation>
+				<ScaleType>BASED_ON_LENGTH</ScaleType>
+				<ModelLength>10</ModelLength>
+				<LengthUnits>METER</LengthUnits>
+				<Scale>10</Scale>
+				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
+			</ScaleRuler>
+			<ConnectionsId>1525727489304</ConnectionsId>
+			<Variables>
+				<Variable Class="PlainVariable">
+					<Id>1525727489218</Id>
+					<Name><![CDATA[xoffsets]]></Name>
+					<X>300</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="private" StaticVariable="false">
+						<Type><![CDATA[int[]]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489251</Id>
+					<Name><![CDATA[rows]]></Name>
+					<X>450</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[3]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489249</Id>
+							<Label><![CDATA[Rows]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489254</Id>
+					<Name><![CDATA[columns]]></Name>
+					<X>450</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[2]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489252</Id>
+							<Label><![CDATA[Columns]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489257</Id>
+					<Name><![CDATA[evenColumnWidths]]></Name>
+					<X>450</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489255</Id>
+							<Label><![CDATA[Even column widths]]></Label>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489260</Id>
+					<Name><![CDATA[columnWidth]]></Name>
+					<X>450</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[100]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489258</Id>
+							<Label><![CDATA[Column width]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489263</Id>
+					<Name><![CDATA[columnWidths]]></Name>
+					<X>450</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[] { 100, 100 }]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489261</Id>
+							<Label><![CDATA[Column widths array]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489266</Id>
+					<Name><![CDATA[cellHeight]]></Name>
+					<X>450</X><Y>300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[20]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489264</Id>
+							<Label><![CDATA[Cell height]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489269</Id>
+					<Name><![CDATA[border]]></Name>
+					<X>600</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489267</Id>
+							<Label><![CDATA[Draw table border]]></Label>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489272</Id>
+					<Name><![CDATA[borderWidth]]></Name>
+					<X>600</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[2]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489270</Id>
+							<Label><![CDATA[Border width]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489275</Id>
+					<Name><![CDATA[borderColor]]></Name>
+					<X>600</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[Color]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[black]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489273</Id>
+							<Label><![CDATA[Border color]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489278</Id>
+					<Name><![CDATA[horizontalLines]]></Name>
+					<X>600</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489276</Id>
+							<Label><![CDATA[Draw horizontal lines]]></Label>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489281</Id>
+					<Name><![CDATA[verticalLines]]></Name>
+					<X>600</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[false]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489279</Id>
+							<Label><![CDATA[Draw vertical lines]]></Label>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489284</Id>
+					<Name><![CDATA[innerLineWidth]]></Name>
+					<X>600</X><Y>300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489282</Id>
+							<Label><![CDATA[Line width]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489287</Id>
+					<Name><![CDATA[backgroundColor]]></Name>
+					<X>750</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[Color]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[ghostWhite]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489285</Id>
+							<Label><![CDATA[Background color]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489290</Id>
+					<Name><![CDATA[differentOddAndEvenRows]]></Name>
+					<X>750</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489288</Id>
+							<Label><![CDATA[Different odd and even rows]]></Label>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489293</Id>
+					<Name><![CDATA[backgroundColorEven]]></Name>
+					<X>750</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[Color]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[lavender]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489291</Id>
+							<Label><![CDATA[Background color of even rows]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489296</Id>
+					<Name><![CDATA[headerRow]]></Name>
+					<X>900</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489294</Id>
+							<Label><![CDATA[Table has header row]]></Label>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489299</Id>
+					<Name><![CDATA[headers]]></Name>
+					<X>900</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new String[]{"column 1","column 2"}]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525727489297</Id>
+							<Label><![CDATA[Headers]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525727489302</Id>
+					<Name><![CDATA[data]]></Name>
+					<X>1050</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="DYNAMIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<MethodArgument>
+							<Name><![CDATA[row]]></Name>
+							<Type><![CDATA[int]]></Type>
+						</MethodArgument>
+						<MethodArgument>
+							<Name><![CDATA[column]]></Name>
+							<Type><![CDATA[int]]></Type>
+						</MethodArgument>
+						<ParameterEditor>
+							<Id>1525727489300</Id>
+							<Label><![CDATA[Data]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+			</Variables>
+			<AgentLinks>
+				<AgentLink>
+					<Id>1525727489304</Id>
+					<Name><![CDATA[connections]]></Name>
+					<X>50</X><Y>-50</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<HandleReceiveInConnections>false</HandleReceiveInConnections>
+					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
+					<AgentLinkBidirectional>true</AgentLinkBidirectional>
+					<MessageType><![CDATA[Object]]></MessageType>
+					<LineStyle>SOLID</LineStyle>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineZOrder>UNDER_AGENTS</LineZOrder>
+					<LineArrow>NONE</LineArrow>
+					<LineArrowPosition>END</LineArrowPosition>
+				</AgentLink>
+			</AgentLinks>
+
+			<ContainerLinks>
+				<ContainerLink>
+					<Id>1525727541139</Id>
+					<Name><![CDATA[main]]></Name>
+					<X>50</X><Y>-100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+					</ActiveObjectClass>
+				</ContainerLink>
+				<ContainerLink>
+					<Id>1525727541151</Id>
+					<Name><![CDATA[productionLine]]></Name>
+					<X>150</X><Y>-100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+						<ClassName><![CDATA[ProductionLine]]></ClassName>
+					</ActiveObjectClass>
+				</ContainerLink>
+			</ContainerLinks>
+
+			<Shapes>
+				<Rectangle>
+					<Id>1525727489220</Id>
+					<Name><![CDATA[backgroundRectangle]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<VisibleCode><![CDATA[backgroundColor != null]]></VisibleCode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>2</LineWidth>
+					<LineWidthCode><![CDATA[borderWidth]]></LineWidthCode>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>100</Width>
+					<Height>60</Height>
+					<WidthCode><![CDATA[evenColumnWidths ? columns * columnWidth : xoffsets[columns]]]></WidthCode>
+					<HeightCode><![CDATA[rows * cellHeight]]></HeightCode>
+					<Rotation>0.0</Rotation>
+					<FillColor>-460545</FillColor>
+					<FillColorCode><![CDATA[backgroundColor]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1525727489222</Id>
+					<Name><![CDATA[oddRowBackground]]></Name>
+					<X>0</X><Y>20</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<YCode><![CDATA[cellHeight + index * cellHeight * 2]]></YCode>
+					<VisibleCode><![CDATA[differentOddAndEvenRows]]></VisibleCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[rows / 2]]></Code>
+					</ReplicationCode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>100</Width>
+					<Height>20</Height>
+					<WidthCode><![CDATA[evenColumnWidths ? columns * columnWidth : xoffsets[columns]]]></WidthCode>
+					<HeightCode><![CDATA[cellHeight]]></HeightCode>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1644806</FillColor>
+					<FillColorCode><![CDATA[backgroundColorEven]]></FillColorCode>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Line>
+					<Id>1525727489224</Id>
+					<Name><![CDATA[horizontalLine]]></Name>
+					<X>0</X><Y>40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<YCode><![CDATA[( index + 1 ) * cellHeight]]></YCode>
+					<VisibleCode><![CDATA[horizontalLines]]></VisibleCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[rows-1]]></Code>
+					</ReplicationCode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineWidthCode><![CDATA[innerLineWidth]]></LineWidthCode>
+					<LineColor>-16777216</LineColor>
+					<LineColorCode><![CDATA[borderColor]]></LineColorCode>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>100</Dx>
+					<DxCode><![CDATA[evenColumnWidths ? columns * columnWidth : xoffsets[columns]]]></DxCode>
+					<Dy>0</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Line>
+					<Id>1525727489226</Id>
+					<Name><![CDATA[verticalLine]]></Name>
+					<X>50</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[evenColumnWidths ? (index+1) * columnWidth : xoffsets[index+1]]]></XCode>
+					<VisibleCode><![CDATA[verticalLines]]></VisibleCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[columns-1]]></Code>
+					</ReplicationCode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineWidthCode><![CDATA[innerLineWidth]]></LineWidthCode>
+					<LineColor>-16777216</LineColor>
+					<LineColorCode><![CDATA[borderColor]]></LineColorCode>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>0</Dx>
+					<Dy>60</Dy>
+					<DyCode><![CDATA[rows * cellHeight]]></DyCode>
+					<Dz>0</Dz>
+				</Line>
+				<Rectangle>
+					<Id>1525727489228</Id>
+					<Name><![CDATA[borderRectangle]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<VisibleCode><![CDATA[border]]></VisibleCode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>2</LineWidth>
+					<LineWidthCode><![CDATA[borderWidth]]></LineWidthCode>
+					<LineColor>-16777216</LineColor>
+					<LineColorCode><![CDATA[borderColor]]></LineColorCode>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>100</Width>
+					<Height>60</Height>
+					<WidthCode><![CDATA[evenColumnWidths ? columns * columnWidth : xoffsets[columns]]]></WidthCode>
+					<HeightCode><![CDATA[rows * cellHeight]]></HeightCode>
+					<Rotation>0.0</Rotation>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Line>
+					<Id>1525727489230</Id>
+					<Name><![CDATA[headerUnderLine]]></Name>
+					<X>0</X><Y>20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<YCode><![CDATA[cellHeight]]></YCode>
+					<VisibleCode><![CDATA[headerRow]]></VisibleCode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineWidthCode><![CDATA[innerLineWidth]]></LineWidthCode>
+					<LineColor>-16777216</LineColor>
+					<LineColorCode><![CDATA[borderColor]]></LineColorCode>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>100</Dx>
+					<DxCode><![CDATA[evenColumnWidths ? columns * columnWidth : xoffsets[columns]]]></DxCode>
+					<Dy>0</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Text>
+					<Id>1525727489232</Id>
+					<Name><![CDATA[textShape]]></Name>
+					<X>10</X><Y>25</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[xoffsets[ index % columns ] + 5]]></XCode>
+					<YCode><![CDATA[( ( headerRow ? 1 : 0 ) + index / columns ) * cellHeight + cellHeight / 2 - 5]]></YCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[headerRow ? (rows-1) * columns : rows * columns]]></Code>
+					</ReplicationCode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Abc]]></Text>
+					<TextCode><![CDATA[data( index / columns, index % columns )]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>9</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1525727489234</Id>
+					<Name><![CDATA[headerText]]></Name>
+					<X>10</X><Y>5</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<XCode><![CDATA[xoffsets[ index ] + 5]]></XCode>
+					<VisibleCode><![CDATA[headerRow]]></VisibleCode>
+					<ReplicationCode Class="CodeValue">
+						<Code><![CDATA[columns]]></Code>
+					</ReplicationCode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Abc]]></Text>
+					<TextCode><![CDATA[index < headers.length ? headers[index] : ""]]></TextCode>
+					<Font>
+						<Name>Arial</Name>
+						<Size>9</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1525727489236</Id>
+					<Name><![CDATA[rectangle1]]></Name>
+					<X>-100</X><Y>5</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>true</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>50</Width>
+					<Height>5</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-4009243</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1525727489238</Id>
+					<Name><![CDATA[rectangle2]]></Name>
+					<X>-100</X><Y>15</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>true</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>50</Width>
+					<Height>5</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-4009243</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Line>
+					<Id>1525727489240</Id>
+					<Name><![CDATA[line1]]></Name>
+					<X>-100</X><Y>5</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>true</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-12156236</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>50</Dx>
+					<Dy>0</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Rectangle>
+					<Id>1525727489242</Id>
+					<Name><![CDATA[rectangle]]></Name>
+					<X>-100</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[return true;]]></OnClickCode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>true</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-12156236</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>50</Width>
+					<Height>25</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Line>
+					<Id>1525727489244</Id>
+					<Name><![CDATA[line]]></Name>
+					<X>-70</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>true</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-12156236</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>0</Dx>
+					<Dy>25</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Line>
+					<Id>1525727489246</Id>
+					<Name><![CDATA[line2]]></Name>
+					<X>-80</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>true</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-12156236</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>0</Dx>
+					<Dy>25</Dy>
+					<Dz>0</Dz>
+				</Line>
+				<Line>
+					<Id>1525727489248</Id>
+					<Name><![CDATA[line3]]></Name>
+					<X>-60</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>true</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>0</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-12156236</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>0</Dx>
+					<Dy>25</Dy>
+					<Dz>0</Dz>
+				</Line>
+			</Shapes>
 
 		</ActiveObjectClass>
 	</ActiveObjectClasses>	
