@@ -3187,6 +3187,54 @@ pre_calc();]]></StartupCode>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525790540281</Id>
+					<Name><![CDATA[country_efficiency]]></Name>
+					<X>-820</X><Y>630</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new double[]{0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71}]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525790540279</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525794366757</Id>
+					<Name><![CDATA[country_demand_equals_producer]]></Name>
+					<X>-820</X><Y>650</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525794366755</Id>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1522612589504</Id>
 					<Name><![CDATA[tempSKU]]></Name>
@@ -3972,6 +4020,7 @@ for( int i = 0 ; i < lotees ; i++ ){
 	n.real_demand = (int)s.loteSize[month-1];
 	n.loteNumber = i+1;
 	n.country_of_production = s.monthly_country[month-1];
+	n.rate = s.line_rates[s.monthly_line[month-1]];
 	
 	//traceln(" n = "+ n);
 
@@ -4043,17 +4092,23 @@ tempSKU.remove(s); // Delete SKU from temp list]]></Action>
 						<Name><![CDATA[rows]]></Name>
 						<Type><![CDATA[Tuple]]></Type>
 					</Parameter>
-					<Body><![CDATA[s.price = 			rows.get( db_sku.pro_price );
-s.countryD_code = 	rows.get( db_sku.country_demand );
-s.sku_packsize = 	rows.get( db_sku.sku_packsize );
-s.sku_size = 		rows.get( db_sku.sku_size );
-s.sku_size_code =	size_str2int(s.sku_size);
-s.sku_model = 		rows.get( db_sku.sku_model );
-s.sku_type = 		rows.get( db_sku.sku_type );
-s.line_type = 		rows.get( db_sku.line_type);
-s.cuenta = 			rows.get( db_sku.cuenta);
-s.raw_material = 	rows.get( db_sku.raw_material);
-s.pallet_max = 		rows.get( db_sku.pallet_max);]]></Body>
+					<Body><![CDATA[s.price = 				rows.get( db_sku.pro_price );
+s.countryD_code = 		rows.get( db_sku.country_demand );
+s.sku_packsize = 		rows.get( db_sku.sku_packsize );
+s.sku_size = 			rows.get( db_sku.sku_size );
+s.sku_size_code =		size_str2int(s.sku_size);
+s.sku_model = 			rows.get( db_sku.sku_model );
+s.sku_type = 			rows.get( db_sku.sku_type );
+s.line_type = 			rows.get( db_sku.line_type);
+s.packs_per_packet = 	rows.get( db_sku.packs_per_packet);
+s.total_variable_cost = rows.get( db_sku.total_variable_cost);
+s.packets_per_pallet = 	rows.get( db_sku.packets_per_pallet);
+s.line_rates[0] = 		rows.get( db_sku.rate_l1);
+s.line_rates[1] = 		rows.get( db_sku.rate_l2);
+s.line_rates[2] = 		rows.get( db_sku.rate_l3);
+s.line_rates[3] = 		rows.get( db_sku.rate_l4);
+s.line_rates[4] = 		rows.get( db_sku.rate_l5);
+s.line_rates[5] = 		rows.get( db_sku.rate_l6);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -4177,7 +4232,7 @@ Dentro del agente: productionLine, para cada línea. ]]></Description>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
 					<Body><![CDATA[for (int line = 0 ; line < 6 ; line++){
-	double capacity = get_lines_rate(country)[line];
+	double capacity = 800;
 	capacity *= get_plant(country).efficiency;
 	capacity *= 60;
 	capacity *= get_shift_amount(country);
@@ -4469,8 +4524,7 @@ for (int line = 0 ; line < 6 ; line++){
 					cost_delay += delay_size;
 			}
 			// If it fits, it produces
-			if ( (line_capacities[line] - (cost_of_producing+cost_delay) > 0) 
-				 && (s.line_type == prod_lines_chile[line]) ){
+			if ( (line_capacities[line] - (cost_of_producing+cost_delay) > 0) ){
 				acc_demand[line] += cost_of_producing; 
 			
 				first_in_line = false;
@@ -4539,8 +4593,8 @@ sorted_sku.clear();
 						<Name><![CDATA[s]]></Name>
 						<Type><![CDATA[SKU]]></Type>
 					</Parameter>
-					<Body><![CDATA[// TODO should be multiplied by SKU size factor
-return s.real_demand[m-1];]]></Body>
+					<Body><![CDATA[double demand = s.real_demand[m-1] * (s.line_rates[line]/800);
+return demand;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -6673,9 +6727,6 @@ switch (country) {
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
-							<Name><![CDATA[bulk]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[code]]></Name>
 						</Parameter>
 						<Parameter>
@@ -6775,9 +6826,6 @@ switch (country) {
 							<Name><![CDATA[proSline]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[proSubDemand]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[proTargetInventory]]></Name>
 						</Parameter>
 						<Parameter>
@@ -6785,18 +6833,6 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[proUPal]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[purOrders]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[purPlan]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[purPlanAdj]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[salesOrders]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[sku_size]]></Name>
@@ -6832,16 +6868,7 @@ switch (country) {
 							<Name><![CDATA[line]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[tipoLinea1]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[rateskuL]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[tipoLinea2]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[tipoLinea3]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[rateLinea1]]></Name>
@@ -6865,16 +6892,13 @@ switch (country) {
 							<Name><![CDATA[line_type]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[raw_material]]></Name>
+							<Name><![CDATA[total_variable_cost]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[cant_cuentas_empaque]]></Name>
+							<Name><![CDATA[packs_per_packet]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[pallet_max]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[cuenta]]></Name>
+							<Name><![CDATA[packets_per_pallet]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[monthly_country]]></Name>
@@ -6884,6 +6908,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[country_of_production]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_rates]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -7352,6 +7379,9 @@ switch (country) {
 						<Parameter>
 							<Name><![CDATA[country_of_production]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[rate]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -7721,6 +7751,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[efficiency]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[country_efficiency[2]]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delay_size]]></Name>
@@ -8030,6 +8063,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[efficiency]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[country_efficiency[0]]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delay_size]]></Name>
@@ -8339,6 +8375,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[efficiency]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[country_efficiency[1]]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delay_size]]></Name>
@@ -8648,6 +8687,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[efficiency]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[country_efficiency[3]]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delay_size]]></Name>
@@ -8957,6 +8999,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[efficiency]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[country_efficiency[5]]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delay_size]]></Name>
@@ -9266,6 +9311,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[efficiency]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[country_efficiency[4]]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delay_size]]></Name>
@@ -9575,6 +9623,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[efficiency]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[country_efficiency[6]]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delay_size]]></Name>
@@ -9884,6 +9935,9 @@ switch (country) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[efficiency]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[country_efficiency[7]]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delay_size]]></Name>
@@ -10781,6 +10835,30 @@ switch (country) {
 					<Z>0</Z>
 				</Ground>
 
+				<RoundedRectangle>
+					<Id>1525790531134</Id>
+					<Name><![CDATA[roundRectangle9]]></Name>
+					<X>-850</X><Y>600</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>240</Width>
+					<Height>150</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+					<ArcRadius>10</ArcRadius>
+				</RoundedRectangle>
 			</Shapes>
 			<Charts>
     			<BarChart>
@@ -10962,30 +11040,6 @@ switch (country) {
 			</ScaleRuler>
 			<ConnectionsId>1519226966382</ConnectionsId>
 			<Variables>
-				<Variable Class="Parameter">
-					<Id>1519227095748</Id>
-					<Name><![CDATA[bulk]]></Name>
-					<X>50</X><Y>510</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new double[12]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1519227095746</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
 				<Variable Class="Parameter">
 					<Id>1519227095756</Id>
 					<Name><![CDATA[code]]></Name>
@@ -11789,30 +11843,6 @@ switch (country) {
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1519227095973</Id>
-					<Name><![CDATA[proSubDemand]]></Name>
-					<X>140</X><Y>570</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new double[12]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1519227095971</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1519227095979</Id>
 					<Name><![CDATA[proTargetInventory]]></Name>
 					<Description><![CDATA[Inventario objetivo]]></Description>
@@ -11878,102 +11908,6 @@ switch (country) {
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1519227095989</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1519227095999</Id>
-					<Name><![CDATA[purOrders]]></Name>
-					<X>50</X><Y>570</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new double[12]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1519227095997</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1519227096005</Id>
-					<Name><![CDATA[purPlan]]></Name>
-					<X>50</X><Y>550</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new double[12]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1519227096003</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1519227096011</Id>
-					<Name><![CDATA[purPlanAdj]]></Name>
-					<X>140</X><Y>550</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new double[12]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1519227096009</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1519227096017</Id>
-					<Name><![CDATA[salesOrders]]></Name>
-					<X>50</X><Y>530</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new double[12]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1519227096015</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -12257,30 +12191,6 @@ switch (country) {
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1523289418253</Id>
-					<Name><![CDATA[tipoLinea1]]></Name>
-					<X>140</X><Y>490</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1523289418251</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1523290919248</Id>
 					<Name><![CDATA[rateskuL]]></Name>
 					<X>180</X><Y>340</Y>
@@ -12297,54 +12207,6 @@ switch (country) {
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1523290919246</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1523296596653</Id>
-					<Name><![CDATA[tipoLinea2]]></Name>
-					<X>140</X><Y>510</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1523296596651</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1523296605027</Id>
-					<Name><![CDATA[tipoLinea3]]></Name>
-					<X>140</X><Y>530</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1523296605025</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -12519,8 +12381,8 @@ switch (country) {
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1524729774946</Id>
-					<Name><![CDATA[raw_material]]></Name>
-					<X>40</X><Y>400</Y>
+					<Name><![CDATA[total_variable_cost]]></Name>
+					<X>150</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12540,7 +12402,7 @@ switch (country) {
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1524729870409</Id>
-					<Name><![CDATA[cant_cuentas_empaque]]></Name>
+					<Name><![CDATA[packs_per_packet]]></Name>
 					<X>150</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -12561,7 +12423,7 @@ switch (country) {
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1524729883441</Id>
-					<Name><![CDATA[pallet_max]]></Name>
+					<Name><![CDATA[packets_per_pallet]]></Name>
 					<X>150</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -12573,27 +12435,6 @@ switch (country) {
 						<SdArray>false</SdArray>
 						<ParameterEditor>
 							<Id>1524729883439</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1524730128631</Id>
-					<Name><![CDATA[cuenta]]></Name>
-					<X>150</X><Y>380</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1524730128629</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -12667,6 +12508,30 @@ switch (country) {
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524853138386</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525792176780</Id>
+					<Name><![CDATA[line_rates]]></Name>
+					<X>50</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new double[]{800,800,800,800,800,800}]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525792176778</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -12854,7 +12719,7 @@ del Producto]]></Text>
 				<Rectangle>
 					<Id>1522153590452</Id>
 					<Name><![CDATA[rectangle3]]></Name>
-					<X>0</X><Y>450</Y>
+					<X>0</X><Y>520</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12869,7 +12734,7 @@ del Producto]]></Text>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
 					<Width>300</Width>
-					<Height>150</Height>
+					<Height>80</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-6632142</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -12877,7 +12742,7 @@ del Producto]]></Text>
 				<Text>
 					<Id>1522153620934</Id>
 					<Name><![CDATA[text3]]></Name>
-					<X>30</X><Y>460</Y>
+					<X>20</X><Y>530</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13335,7 +13200,7 @@ del Producto]]></Text>
 					<X>1060</X><Y>-150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[Date[]]]></Type>        
@@ -13350,7 +13215,7 @@ del Producto]]></Text>
 					<X>1180</X><Y>-150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double[]]]></Type>        
@@ -19117,11 +18982,8 @@ return delay;]]></Body>
 						<Name><![CDATA[agent]]></Name>
 						<Type><![CDATA[Lote]]></Type>
 					</Parameter>
-					<Parameter>
-						<Name><![CDATA[rate]]></Name>
-						<Type><![CDATA[int]]></Type>
-					</Parameter>
-					<Body><![CDATA[double delay = agent.real_demand / rate;
+					<Body><![CDATA[double rate = efficiency * agent.rate;
+double delay = agent.real_demand / rate;
 return delay;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -27757,7 +27619,7 @@ activity_l1 = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_production(agent, line_rate[0])]]></Code>
+								<Code><![CDATA[delay_production(agent)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
@@ -35279,7 +35141,7 @@ activity_l2 = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_production(agent, line_rate[1])]]></Code>
+								<Code><![CDATA[delay_production(agent)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
@@ -36205,7 +36067,7 @@ activity_l3 = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_production(agent, line_rate[2])]]></Code>
+								<Code><![CDATA[delay_production(agent)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
@@ -37131,7 +36993,7 @@ activity_l4 = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_production(agent, line_rate[3])]]></Code>
+								<Code><![CDATA[delay_production(agent)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
@@ -38057,7 +37919,7 @@ activity_l5 = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_production(agent, line_rate[4])]]></Code>
+								<Code><![CDATA[delay_production(agent)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
@@ -38983,7 +38845,7 @@ activity_l6 = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[delayTime]]></Name>
 							<Value Class="CodeUnitValue">
-								<Code><![CDATA[delay_production(agent, line_rate[5])]]></Code>
+								<Code><![CDATA[delay_production(agent)]]></Code>
 								<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 							</Value>
 						</Parameter>
@@ -39266,10 +39128,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Rectangle>
 					<Id>1523025179853</Id>
 					<Name><![CDATA[rectangle6]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>410</X><Y>80</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39289,10 +39152,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523025241660</Id>
 					<Name><![CDATA[text73]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>417</X><Y>90</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39312,10 +39176,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523025358081</Id>
 					<Name><![CDATA[text1]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>420</X><Y>60</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39402,10 +39267,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Rectangle>
 					<Id>1524048416143</Id>
 					<Name><![CDATA[rectangle7]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>410</X><Y>280</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39425,10 +39291,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524048416147</Id>
 					<Name><![CDATA[text74]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>417</X><Y>290</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39448,10 +39315,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524048416150</Id>
 					<Name><![CDATA[text3]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>420</X><Y>260</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39514,10 +39382,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Rectangle>
 					<Id>1524048694923</Id>
 					<Name><![CDATA[rectangle8]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>410</X><Y>460</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39537,10 +39406,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524048694925</Id>
 					<Name><![CDATA[text75]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>417</X><Y>470</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39560,10 +39430,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524048694927</Id>
 					<Name><![CDATA[text6]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>420</X><Y>440</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39604,10 +39475,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Rectangle>
 					<Id>1524048715742</Id>
 					<Name><![CDATA[rectangle9]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>410</X><Y>640</Y>
 					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39627,10 +39499,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524048715744</Id>
 					<Name><![CDATA[text76]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>417</X><Y>650</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39650,10 +39523,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524048715746</Id>
 					<Name><![CDATA[text9]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>420</X><Y>620</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39694,10 +39568,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Rectangle>
 					<Id>1524048852824</Id>
 					<Name><![CDATA[rectangle10]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>410</X><Y>820</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39717,10 +39592,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524048852826</Id>
 					<Name><![CDATA[text77]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>417</X><Y>830</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39740,10 +39616,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524048852828</Id>
 					<Name><![CDATA[text12]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>420</X><Y>800</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39784,10 +39661,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Rectangle>
 					<Id>1524048914549</Id>
 					<Name><![CDATA[rectangle11]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>430</X><Y>1020</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39807,10 +39685,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524048914551</Id>
 					<Name><![CDATA[text78]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>437</X><Y>1030</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<AsObject>true</AsObject>
@@ -39830,10 +39709,11 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524048914553</Id>
 					<Name><![CDATA[text15]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>440</X><Y>1000</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
 					<AsObject>true</AsObject>
@@ -41615,6 +41495,27 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525792854711</Id>
+					<Name><![CDATA[rate]]></Name>
+					<X>210</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1525792854709</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<Functions>
 				<Function AccessType="public" StaticFunction="false">
@@ -41703,7 +41604,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 		<AutoExport>false</AutoExport>
 		<ImportSettings>
 			<ExternalConnection>
-				<Id>1525702536443</Id>
+				<Id>1525791057582</Id>
 				<Name><![CDATA[database]]></Name>
 				<X>0</X><Y>0</Y>
 				<Label><X>10</X><Y>0</Y></Label>
@@ -41714,7 +41615,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<ConnectionURL><![CDATA[]]></ConnectionURL>
 				<ConnectOnStartup>true</ConnectOnStartup>
 				<DatabaseName><![CDATA[]]></DatabaseName>
-				<DbFileName><![CDATA[../InputCMPC.xlsx]]></DbFileName>
+				<DbFileName><![CDATA[C:/Users/Ite02/Documents/Gaston/Source/CMPC-manufacturing/InputCMPC.xlsx]]></DbFileName>
 				<Host><![CDATA[localhost]]></Host>
 				<JdbcDriverClassName><![CDATA[net.sourceforge.jtds.jdbc.Driver]]></JdbcDriverClassName>
 				<Login><![CDATA[]]></Login>
@@ -42670,6 +42571,141 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1525790711307</Id>
+					<Name><![CDATA[eff_ar]]></Name>
+					<X>-640</X><Y>170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0.71]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1525790736614</Id>
+					<Name><![CDATA[eff_br]]></Name>
+					<X>-640</X><Y>190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0.71]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1525790739648</Id>
+					<Name><![CDATA[eff_ch]]></Name>
+					<X>-640</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0.71]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1525790741313</Id>
+					<Name><![CDATA[eff_co]]></Name>
+					<X>-640</X><Y>230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0.71]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1525790743335</Id>
+					<Name><![CDATA[eff_ec]]></Name>
+					<X>-640</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0.71]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1525790745123</Id>
+					<Name><![CDATA[eff_me]]></Name>
+					<X>-640</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0.71]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1525790746751</Id>
+					<Name><![CDATA[eff_pe]]></Name>
+					<X>-640</X><Y>290</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0.71]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1525790749725</Id>
+					<Name><![CDATA[eff_ur]]></Name>
+					<X>-640</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0.71]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1525796866967</Id>
+					<Name><![CDATA[country_demand_equals_producer]]></Name>
+					<X>-290</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 			</Variables>
 
 			<Shapes>
@@ -42920,6 +42956,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523639368731</Id>
 					<Name><![CDATA[text1]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>420</X><Y>240</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -42942,6 +42979,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523639386831</Id>
 					<Name><![CDATA[text2]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>520</X><Y>240</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -42964,6 +43002,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523639389669</Id>
 					<Name><![CDATA[text3]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>620</X><Y>240</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -42986,6 +43025,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523639391942</Id>
 					<Name><![CDATA[text4]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>720</X><Y>240</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43008,6 +43048,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523639393908</Id>
 					<Name><![CDATA[text5]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>820</X><Y>240</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43030,6 +43071,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523639395560</Id>
 					<Name><![CDATA[text6]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>920</X><Y>240</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43085,10 +43127,10 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Turnos]]></Text>
+					<Text><![CDATA[Shifts]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
-						<Size>12</Size>
+						<Size>10</Size>
 						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -43250,6 +43292,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757134018</Id>
 					<Name><![CDATA[text7]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>422</X><Y>480</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43272,6 +43315,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757134020</Id>
 					<Name><![CDATA[text8]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>522</X><Y>480</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43294,6 +43338,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757134022</Id>
 					<Name><![CDATA[text9]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>622</X><Y>480</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43316,6 +43361,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757134024</Id>
 					<Name><![CDATA[text10]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>722</X><Y>480</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43338,6 +43384,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757134026</Id>
 					<Name><![CDATA[text11]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>822</X><Y>480</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43360,6 +43407,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757134028</Id>
 					<Name><![CDATA[text12]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>922</X><Y>480</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43558,6 +43606,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757137436</Id>
 					<Name><![CDATA[text13]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>422</X><Y>720</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43580,6 +43629,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757137438</Id>
 					<Name><![CDATA[text14]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>522</X><Y>720</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43602,6 +43652,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757137440</Id>
 					<Name><![CDATA[text15]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>622</X><Y>720</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43624,6 +43675,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757137442</Id>
 					<Name><![CDATA[text16]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>722</X><Y>720</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43646,6 +43698,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757137444</Id>
 					<Name><![CDATA[text17]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>822</X><Y>720</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43668,6 +43721,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757137446</Id>
 					<Name><![CDATA[text18]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>922</X><Y>720</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43866,6 +43920,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757141014</Id>
 					<Name><![CDATA[text19]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>422</X><Y>980</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43888,6 +43943,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757141016</Id>
 					<Name><![CDATA[text20]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>522</X><Y>980</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43910,6 +43966,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757141018</Id>
 					<Name><![CDATA[text21]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>622</X><Y>980</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43932,6 +43989,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757141020</Id>
 					<Name><![CDATA[text22]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>722</X><Y>980</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43954,6 +44012,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757141022</Id>
 					<Name><![CDATA[text23]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>822</X><Y>980</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43976,6 +44035,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757141024</Id>
 					<Name><![CDATA[text24]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>922</X><Y>980</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -44125,6 +44185,94 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 						<Name>Calibri</Name>
 						<Size>14</Size>
 						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1525790397242</Id>
+					<Name><![CDATA[text25]]></Name>
+					<X>1050</X><Y>175</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Efficiency (%)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1525790455664</Id>
+					<Name><![CDATA[text26]]></Name>
+					<X>1050</X><Y>410</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Efficiency (%)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1525790464794</Id>
+					<Name><![CDATA[text27]]></Name>
+					<X>1050</X><Y>660</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Efficiency (%)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1525790469891</Id>
+					<Name><![CDATA[text28]]></Name>
+					<X>1050</X><Y>920</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Efficiency (%)]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
@@ -44389,6 +44537,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1523639271997</Id>
 					<Name><![CDATA[chile_rate]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>400</X><Y>210</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -44412,6 +44561,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1523639386834</Id>
 					<Name><![CDATA[chile_rate1]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>500</X><Y>210</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -44435,6 +44585,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1523639389671</Id>
 					<Name><![CDATA[chile_rate2]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>600</X><Y>210</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -44458,6 +44609,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1523639391944</Id>
 					<Name><![CDATA[chile_rate3]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>700</X><Y>210</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -44481,6 +44633,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1523639393910</Id>
 					<Name><![CDATA[chile_rate4]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>800</X><Y>210</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -44504,6 +44657,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1523639395562</Id>
 					<Name><![CDATA[chile_rate6]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>900</X><Y>210</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -44731,6 +44885,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757134051</Id>
 					<Name><![CDATA[chile_rate5]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>402</X><Y>450</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -44755,6 +44910,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757134054</Id>
 					<Name><![CDATA[chile_rate7]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>502</X><Y>450</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -44779,6 +44935,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757134057</Id>
 					<Name><![CDATA[chile_rate8]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>602</X><Y>450</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -44803,6 +44960,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757134059</Id>
 					<Name><![CDATA[chile_rate9]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>702</X><Y>450</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -44827,6 +44985,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757134062</Id>
 					<Name><![CDATA[chile_rate10]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>802</X><Y>450</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -44851,6 +45010,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757134065</Id>
 					<Name><![CDATA[chile_rate11]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>902</X><Y>450</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -45055,6 +45215,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757137470</Id>
 					<Name><![CDATA[chile_rate12]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>402</X><Y>690</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -45079,6 +45240,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757137473</Id>
 					<Name><![CDATA[chile_rate13]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>502</X><Y>690</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -45103,6 +45265,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757137475</Id>
 					<Name><![CDATA[chile_rate14]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>602</X><Y>690</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -45127,6 +45290,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757137478</Id>
 					<Name><![CDATA[chile_rate15]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>702</X><Y>690</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -45151,6 +45315,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757137481</Id>
 					<Name><![CDATA[chile_rate16]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>802</X><Y>690</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -45175,6 +45340,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757137483</Id>
 					<Name><![CDATA[chile_rate17]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>902</X><Y>690</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -45379,6 +45545,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757141051</Id>
 					<Name><![CDATA[chile_rate18]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>402</X><Y>950</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -45403,6 +45570,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757141053</Id>
 					<Name><![CDATA[chile_rate19]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>502</X><Y>950</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -45427,6 +45595,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757141055</Id>
 					<Name><![CDATA[chile_rate20]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>602</X><Y>950</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -45451,6 +45620,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757141058</Id>
 					<Name><![CDATA[chile_rate21]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>702</X><Y>950</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -45475,6 +45645,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757141060</Id>
 					<Name><![CDATA[chile_rate22]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>802</X><Y>950</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -45499,6 +45670,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757141062</Id>
 					<Name><![CDATA[chile_rate23]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>902</X><Y>950</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -45613,6 +45785,102 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 						<MaxValue><![CDATA[8]]></MaxValue>
 						<LinkTo>true</LinkTo>
 						<Link>countryP1v</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1525790366246</Id>
+					<Name><![CDATA[editbox4]]></Name>
+					<X>1010</X><Y>165</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="30" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[1]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>eff_ar</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1525790455667</Id>
+					<Name><![CDATA[editbox5]]></Name>
+					<X>1010</X><Y>400</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="30" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[1]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>eff_ch</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1525790464796</Id>
+					<Name><![CDATA[editbox6]]></Name>
+					<X>1010</X><Y>650</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="30" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[1]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>eff_co</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1525790469894</Id>
+					<Name><![CDATA[editbox7]]></Name>
+					<X>1010</X><Y>910</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="30" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[1]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>eff_br</Link>
 					</ExtendedProperties>
 				</Control>
 			</Controls>
@@ -45950,6 +46218,15 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<ParameterValue Class="CodeValue">
 						<Code><![CDATA[countryP3v]]></Code>
 					</ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[country_efficiency]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[new double[]{eff_ar,eff_br,eff_ch,eff_co,eff_ec,eff_me,eff_pe,eff_ur}]]></Code>
+					</ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[country_demand_equals_producer]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties 
@@ -53632,6 +53909,14 @@ copyToClipboard( s );]]></ActionCode>
 					<Code><![CDATA[1]]></Code>
 				</Suggested>
 			</Parameter>
+			<Parameter>	
+				<Id>1525790540281</Id>
+				<Type>FIXED</Type>
+			</Parameter>
+			<Parameter>	
+				<Id>1525794366757</Id>
+				<Type>FIXED</Type>
+			</Parameter>
 			<ObjectiveFunctionCode><![CDATA[root.backorders]]></ObjectiveFunctionCode>
 			<Objective>MINIMIZE</Objective>
 			<AfterIterationCode><![CDATA[if (isBestSolutionFeasible()) {
@@ -58359,6 +58644,12 @@ if (bestInfeasibleObjective != Double.POSITIVE_INFINITY) {
 			<FreeformParamValue>	
 				<Id>1524817636170</Id>
 			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1525790540281</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1525794366757</Id>
+			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1522161149042</Id>
 				<Type>FIXED</Type>
@@ -58753,6 +59044,14 @@ if (bestInfeasibleObjective != Double.POSITIVE_INFINITY) {
 				<Step Class="CodeValue">
 					<Code><![CDATA[1]]></Code>
 				</Step>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1525790540281</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1525794366757</Id>
+				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<ModelTimeProperties>
 				<StopOption><![CDATA[Stop at specified date]]></StopOption>
