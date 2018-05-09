@@ -19,7 +19,7 @@
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
-			<StartupCode><![CDATA[readData();
+			<StartupCode><![CDATA[read_data();
 calculate_working_days();
 load_real_demand();
 pre_calc();]]></StartupCode>
@@ -3805,6 +3805,39 @@ Should be used also on simulation, as tempSKU.]]></Description>
 						<Point><X>240</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
+				<Connector>
+					<Id>1525886476350</Id>
+					<Name><![CDATA[connector]]></Name>
+					<X>550</X><Y>620</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[selectOutputOutBackOrders]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[SelectOutputOut]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[back_orders]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>80</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
 			</Connectors>
 			<Events>
 				<Event>
@@ -4243,12 +4276,12 @@ tempSKU.remove(s); // Delete SKU from temp list]]></Action>
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1522163878563</Id>
-					<Name><![CDATA[readData]]></Name>
+					<Name><![CDATA[read_data]]></Name>
 					<Description><![CDATA[Read data from tables
 	Populate SKUs' parameters
 	Stockout Anticipation
 	Backorder Anticipation]]></Description>
-					<X>-180</X><Y>-260</Y>
+					<X>-180</X><Y>-280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4261,18 +4294,29 @@ tempSKU.remove(s); // Delete SKU from temp list]]></Action>
 	
 	for ( int i = 0; i < rows.size(); i ++) {
 		// For each month
-		populateDemandSKU(s, rows, i);
+		populate_demand_sku(s, rows, i);
 	}
-	populateSKU(s, rows.get(0));
+	populate_sku(s, rows.get(0));
+}
+
+for ( int country = 1 ; country < 9 ; country++ ) {
+	// For each unique SKU	
+	List<Tuple> rows = selectFrom(db_lines)
+	.where(db_lines.country.eq(country) )
+	.list();
+	
+	for ( int i = 0; i < rows.size(); i ++) {
+		populate_lines(rows.get(i));
+	}
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1522163931738</Id>
-					<Name><![CDATA[populateSKU]]></Name>
+					<Name><![CDATA[populate_sku]]></Name>
 					<Description><![CDATA[Populates SKUs' parameters with data from the input_output table]]></Description>
-					<X>-160</X><Y>-220</Y>
+					<X>-160</X><Y>-240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4307,9 +4351,9 @@ s.line_rates[5] = 		rows.get( db_sku.rate_l6);]]></Body>
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1522164614223</Id>
-					<Name><![CDATA[populateDemandSKU]]></Name>
+					<Name><![CDATA[populate_demand_sku]]></Name>
 					<Description><![CDATA[Populates SKUs' demand with data from the input_output table]]></Description>
-					<X>-160</X><Y>-240</Y>
+					<X>-160</X><Y>-260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4681,7 +4725,7 @@ Para cada mes:
 	Si hay cambio de size o packsize, agregar delay.
 	Si se acaba la capacidad, cambiar a la siguiente línea.
 Si no quedan líneas, mandar el sobrante a una collection de BO.]]></Description>
-					<X>-650</X><Y>-60</Y>
+					<X>-650</X><Y>-80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4777,7 +4821,7 @@ for (int line = 0 ; line < 6 ; line++){
 					<Id>1523538589146</Id>
 					<Name><![CDATA[calculate_prod_hours]]></Name>
 					<Description><![CDATA[Calcula horas de producción para una demanda particular, según línea.]]></Description>
-					<X>-640</X><Y>-40</Y>
+					<X>-640</X><Y>-60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4868,7 +4912,7 @@ collection.put(key, accumulated);]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1524159491885</Id>
 					<Name><![CDATA[pc_dataset_refresh]]></Name>
-					<X>-650</X><Y>-20</Y>
+					<X>-650</X><Y>-40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5042,7 +5086,10 @@ switch (country) {
 	case 6: return selectOutputOutPeru;
 	case 7: return selectOutputOutMex;
 	case 8: return selectOutputOutUru;
-	default: return selectOutputOutArg;
+	default: {
+				System.out.println("code2country: invalid country code");
+			  	return selectOutputOutBackOrders;
+			 }
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -5111,6 +5158,35 @@ productionLineMex.refresh_sku_table();
 
 productionLineUru.refresh_collections();
 productionLineUru.refresh_sku_table();]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1525880043566</Id>
+					<Name><![CDATA[populate_lines]]></Name>
+					<Description><![CDATA[Populates SKUs' demand with data from the input_output table]]></Description>
+					<X>-160</X><Y>-220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[line]]></Name>
+						<Type><![CDATA[Tuple]]></Type>
+					</Parameter>
+					<Body><![CDATA[ProductionLine plant = get_plant(line.get(db_lines.country));
+int pline = line.get(db_lines.name);
+
+plant.line_types[pline-1] = line.get(db_lines.line_type);
+plant.mano_obraD_cant_turno[pline-1] = line.get(db_lines.mano_obra_d_cant_turno);
+plant.mano_obraD_costo_turno[pline-1] = line.get(db_lines.mano_obra_d_costo_turno);
+plant.mano_obraI_cant_turno[pline-1] = line.get(db_lines.mano_obra_i_cant_turno);
+plant.mano_obraI_costo_turno[pline-1] = line.get(db_lines.mano_obra_i_costo_turno);
+plant.mano_obra_CO_hora[pline-1] = line.get(db_lines.mano_obra_co_hora);
+plant.mantenimiento_turno[pline-1] = line.get(db_lines.mantenimiento_turno);
+plant.gastos_generales_mes[pline-1] = line.get(db_lines.gastos_generales_mes);
+plant.costosCO_CO[pline-1] = line.get(db_lines.costos_co_co);
+plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 				</Function>
 			</Functions>
 			<AnalysisData>
@@ -7479,6 +7555,9 @@ productionLineUru.refresh_sku_table();]]></Body>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_types]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -8075,6 +8154,9 @@ productionLineUru.refresh_sku_table();]]></Body>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_types]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -8395,6 +8477,9 @@ productionLineUru.refresh_sku_table();]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_types]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -8717,6 +8802,9 @@ productionLineUru.refresh_sku_table();]]></Body>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_types]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -9037,6 +9125,9 @@ productionLineUru.refresh_sku_table();]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_types]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -9359,6 +9450,9 @@ productionLineUru.refresh_sku_table();]]></Body>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_types]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -9679,6 +9773,9 @@ productionLineUru.refresh_sku_table();]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_types]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -10001,6 +10098,9 @@ productionLineUru.refresh_sku_table();]]></Body>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_types]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -10322,6 +10422,9 @@ productionLineUru.refresh_sku_table();]]></Body>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[line_types]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -10329,6 +10432,198 @@ productionLineUru.refresh_sku_table();]]></Body>
 					</Replication>
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 					<InEnvironment>true</InEnvironment>	
+					<InitialSpeedCode Class="CodeUnitValue">
+						<Code><![CDATA[10]]></Code>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</InitialSpeedCode>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1525886408785</Id>
+					<Name><![CDATA[selectOutputOutBackOrders]]></Name>
+					<X>530</X><Y>610</Y>
+					<Label><X>-40</X><Y>-15</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[SelectOutputOut]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[SelectOutputOut]]></ClassName>
+							<ItemName><![CDATA[1412336243166]]></ItemName>
+						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Lote]]></Code>
+						</GenericParameterSubstituteValue>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[selectOutputIn]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[selectOutputIn]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[probability]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[0]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InitialSpeedCode Class="CodeUnitValue">
+						<Code><![CDATA[10]]></Code>
+						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+					</InitialSpeedCode>
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1525886441646</Id>
+					<Name><![CDATA[back_orders]]></Name>
+					<X>630</X><Y>600</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Delay]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+							<ClassName><![CDATA[Delay]]></ClassName>
+							<ItemName><![CDATA[1412336242930]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[type]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[self.MANUAL]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[delayTime]]></Name>
+							<Value Class="CodeUnitValue">
+								<Code><![CDATA[0]]></Code>
+								<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[capacity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[maximumCapacity]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[true]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[entityLocation]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[pushProtocol]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[restoreEntityLocationOnExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[forceStatisticsCollection]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onEnter]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onAtExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onExit]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[onRemove]]></Name>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
 					<InitialSpeedCode Class="CodeUnitValue">
 						<Code><![CDATA[10]]></Code>
 						<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
@@ -12664,7 +12959,7 @@ productionLineUru.refresh_sku_table();]]></Body>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[]{1,1,1,1,1,1,1,1,1,1,1,1}]]></Code>
+							<Code><![CDATA[new int[]{0,0,0,0,0,0,0,0,0,0,0,0}]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1523543365178</Id>
@@ -12799,7 +13094,7 @@ productionLineUru.refresh_sku_table();]]></Body>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[]{1,1,1,1,1,1,1,1,1,1,1,1}]]></Code>
+							<Code><![CDATA[new int[]{0,0,0,0,0,0,0,0,0,0,0,0}]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524755585014</Id>
@@ -15428,7 +15723,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1525457028737</Id>
 					<Name><![CDATA[line_rate]]></Name>
-					<X>-430</X><Y>730</Y>
+					<X>-330</X><Y>710</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15490,6 +15785,30 @@ del Producto]]></Text>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1525865191393</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525883443280</Id>
+					<Name><![CDATA[line_types]]></Name>
+					<X>-430</X><Y>730</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[]{1,1,1,1,1,1}]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525883443278</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -42422,6 +42741,15 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<ExternalTableName><![CDATA["SKU"]]></ExternalTableName>
 				<AutoImport>true</AutoImport>
 			</TableImportSettings>
+			<TableImportSettings>
+				<TableReference>
+					<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+					<ClassName><![CDATA[db_lines]]></ClassName>
+				</TableReference>
+				<ConnectionIndex>0</ConnectionIndex>
+				<ExternalTableName><![CDATA["Lines"]]></ExternalTableName>
+				<AutoImport>true</AutoImport>
+			</TableImportSettings>
 		</ImportSettings>
 		<ExportSettings>
 			<ExportExcelFilePath><![CDATA[]]></ExportExcelFilePath>
@@ -42517,7 +42845,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1523638247563</Id>
 					<Name><![CDATA[type_line_ch1]]></Name>
-					<X>-180</X><Y>170</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-720</X><Y>-410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42532,7 +42861,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1523638259432</Id>
 					<Name><![CDATA[type_line_ch2]]></Name>
-					<X>-180</X><Y>190</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-720</X><Y>-390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42547,7 +42877,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1523638261422</Id>
 					<Name><![CDATA[type_line_ch3]]></Name>
-					<X>-180</X><Y>210</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-720</X><Y>-370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42562,7 +42893,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1523638263285</Id>
 					<Name><![CDATA[type_line_ch4]]></Name>
-					<X>-180</X><Y>230</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-720</X><Y>-350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42577,7 +42909,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1523638265326</Id>
 					<Name><![CDATA[type_line_ch5]]></Name>
-					<X>-180</X><Y>250</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-720</X><Y>-330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42592,7 +42925,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1523638267332</Id>
 					<Name><![CDATA[type_line_ch6]]></Name>
-					<X>-180</X><Y>270</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-720</X><Y>-310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42607,7 +42941,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1523639300802</Id>
 					<Name><![CDATA[rate_line_ch1]]></Name>
-					<X>-290</X><Y>170</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-830</X><Y>-410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42622,7 +42957,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1523639321007</Id>
 					<Name><![CDATA[rate_line_ch2]]></Name>
-					<X>-290</X><Y>190</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-830</X><Y>-390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42637,7 +42973,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1523639323775</Id>
 					<Name><![CDATA[rate_line_ch3]]></Name>
-					<X>-290</X><Y>210</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-830</X><Y>-370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42652,7 +42989,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1523639326053</Id>
 					<Name><![CDATA[rate_line_ch4]]></Name>
-					<X>-290</X><Y>230</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-830</X><Y>-350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42667,7 +43005,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1523639327932</Id>
 					<Name><![CDATA[rate_line_ch5]]></Name>
-					<X>-290</X><Y>250</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-830</X><Y>-330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42682,7 +43021,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1523639330973</Id>
 					<Name><![CDATA[rate_line_ch6]]></Name>
-					<X>-290</X><Y>270</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-830</X><Y>-310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42697,7 +43037,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1523642159300</Id>
 					<Name><![CDATA[turnos_ch]]></Name>
-					<X>-290</X><Y>300</Y>
+					<X>-540</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42727,7 +43067,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757174427</Id>
 					<Name><![CDATA[type_line_co1]]></Name>
-					<X>-180</X><Y>360</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-720</X><Y>-220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42742,7 +43083,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757174429</Id>
 					<Name><![CDATA[type_line_co2]]></Name>
-					<X>-180</X><Y>380</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-720</X><Y>-200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42757,7 +43099,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757174431</Id>
 					<Name><![CDATA[type_line_co3]]></Name>
-					<X>-180</X><Y>400</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-720</X><Y>-180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42772,7 +43115,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757174433</Id>
 					<Name><![CDATA[type_line_co4]]></Name>
-					<X>-180</X><Y>420</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-720</X><Y>-160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42787,7 +43131,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757174435</Id>
 					<Name><![CDATA[type_line_co5]]></Name>
-					<X>-180</X><Y>440</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-720</X><Y>-140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42802,7 +43147,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757174437</Id>
 					<Name><![CDATA[type_line_co6]]></Name>
-					<X>-180</X><Y>460</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-720</X><Y>-120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42817,7 +43163,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757174439</Id>
 					<Name><![CDATA[rate_line_co1]]></Name>
-					<X>-290</X><Y>360</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-830</X><Y>-220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42832,7 +43179,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757174441</Id>
 					<Name><![CDATA[rate_line_co2]]></Name>
-					<X>-290</X><Y>380</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-830</X><Y>-200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42847,7 +43195,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757174443</Id>
 					<Name><![CDATA[rate_line_co3]]></Name>
-					<X>-290</X><Y>400</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-830</X><Y>-180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42862,7 +43211,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757174445</Id>
 					<Name><![CDATA[rate_line_co4]]></Name>
-					<X>-290</X><Y>420</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-830</X><Y>-160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42877,7 +43227,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757174447</Id>
 					<Name><![CDATA[rate_line_co5]]></Name>
-					<X>-290</X><Y>440</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-830</X><Y>-140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42892,7 +43243,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757174449</Id>
 					<Name><![CDATA[rate_line_co6]]></Name>
-					<X>-290</X><Y>460</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-830</X><Y>-120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42907,7 +43259,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757174451</Id>
 					<Name><![CDATA[turnos_co]]></Name>
-					<X>-290</X><Y>490</Y>
+					<X>-540</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42922,7 +43274,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757184796</Id>
 					<Name><![CDATA[type_line_br1]]></Name>
-					<X>-430</X><Y>360</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-970</X><Y>-220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42937,7 +43290,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757184798</Id>
 					<Name><![CDATA[type_line_br2]]></Name>
-					<X>-430</X><Y>380</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-970</X><Y>-200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42952,7 +43306,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757184800</Id>
 					<Name><![CDATA[type_line_br3]]></Name>
-					<X>-430</X><Y>400</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-970</X><Y>-180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42967,7 +43322,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757184802</Id>
 					<Name><![CDATA[type_line_br4]]></Name>
-					<X>-430</X><Y>420</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-970</X><Y>-160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42982,7 +43338,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757184804</Id>
 					<Name><![CDATA[type_line_br5]]></Name>
-					<X>-430</X><Y>440</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-970</X><Y>-140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42997,7 +43354,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757184806</Id>
 					<Name><![CDATA[type_line_br6]]></Name>
-					<X>-430</X><Y>460</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-970</X><Y>-120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43012,7 +43370,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757184808</Id>
 					<Name><![CDATA[rate_line_br1]]></Name>
-					<X>-540</X><Y>360</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-1080</X><Y>-220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43027,7 +43386,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757184810</Id>
 					<Name><![CDATA[rate_line_br2]]></Name>
-					<X>-540</X><Y>380</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-1080</X><Y>-200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43042,7 +43402,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757184812</Id>
 					<Name><![CDATA[rate_line_br3]]></Name>
-					<X>-540</X><Y>400</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-1080</X><Y>-180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43057,7 +43418,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757184814</Id>
 					<Name><![CDATA[rate_line_br4]]></Name>
-					<X>-540</X><Y>420</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-1080</X><Y>-160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43072,7 +43434,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757184816</Id>
 					<Name><![CDATA[rate_line_br5]]></Name>
-					<X>-540</X><Y>440</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-1080</X><Y>-140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43087,7 +43450,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757184818</Id>
 					<Name><![CDATA[rate_line_br6]]></Name>
-					<X>-540</X><Y>460</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-1080</X><Y>-120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43102,7 +43466,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757184820</Id>
 					<Name><![CDATA[turnos_br]]></Name>
-					<X>-540</X><Y>490</Y>
+					<X>-540</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43117,7 +43481,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757191996</Id>
 					<Name><![CDATA[type_line_ar1]]></Name>
-					<X>-430</X><Y>170</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-970</X><Y>-410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43132,7 +43497,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757191998</Id>
 					<Name><![CDATA[type_line_ar2]]></Name>
-					<X>-430</X><Y>190</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-970</X><Y>-390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43147,7 +43513,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757192000</Id>
 					<Name><![CDATA[type_line_ar3]]></Name>
-					<X>-430</X><Y>210</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-970</X><Y>-370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43162,7 +43529,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757192002</Id>
 					<Name><![CDATA[type_line_ar4]]></Name>
-					<X>-430</X><Y>230</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-970</X><Y>-350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43177,7 +43545,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757192004</Id>
 					<Name><![CDATA[type_line_ar5]]></Name>
-					<X>-430</X><Y>250</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-970</X><Y>-330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43192,7 +43561,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757192006</Id>
 					<Name><![CDATA[type_line_ar6]]></Name>
-					<X>-430</X><Y>270</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-970</X><Y>-310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43207,7 +43577,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757192008</Id>
 					<Name><![CDATA[rate_line_ar1]]></Name>
-					<X>-540</X><Y>170</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-1080</X><Y>-410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43222,7 +43593,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757192010</Id>
 					<Name><![CDATA[rate_line_ar2]]></Name>
-					<X>-540</X><Y>190</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-1080</X><Y>-390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43237,7 +43609,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757192012</Id>
 					<Name><![CDATA[rate_line_ar3]]></Name>
-					<X>-540</X><Y>210</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-1080</X><Y>-370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43252,7 +43625,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757192014</Id>
 					<Name><![CDATA[rate_line_ar4]]></Name>
-					<X>-540</X><Y>230</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-1080</X><Y>-350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43267,7 +43641,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757192016</Id>
 					<Name><![CDATA[rate_line_ar5]]></Name>
-					<X>-540</X><Y>250</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-1080</X><Y>-330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43282,7 +43657,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757192018</Id>
 					<Name><![CDATA[rate_line_ar6]]></Name>
-					<X>-540</X><Y>270</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-1080</X><Y>-310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43297,7 +43673,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1524757192020</Id>
 					<Name><![CDATA[turnos_ar]]></Name>
-					<X>-540</X><Y>300</Y>
+					<X>-540</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43477,7 +43853,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1525866622839</Id>
 					<Name><![CDATA[fte_ur]]></Name>
-					<X>-640</X><Y>370</Y>
+					<X>-640</X><Y>480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43492,7 +43868,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1525866672915</Id>
 					<Name><![CDATA[fte_ar]]></Name>
-					<X>-640</X><Y>400</Y>
+					<X>-640</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43507,7 +43883,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1525866708166</Id>
 					<Name><![CDATA[fte_br]]></Name>
-					<X>-640</X><Y>430</Y>
+					<X>-640</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43522,7 +43898,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1525866741517</Id>
 					<Name><![CDATA[fte_co]]></Name>
-					<X>-640</X><Y>460</Y>
+					<X>-640</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43537,7 +43913,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1525866745526</Id>
 					<Name><![CDATA[fte_ch]]></Name>
-					<X>-640</X><Y>480</Y>
+					<X>-640</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43552,7 +43928,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1525866877236</Id>
 					<Name><![CDATA[fte_pe]]></Name>
-					<X>-640</X><Y>510</Y>
+					<X>-640</X><Y>460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43567,7 +43943,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1525866910543</Id>
 					<Name><![CDATA[fte_ec]]></Name>
-					<X>-640</X><Y>350</Y>
+					<X>-640</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43582,7 +43958,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1525867023252</Id>
 					<Name><![CDATA[fte_me]]></Name>
-					<X>-640</X><Y>530</Y>
+					<X>-640</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43606,6 +43982,66 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 						<Type><![CDATA[boolean]]></Type>        
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[true]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1525885175988</Id>
+					<Name><![CDATA[turnos_pe]]></Name>
+					<X>-540</X><Y>290</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[2]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1525885175992</Id>
+					<Name><![CDATA[turnos_ur]]></Name>
+					<X>-540</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[2]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1525885175994</Id>
+					<Name><![CDATA[turnos_me]]></Name>
+					<X>-540</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[2]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1525885175996</Id>
+					<Name><![CDATA[turnos_ec]]></Name>
+					<X>-540</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[2]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -43727,7 +44163,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523631528352</Id>
 					<Name><![CDATA[line_text1]]></Name>
-					<X>400</X><Y>100</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-600</X><Y>-1020</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43749,7 +44186,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523631569879</Id>
 					<Name><![CDATA[line_text2]]></Name>
-					<X>500</X><Y>100</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-500</X><Y>-1020</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43771,7 +44209,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523631572729</Id>
 					<Name><![CDATA[line_text3]]></Name>
-					<X>600</X><Y>100</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-400</X><Y>-1020</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43793,7 +44232,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523631581903</Id>
 					<Name><![CDATA[line_text4]]></Name>
-					<X>700</X><Y>100</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-300</X><Y>-1020</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43815,7 +44255,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523631581905</Id>
 					<Name><![CDATA[line_text5]]></Name>
-					<X>800</X><Y>100</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-200</X><Y>-1020</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43837,7 +44278,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523631581907</Id>
 					<Name><![CDATA[line_text6]]></Name>
-					<X>900</X><Y>100</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-100</X><Y>-1020</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43860,7 +44302,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1523639368731</Id>
 					<Name><![CDATA[text1]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>420</X><Y>240</Y>
+					<X>-580</X><Y>-880</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43883,7 +44325,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1523639386831</Id>
 					<Name><![CDATA[text2]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>520</X><Y>240</Y>
+					<X>-480</X><Y>-880</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43906,7 +44348,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1523639389669</Id>
 					<Name><![CDATA[text3]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>620</X><Y>240</Y>
+					<X>-380</X><Y>-880</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43929,7 +44371,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1523639391942</Id>
 					<Name><![CDATA[text4]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>720</X><Y>240</Y>
+					<X>-280</X><Y>-880</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43952,7 +44394,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1523639393908</Id>
 					<Name><![CDATA[text5]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>820</X><Y>240</Y>
+					<X>-180</X><Y>-880</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -43975,7 +44417,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1523639395560</Id>
 					<Name><![CDATA[text6]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>920</X><Y>240</Y>
+					<X>-80</X><Y>-880</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44008,7 +44450,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Líneas de Argentina]]></Text>
+					<Text><![CDATA[Argentina]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>24</Size>
@@ -44019,7 +44461,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1523641911104</Id>
 					<Name><![CDATA[turnos_text]]></Name>
-					<X>1050</X><Y>100</Y>
+					<X>440</X><Y>120</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44063,7 +44505,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757134006</Id>
 					<Name><![CDATA[line_text7]]></Name>
-					<X>402</X><Y>340</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-598</X><Y>-780</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44085,7 +44528,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757134008</Id>
 					<Name><![CDATA[line_text8]]></Name>
-					<X>502</X><Y>340</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-498</X><Y>-780</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44107,7 +44551,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757134010</Id>
 					<Name><![CDATA[line_text9]]></Name>
-					<X>602</X><Y>340</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-398</X><Y>-780</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44129,7 +44574,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757134012</Id>
 					<Name><![CDATA[line_text10]]></Name>
-					<X>702</X><Y>340</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-298</X><Y>-780</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44151,7 +44597,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757134014</Id>
 					<Name><![CDATA[line_text11]]></Name>
-					<X>802</X><Y>340</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-198</X><Y>-780</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44173,7 +44620,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757134016</Id>
 					<Name><![CDATA[line_text12]]></Name>
-					<X>902</X><Y>340</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-98</X><Y>-780</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44196,7 +44644,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757134018</Id>
 					<Name><![CDATA[text7]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>422</X><Y>480</Y>
+					<X>-578</X><Y>-640</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44219,7 +44667,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757134020</Id>
 					<Name><![CDATA[text8]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>522</X><Y>480</Y>
+					<X>-478</X><Y>-640</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44242,7 +44690,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757134022</Id>
 					<Name><![CDATA[text9]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>622</X><Y>480</Y>
+					<X>-378</X><Y>-640</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44265,7 +44713,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757134024</Id>
 					<Name><![CDATA[text10]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>722</X><Y>480</Y>
+					<X>-278</X><Y>-640</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44288,7 +44736,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757134026</Id>
 					<Name><![CDATA[text11]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>822</X><Y>480</Y>
+					<X>-178</X><Y>-640</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44311,7 +44759,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757134028</Id>
 					<Name><![CDATA[text12]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>922</X><Y>480</Y>
+					<X>-78</X><Y>-640</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44333,7 +44781,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757134030</Id>
 					<Name><![CDATA[chile_lines]]></Name>
-					<X>400</X><Y>300</Y>
+					<X>700</X><Y>60</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44344,7 +44792,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Líneas de Chile]]></Text>
+					<Text><![CDATA[Chile]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>24</Size>
@@ -44355,7 +44803,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757134032</Id>
 					<Name><![CDATA[turnos_text1]]></Name>
-					<X>1052</X><Y>370</Y>
+					<X>742</X><Y>130</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44377,7 +44825,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757137424</Id>
 					<Name><![CDATA[line_text13]]></Name>
-					<X>402</X><Y>580</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-598</X><Y>-540</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44399,7 +44848,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757137426</Id>
 					<Name><![CDATA[line_text14]]></Name>
-					<X>502</X><Y>580</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-498</X><Y>-540</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44421,7 +44871,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757137428</Id>
 					<Name><![CDATA[line_text15]]></Name>
-					<X>602</X><Y>580</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-398</X><Y>-540</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44443,7 +44894,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757137430</Id>
 					<Name><![CDATA[line_text16]]></Name>
-					<X>702</X><Y>580</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-298</X><Y>-540</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44465,7 +44917,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757137432</Id>
 					<Name><![CDATA[line_text17]]></Name>
-					<X>802</X><Y>580</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-198</X><Y>-540</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44487,7 +44940,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757137434</Id>
 					<Name><![CDATA[line_text18]]></Name>
-					<X>902</X><Y>580</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-98</X><Y>-540</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44510,7 +44964,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757137436</Id>
 					<Name><![CDATA[text13]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>422</X><Y>720</Y>
+					<X>-578</X><Y>-400</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44533,7 +44987,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757137438</Id>
 					<Name><![CDATA[text14]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>522</X><Y>720</Y>
+					<X>-478</X><Y>-400</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44556,7 +45010,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757137440</Id>
 					<Name><![CDATA[text15]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>622</X><Y>720</Y>
+					<X>-378</X><Y>-400</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44579,7 +45033,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757137442</Id>
 					<Name><![CDATA[text16]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>722</X><Y>720</Y>
+					<X>-278</X><Y>-400</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44602,7 +45056,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757137444</Id>
 					<Name><![CDATA[text17]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>822</X><Y>720</Y>
+					<X>-178</X><Y>-400</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44625,7 +45079,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757137446</Id>
 					<Name><![CDATA[text18]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>922</X><Y>720</Y>
+					<X>-78</X><Y>-400</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44647,7 +45101,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757137448</Id>
 					<Name><![CDATA[col_lines]]></Name>
-					<X>400</X><Y>540</Y>
+					<X>400</X><Y>280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44658,7 +45112,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Líneas de Colombia]]></Text>
+					<Text><![CDATA[Colombia]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>24</Size>
@@ -44669,7 +45123,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757137450</Id>
 					<Name><![CDATA[turnos_text2]]></Name>
-					<X>1052</X><Y>610</Y>
+					<X>442</X><Y>340</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44691,7 +45145,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757141002</Id>
 					<Name><![CDATA[line_text19]]></Name>
-					<X>402</X><Y>840</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-598</X><Y>-280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44713,7 +45168,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757141004</Id>
 					<Name><![CDATA[line_text20]]></Name>
-					<X>502</X><Y>840</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-498</X><Y>-280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44735,7 +45191,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757141006</Id>
 					<Name><![CDATA[line_text21]]></Name>
-					<X>602</X><Y>840</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-398</X><Y>-280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44757,7 +45214,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757141008</Id>
 					<Name><![CDATA[line_text22]]></Name>
-					<X>702</X><Y>840</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-298</X><Y>-280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44779,7 +45237,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757141010</Id>
 					<Name><![CDATA[line_text23]]></Name>
-					<X>802</X><Y>840</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-198</X><Y>-280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44801,7 +45260,8 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757141012</Id>
 					<Name><![CDATA[line_text24]]></Name>
-					<X>902</X><Y>840</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-98</X><Y>-280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44824,7 +45284,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757141014</Id>
 					<Name><![CDATA[text19]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>422</X><Y>980</Y>
+					<X>-578</X><Y>-140</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44847,7 +45307,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757141016</Id>
 					<Name><![CDATA[text20]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>522</X><Y>980</Y>
+					<X>-478</X><Y>-140</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44870,7 +45330,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757141018</Id>
 					<Name><![CDATA[text21]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>622</X><Y>980</Y>
+					<X>-378</X><Y>-140</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44893,7 +45353,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757141020</Id>
 					<Name><![CDATA[text22]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>722</X><Y>980</Y>
+					<X>-278</X><Y>-140</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44916,7 +45376,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757141022</Id>
 					<Name><![CDATA[text23]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>822</X><Y>980</Y>
+					<X>-178</X><Y>-140</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44939,7 +45399,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Id>1524757141024</Id>
 					<Name><![CDATA[text24]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>922</X><Y>980</Y>
+					<X>-78</X><Y>-140</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44961,7 +45421,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757141026</Id>
 					<Name><![CDATA[brazil_lines]]></Name>
-					<X>400</X><Y>800</Y>
+					<X>700</X><Y>280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -44972,7 +45432,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Líneas de Brazil]]></Text>
+					<Text><![CDATA[Brazil]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>24</Size>
@@ -44983,7 +45443,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1524757141028</Id>
 					<Name><![CDATA[turnos_text3]]></Name>
-					<X>1052</X><Y>870</Y>
+					<X>742</X><Y>340</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45094,7 +45554,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1525790397242</Id>
 					<Name><![CDATA[text25]]></Name>
-					<X>1050</X><Y>155</Y>
+					<X>440</X><Y>175</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45116,7 +45576,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1525790455664</Id>
 					<Name><![CDATA[text26]]></Name>
-					<X>1050</X><Y>410</Y>
+					<X>740</X><Y>170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45138,7 +45598,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1525790464794</Id>
 					<Name><![CDATA[text27]]></Name>
-					<X>1050</X><Y>660</Y>
+					<X>440</X><Y>390</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45160,7 +45620,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1525790469891</Id>
 					<Name><![CDATA[text28]]></Name>
-					<X>1050</X><Y>920</Y>
+					<X>740</X><Y>390</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45182,7 +45642,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1525867264339</Id>
 					<Name><![CDATA[turnos_text4]]></Name>
-					<X>1140</X><Y>100</Y>
+					<X>530</X><Y>120</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45204,7 +45664,7 @@ lote_net_time[5] += (agent.real_demand / line_rate[5])/60;]]></Code>
 				<Text>
 					<Id>1525867383584</Id>
 					<Name><![CDATA[turnos_text5]]></Name>
-					<X>1160</X><Y>370</Y>
+					<X>850</X><Y>130</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45328,7 +45788,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1523631418090</Id>
 					<Name><![CDATA[line1_radio]]></Name>
-					<X>400</X><Y>130</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-600</X><Y>-990</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45354,7 +45815,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1523631474252</Id>
 					<Name><![CDATA[line1_radio1]]></Name>
-					<X>500</X><Y>130</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-500</X><Y>-990</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45380,7 +45842,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1523631477784</Id>
 					<Name><![CDATA[line1_radio2]]></Name>
-					<X>600</X><Y>130</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-400</X><Y>-990</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45406,7 +45869,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1523631489199</Id>
 					<Name><![CDATA[line1_radio3]]></Name>
-					<X>700</X><Y>130</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-300</X><Y>-990</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45432,7 +45896,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1523631492815</Id>
 					<Name><![CDATA[line1_radio4]]></Name>
-					<X>800</X><Y>130</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-200</X><Y>-990</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45458,7 +45923,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1523631498072</Id>
 					<Name><![CDATA[line1_radio5]]></Name>
-					<X>900</X><Y>130</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-100</X><Y>-990</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45485,7 +45951,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1523639271997</Id>
 					<Name><![CDATA[chile_rate]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>400</X><Y>210</Y>
+					<X>-600</X><Y>-910</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45509,7 +45975,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1523639386834</Id>
 					<Name><![CDATA[chile_rate1]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>500</X><Y>210</Y>
+					<X>-500</X><Y>-910</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45533,7 +45999,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1523639389671</Id>
 					<Name><![CDATA[chile_rate2]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>600</X><Y>210</Y>
+					<X>-400</X><Y>-910</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45557,7 +46023,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1523639391944</Id>
 					<Name><![CDATA[chile_rate3]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>700</X><Y>210</Y>
+					<X>-300</X><Y>-910</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45581,7 +46047,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1523639393910</Id>
 					<Name><![CDATA[chile_rate4]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>800</X><Y>210</Y>
+					<X>-200</X><Y>-910</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45605,7 +46071,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1523639395562</Id>
 					<Name><![CDATA[chile_rate6]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>900</X><Y>210</Y>
+					<X>-100</X><Y>-910</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45628,7 +46094,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1523642117650</Id>
 					<Name><![CDATA[turnos_box]]></Name>
-					<X>1010</X><Y>100</Y>
+					<X>400</X><Y>120</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45676,7 +46142,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757134036</Id>
 					<Name><![CDATA[line1_radio6]]></Name>
-					<X>402</X><Y>370</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-598</X><Y>-750</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45702,7 +46169,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757134038</Id>
 					<Name><![CDATA[line1_radio7]]></Name>
-					<X>502</X><Y>370</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-498</X><Y>-750</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45728,7 +46196,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757134040</Id>
 					<Name><![CDATA[line1_radio8]]></Name>
-					<X>602</X><Y>370</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-398</X><Y>-750</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45754,7 +46223,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757134042</Id>
 					<Name><![CDATA[line1_radio9]]></Name>
-					<X>702</X><Y>370</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-298</X><Y>-750</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45780,7 +46250,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757134046</Id>
 					<Name><![CDATA[line1_radio10]]></Name>
-					<X>802</X><Y>370</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-198</X><Y>-750</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45806,7 +46277,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757134048</Id>
 					<Name><![CDATA[line1_radio11]]></Name>
-					<X>902</X><Y>370</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-98</X><Y>-750</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45833,7 +46305,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757134051</Id>
 					<Name><![CDATA[chile_rate5]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>402</X><Y>450</Y>
+					<X>-598</X><Y>-670</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45858,7 +46330,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757134054</Id>
 					<Name><![CDATA[chile_rate7]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>502</X><Y>450</Y>
+					<X>-498</X><Y>-670</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45883,7 +46355,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757134057</Id>
 					<Name><![CDATA[chile_rate8]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>602</X><Y>450</Y>
+					<X>-398</X><Y>-670</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45908,7 +46380,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757134059</Id>
 					<Name><![CDATA[chile_rate9]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>702</X><Y>450</Y>
+					<X>-298</X><Y>-670</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45933,7 +46405,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757134062</Id>
 					<Name><![CDATA[chile_rate10]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>802</X><Y>450</Y>
+					<X>-198</X><Y>-670</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45958,7 +46430,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757134065</Id>
 					<Name><![CDATA[chile_rate11]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>902</X><Y>450</Y>
+					<X>-98</X><Y>-670</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -45982,7 +46454,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757134067</Id>
 					<Name><![CDATA[turnos_box1]]></Name>
-					<X>1012</X><Y>360</Y>
+					<X>702</X><Y>120</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46006,7 +46478,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757137454</Id>
 					<Name><![CDATA[line1_radio12]]></Name>
-					<X>402</X><Y>610</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-598</X><Y>-510</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46032,7 +46505,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757137456</Id>
 					<Name><![CDATA[line1_radio13]]></Name>
-					<X>502</X><Y>610</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-498</X><Y>-510</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46058,7 +46532,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757137458</Id>
 					<Name><![CDATA[line1_radio14]]></Name>
-					<X>602</X><Y>610</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-398</X><Y>-510</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46084,7 +46559,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757137460</Id>
 					<Name><![CDATA[line1_radio15]]></Name>
-					<X>702</X><Y>610</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-298</X><Y>-510</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46110,7 +46586,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757137464</Id>
 					<Name><![CDATA[line1_radio16]]></Name>
-					<X>802</X><Y>610</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-198</X><Y>-510</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46136,7 +46613,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757137467</Id>
 					<Name><![CDATA[line1_radio17]]></Name>
-					<X>902</X><Y>610</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-98</X><Y>-510</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46163,7 +46641,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757137470</Id>
 					<Name><![CDATA[chile_rate12]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>402</X><Y>690</Y>
+					<X>-598</X><Y>-430</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46188,7 +46666,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757137473</Id>
 					<Name><![CDATA[chile_rate13]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>502</X><Y>690</Y>
+					<X>-498</X><Y>-430</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46213,7 +46691,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757137475</Id>
 					<Name><![CDATA[chile_rate14]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>602</X><Y>690</Y>
+					<X>-398</X><Y>-430</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46238,7 +46716,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757137478</Id>
 					<Name><![CDATA[chile_rate15]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>702</X><Y>690</Y>
+					<X>-298</X><Y>-430</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46263,7 +46741,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757137481</Id>
 					<Name><![CDATA[chile_rate16]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>802</X><Y>690</Y>
+					<X>-198</X><Y>-430</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46288,7 +46766,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757137483</Id>
 					<Name><![CDATA[chile_rate17]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>902</X><Y>690</Y>
+					<X>-98</X><Y>-430</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46312,7 +46790,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757137486</Id>
 					<Name><![CDATA[turnos_box2]]></Name>
-					<X>1012</X><Y>600</Y>
+					<X>402</X><Y>330</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46336,7 +46814,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757141032</Id>
 					<Name><![CDATA[line1_radio18]]></Name>
-					<X>402</X><Y>870</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-598</X><Y>-250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46362,7 +46841,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757141034</Id>
 					<Name><![CDATA[line1_radio19]]></Name>
-					<X>502</X><Y>870</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-498</X><Y>-250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46388,7 +46868,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757141036</Id>
 					<Name><![CDATA[line1_radio20]]></Name>
-					<X>602</X><Y>870</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-398</X><Y>-250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46414,7 +46895,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757141039</Id>
 					<Name><![CDATA[line1_radio21]]></Name>
-					<X>702</X><Y>870</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-298</X><Y>-250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46440,7 +46922,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757141043</Id>
 					<Name><![CDATA[line1_radio22]]></Name>
-					<X>802</X><Y>870</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-198</X><Y>-250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46466,7 +46949,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757141047</Id>
 					<Name><![CDATA[line1_radio23]]></Name>
-					<X>902</X><Y>870</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-98</X><Y>-250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46493,7 +46977,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757141051</Id>
 					<Name><![CDATA[chile_rate18]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>402</X><Y>950</Y>
+					<X>-598</X><Y>-170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46518,7 +47002,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757141053</Id>
 					<Name><![CDATA[chile_rate19]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>502</X><Y>950</Y>
+					<X>-498</X><Y>-170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46543,7 +47027,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757141055</Id>
 					<Name><![CDATA[chile_rate20]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>602</X><Y>950</Y>
+					<X>-398</X><Y>-170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46568,7 +47052,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757141058</Id>
 					<Name><![CDATA[chile_rate21]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>702</X><Y>950</Y>
+					<X>-298</X><Y>-170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46593,7 +47077,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757141060</Id>
 					<Name><![CDATA[chile_rate22]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>802</X><Y>950</Y>
+					<X>-198</X><Y>-170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46618,7 +47102,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<Id>1524757141062</Id>
 					<Name><![CDATA[chile_rate23]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>902</X><Y>950</Y>
+					<X>-98</X><Y>-170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46642,7 +47126,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1524757141065</Id>
 					<Name><![CDATA[turnos_box3]]></Name>
-					<X>1012</X><Y>860</Y>
+					<X>702</X><Y>330</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46738,7 +47222,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525790366246</Id>
 					<Name><![CDATA[editbox4]]></Name>
-					<X>1010</X><Y>145</Y>
+					<X>400</X><Y>165</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46762,7 +47246,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525790455667</Id>
 					<Name><![CDATA[editbox5]]></Name>
-					<X>1010</X><Y>400</Y>
+					<X>700</X><Y>160</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46786,7 +47270,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525790464796</Id>
 					<Name><![CDATA[editbox6]]></Name>
-					<X>1010</X><Y>650</Y>
+					<X>400</X><Y>380</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46810,7 +47294,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525790469894</Id>
 					<Name><![CDATA[editbox7]]></Name>
-					<X>1010</X><Y>910</Y>
+					<X>700</X><Y>380</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46834,7 +47318,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525867264343</Id>
 					<Name><![CDATA[turnos_box4]]></Name>
-					<X>1100</X><Y>100</Y>
+					<X>490</X><Y>120</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46858,7 +47342,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525867383588</Id>
 					<Name><![CDATA[turnos_box5]]></Name>
-					<X>1120</X><Y>370</Y>
+					<X>810</X><Y>130</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -47110,15 +47594,9 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[prod_lines_chile]]></ParameterName>
-					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[new int[]{type_line_ch1,type_line_ch2,type_line_ch3,type_line_ch4,type_line_ch5,type_line_ch6}]]></Code>
-					</ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[rate_lines_chile]]></ParameterName>
-					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[new int[]{rate_line_ch1,rate_line_ch2,rate_line_ch3,rate_line_ch4,rate_line_ch5,rate_line_ch6}]]></Code>
-					</ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[shift_amount_chile]]></ParameterName>
@@ -47131,15 +47609,9 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[prod_lines_col]]></ParameterName>
-					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[new int[]{type_line_co1,type_line_co2,type_line_co3,type_line_co4,type_line_co5,type_line_co6}]]></Code>
-					</ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[rate_lines_col]]></ParameterName>
-					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[new int[]{rate_line_co1,rate_line_co2,rate_line_co3,rate_line_co4,rate_line_co5,rate_line_co6}]]></Code>
-					</ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[shift_amount_col]]></ParameterName>
@@ -47167,15 +47639,9 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[prod_lines_arg]]></ParameterName>
-					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[new int[]{type_line_ar1,type_line_ar2,type_line_ar3,type_line_ar4,type_line_ar5,type_line_ar6}]]></Code>
-					</ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[rate_lines_arg]]></ParameterName>
-					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[new int[]{rate_line_ar1,rate_line_ar2,rate_line_ar3,rate_line_ar4,rate_line_ar5,rate_line_ar6}]]></Code>
-					</ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[shift_amount_arg]]></ParameterName>
@@ -47185,15 +47651,9 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[prod_lines_bra]]></ParameterName>
-					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[new int[]{type_line_br1,type_line_br2,type_line_br3,type_line_br4,type_line_br5,type_line_br6}]]></Code>
-					</ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[rate_lines_bra]]></ParameterName>
-					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[new int[]{rate_line_br1,rate_line_br2,rate_line_br3,rate_line_br4,rate_line_br5,rate_line_br6}]]></Code>
-					</ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[shift_amount_bra]]></ParameterName>
