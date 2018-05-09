@@ -4845,6 +4845,7 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 				<EmbeddedObject>
 					<Id>1522870702380</Id>
 					<Name><![CDATA[productionLine]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-90</X><Y>120</Y>
 					<Label><X>-50</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -4876,15 +4877,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[countR1PrT]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[mapeMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMod]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMax]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[countR1So]]></Name>
 						</Parameter>
 						<Parameter>
@@ -4892,63 +4884,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[wCap_o]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minForLote]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[modOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[maxOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[nomRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[netRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyNet]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin1]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin2]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin3]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin4]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineindex]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineQueue]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumSO]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[daysM1]]></Name>
@@ -4987,9 +4922,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[daysM12]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[sumCap]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[timeout1]]></Name>
 						</Parameter>
 						<Parameter>
@@ -5003,24 +4935,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[timeout5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countSO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countCap]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[name]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[tipoLinea]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_capacities]]></Name>
@@ -5448,15 +5362,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[countR1PrT]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[mapeMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMod]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMax]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[countR1So]]></Name>
 						</Parameter>
 						<Parameter>
@@ -5464,63 +5369,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[wCap_o]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minForLote]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[modOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[maxOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[nomRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[netRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyNet]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin1]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin2]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin3]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin4]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineindex]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineQueue]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumSO]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[daysM1]]></Name>
@@ -5559,9 +5407,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[daysM12]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[sumCap]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[timeout1]]></Name>
 						</Parameter>
 						<Parameter>
@@ -5575,24 +5420,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[timeout5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countSO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countCap]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[name]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[tipoLinea]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_capacities]]></Name>
@@ -5754,15 +5581,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[countR1PrT]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[mapeMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMod]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMax]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[countR1So]]></Name>
 						</Parameter>
 						<Parameter>
@@ -5770,63 +5588,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[wCap_o]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minForLote]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[modOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[maxOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[nomRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[netRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyNet]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin1]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin2]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin3]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin4]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineindex]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineQueue]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumSO]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[daysM1]]></Name>
@@ -5865,9 +5626,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[daysM12]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[sumCap]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[timeout1]]></Name>
 						</Parameter>
 						<Parameter>
@@ -5881,24 +5639,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[timeout5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countSO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countCap]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[name]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[tipoLinea]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_capacities]]></Name>
@@ -6060,15 +5800,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[countR1PrT]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[mapeMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMod]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMax]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[countR1So]]></Name>
 						</Parameter>
 						<Parameter>
@@ -6076,63 +5807,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[wCap_o]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minForLote]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[modOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[maxOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[nomRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[netRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyNet]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin1]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin2]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin3]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin4]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineindex]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineQueue]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumSO]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[daysM1]]></Name>
@@ -6171,9 +5845,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[daysM12]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[sumCap]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[timeout1]]></Name>
 						</Parameter>
 						<Parameter>
@@ -6187,24 +5858,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[timeout5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countSO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countCap]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[name]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[tipoLinea]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_capacities]]></Name>
@@ -6366,15 +6019,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[countR1PrT]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[mapeMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMod]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMax]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[countR1So]]></Name>
 						</Parameter>
 						<Parameter>
@@ -6382,63 +6026,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[wCap_o]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minForLote]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[modOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[maxOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[nomRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[netRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyNet]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin1]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin2]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin3]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin4]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineindex]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineQueue]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumSO]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[daysM1]]></Name>
@@ -6477,9 +6064,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[daysM12]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[sumCap]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[timeout1]]></Name>
 						</Parameter>
 						<Parameter>
@@ -6493,24 +6077,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[timeout5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countSO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countCap]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[name]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[tipoLinea]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_capacities]]></Name>
@@ -6672,15 +6238,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[countR1PrT]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[mapeMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMod]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMax]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[countR1So]]></Name>
 						</Parameter>
 						<Parameter>
@@ -6688,63 +6245,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[wCap_o]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minForLote]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[modOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[maxOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[nomRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[netRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyNet]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin1]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin2]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin3]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin4]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineindex]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineQueue]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumSO]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[daysM1]]></Name>
@@ -6783,9 +6283,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[daysM12]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[sumCap]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[timeout1]]></Name>
 						</Parameter>
 						<Parameter>
@@ -6799,24 +6296,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[timeout5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countSO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countCap]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[name]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[tipoLinea]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_capacities]]></Name>
@@ -6978,15 +6457,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[countR1PrT]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[mapeMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMod]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMax]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[countR1So]]></Name>
 						</Parameter>
 						<Parameter>
@@ -6994,63 +6464,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[wCap_o]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minForLote]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[modOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[maxOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[nomRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[netRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyNet]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin1]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin2]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin3]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin4]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineindex]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineQueue]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumSO]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[daysM1]]></Name>
@@ -7089,9 +6502,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[daysM12]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[sumCap]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[timeout1]]></Name>
 						</Parameter>
 						<Parameter>
@@ -7105,24 +6515,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[timeout5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countSO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countCap]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[name]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[tipoLinea]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_capacities]]></Name>
@@ -7284,15 +6676,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[countR1PrT]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[mapeMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMod]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMax]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[countR1So]]></Name>
 						</Parameter>
 						<Parameter>
@@ -7300,63 +6683,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[wCap_o]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minForLote]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[modOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[maxOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[nomRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[netRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyNet]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin1]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin2]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin3]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin4]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineindex]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineQueue]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumSO]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[daysM1]]></Name>
@@ -7395,9 +6721,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[daysM12]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[sumCap]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[timeout1]]></Name>
 						</Parameter>
 						<Parameter>
@@ -7411,24 +6734,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[timeout5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countSO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countCap]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[name]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[tipoLinea]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_capacities]]></Name>
@@ -7590,15 +6895,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[countR1PrT]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[mapeMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMod]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[mapeMax]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[countR1So]]></Name>
 						</Parameter>
 						<Parameter>
@@ -7606,63 +6902,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[wCap_o]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minForLote]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[minOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[modOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[maxOEE]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[nomRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[netRate]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[applyNet]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin1]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin2]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin3]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin4]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[prodMin5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineindex]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[plineQueue]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[sumSO]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[daysM1]]></Name>
@@ -7701,9 +6940,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 							<Name><![CDATA[daysM12]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[sumCap]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[timeout1]]></Name>
 						</Parameter>
 						<Parameter>
@@ -7717,24 +6953,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[timeout5]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countProd]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countBO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countSO]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[countCap]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[name]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[tipoLinea]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_capacities]]></Name>
@@ -8281,6 +7499,7 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 				<EmbeddedObjectPresentation>
 					<Id>1522870707871</Id>
 					<Name><![CDATA[productionLine_presentation]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-360</X><Y>-1600</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -11072,6 +10291,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146387</Id>
 					<Name><![CDATA[timeout]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-900</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -11166,81 +10386,6 @@ del Producto]]></Text>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1522333146441</Id>
-					<Name><![CDATA[mapeMin]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-450</X><Y>210</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[.95]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146439</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146444</Id>
-					<Name><![CDATA[mapeMod]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-450</X><Y>230</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[.97]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146442</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146447</Id>
-					<Name><![CDATA[mapeMax]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-450</X><Y>250</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1.05]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146445</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1522333146450</Id>
 					<Name><![CDATA[countR1So]]></Name>
 					<X>-320</X><Y>490</Y>
@@ -11307,446 +10452,9 @@ del Producto]]></Text>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1522333146465</Id>
-					<Name><![CDATA[minForLote]]></Name>
-					<X>-540</X><Y>290</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1522333146463</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146474</Id>
-					<Name><![CDATA[applyOEE]]></Name>
-					<X>-540</X><Y>210</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[boolean[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new boolean[6]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146472</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146477</Id>
-					<Name><![CDATA[minOEE]]></Name>
-					<X>-540</X><Y>230</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new double[6]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146475</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146480</Id>
-					<Name><![CDATA[modOEE]]></Name>
-					<X>-540</X><Y>250</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new double[6]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146478</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146483</Id>
-					<Name><![CDATA[maxOEE]]></Name>
-					<X>-540</X><Y>270</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new double[6]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146481</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146486</Id>
-					<Name><![CDATA[nomRate]]></Name>
-					<X>-680</X><Y>160</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new double[6]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146484</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146489</Id>
-					<Name><![CDATA[netRate]]></Name>
-					<X>-680</X><Y>140</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new double[6]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146487</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146492</Id>
-					<Name><![CDATA[applyNet]]></Name>
-					<X>-680</X><Y>180</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[boolean[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new boolean[6]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146490</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146495</Id>
-					<Name><![CDATA[prodMin]]></Name>
-					<X>-540</X><Y>170</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[6]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146493</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146498</Id>
-					<Name><![CDATA[prodMin1]]></Name>
-					<X>-680</X><Y>210</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146496</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146501</Id>
-					<Name><![CDATA[prodMin2]]></Name>
-					<X>-680</X><Y>230</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146499</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146504</Id>
-					<Name><![CDATA[prodMin3]]></Name>
-					<X>-680</X><Y>250</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146502</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146507</Id>
-					<Name><![CDATA[prodMin4]]></Name>
-					<X>-680</X><Y>270</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146505</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146510</Id>
-					<Name><![CDATA[prodMin5]]></Name>
-					<X>-680</X><Y>290</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1522333146508</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146513</Id>
-					<Name><![CDATA[plineindex]]></Name>
-					<X>-680</X><Y>310</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1522333146511</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146516</Id>
-					<Name><![CDATA[plineQueue]]></Name>
-					<X>-540</X><Y>150</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1522333146514</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146525</Id>
-					<Name><![CDATA[sumProd]]></Name>
-					<X>-180</X><Y>340</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1522333146523</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146528</Id>
-					<Name><![CDATA[sumBO]]></Name>
-					<X>-180</X><Y>360</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1522333146526</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146531</Id>
-					<Name><![CDATA[sumSO]]></Name>
-					<X>-180</X><Y>380</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1522333146529</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1522333146534</Id>
 					<Name><![CDATA[daysM1]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-800</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -11771,6 +10479,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146537</Id>
 					<Name><![CDATA[daysM2]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-800</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -11795,6 +10504,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146540</Id>
 					<Name><![CDATA[daysM3]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-800</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -11819,6 +10529,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146543</Id>
 					<Name><![CDATA[daysM4]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-800</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -11843,6 +10554,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146546</Id>
 					<Name><![CDATA[daysM5]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-800</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -11867,6 +10579,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146549</Id>
 					<Name><![CDATA[daysM6]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-800</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -11891,6 +10604,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146552</Id>
 					<Name><![CDATA[daysM7]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-800</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -11915,6 +10629,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146555</Id>
 					<Name><![CDATA[daysM8]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-800</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -11939,6 +10654,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146558</Id>
 					<Name><![CDATA[daysM9]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-800</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -11963,6 +10679,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146561</Id>
 					<Name><![CDATA[daysM10]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-800</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -11987,6 +10704,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146564</Id>
 					<Name><![CDATA[daysM11]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-800</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -12011,6 +10729,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146567</Id>
 					<Name><![CDATA[daysM12]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-800</X><Y>310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -12033,29 +10752,9 @@ del Producto]]></Text>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1522333146570</Id>
-					<Name><![CDATA[sumCap]]></Name>
-					<X>-180</X><Y>320</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1522333146568</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1522333146588</Id>
 					<Name><![CDATA[timeout1]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-900</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -12080,6 +10779,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146591</Id>
 					<Name><![CDATA[timeout2]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-900</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -12104,6 +10804,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146594</Id>
 					<Name><![CDATA[timeout3]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-900</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -12128,6 +10829,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146597</Id>
 					<Name><![CDATA[timeout4]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-900</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -12152,6 +10854,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146600</Id>
 					<Name><![CDATA[timeout5]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-900</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -12166,132 +10869,6 @@ del Producto]]></Text>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1522333146598</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146603</Id>
-					<Name><![CDATA[countProd]]></Name>
-					<X>-180</X><Y>240</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1522333146601</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146606</Id>
-					<Name><![CDATA[countBO]]></Name>
-					<X>-180</X><Y>260</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1522333146604</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146609</Id>
-					<Name><![CDATA[countSO]]></Name>
-					<X>-180</X><Y>280</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1522333146607</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146612</Id>
-					<Name><![CDATA[countCap]]></Name>
-					<X>-180</X><Y>220</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1522333146610</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1522333146624</Id>
-					<Name><![CDATA[name]]></Name>
-					<X>-680</X><Y>120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1522333146622</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1523289348204</Id>
-					<Name><![CDATA[tipoLinea]]></Name>
-					<X>-680</X><Y>100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<ParameterEditor>
-							<Id>1523289348202</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -16518,6 +15095,7 @@ del Producto]]></Text>
 				<Event>
 					<Id>1522333146293</Id>
 					<Name><![CDATA[dailyEvent]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-310</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -16551,6 +15129,7 @@ statePline = 0;]]></Action>
 				<Event>
 					<Id>1522978821861</Id>
 					<Name><![CDATA[monthlyEvent]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-310</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -16774,6 +15353,7 @@ for (double time : backorder_collection.keySet()){
 				<DynamicEventClass>
 					<Id>1522333146122</Id>
 					<Name><![CDATA[ActivatePackLine]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-180</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -17910,6 +16490,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333145972</Id>
 					<Name><![CDATA[datasetL1ca]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-350</X><Y>1590</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -17932,6 +16513,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333145975</Id>
 					<Name><![CDATA[datasetL1bo]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-470</X><Y>1630</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -17954,6 +16536,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333145978</Id>
 					<Name><![CDATA[datasetL1pr]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-470</X><Y>1590</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -17976,6 +16559,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333145981</Id>
 					<Name><![CDATA[datasetL1id]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-470</X><Y>1650</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -17998,6 +16582,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333145984</Id>
 					<Name><![CDATA[datasetL1re]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-470</X><Y>1670</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -18020,6 +16605,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333145993</Id>
 					<Name><![CDATA[datasetL1so]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-470</X><Y>1690</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -18042,6 +16628,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333145996</Id>
 					<Name><![CDATA[datasetL1ca1]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-351</X><Y>1610</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -18064,6 +16651,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333145999</Id>
 					<Name><![CDATA[datasetL1ca2]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-350</X><Y>1630</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -18086,6 +16674,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333146002</Id>
 					<Name><![CDATA[datasetL1Inv]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-200</X><Y>1590</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -18108,6 +16697,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333146005</Id>
 					<Name><![CDATA[datasetL1TInv]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-200</X><Y>1610</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -18130,6 +16720,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333146008</Id>
 					<Name><![CDATA[datasetWCap]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-350</X><Y>1650</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -18152,6 +16743,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333146011</Id>
 					<Name><![CDATA[datasetL1InvPal]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-200</X><Y>1630</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -18218,6 +16810,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333146020</Id>
 					<Name><![CDATA[datasetSO]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-317</X><Y>360</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -18240,6 +16833,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333146023</Id>
 					<Name><![CDATA[datasetCap]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-317</X><Y>380</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -18262,6 +16856,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333146026</Id>
 					<Name><![CDATA[datasetProd1]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-317</X><Y>223</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -18284,6 +16879,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333146029</Id>
 					<Name><![CDATA[datasetBO1]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-317</X><Y>243</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -18306,6 +16902,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333146032</Id>
 					<Name><![CDATA[datasetSO1]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-317</X><Y>263</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -18328,6 +16925,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333146035</Id>
 					<Name><![CDATA[datasetCap1]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-317</X><Y>283</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -18350,6 +16948,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1522333146038</Id>
 					<Name><![CDATA[stateDataset]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-320</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38035,6 +36634,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1524152397733</Id>
 					<Name><![CDATA[text70]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-640</X><Y>1860</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38057,6 +36657,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1524152407710</Id>
 					<Name><![CDATA[text71]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-640</X><Y>2160</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38197,6 +36798,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
     			<TimeStackChart>
 					<Id>1522333146045</Id>
 					<Name><![CDATA[chart]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>2200</X><Y>1520</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38264,6 +36866,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
     			<TimeStackChart>
 					<Id>1522333146050</Id>
 					<Name><![CDATA[chart16]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>2850</X><Y>1530</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38331,6 +36934,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
     			<TimePlot>
 					<Id>1522333146055</Id>
 					<Name><![CDATA[plot1]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>2860</X><Y>1840</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38406,6 +37010,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
     			<TimeStackChart>
 					<Id>1522333146062</Id>
 					<Name><![CDATA[chart15]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>2200</X><Y>1830</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38487,6 +37092,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
     			<TimeStackChart>
 					<Id>1524152334074</Id>
 					<Name><![CDATA[chart1]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-980</X><Y>1880</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38554,6 +37160,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
     			<TimeStackChart>
 					<Id>1524152349017</Id>
 					<Name><![CDATA[chart2]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-980</X><Y>2180</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38621,6 +37228,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
     			<TimePlot>
 					<Id>1524152484823</Id>
 					<Name><![CDATA[plot]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-1400</X><Y>1870</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -38696,6 +37304,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
     			<TimePlot>
 					<Id>1524153095118</Id>
 					<Name><![CDATA[plot2]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-1400</X><Y>2170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -38920,6 +37529,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Area>
 					<Id>1524232020746</Id>
 					<Name><![CDATA[xvalidation_precalc]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-1400</X><Y>1800</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
