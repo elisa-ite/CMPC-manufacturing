@@ -23,6 +23,7 @@
 calculate_working_days();
 load_real_demand();
 pre_calc();]]></StartupCode>
+			<DestroyCode><![CDATA[export_data_to_db();]]></DestroyCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1519223879331</Id>
@@ -410,7 +411,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1525790540281</Id>
 					<Name><![CDATA[country_efficiency]]></Name>
-					<X>-230</X><Y>370</Y>
+					<X>-230</X><Y>430</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -456,33 +457,9 @@ pre_calc();]]></StartupCode>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1525889186817</Id>
-					<Name><![CDATA[fte_amount]]></Name>
-					<X>-230</X><Y>410</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[]{1,1,1,1,1,1,1,1}]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1525889186815</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1525892625486</Id>
 					<Name><![CDATA[country_order]]></Name>
-					<X>-230</X><Y>430</Y>
+					<X>-230</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1111,7 +1088,8 @@ if( month < 12 ){
 // Get SKU from Priority List
 //
 
-SKU s = getHighPriorSKU( month-1 );
+//SKU s = getHighPriorSKU( month-1 );
+SKU s = tempSKU.get(0);
 
 // Initialize SKU variables
 
@@ -1504,26 +1482,6 @@ s.demand[i] = rows.get(i).get( db_sku.demand )*1000;]]></Body>
 			  	return 0;
 			 }
 }]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[SKU]]></ReturnType>
-					<Id>1522612435082</Id>
-					<Name><![CDATA[getHighPriorSKU]]></Name>
-					<X>20</X><Y>-300</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[month]]></Name>
-						<Type><![CDATA[int]]></Type>
-					</Parameter>
-					<Body><![CDATA[SKU result = tempSKU.get(0);
-for( SKU s : tempSKU )
-	if( result.proPri[month] < s.proPri[month] )
-		result = s;
-return result;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -2181,7 +2139,8 @@ plant.mano_obra_CO_hora[pline-1] = line.get(db_lines.mano_obra_co_hora);
 plant.mantenimiento_turno[pline-1] = line.get(db_lines.mantenimiento_turno);
 plant.gastos_generales_mes[pline-1] = line.get(db_lines.gastos_generales_mes);
 plant.costosCO_CO[pline-1] = line.get(db_lines.costos_co_co);
-plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
+plant.merma[pline-1] = line.get(db_lines.merma);
+plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 				</Function>
 			</Functions>
 			<AnalysisData>
@@ -4817,9 +4776,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[fte_amount[2]]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
@@ -5036,9 +4992,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[fte_amount[0]]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
@@ -5255,9 +5208,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[fte_amount[1]]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
@@ -5474,9 +5424,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[fte_amount[3]]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
@@ -5693,9 +5640,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[fte_amount[6]]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
@@ -5912,9 +5856,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[fte_amount[4]]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
@@ -6131,9 +6072,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[fte_amount[5]]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
@@ -6350,9 +6288,6 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[fte]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[fte_amount[7]]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
@@ -7383,6 +7318,28 @@ plant.merma[pline-1] = line.get(db_lines.merma);]]></Body>
 					<FillMaterial>null</FillMaterial>
 					<ArcRadius>10</ArcRadius>
 				</RoundedRectangle>
+				<Text>
+					<Id>1525961343708</Id>
+					<Name><![CDATA[text]]></Name>
+					<X>-130</X><Y>350</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Input User]]></Text>
+					<Font>
+						<Name>Helvetica</Name>
+						<Size>18</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Shapes>
 			<Controls>
 				<Control Type="Button">
@@ -10732,17 +10689,17 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1525865191395</Id>
 					<Name><![CDATA[fte]]></Name>
-					<X>-330</X><Y>710</Y>
+					<X>-380</X><Y>1070</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
+						<Type><![CDATA[int[]]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[2]]></Code>
+							<Code><![CDATA[new int[]{2,2,2,2,2,2}]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1525865191393</Id>
@@ -37721,7 +37678,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 	</Frame>
 	<Database>
 		<Logging>false</Logging>
-		<AutoExport>false</AutoExport>
+		<AutoExport>true</AutoExport>
 		<ImportSettings>
 			<ExternalConnection>
 				<Id>1525791057582</Id>
@@ -37770,7 +37727,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 			</TableImportSettings>
 		</ImportSettings>
 		<ExportSettings>
-			<ExportExcelFilePath><![CDATA[]]></ExportExcelFilePath>
+			<ExportExcelFilePath><![CDATA[C:\Users\Ite02\Documents\Gaston\Source\CMPC-manufacturing\OutputCMPC.xlsx]]></ExportExcelFilePath>
 		</ExportSettings>
 	</Database>
 	
@@ -38819,126 +38776,6 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[0.71]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1525866622839</Id>
-					<Name><![CDATA[fte_ur]]></Name>
-					<X>-640</X><Y>480</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[2]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1525866672915</Id>
-					<Name><![CDATA[fte_ar]]></Name>
-					<X>-640</X><Y>340</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[2]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1525866708166</Id>
-					<Name><![CDATA[fte_br]]></Name>
-					<X>-640</X><Y>360</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[2]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1525866741517</Id>
-					<Name><![CDATA[fte_co]]></Name>
-					<X>-640</X><Y>400</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[2]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1525866745526</Id>
-					<Name><![CDATA[fte_ch]]></Name>
-					<X>-640</X><Y>380</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[2]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1525866877236</Id>
-					<Name><![CDATA[fte_pe]]></Name>
-					<X>-640</X><Y>460</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[2]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1525866910543</Id>
-					<Name><![CDATA[fte_ec]]></Name>
-					<X>-640</X><Y>420</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[2]]></Code>
-						</InitialValue>
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1525867023252</Id>
-					<Name><![CDATA[fte_me]]></Name>
-					<X>-640</X><Y>440</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
-						<InitialValue Class="CodeValue">
-							<Code><![CDATA[2]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -40488,28 +40325,6 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
 					<Text><![CDATA[Efficiency (%)]]></Text>
-					<Font>
-						<Name>Helvetica</Name>
-						<Size>18</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1525886932129</Id>
-					<Name><![CDATA[turnos_text6]]></Name>
-					<X>750</X><Y>132</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[FTE]]></Text>
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>18</Size>
@@ -42705,182 +42520,6 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Control>
 				<Control Type="EditBox">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1525887367373</Id>
-					<Name><![CDATA[editbox22]]></Name>
-					<X>750</X><Y>170</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="50" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-						<TextColor/>
-						<Enabled>true</Enabled>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LinkTo>true</LinkTo>
-						<Link>fte_ar</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="EditBox">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1525887367375</Id>
-					<Name><![CDATA[editbox23]]></Name>
-					<X>750</X><Y>220</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="50" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-						<TextColor/>
-						<Enabled>true</Enabled>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LinkTo>true</LinkTo>
-						<Link>fte_br</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="EditBox">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1525887367377</Id>
-					<Name><![CDATA[editbox24]]></Name>
-					<X>750</X><Y>270</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="50" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-						<TextColor/>
-						<Enabled>true</Enabled>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LinkTo>true</LinkTo>
-						<Link>fte_ch</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="EditBox">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1525887367379</Id>
-					<Name><![CDATA[editbox25]]></Name>
-					<X>750</X><Y>320</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="50" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-						<TextColor/>
-						<Enabled>true</Enabled>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LinkTo>true</LinkTo>
-						<Link>fte_co</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="EditBox">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1525887367382</Id>
-					<Name><![CDATA[editbox26]]></Name>
-					<X>750</X><Y>370</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="50" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-						<TextColor/>
-						<Enabled>true</Enabled>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LinkTo>true</LinkTo>
-						<Link>fte_ec</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="EditBox">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1525887367384</Id>
-					<Name><![CDATA[editbox27]]></Name>
-					<X>750</X><Y>420</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="50" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-						<TextColor/>
-						<Enabled>true</Enabled>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LinkTo>true</LinkTo>
-						<Link>fte_me</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="EditBox">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1525887367387</Id>
-					<Name><![CDATA[editbox28]]></Name>
-					<X>750</X><Y>470</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="50" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-						<TextColor/>
-						<Enabled>true</Enabled>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LinkTo>true</LinkTo>
-						<Link>fte_pe</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="EditBox">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1525887367389</Id>
-					<Name><![CDATA[editbox29]]></Name>
-					<X>750</X><Y>520</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="50" Height="30" 
-				AsObject="true">
-                        <EmbeddedIcon>false</EmbeddedIcon>				
-						<FillColor/>
-						<TextColor/>
-						<Enabled>true</Enabled>
-					</BasicProperties>
-					<ExtendedProperties>
-						<Font Name="Dialog" Size="11" Style="0"/>
-						<LinkTo>true</LinkTo>
-						<Link>fte_ur</Link>
-					</ExtendedProperties>
-				</Control>
-				<Control Type="EditBox">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525892848162</Id>
 					<Name><![CDATA[editbox30]]></Name>
 					<X>140</X><Y>490</Y>
@@ -43054,12 +42693,6 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<ParameterName><![CDATA[country_demand_equals_producer]]></ParameterName>
 					<ParameterValue Class="CodeValue">
 						<Code><![CDATA[countries_satisfy_own_demand]]></Code>
-					</ParameterValue>
-				</Parameter>
-				<Parameter>
-					<ParameterName><![CDATA[fte_amount]]></ParameterName>
-					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[new int[]{fte_ar,fte_br,fte_ch,fte_co,fte_ec,fte_me,fte_pe,fte_ur}]]></Code>
 					</ParameterValue>
 				</Parameter>
 				<Parameter>
@@ -43270,10 +42903,6 @@ datasetBestFeasibleObjective.reset();
 				<Type>FIXED</Type>
 			</Parameter>
 			<Parameter>	
-				<Id>1525889186817</Id>
-				<Type>FIXED</Type>
-			</Parameter>
-			<Parameter>	
 				<Id>1525892625486</Id>
 				<Type>FIXED</Type>
 			</Parameter>
@@ -43394,9 +43023,6 @@ if (bestInfeasibleObjective != Double.POSITIVE_INFINITY) {
 				<Id>1525794366757</Id>
 			</FreeformParamValue>
 			<FreeformParamValue>	
-				<Id>1525889186817</Id>
-			</FreeformParamValue>
-			<FreeformParamValue>	
 				<Id>1525892625486</Id>
 			</FreeformParamValue>
 			<RangeVariationParamValue>	
@@ -43449,10 +43075,6 @@ if (bestInfeasibleObjective != Double.POSITIVE_INFINITY) {
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
 				<Id>1525794366757</Id>
-				<Type>FIXED</Type>
-			</RangeVariationParamValue>
-			<RangeVariationParamValue>	
-				<Id>1525889186817</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
