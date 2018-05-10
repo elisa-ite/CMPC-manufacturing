@@ -387,7 +387,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1524758045225</Id>
 					<Name><![CDATA[doh]]></Name>
-					<X>-340</X><Y>-50</Y>
+					<X>-230</X><Y>450</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2023,7 +2023,7 @@ switch (destination) {
 					<X>260</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[s]]></Name>
@@ -2189,6 +2189,21 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 					<SamplesToKeep>2000</SamplesToKeep>
 				</DataSet>
 			</AnalysisData>
+			<Connectivity>
+				<ExcelFile>
+					<Id>1525966995422</Id>
+					<Name><![CDATA[input]]></Name>
+					<X>-160</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<FileName><![CDATA[../InputCMPC.xlsx]]></FileName>
+					<SaveInSnapshot>false</SaveInSnapshot>
+					<LoadOnStartup>false</LoadOnStartup>
+					<SaveOnDispose>false</SaveOnDispose>
+				</ExcelFile>
+			</Connectivity>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1519223879328</Id>
@@ -4289,6 +4304,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_quantity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_hours]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -4780,6 +4801,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_quantity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_hours]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -4995,6 +5022,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_quantity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_hours]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -5212,6 +5245,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_quantity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_hours]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -5427,6 +5466,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_quantity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_hours]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -5644,6 +5689,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_quantity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_hours]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -5859,6 +5910,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_quantity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_hours]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -6076,6 +6133,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_quantity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_hours]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -6291,6 +6354,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_types]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_quantity]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_hours]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -6550,7 +6619,7 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
 					<Width>110</Width>
-					<Height>160</Height>
+					<Height>145</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>1285213490</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -6569,7 +6638,7 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Codigo Pais]]></Text>
+					<Text><![CDATA[Country Code]]></Text>
 					<Font>
 						<Name>Arial</Name>
 						<Size>14</Size>
@@ -6580,7 +6649,7 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 				<Text>
 					<Id>1519243780426</Id>
 					<Name><![CDATA[text2]]></Name>
-					<X>110</X><Y>50</Y>
+					<X>110</X><Y>52</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6602,7 +6671,7 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 				<Text>
 					<Id>1519243829831</Id>
 					<Name><![CDATA[text3]]></Name>
-					<X>110</X><Y>70</Y>
+					<X>110</X><Y>67</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6624,7 +6693,7 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 				<Text>
 					<Id>1519243856369</Id>
 					<Name><![CDATA[text4]]></Name>
-					<X>110</X><Y>87</Y>
+					<X>110</X><Y>82</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6646,7 +6715,7 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 				<Text>
 					<Id>1519243901048</Id>
 					<Name><![CDATA[text5]]></Name>
-					<X>110</X><Y>104</Y>
+					<X>110</X><Y>97</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6668,7 +6737,7 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 				<Text>
 					<Id>1519243970256</Id>
 					<Name><![CDATA[text6]]></Name>
-					<X>110</X><Y>121</Y>
+					<X>110</X><Y>112</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6690,7 +6759,7 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 				<Text>
 					<Id>1519245534055</Id>
 					<Name><![CDATA[text7]]></Name>
-					<X>110</X><Y>140</Y>
+					<X>110</X><Y>127</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6712,7 +6781,7 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 				<Text>
 					<Id>1519245593437</Id>
 					<Name><![CDATA[text8]]></Name>
-					<X>110</X><Y>159</Y>
+					<X>110</X><Y>142</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -6734,7 +6803,7 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 				<Text>
 					<Id>1519245627336</Id>
 					<Name><![CDATA[text9]]></Name>
-					<X>110</X><Y>179</Y>
+					<X>110</X><Y>157</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10734,6 +10803,54 @@ del Producto]]></Text>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525963763465</Id>
+					<Name><![CDATA[co_quantity]]></Name>
+					<X>1510</X><Y>-150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[]{0,0,0,0,0,0}]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525963763463</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1525963813826</Id>
+					<Name><![CDATA[co_hours]]></Name>
+					<X>1510</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new int[]{0,0,0,0,0,0}]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1525963813824</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1524156918922</Id>
 					<Name><![CDATA[backorder_collection]]></Name>
@@ -11241,6 +11358,66 @@ del Producto]]></Text>
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
 						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525962023468</Id>
+					<Name><![CDATA[prod_att_per_line]]></Name>
+					<X>1510</X><Y>-230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ValueElementClass><![CDATA[double[]]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525962045834</Id>
+					<Name><![CDATA[prod_bo_per_line]]></Name>
+					<X>1510</X><Y>-210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ValueElementClass><![CDATA[double[]]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525962062309</Id>
+					<Name><![CDATA[net_times_per_line]]></Name>
+					<X>1510</X><Y>-190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ValueElementClass><![CDATA[double[]]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1525962080854</Id>
+					<Name><![CDATA[brute_times_per_line]]></Name>
+					<X>1510</X><Y>-170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ValueElementClass><![CDATA[double[]]]></ValueElementClass>
 					</Properties>
 
 				</Variable>
@@ -14176,7 +14353,7 @@ del Producto]]></Text>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1525725827653</Id>
 					<Name><![CDATA[prod_obtenida]]></Name>
-					<X>1630</X><Y>140</Y>
+					<X>2220</X><Y>-290</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14188,7 +14365,7 @@ del Producto]]></Text>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1525725837573</Id>
 					<Name><![CDATA[Warehouse]]></Name>
-					<X>1490</X><Y>230</Y>
+					<X>2080</X><Y>-200</Y>
 					<Label><X>20</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14200,7 +14377,7 @@ del Producto]]></Text>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1525725843842</Id>
 					<Name><![CDATA[W_Camion]]></Name>
-					<X>1630</X><Y>230</Y>
+					<X>2220</X><Y>-200</Y>
 					<Label><X>25</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14212,7 +14389,7 @@ del Producto]]></Text>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1525725850761</Id>
 					<Name><![CDATA[W_Barco]]></Name>
-					<X>1770</X><Y>230</Y>
+					<X>2360</X><Y>-200</Y>
 					<Label><X>25</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14224,7 +14401,7 @@ del Producto]]></Text>
 				<StatechartElement Class="FinalState" ParentState="ROOT_NODE">
 					<Id>1525726602357</Id>
 					<Name><![CDATA[finalState]]></Name>
-					<X>1550</X><Y>310</Y>
+					<X>2140</X><Y>-120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14235,7 +14412,7 @@ del Producto]]></Text>
 				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
 					<Id>1525725648446</Id>
 					<Name><![CDATA[statechart]]></Name>
-					<X>1680</X><Y>100</Y>
+					<X>2270</X><Y>-330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14250,7 +14427,7 @@ del Producto]]></Text>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1525725900526</Id>
 					<Name><![CDATA[transition]]></Name>
-					<X>1630</X><Y>160</Y>
+					<X>2220</X><Y>-270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14281,7 +14458,7 @@ del Producto]]></Text>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1525725948376</Id>
 					<Name><![CDATA[transition1]]></Name>
-					<X>1680</X><Y>170</Y>
+					<X>2270</X><Y>-260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14311,7 +14488,7 @@ del Producto]]></Text>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1525725986688</Id>
 					<Name><![CDATA[transition2]]></Name>
-					<X>1730</X><Y>160</Y>
+					<X>2320</X><Y>-270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14342,7 +14519,7 @@ del Producto]]></Text>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1525726427394</Id>
 					<Name><![CDATA[transition3]]></Name>
-					<X>1550</X><Y>260</Y>
+					<X>2140</X><Y>-170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14627,6 +14804,38 @@ for (double time : backorder_collection.keySet()){
 	datasetBO.add(time, value);
 }]]></Action>
 				</Event>
+				<Event>
+					<Id>1525962374352</Id>
+					<Name><![CDATA[monthly_refresh]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>1190</X><Y>-370</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>false</OccurrenceAtTime>
+						<OccurrenceDate>1517385600000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MONTH]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[refresh_collections();]]></Action>
+				</Event>
 			</Events>
 			<DynamicEvents>
 				<DynamicEventClass>
@@ -14649,7 +14858,7 @@ for (double time : backorder_collection.keySet()){
 					<X>170</X><Y>370</Y>
 					<Label><X>-40</X><Y>20</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[agent]]></Name>
@@ -14689,6 +14898,12 @@ if (size != last_size[line-1]){
 	delay = delay_size;
 }
 lote_net_time[line-1] += delay;
+
+if (delay > 0){
+	co_hours[line-1] += delay;
+	co_quantity[line-1] += 1;
+}
+
 return delay;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -14719,6 +14934,12 @@ if (packsize != last_packsize[line-1] && size != last_size[line-1]){
 	delay = delay_packsize;
 }
 lote_net_time[line-1] += delay;
+
+if (delay > 0){
+	co_hours[line-1] += delay;
+	co_quantity[line-1] += 1;
+}
+
 return delay;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -15062,7 +15283,49 @@ for (String s : prod_bo_l6.keySet()){
 refresh_net_times();
 refresh_prod_att();
 refresh_prod_bo();
-refresh_vcost();]]></Body>
+refresh_vcost();
+
+Calendar date = Calendar.getInstance();
+int month = date.get(Calendar.MONTH)+1;
+
+//prod_att_per_line.get(1)[month-1] = substract_previous_months(prod_att_per_line, prod_att_l1);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1525962770343</Id>
+					<Name><![CDATA[substract_previous_months]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>1360</X><Y>-340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[per_line]]></Name>
+						<Type><![CDATA[LinkedHashMap<int,double[]>]]></Type>
+					</Parameter>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1525962840175</Id>
+					<Name><![CDATA[accumulate_sku]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>1360</X><Y>-320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[collection]]></Name>
+						<Type><![CDATA[LinkedHashMap<String,Double>]]></Type>
+					</Parameter>
+					<Body><![CDATA[double accumulated = 0;
+for (String sku : collection.keySet()){
+	accumulated += collection.get(sku);
+}
+return accumulated;]]></Body>
 				</Function>
 			</Functions>
 			<Schedules>
@@ -35138,7 +35401,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-9868951</Color>
-					<Text><![CDATA[FLUJO DE LA LINEA DE PRODUCCION]]></Text>
+					<Text><![CDATA[PRODUCTION LINE FLOW]]></Text>
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>20</Size>
@@ -35266,7 +35529,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1523556912721</Id>
 					<Name><![CDATA[precalc_text]]></Name>
-					<X>-360</X><Y>770</Y>
+					<X>-335</X><Y>770</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -35277,7 +35540,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[PreCálculo]]></Text>
+					<Text><![CDATA[PreCalc]]></Text>
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>20</Size>
@@ -35983,7 +36246,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1524226449020</Id>
 					<Name><![CDATA[text17]]></Name>
-					<X>1620</X><Y>-290</Y>
+					<X>1600</X><Y>-290</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -36029,7 +36292,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1524730475503</Id>
 					<Name><![CDATA[text18]]></Name>
-					<X>-540</X><Y>860</Y>
+					<X>-460</X><Y>860</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -36040,7 +36303,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Costos de Produccion por Linea]]></Text>
+					<Text><![CDATA[Production Line Costs]]></Text>
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>20</Size>
@@ -36659,7 +36922,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
     			<TimeColorChart>
 					<Id>1524165431022</Id>
 					<Name><![CDATA[chart4]]></Name>
-					<X>2160</X><Y>80</Y>
+					<X>1400</X><Y>40</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -36677,14 +36940,14 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Width>540</Width>
-					<Height>1140</Height>
+					<Height>1180</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>50</XOffset>
 						<YOffset>30</YOffset>
-						<Width>460</Width>
-						<Height>1050</Height>
+						<Width>450</Width>
+						<Height>1130</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -36692,7 +36955,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 					<Legend>
 						<Place>SOUTH</Place>
 						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
+						<Size>40</Size>
 					</Legend>
 					<Labels>
 						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
@@ -36700,7 +36963,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 						<TextColor>-12566464</TextColor>
 					</Labels>
 					<Persistent>true</Persistent>
-					<ShowLegend>true</ShowLegend>
+					<ShowLegend>false</ShowLegend>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
 					<TimeWindowUnits>MONTH</TimeWindowUnits>
 					<TimeWindowExpression><![CDATA[1]]></TimeWindowExpression>
@@ -38965,7 +39228,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Rectangle>
 					<Id>1524818539587</Id>
 					<Name><![CDATA[rectangle]]></Name>
-					<X>0</X><Y>430</Y>
+					<X>10</X><Y>430</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -38979,7 +39242,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 					<LineColor>-4144960</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>340</Width>
+					<Width>330</Width>
 					<Height>120</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
@@ -39330,7 +39593,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1523639855891</Id>
 					<Name><![CDATA[arg_lines]]></Name>
-					<X>350</X><Y>175</Y>
+					<X>400</X><Y>175</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -39352,7 +39615,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1523641911104</Id>
 					<Name><![CDATA[turnos_text]]></Name>
-					<X>650</X><Y>132</Y>
+					<X>700</X><Y>132</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -39672,7 +39935,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1524757134030</Id>
 					<Name><![CDATA[chile_lines]]></Name>
-					<X>350</X><Y>275</Y>
+					<X>400</X><Y>275</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -39970,7 +40233,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1524757137448</Id>
 					<Name><![CDATA[col_lines]]></Name>
-					<X>350</X><Y>325</Y>
+					<X>400</X><Y>325</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -40268,7 +40531,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1524757141026</Id>
 					<Name><![CDATA[brazil_lines]]></Name>
-					<X>350</X><Y>225</Y>
+					<X>400</X><Y>225</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -40290,7 +40553,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1524817992259</Id>
 					<Name><![CDATA[sku_sorting1]]></Name>
-					<X>100</X><Y>440</Y>
+					<X>90</X><Y>440</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -40301,8 +40564,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Paises de Produccion
- En estudio- en Orden]]></Text>
+					<Text><![CDATA[Order of country producers]]></Text>
 					<Font>
 						<Name>Calibri</Name>
 						<Size>14</Size>
@@ -40313,7 +40575,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1525790397242</Id>
 					<Name><![CDATA[text25]]></Name>
-					<X>500</X><Y>130</Y>
+					<X>550</X><Y>130</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -40335,7 +40597,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1525886965727</Id>
 					<Name><![CDATA[col_lines1]]></Name>
-					<X>350</X><Y>425</Y>
+					<X>400</X><Y>425</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -40357,7 +40619,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1525886968383</Id>
 					<Name><![CDATA[col_lines2]]></Name>
-					<X>350</X><Y>475</Y>
+					<X>400</X><Y>475</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -40379,7 +40641,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1525886973817</Id>
 					<Name><![CDATA[col_lines3]]></Name>
-					<X>350</X><Y>525</Y>
+					<X>400</X><Y>525</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -40467,7 +40729,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 				<Text>
 					<Id>1525886976868</Id>
 					<Name><![CDATA[col_lines4]]></Name>
-					<X>350</X><Y>375</Y>
+					<X>400</X><Y>375</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -41971,7 +42233,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525870246406</Id>
 					<Name><![CDATA[checkbox]]></Name>
-					<X>50</X><Y>400</Y>
+					<X>20</X><Y>460</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42138,7 +42400,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887310585</Id>
 					<Name><![CDATA[editbox4]]></Name>
-					<X>500</X><Y>170</Y>
+					<X>550</X><Y>170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42162,7 +42424,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887322727</Id>
 					<Name><![CDATA[editbox5]]></Name>
-					<X>500</X><Y>220</Y>
+					<X>550</X><Y>220</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42186,7 +42448,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887338247</Id>
 					<Name><![CDATA[editbox6]]></Name>
-					<X>500</X><Y>270</Y>
+					<X>550</X><Y>270</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42210,7 +42472,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887338251</Id>
 					<Name><![CDATA[editbox7]]></Name>
-					<X>500</X><Y>320</Y>
+					<X>550</X><Y>320</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42234,7 +42496,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887343008</Id>
 					<Name><![CDATA[editbox8]]></Name>
-					<X>500</X><Y>370</Y>
+					<X>550</X><Y>370</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42258,7 +42520,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887343010</Id>
 					<Name><![CDATA[editbox9]]></Name>
-					<X>500</X><Y>420</Y>
+					<X>550</X><Y>420</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42282,7 +42544,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887348265</Id>
 					<Name><![CDATA[editbox12]]></Name>
-					<X>500</X><Y>470</Y>
+					<X>550</X><Y>470</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42306,7 +42568,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887348267</Id>
 					<Name><![CDATA[editbox13]]></Name>
-					<X>500</X><Y>520</Y>
+					<X>550</X><Y>520</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42330,7 +42592,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360813</Id>
 					<Name><![CDATA[editbox14]]></Name>
-					<X>650</X><Y>170</Y>
+					<X>700</X><Y>170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42354,7 +42616,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360816</Id>
 					<Name><![CDATA[editbox15]]></Name>
-					<X>650</X><Y>220</Y>
+					<X>700</X><Y>220</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42378,7 +42640,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360818</Id>
 					<Name><![CDATA[editbox16]]></Name>
-					<X>650</X><Y>270</Y>
+					<X>700</X><Y>270</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42402,7 +42664,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360820</Id>
 					<Name><![CDATA[editbox17]]></Name>
-					<X>650</X><Y>320</Y>
+					<X>700</X><Y>320</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42426,7 +42688,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360822</Id>
 					<Name><![CDATA[editbox18]]></Name>
-					<X>650</X><Y>370</Y>
+					<X>700</X><Y>370</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42450,7 +42712,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360824</Id>
 					<Name><![CDATA[editbox19]]></Name>
-					<X>650</X><Y>420</Y>
+					<X>700</X><Y>420</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42474,7 +42736,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360826</Id>
 					<Name><![CDATA[editbox20]]></Name>
-					<X>650</X><Y>470</Y>
+					<X>700</X><Y>470</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -42498,7 +42760,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360828</Id>
 					<Name><![CDATA[editbox21]]></Name>
-					<X>650</X><Y>520</Y>
+					<X>700</X><Y>520</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
