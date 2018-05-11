@@ -529,22 +529,6 @@ Should be used also on simulation, as tempSKU.]]></Description>
 
 				</Variable>
 				<Variable Class="CollectionVariable">
-					<Id>1523884652707</Id>
-					<Name><![CDATA[inventory]]></Name>
-					<Description><![CDATA[Inventario mensual de SKUs para precálculo]]></Description>
-					<X>-490</X><Y>-120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
 					<Id>1524159194774</Id>
 					<Name><![CDATA[pc_prodatt_col]]></Name>
 					<X>-490</X><Y>-80</Y>
@@ -1514,6 +1498,7 @@ for ( int country = 1 ; country < 9 ; country++ ) {
 s.sku_packsize = 		rows.get( db_sku.sku_packsize );
 s.sku_size = 			rows.get( db_sku.sku_size );
 s.sku_size_code =		size_str2int(s.sku_size );
+s.inventory = 			rows.get( db_sku.inventory );
 s.sku_model = 			rows.get( db_sku.sku_model );
 s.sku_type = 			rows.get( db_sku.sku_type );
 s.line_type = 			rows.get( db_sku.line_type);
@@ -1859,15 +1844,6 @@ Para cada mes:
 	for (int i = 0 ; i < 8 ; i++)
 		load_production_line(m,country_order[i]);
 
-	/*
-	double time = dateToTime(toDate(start_year,m-1,1,1,1,1));
-	for (SKU s : sorted_sku){
-		//System.out.println(s.code + " no producido en el mes: " + m);
-		add_acc(pc_backorder_col, time, s.real_demand[m-1]);
-		for (int monthly = 1 ; monthly < 12 ; monthly++)
-			s.monthly_line[monthly-1] = s.countryD_code;
-	}
-	*/
 	sorted_sku.clear();
 
 	pc_dataset_refresh();
@@ -1899,8 +1875,6 @@ Si no quedan líneas, mandar el sobrante a una collection de BO.]]></Description
 					<Body><![CDATA[double[] line_capacities = new double[6];
 for (int line = 0 ; line < 6 ; line++)
 	line_capacities[line] = get_plant(country).line_capacities[line];
-	
-inventory.clear();
 
 // TODO get real delays
 double delay_packsize = get_plant(country).delay_packsize*60*800*get_plant(country).efficiency;
@@ -1920,8 +1894,8 @@ for (int line = 0 ; line < 6 ; line++){
 			// Calculate cost of producing one item
 			double cost_of_producing = calculate_prod_hours(m,line,s);
 			cost_of_producing += s.days_of_hand[m-1];
-			if (inventory.containsKey(s.code))
-				cost_of_producing -= inventory.get(s.code);
+			if (get_pc_inventory(country).containsKey(s.code))
+				cost_of_producing -= get_pc_inventory(country).get(s);
 			if (cost_of_producing < 0)
 				cost_of_producing = 0;
 				
@@ -1946,10 +1920,10 @@ for (int line = 0 ; line < 6 ; line++){
 				// Inventory refresh
 				if (m > 1){
 					double inventory_val = -1*s.real_demand[m-1];
-					if (inventory.containsKey(s.code)) 
-				      inventory_val += inventory.get(s.code);
+					if (get_pc_inventory(country).containsKey(s)) 
+				      inventory_val += get_pc_inventory(country).get(s);
 				   	inventory_val += cost_of_producing;
-					inventory.put(s.code, inventory_val);
+					get_pc_inventory(country).put(s, inventory_val);
 				}
 				
 				last_packsize = s.sku_packsize;
@@ -2349,21 +2323,6 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 					<SamplesToKeep>2000</SamplesToKeep>
 				</DataSet>
 			</AnalysisData>
-			<Connectivity>
-				<ExcelFile>
-					<Id>1525966995422</Id>
-					<Name><![CDATA[input]]></Name>
-					<X>-160</X><Y>250</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<FileName><![CDATA[InputCMPC.xlsx]]></FileName>
-					<SaveInSnapshot>false</SaveInSnapshot>
-					<LoadOnStartup>false</LoadOnStartup>
-					<SaveOnDispose>false</SaveOnDispose>
-				</ExcelFile>
-			</Connectivity>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1519223879328</Id>
@@ -4236,6 +4195,9 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[line_rates]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[inventory]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -8858,7 +8820,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 				<Variable Class="Parameter">
 					<Id>1522165044965</Id>
 					<Name><![CDATA[price]]></Name>
-					<X>50</X><Y>340</Y>
+					<X>50</X><Y>330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9293,6 +9255,30 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1525792176778</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526062069957</Id>
+					<Name><![CDATA[inventory]]></Name>
+					<X>50</X><Y>350</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526062069955</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -11692,6 +11678,22 @@ del Producto]]></Text>
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
 						<ElementClass><![CDATA[Integer]]></ElementClass>
 						<ValueElementClass><![CDATA[double[]]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526062338316</Id>
+					<Name><![CDATA[inventory]]></Name>
+					<Description><![CDATA[Inventario mensual de SKUs para precálculo]]></Description>
+					<X>-690</X><Y>810</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
 					</Properties>
 
 				</Variable>
@@ -15081,7 +15083,6 @@ for (double time : backorder_collection.keySet()){
 				<Event>
 					<Id>1525962374352</Id>
 					<Name><![CDATA[monthly_refresh]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1190</X><Y>-370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -15097,7 +15098,7 @@ for (double time : backorder_collection.keySet()){
 							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
 						</Rate>
 						<OccurrenceAtTime>false</OccurrenceAtTime>
-						<OccurrenceDate>1517385600000</OccurrenceDate>
+						<OccurrenceDate>1517356801000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
 							<Code><![CDATA[0]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
@@ -15108,7 +15109,13 @@ for (double time : backorder_collection.keySet()){
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[refresh_collections();]]></Action>
+					<Action><![CDATA[//refresh_collections();
+
+Calendar cal = Calendar.getInstance();
+cal.setTime(date());
+int m = cal.get(Calendar.MONTH);
+
+substract_demand_from_inventory(m);]]></Action>
 				</Event>
 			</Events>
 			<DynamicEvents>
@@ -15652,6 +15659,24 @@ double time_end = date().getTime();
 double time_consumed = (time_end - time_start) / (1000*60*60);
 
 main.add_acc(times_collection, lote.code, time_consumed);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526062977311</Id>
+					<Name><![CDATA[substract_demand_from_inventory]]></Name>
+					<X>1360</X><Y>-370</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[for (SKU s : main.sku){
+	main.add_acc(inventory,s.code,(-1)*s.demand[m]);
+}]]></Body>
 				</Function>
 			</Functions>
 			<Schedules>
@@ -17662,7 +17687,8 @@ sku_eff.put(agent.code,eff);
 sku_lines.put(agent.code,agent.line);
 sku_tot_variable_cost.put(agent.code,agent.total_variable_cost);
 
-main.add_acc(prod_att_l1,agent.code,agent.real_demand);]]></Code>
+main.add_acc(prod_att_l1,agent.code,agent.real_demand);
+main.add_acc(inventory,agent.code,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
