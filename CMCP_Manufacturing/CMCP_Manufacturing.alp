@@ -1382,8 +1382,7 @@ for ( int country = 1 ; country < 9 ; country++ ) {
 						<Name><![CDATA[rows]]></Name>
 						<Type><![CDATA[Tuple]]></Type>
 					</Parameter>
-					<Body><![CDATA[s.price = 				rows.get( db_sku.pro_price );
-s.countryD_code = 		rows.get( db_sku.country_demand );
+					<Body><![CDATA[s.countryD_code = 		rows.get( db_sku.country_demand );
 s.sku_packsize = 		rows.get( db_sku.sku_packsize );
 s.sku_size = 			rows.get( db_sku.sku_size );
 s.sku_size_code =		size_str2int(s.sku_size);
@@ -2140,7 +2139,9 @@ plant.mantenimiento_turno[pline-1] = line.get(db_lines.mantenimiento_turno);
 plant.gastos_generales_mes[pline-1] = line.get(db_lines.gastos_generales_mes);
 plant.costosCO_CO[pline-1] = line.get(db_lines.costos_co_co);
 plant.merma[pline-1] = line.get(db_lines.merma);
-plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
+plant.fte[pline-1] = line.get(db_lines.fte);
+plant.co_size_time[pline-1] = line.get(db_lines.co_size_time);
+plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 				</Function>
 			</Functions>
 			<AnalysisData>
@@ -4313,6 +4314,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						<Parameter>
 							<Name><![CDATA[delay_arranque]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_size_time]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_packsize_time]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -4813,6 +4820,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						<Parameter>
 							<Name><![CDATA[delay_arranque]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_size_time]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_packsize_time]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -5037,6 +5050,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delay_arranque]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_size_time]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_packsize_time]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -5263,6 +5282,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						<Parameter>
 							<Name><![CDATA[delay_arranque]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_size_time]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_packsize_time]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -5487,6 +5512,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delay_arranque]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_size_time]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_packsize_time]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -5713,6 +5744,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						<Parameter>
 							<Name><![CDATA[delay_arranque]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_size_time]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_packsize_time]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -5937,6 +5974,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delay_arranque]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_size_time]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_packsize_time]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -6163,6 +6206,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						<Parameter>
 							<Name><![CDATA[delay_arranque]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_size_time]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_packsize_time]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -6387,6 +6436,12 @@ plant.fte[pline-1] = line.get(db_lines.fte);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[delay_arranque]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_size_time]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[co_packsize_time]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -10895,6 +10950,56 @@ del Producto]]></Text>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1525976386441</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526040920825</Id>
+					<Name><![CDATA[co_size_time]]></Name>
+					<X>-380</X><Y>1170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new double[6]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526040920823</Id>
+							<Label><![CDATA[line_capacities]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526040933569</Id>
+					<Name><![CDATA[co_packsize_time]]></Name>
+					<X>-380</X><Y>1190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new double[6]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526040933567</Id>
+							<Label><![CDATA[line_capacities]]></Label>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -36334,7 +36439,7 @@ lote_net_time[5] += (agent.real_demand / agent.rate)/60;]]></Code>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
 					<Width>300</Width>
-					<Height>340</Height>
+					<Height>350</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
 					<FillMaterial>null</FillMaterial>
