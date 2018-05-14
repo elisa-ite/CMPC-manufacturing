@@ -1456,7 +1456,7 @@ tempSKU.remove(s); // Delete SKU from temp list]]></Action>
 	List<Tuple> rows = selectFrom(db_sku)
 	.where(db_sku.sku.eq(s.code) )
 	.list();
-	
+
 	for ( int i = 0; i < rows.size(); i ++) {
 		// For each month
 		populate_demand_sku(s, rows, i);
@@ -1501,7 +1501,6 @@ s.sku_size_code =		size_str2int(s.sku_size );
 s.inventory = 			rows.get( db_sku.inventory );
 s.sku_model = 			rows.get( db_sku.sku_model );
 s.sku_type = 			rows.get( db_sku.sku_type );
-s.line_type = 			rows.get( db_sku.line_type);
 s.packs_per_packet = 	rows.get( db_sku.packs_per_packet );
 s.total_variable_cost = rows.get( db_sku.total_variable_cost );
 s.packets_per_pallet = 	rows.get( db_sku.packets_per_pallet );
@@ -1536,7 +1535,7 @@ s.line_rates[5] = 		rows.get( db_sku.rate_l6 );]]></Body>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
 					<Body><![CDATA[// Si la demanda está en miles. Lo multiplico
-s.demand[i] = rows.get(i).get( db_sku.demand )*1000;]]></Body>
+s.demand[i] = rows.get(i).get( db_sku.demand );]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -1584,11 +1583,11 @@ s.demand[i] = rows.get(i).get( db_sku.demand )*1000;]]></Body>
 						<Type><![CDATA[String]]></Type>
 					</Parameter>
 					<Body><![CDATA[switch (size) {
-	case "XXG": return 10;
-	case "XG": return 9;
-	case "G": return 8;
-	case "M": return 7;
-	case "P": return 6;
+	case "5·XX": return 5;
+	case "4·XG": return 4;
+	case "3·GR": return 3;
+	case "2·MD": return 2;
+	case "1·PQ": return 1;
 	default: {
 				System.out.println("size_str2int: invalid size string");
 			  	return 0;
@@ -1886,7 +1885,7 @@ for (int line = 0 ; line < 6 ; line++){
 	int last_packsize = 0;
 	int last_size = 0;
 	
-	if (get_plant(country).line_types[line] != 0){
+	if (get_plant(country).line_active[line]){
 		ArrayList<SKU> sku_to_remove = new ArrayList<SKU>();
 		for (int i = 0 ; i < sorted_sku.size() ; i++){
 			SKU s = sorted_sku.get(i);
@@ -2019,7 +2018,7 @@ for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1)
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1524159064278</Id>
 					<Name><![CDATA[add_acc]]></Name>
-					<X>-340</X><Y>-140</Y>
+					<X>-340</X><Y>-120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2201,7 +2200,7 @@ productionLineBra.refresh_collections();
 productionLineBra.refresh_sku_table();
 
 productionLineChile.refresh_collections();
-productionLineChile.refresh_sku_table();
+refresh_sku_table(productionLineChile);
 
 productionLineCol.refresh_collections();
 productionLineCol.refresh_sku_table();
@@ -2236,7 +2235,10 @@ productionLineUru.refresh_sku_table();]]></Body>
 					<Body><![CDATA[ProductionLine plant = get_plant(line.get(db_lines.country));
 int pline = line.get(db_lines.name);
 
-plant.line_types[pline-1] = line.get(db_lines.line_type);
+boolean active = false;
+if (line.get(db_lines.line_type) > 0)
+	active = true;
+plant.line_active[pline-1] = active;
 plant.mano_obraD_cant_turno[pline-1] = line.get(db_lines.mano_obra_d_cant_turno);
 plant.mano_obraD_costo_turno[pline-1] = line.get(db_lines.mano_obra_d_costo_turno);
 plant.mano_obraI_cant_turno[pline-1] = line.get(db_lines.mano_obra_i_cant_turno);
@@ -2246,7 +2248,6 @@ plant.mantenimiento_turno[pline-1] = line.get(db_lines.mantenimiento_turno);
 plant.gastos_generales_mes[pline-1] = line.get(db_lines.gastos_generales_mes);
 plant.costosCO_CO[pline-1] = line.get(db_lines.costos_co_co);
 plant.merma[pline-1] = line.get(db_lines.merma);
-plant.fte[pline-1] = line.get(db_lines.fte);
 plant.co_size_time[pline-1] = line.get(db_lines.co_size_time);
 plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 				</Function>
@@ -2278,6 +2279,61 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 			  	return pc_inventory_ar;
 			 }
 }]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526308912027</Id>
+					<Name><![CDATA[refresh_sku_table]]></Name>
+					<X>260</X><Y>-30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[plant]]></Name>
+						<Type><![CDATA[ProductionLine]]></Type>
+					</Parameter>
+					<Body><![CDATA[for (int m = 1 ; m < 13 ; m++){
+	for (SKU s : sku){
+		if (plant.sku_eff.containsKey(s.code)){
+			double prod_att = 0;
+			if (plant.prod_att_monthly.containsKey(s))
+				prod_att = plant.prod_att_monthly.get(s)[m-1];
+			double prod_bo = 0;
+			if (plant.prod_bo_monthly.containsKey(s))
+				prod_bo = plant.prod_bo_monthly.get(s)[m-1];
+				
+			insertInto(db_sku_out)
+				 .columns(
+				 	db_sku_out.sku, 
+				 	db_sku_out.mes,
+				 	db_sku_out.country,
+				 	db_sku_out.line,
+				 	db_sku_out.efficiency,
+				 	db_sku_out.prod_att,
+				 	db_sku_out.prod_bo,
+				 	db_sku_out.brute_time,
+				 	db_sku_out.net_time,
+				 	db_sku_out.variable_cost
+				 	)
+				 .values(
+				 	s.code,
+				 	m,
+				 	s.country_of_production,
+				 	s.monthly_line[m-1],
+				 	plant.sku_eff.get(s),
+				 	prod_att,
+				 	prod_bo,
+				 	plant.brute_times.get(s),
+				 	plant.net_times.get(s),
+				 	plant.variable_cost_per_sku.get(s)
+				 	)
+				.execute();
+		}
+	}
+}
+]]></Body>
 				</Function>
 			</Functions>
 			<AnalysisData>
@@ -4415,10 +4471,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 							<Name><![CDATA[country]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[fte]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[line_types]]></Name>
+							<Name><![CDATA[line_active]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[co_amount]]></Name>
@@ -4915,10 +4968,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 							</Value>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[fte]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[line_types]]></Name>
+							<Name><![CDATA[line_active]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[co_amount]]></Name>
@@ -5140,10 +5190,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 							</Value>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[fte]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[line_types]]></Name>
+							<Name><![CDATA[line_active]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[co_amount]]></Name>
@@ -5365,10 +5412,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 							</Value>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[fte]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[line_types]]></Name>
+							<Name><![CDATA[line_active]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[co_amount]]></Name>
@@ -5590,10 +5634,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 							</Value>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[fte]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[line_types]]></Name>
+							<Name><![CDATA[line_active]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[co_amount]]></Name>
@@ -5815,10 +5856,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 							</Value>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[fte]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[line_types]]></Name>
+							<Name><![CDATA[line_active]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[co_amount]]></Name>
@@ -6040,10 +6078,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 							</Value>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[fte]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[line_types]]></Name>
+							<Name><![CDATA[line_active]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[co_amount]]></Name>
@@ -6265,10 +6300,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 							</Value>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[fte]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[line_types]]></Name>
+							<Name><![CDATA[line_active]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[co_amount]]></Name>
@@ -6490,10 +6522,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 							</Value>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[fte]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[line_types]]></Name>
+							<Name><![CDATA[line_active]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[co_amount]]></Name>
@@ -9085,6 +9114,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 				<Variable Class="Parameter">
 					<Id>1524074204302</Id>
 					<Name><![CDATA[line_type]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>180</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -10906,43 +10936,19 @@ del Producto]]></Text>
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1525865191395</Id>
-					<Name><![CDATA[fte]]></Name>
-					<X>-500</X><Y>1080</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[]{2,2,2,2,2,2}]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1525865191393</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
 					<Id>1525883443280</Id>
-					<Name><![CDATA[line_types]]></Name>
+					<Name><![CDATA[line_active]]></Name>
 					<X>-430</X><Y>730</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
+						<Type><![CDATA[boolean[]]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[]{0,0,0,0,0,0}]]></Code>
+							<Code><![CDATA[new boolean[]{false,false,false,false,false,false}]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1525883443278</Id>
@@ -10956,7 +10962,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1525963763465</Id>
 					<Name><![CDATA[co_amount]]></Name>
-					<X>1660</X><Y>-170</Y>
+					<X>1840</X><Y>-170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10980,7 +10986,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1525963813826</Id>
 					<Name><![CDATA[co_hours]]></Name>
-					<X>1660</X><Y>-150</Y>
+					<X>1840</X><Y>-150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11078,7 +11084,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1526042102935</Id>
 					<Name><![CDATA[shifts_worked]]></Name>
-					<X>1660</X><Y>-130</Y>
+					<X>1840</X><Y>-130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11552,7 +11558,7 @@ del Producto]]></Text>
 				<Variable Class="CollectionVariable">
 					<Id>1525800580052</Id>
 					<Name><![CDATA[variable_cost_per_sku]]></Name>
-					<X>1510</X><Y>-90</Y>
+					<X>1840</X><Y>-100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11627,7 +11633,7 @@ del Producto]]></Text>
 				<Variable Class="CollectionVariable">
 					<Id>1525962045834</Id>
 					<Name><![CDATA[prod_bo_per_line]]></Name>
-					<X>1660</X><Y>-230</Y>
+					<X>1840</X><Y>-230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11642,7 +11648,7 @@ del Producto]]></Text>
 				<Variable Class="CollectionVariable">
 					<Id>1525962062309</Id>
 					<Name><![CDATA[net_times_per_line]]></Name>
-					<X>1660</X><Y>-210</Y>
+					<X>1840</X><Y>-210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11657,7 +11663,7 @@ del Producto]]></Text>
 				<Variable Class="CollectionVariable">
 					<Id>1525962080854</Id>
 					<Name><![CDATA[brute_times_per_line]]></Name>
-					<X>1660</X><Y>-190</Y>
+					<X>1840</X><Y>-190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11749,6 +11755,126 @@ del Producto]]></Text>
 					<Id>1526300569415</Id>
 					<Name><![CDATA[prod_att_monthly_l6]]></Name>
 					<X>1510</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526305580349</Id>
+					<Name><![CDATA[prod_bo_monthly_l1]]></Name>
+					<X>1650</X><Y>-230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526305596575</Id>
+					<Name><![CDATA[prod_bo_monthly_l2]]></Name>
+					<X>1650</X><Y>-210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526305598344</Id>
+					<Name><![CDATA[prod_bo_monthly_l3]]></Name>
+					<X>1650</X><Y>-190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526305600625</Id>
+					<Name><![CDATA[prod_bo_monthly_l4]]></Name>
+					<X>1650</X><Y>-170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526305602417</Id>
+					<Name><![CDATA[prod_bo_monthly_l5]]></Name>
+					<X>1650</X><Y>-150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526305604707</Id>
+					<Name><![CDATA[prod_bo_monthly_l6]]></Name>
+					<X>1650</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526305921572</Id>
+					<Name><![CDATA[prod_att_monthly]]></Name>
+					<X>1510</X><Y>-90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526308191458</Id>
+					<Name><![CDATA[prod_bo_monthly]]></Name>
+					<X>1650</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15182,7 +15308,19 @@ int m = cal.get(Calendar.MONTH)+1;
 substract_demand_from_inventory(m);
 
 // Monthly collections
-substract_previous_months(prod_att_l1, prod_att_monthly_l1, m);]]></Action>
+substract_previous_months(prod_att_l1, prod_att_monthly_l1, m);
+substract_previous_months(prod_att_l2, prod_att_monthly_l2, m);
+substract_previous_months(prod_att_l3, prod_att_monthly_l3, m);
+substract_previous_months(prod_att_l4, prod_att_monthly_l4, m);
+substract_previous_months(prod_att_l5, prod_att_monthly_l5, m);
+substract_previous_months(prod_att_l6, prod_att_monthly_l6, m);
+
+substract_previous_months(prod_bo_l1, prod_bo_monthly_l1, m);
+substract_previous_months(prod_bo_l2, prod_bo_monthly_l2, m);
+substract_previous_months(prod_bo_l3, prod_bo_monthly_l3, m);
+substract_previous_months(prod_bo_l4, prod_bo_monthly_l4, m);
+substract_previous_months(prod_bo_l5, prod_bo_monthly_l5, m);
+substract_previous_months(prod_bo_l6, prod_bo_monthly_l6, m);]]></Action>
 				</Event>
 			</Events>
 			<DynamicEvents>
@@ -15576,7 +15714,7 @@ for (String s : prod_bo_l6.keySet()){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1525800539054</Id>
 					<Name><![CDATA[refresh_vcost]]></Name>
-					<X>1510</X><Y>-70</Y>
+					<X>1840</X><Y>-80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -15596,56 +15734,51 @@ for (String s : prod_bo_l6.keySet()){
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[for (String sku : sku_eff.keySet()){
-	insertInto(db_sku_out)
-		 .columns(
-		 	db_sku_out.sku, 
-		 	db_sku_out.country,
-		 	db_sku_out.line,
-		 	db_sku_out.efficiency,
-		 	db_sku_out.prod_att,
-		 	db_sku_out.brute_time,
-		 	db_sku_out.net_time,
-		 	db_sku_out.variable_cost
-		 	)
-		 .values(
-		 	sku,
-		 	country,
-		 	sku_lines.get(sku),
-		 	sku_eff.get(sku),
-		 	prod_att.get(sku),
-		 	brute_times.get(sku),
-		 	net_times.get(sku),
-		 	variable_cost_per_sku.get(sku)
-		 	)
-		.execute();
+					<Body><![CDATA[for (int m = 1 ; m < 13 ; m++){
+	for (String sku : sku_eff.keySet()){
+		double prod_att = 0;
+		if (prod_att_monthly.containsKey(sku))
+			prod_att = prod_att_monthly.get(sku)[m-1];
+		double prod_bo = 0;
+		if (prod_bo_monthly.containsKey(sku))
+			prod_bo = prod_bo_monthly.get(sku)[m-1];
+			
+		insertInto(db_sku_out)
+			 .columns(
+			 	db_sku_out.sku, 
+			 	db_sku_out.mes,
+			 	db_sku_out.country,
+			 	db_sku_out.line,
+			 	db_sku_out.efficiency,
+			 	db_sku_out.prod_att,
+			 	db_sku_out.prod_bo,
+			 	db_sku_out.brute_time,
+			 	db_sku_out.net_time,
+			 	db_sku_out.variable_cost
+			 	)
+			 .values(
+			 	sku,
+			 	m,
+			 	country,
+			 	sku_lines.get(sku),
+			 	sku_eff.get(sku),
+			 	prod_att,
+			 	prod_bo,
+			 	brute_times.get(sku),
+			 	net_times.get(sku),
+			 	variable_cost_per_sku.get(sku)
+			 	)
+			.execute();
+	}
 }
-
-for (int line = 1 ; line < 7 ; line++){
-	insertInto(db_lines_out)
-	     .columns(
-	     	db_lines_out.country, 
-	     	db_lines_out.line,
-	     	db_lines_out.co_amount,
-	     	db_lines_out.co_hours,
-	     	db_lines_out.shifts_amount
-	     	)
-	     .values(
-	     	country,
-	     	line,
-	     	co_amount[line-1],
-	     	co_hours[line-1],
-	     	shifts_worked[line-1]
-	     	)
-	    .execute();
-}]]></Body>
+]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1525805568109</Id>
 					<Name><![CDATA[refresh_collections]]></Name>
-					<X>1190</X><Y>-340</Y>
+					<X>1190</X><Y>-420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15653,7 +15786,9 @@ for (int line = 1 ; line < 7 ; line++){
 					<Body><![CDATA[refresh_brute_times();
 refresh_net_times();
 refresh_prod_att();
+refresh_prod_att_monthly();
 refresh_prod_bo();
+refresh_prod_bo_monthly();
 refresh_vcost();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -15730,6 +15865,203 @@ return accumulated;]]></Body>
 					</Parameter>
 					<Body><![CDATA[for (SKU s : main.sku){
 	main.add_acc(inventory,s.code,(-1)*s.demand[m-1]);
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526305921583</Id>
+					<Name><![CDATA[refresh_prod_att_monthly]]></Name>
+					<X>1510</X><Y>-70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[prod_att_monthly.clear();
+
+for (String s : prod_att_monthly_l1.keySet()){
+	if (!prod_att_monthly.containsKey(s)){
+		Double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+		prod_att_monthly.put(s,monthly_zeroes);
+	}
+	Double[] monthly_array = prod_att_monthly.get(s);
+	for (int m = 0 ; m < 12 ; m++){
+		monthly_array[m] += prod_att_monthly_l1.get(s)[m]; 
+	}
+	prod_att_monthly.put(s,monthly_array);
+}
+
+for (String s : prod_att_monthly_l2.keySet()){
+	if (!prod_att_monthly.containsKey(s)){
+		Double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+		prod_att_monthly.put(s,monthly_zeroes);
+	}
+	Double[] monthly_array = prod_att_monthly.get(s);
+	for (int m = 0 ; m < 12 ; m++){
+		monthly_array[m] += prod_att_monthly_l2.get(s)[m]; 
+	}
+	prod_att_monthly.put(s,monthly_array);
+}
+
+for (String s : prod_att_monthly_l3.keySet()){
+	if (!prod_att_monthly.containsKey(s)){
+		Double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+		prod_att_monthly.put(s,monthly_zeroes);
+	}
+	Double[] monthly_array = prod_att_monthly.get(s);
+	for (int m = 0 ; m < 12 ; m++){
+		monthly_array[m] += prod_att_monthly_l3.get(s)[m]; 
+	}
+	prod_att_monthly.put(s,monthly_array);
+}
+
+for (String s : prod_att_monthly_l4.keySet()){
+	if (!prod_att_monthly.containsKey(s)){
+		Double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+		prod_att_monthly.put(s,monthly_zeroes);
+	}
+	Double[] monthly_array = prod_att_monthly.get(s);
+	for (int m = 0 ; m < 12 ; m++){
+		monthly_array[m] += prod_att_monthly_l4.get(s)[m]; 
+	}
+	prod_att_monthly.put(s,monthly_array);
+}
+
+for (String s : prod_att_monthly_l5.keySet()){
+	if (!prod_att_monthly.containsKey(s)){
+		Double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+		prod_att_monthly.put(s,monthly_zeroes);
+	}
+	Double[] monthly_array = prod_att_monthly.get(s);
+	for (int m = 0 ; m < 12 ; m++){
+		monthly_array[m] += prod_att_monthly_l5.get(s)[m]; 
+	}
+	prod_att_monthly.put(s,monthly_array);
+}
+
+for (String s : prod_att_monthly_l6.keySet()){
+	if (!prod_att_monthly.containsKey(s)){
+		Double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+		prod_att_monthly.put(s,monthly_zeroes);
+	}
+	Double[] monthly_array = prod_att_monthly.get(s);
+	for (int m = 0 ; m < 12 ; m++){
+		monthly_array[m] += prod_att_monthly_l6.get(s)[m]; 
+	}
+	prod_att_monthly.put(s,monthly_array);
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526308191466</Id>
+					<Name><![CDATA[refresh_prod_bo_monthly]]></Name>
+					<X>1650</X><Y>-70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[prod_bo_monthly.clear();
+
+for (String s : prod_bo_monthly_l1.keySet()){
+	if (!prod_bo_monthly.containsKey(s)){
+		Double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+		prod_bo_monthly.put(s,monthly_zeroes);
+	}
+	Double[] monthly_array = prod_bo_monthly.get(s);
+	for (int m = 0 ; m < 12 ; m++){
+		monthly_array[m] += prod_bo_monthly_l1.get(s)[m]; 
+	}
+	prod_bo_monthly.put(s,monthly_array);
+}
+
+for (String s : prod_bo_monthly_l2.keySet()){
+	if (!prod_bo_monthly.containsKey(s)){
+		Double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+		prod_bo_monthly.put(s,monthly_zeroes);
+	}
+	Double[] monthly_array = prod_bo_monthly.get(s);
+	for (int m = 0 ; m < 12 ; m++){
+		monthly_array[m] += prod_bo_monthly_l2.get(s)[m]; 
+	}
+	prod_bo_monthly.put(s,monthly_array);
+}
+
+for (String s : prod_bo_monthly_l3.keySet()){
+	if (!prod_bo_monthly.containsKey(s)){
+		Double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+		prod_bo_monthly.put(s,monthly_zeroes);
+	}
+	Double[] monthly_array = prod_bo_monthly.get(s);
+	for (int m = 0 ; m < 12 ; m++){
+		monthly_array[m] += prod_bo_monthly_l3.get(s)[m]; 
+	}
+	prod_bo_monthly.put(s,monthly_array);
+}
+
+for (String s : prod_bo_monthly_l4.keySet()){
+	if (!prod_bo_monthly.containsKey(s)){
+		Double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+		prod_bo_monthly.put(s,monthly_zeroes);
+	}
+	Double[] monthly_array = prod_bo_monthly.get(s);
+	for (int m = 0 ; m < 12 ; m++){
+		monthly_array[m] += prod_bo_monthly_l4.get(s)[m]; 
+	}
+	prod_bo_monthly.put(s,monthly_array);
+}
+
+for (String s : prod_bo_monthly_l5.keySet()){
+	if (!prod_bo_monthly.containsKey(s)){
+		Double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+		prod_bo_monthly.put(s,monthly_zeroes);
+	}
+	Double[] monthly_array = prod_bo_monthly.get(s);
+	for (int m = 0 ; m < 12 ; m++){
+		monthly_array[m] += prod_bo_monthly_l5.get(s)[m]; 
+	}
+	prod_bo_monthly.put(s,monthly_array);
+}
+
+for (String s : prod_bo_monthly_l6.keySet()){
+	if (!prod_bo_monthly.containsKey(s)){
+		Double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+		prod_bo_monthly.put(s,monthly_zeroes);
+	}
+	Double[] monthly_array = prod_bo_monthly.get(s);
+	for (int m = 0 ; m < 12 ; m++){
+		monthly_array[m] += prod_bo_monthly_l6.get(s)[m]; 
+	}
+	prod_bo_monthly.put(s,monthly_array);
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526309285396</Id>
+					<Name><![CDATA[refresh_lines_table]]></Name>
+					<X>1190</X><Y>-340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[for (int line = 1 ; line < 7 ; line++){
+	insertInto(db_lines_out)
+	     .columns(
+	     	db_lines_out.country, 
+	     	db_lines_out.line,
+	     	db_lines_out.co_amount,
+	     	db_lines_out.co_hours,
+	     	db_lines_out.shifts_amount
+	     	)
+	     .values(
+	     	country,
+	     	line,
+	     	co_amount[line-1],
+	     	co_hours[line-1],
+	     	shifts_worked[line-1]
+	     	)
+	    .execute();
 }]]></Body>
 				</Function>
 			</Functions>
@@ -36667,7 +36999,7 @@ activity_l6 = 0;]]></Code>
 				<RoundedRectangle>
 					<Id>1524226432357</Id>
 					<Name><![CDATA[roundRectangle4]]></Name>
-					<X>980</X><Y>-300</Y>
+					<X>950</X><Y>-300</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -36681,7 +37013,7 @@ activity_l6 = 0;]]></Code>
 					<LineColor>-16777216</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>900</Width>
+					<Width>1020</Width>
 					<Height>290</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
@@ -36691,7 +37023,7 @@ activity_l6 = 0;]]></Code>
 				<Text>
 					<Id>1524226449020</Id>
 					<Name><![CDATA[text17]]></Name>
-					<X>1750</X><Y>-290</Y>
+					<X>1870</X><Y>-290</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
