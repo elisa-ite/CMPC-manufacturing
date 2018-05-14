@@ -1410,7 +1410,7 @@ for( int i = 0 ; i < lotees ; i++ ){
 	n.real_demand = (int)s.loteSize[month-1];
 	n.loteNumber = i+1;
 	n.country_of_production = s.monthly_country[month-1];
-	n.rate = s.line_rates[s.monthly_line[month-1]];
+	n.rate = s.line_rates[s.monthly_line[month-1]-1];
 	n.total_variable_cost = s.total_variable_cost;
 	
 	//traceln(" n = "+ n);
@@ -1606,7 +1606,7 @@ Dentro del agente: productionLine, para cada línea. ]]></Description>
 					<X>-660</X><Y>-120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[country]]></Name>
@@ -1620,7 +1620,7 @@ Dentro del agente: productionLine, para cada línea. ]]></Description>
 	capacity *= get_plant(country).shift_duration;
 	capacity *= working_days_year;
 	capacity /= 12;
-	get_plant(country).line_capacities[line] = (int)capacity;
+	get_plant(country).line_capacities[line] = (int)(capacity*1.2);
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -1886,6 +1886,7 @@ for (int line = 0 ; line < 6 ; line++){
 	int last_size = 0;
 	
 	if (get_plant(country).line_active[line]){
+
 		ArrayList<SKU> sku_to_remove = new ArrayList<SKU>();
 		for (int i = 0 ; i < sorted_sku.size() ; i++){
 			SKU s = sorted_sku.get(i);
@@ -1905,11 +1906,11 @@ for (int line = 0 ; line < 6 ; line++){
 				if (s.sku_size_code != last_size)
 					cost_delay += delay_size;
 			}
-					
+			
 			// If it fits, it produces
 			if ( (line_capacities[line] - (cost_of_producing+cost_delay) > 0) &&
-				  (!country_demand_equals_producer || country == s.countryD_code)){
-
+				(!country_demand_equals_producer || country == s.countryD_code)
+				){
 
 				acc_demand[line] += cost_of_producing; 
 			
@@ -1918,7 +1919,7 @@ for (int line = 0 ; line < 6 ; line++){
 				
 				// Inventory refresh
 				if (m > 1){
-					double inventory_val = -1*s.real_demand[m-1];
+					double inventory_val = -1*s.demand[m-1];
 					if (get_pc_inventory(country).containsKey(s)) 
 				      inventory_val += get_pc_inventory(country).get(s);
 				   	inventory_val += cost_of_producing;
@@ -1929,7 +1930,7 @@ for (int line = 0 ; line < 6 ; line++){
 				last_size = s.sku_size_code;
 				
 				int month_prod = estimate_month_of_production(s,country,m+1);
-				
+					
 				s.monthly_line[month_prod-1] = line+1;
 				s.monthly_country[month_prod-1] = country;
 				sku_to_remove.add(s);
@@ -1969,7 +1970,11 @@ for (int line = 0 ; line < 6 ; line++){
 						<Name><![CDATA[s]]></Name>
 						<Type><![CDATA[SKU]]></Type>
 					</Parameter>
-					<Body><![CDATA[double demand = s.real_demand[m-1] * (s.line_rates[line]/800);
+					<Body><![CDATA[double demand = s.real_demand[m-1] * (800/s.line_rates[line]);
+
+// If rate == 0 then impossible to make.
+if (s.line_rates[line] == 0)
+	demand *= 1000000000; 
 return demand;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -2194,28 +2199,28 @@ deleteFrom(db_lines_out)
      .execute();
 
 productionLineArg.refresh_collections();
-productionLineArg.refresh_sku_table();
+refresh_tables(productionLineChile);
 
 productionLineBra.refresh_collections();
-productionLineBra.refresh_sku_table();
+refresh_tables(productionLineChile);
 
 productionLineChile.refresh_collections();
-refresh_sku_table(productionLineChile);
+refresh_tables(productionLineChile);
 
 productionLineCol.refresh_collections();
-productionLineCol.refresh_sku_table();
+refresh_tables(productionLineChile);
 
 productionLineEcu.refresh_collections();
-productionLineEcu.refresh_sku_table();
+refresh_tables(productionLineChile);
 
 productionLinePeru.refresh_collections();
-productionLinePeru.refresh_sku_table();
+refresh_tables(productionLineChile);
 
 productionLineMex.refresh_collections();
-productionLineMex.refresh_sku_table();
+refresh_tables(productionLineChile);
 
 productionLineUru.refresh_collections();
-productionLineUru.refresh_sku_table();]]></Body>
+refresh_tables(productionLineChile);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -2334,6 +2339,23 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 	}
 }
 ]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526317322152</Id>
+					<Name><![CDATA[refresh_tables]]></Name>
+					<X>260</X><Y>-60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[plant]]></Name>
+						<Type><![CDATA[ProductionLine]]></Type>
+					</Parameter>
+					<Body><![CDATA[refresh_sku_table(plant);
+plant.refresh_sku_table();]]></Body>
 				</Function>
 			</Functions>
 			<AnalysisData>
@@ -4230,9 +4252,6 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[days_of_hand]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[line_type]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[total_variable_cost]]></Name>
@@ -9076,7 +9095,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[]{0,0,0,0,0,0,0,0,0,0,0,0}]]></Code>
+							<Code><![CDATA[new int[]{1,1,1,1,1,1,1,1,1,1,1,1}]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1523543365178</Id>
@@ -9104,31 +9123,6 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1523886839085</Id>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1524074204302</Id>
-					<Name><![CDATA[line_type]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>180</X><Y>110</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1524074204300</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -41542,7 +41536,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 						<Button><![CDATA[by Size]]></Button>
 						<Button><![CDATA[by Demand]]></Button>
 						<LinkTo>true</LinkTo>
-						<Link>sorting_arrangement</Link>
+						<Link>sorting_arrangement_var</Link>
 					</ExtendedProperties>
 				</Control>
 				<Control Type="EditBox">
