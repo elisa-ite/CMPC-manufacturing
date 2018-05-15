@@ -1485,6 +1485,7 @@ tempSKU.remove(s); // Delete SKU from temp list]]></Action>
 		populate_demand_sku(s, rows, i);
 	}
 	populate_sku(s, rows.get(0));
+	System.out.println(s.code + " " + s.demand[0]);
 }
 
 for ( int country = 1 ; country < 9 ; country++ ) {
@@ -1876,7 +1877,7 @@ Para cada mes:
 	if (country_demand_equals_producer){
 		for (Lote l : sorted_lotes){
 			l.country_of_production = l.countryD_code;
-			l.line = 0;
+			l.line = 7;
 		}
 	}
 	sorted_lotes.clear();
@@ -1928,12 +1929,10 @@ for (int line = 0 ; line < 6 ; line++){
 		for (Lote l : sorted_lotes){
 			// Calculate cost of producing one item
 			double cost_of_producing = calculate_prod_hours(m,l);
-			cost_of_producing += l.days_on_hand;
+			cost_of_producing += l.days_on_hand*(l.sku_demand/30);
 			if (get_pc_inventory(country).containsKey(l.code))
 				cost_of_producing -= get_pc_inventory(country).get(l.code);
-			if (cost_of_producing < 0)
-				cost_of_producing = 0;
-				
+
 			double cost_delay = 0;
 			if (!first_in_line){
 				if (l.packsize != last_packsize)
@@ -1943,7 +1942,8 @@ for (int line = 0 ; line < 6 ; line++){
 			}
 			
 			// If it fits, it produces
-			if ( (line_capacities[line] - (cost_of_producing+cost_delay) > 0) &&
+			if ( cost_of_producing > 0 && 
+				(line_capacities[line] - (cost_of_producing+cost_delay) > 0) &&
 				(!country_demand_equals_producer || country == l.countryD_code)
 				){
 	
@@ -2407,6 +2407,7 @@ plant.refresh_lines_table();]]></Body>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
 					<Body><![CDATA[int lotees = (int)(s.real_demand[m-1] / s.loteSize[m-1])+1;
+if (s.real_demand[m-1] == 0) lotees = 0;
 
 for( int i = 0 ; i < lotees ; i++ ){
 	Lote n = add_lote();
@@ -15606,7 +15607,7 @@ substract_previous_months(prod_bo_l6, prod_bo_monthly_l6, m);]]></Action>
 	case 4: return selectOutputOut4;
 	case 5: return selectOutputOut5;
 	case 6: return selectOutputOut6;
-	default: return selectOutputOut1;
+	default: return selectOutputOut6;
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
