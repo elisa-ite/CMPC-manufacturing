@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291513" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291251" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMCP_Manufacturing]]></Name>
@@ -240,7 +240,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1523364409951</Id>
 					<Name><![CDATA[sorting_arrangement]]></Name>
-					<X>-350</X><Y>-210</Y>
+					<X>-350</X><Y>-290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -482,7 +482,7 @@ pre_calc();]]></StartupCode>
 				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1522612589504</Id>
-					<Name><![CDATA[tempSKU]]></Name>
+					<Name><![CDATA[tempLotes]]></Name>
 					<X>20</X><Y>-270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -490,7 +490,7 @@ pre_calc();]]></StartupCode>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[SKU]]></ElementClass>
+						<ElementClass><![CDATA[Lote]]></ElementClass>
 						<ValueElementClass><![CDATA[String]]></ValueElementClass>
 					</Properties>
 
@@ -554,7 +554,7 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[SKU]]></ElementClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
 					</Properties>
 
@@ -570,7 +570,7 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[SKU]]></ElementClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
 					</Properties>
 
@@ -586,7 +586,7 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[SKU]]></ElementClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
 					</Properties>
 
@@ -602,7 +602,7 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[SKU]]></ElementClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
 					</Properties>
 
@@ -618,7 +618,7 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[SKU]]></ElementClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
 					</Properties>
 
@@ -634,7 +634,7 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[SKU]]></ElementClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
 					</Properties>
 
@@ -650,7 +650,7 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[SKU]]></ElementClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
 					</Properties>
 
@@ -666,8 +666,26 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[SKU]]></ElementClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526399789878</Id>
+					<Name><![CDATA[sorted_lotes]]></Name>
+					<Description><![CDATA[Sorted collection of SKU, replaced by month.
+Used during PreCalculation.
+Should be used also on simulation, as tempSKU.]]></Description>
+					<X>-490</X><Y>-20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[ArrayList]]></CollectionClass>
+						<ElementClass><![CDATA[Lote]]></ElementClass>
+						<ValueElementClass><![CDATA[String]]></ValueElementClass>
 					</Properties>
 
 				</Variable>
@@ -1153,13 +1171,16 @@ if( month < 12 ){
 
 			
 	//traceln("Month "+month);
-	for(SKU s : sku)
-		tempSKU.add(s);
-	sort_sku(tempSKU,month);
+	for (Lote l : lote)
+		if(l.month == month)
+			tempLotes.add(l);
+	sort_lotes(tempLotes,month);
 
-	for( int i=0; i<sku.size(); i++ ){
-		create_SendToProductionLine( i+1 );	
+	for (Lote l : tempLotes){
+		in_products.take(l);
+		//tempLotes.remove(l);
 	}
+	tempLotes.clear();
 
 	// Store Inventory & Target Inventort Datasets for charts	
 	
@@ -1191,17 +1212,17 @@ if( month < 12 ){
 				<DynamicEventClass>
 					<Id>1522611240358</Id>
 					<Name><![CDATA[SendToProductionLine]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>20</X><Y>-240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Action><![CDATA[//
-// Get SKU from Priority List
-//
-
-//SKU s = getHighPriorSKU( month-1 );
-SKU s = tempSKU.get(0);
+					<Parameter>
+						<Name><![CDATA[]]></Name>
+						<Type><![CDATA[]]></Type>
+					</Parameter>
+					<Action><![CDATA[
 
 // Initialize SKU variables
 
@@ -1410,7 +1431,9 @@ for( int i = 0 ; i < lotees ; i++ ){
 	n.real_demand = (int)s.loteSize[month-1];
 	n.loteNumber = i+1;
 	n.country_of_production = s.monthly_country[month-1];
-	n.rate = s.line_rates[s.monthly_line[month-1]-1];
+	int rate = 0;
+	if (s.monthly_line[month-1] != 0)
+		n.rate = s.line_rates[s.monthly_line[month-1]-1];
 	n.total_variable_cost = s.total_variable_cost;
 	
 	//traceln(" n = "+ n);
@@ -1633,7 +1656,7 @@ Dentro del agente: productionLine, para cada línea. ]]></Description>
 		Ordenamiento1 : de mayor Size a menor Size y dentro del size de mayor pack size a 		menor pack size.
 	vF= 2 
 		Ordenamiento 2 : de mayor cantidad demandada a menor cantidad demandada.]]></Description>
-					<X>-370</X><Y>-270</Y>
+					<X>-370</X><Y>-350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1662,7 +1685,7 @@ Primero los XXG, dentro de esta categoría que es la variable sku_size, hay que 
 
 Los ordenamos dejando la fila ordenada según este concepto para cada mes, en una collection: SKUsvF1 ( no se si 12 collections o una que se pisa).
 ]]></Description>
-					<X>-350</X><Y>-250</Y>
+					<X>-350</X><Y>-330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1704,7 +1727,7 @@ Collections.sort(sku_list,new SKUSizeComparator());
 Tomando el mes real, sin leads time.
 
 Los ordenamos dejando la fila ordenada según este concepto para cada mes, en una collection: SKUsvF2 ( no se si 12 collections o una que se pisa)]]></Description>
-					<X>-350</X><Y>-230</Y>
+					<X>-350</X><Y>-310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1781,7 +1804,7 @@ return month_of_production;]]></Body>
 					<X>-620</X><Y>-250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[for ( SKU s : sku ){
 	for ( int m = 1; m < 13; m++){
@@ -1840,9 +1863,23 @@ Para cada mes:
 		sorted_sku.add(s);
 	sort_sku(sorted_sku,m);
 	
+	// Lotear en pc_lotes
+	for (SKU s : sorted_sku){
+		lotear(s,m);
+	}
+	
+	
 	for (int i = 0 ; i < 8 ; i++)
 		load_production_line(m,country_order[i]);
 
+	// Para los SKU sin linea asignada
+	if (country_demand_equals_producer){
+		for (Lote l : sorted_lotes){
+			l.country_of_production = l.countryD_code;
+			l.line = 0;
+		}
+	}
+	sorted_lotes.clear();
 	sorted_sku.clear();
 
 	pc_dataset_refresh();
@@ -1887,31 +1924,29 @@ for (int line = 0 ; line < 6 ; line++){
 	
 	if (get_plant(country).line_active[line]){
 
-		ArrayList<SKU> sku_to_remove = new ArrayList<SKU>();
-		for (int i = 0 ; i < sorted_sku.size() ; i++){
-			SKU s = sorted_sku.get(i);
-			
+		ArrayList<Lote> lotes_to_remove = new ArrayList<Lote>();
+		for (Lote l : sorted_lotes){
 			// Calculate cost of producing one item
-			double cost_of_producing = calculate_prod_hours(m,line,s);
-			cost_of_producing += s.days_of_hand[m-1];
-			if (get_pc_inventory(country).containsKey(s.code))
-				cost_of_producing -= get_pc_inventory(country).get(s);
+			double cost_of_producing = calculate_prod_hours(m,l);
+			cost_of_producing += l.days_on_hand;
+			if (get_pc_inventory(country).containsKey(l.code))
+				cost_of_producing -= get_pc_inventory(country).get(l.code);
 			if (cost_of_producing < 0)
 				cost_of_producing = 0;
 				
 			double cost_delay = 0;
 			if (!first_in_line){
-				if (s.sku_packsize != last_packsize)
+				if (l.packsize != last_packsize)
 					cost_delay += delay_packsize;
-				if (s.sku_size_code != last_size)
+				if (l.size != last_size)
 					cost_delay += delay_size;
 			}
 			
 			// If it fits, it produces
 			if ( (line_capacities[line] - (cost_of_producing+cost_delay) > 0) &&
-				(!country_demand_equals_producer || country == s.countryD_code)
+				(!country_demand_equals_producer || country == l.countryD_code)
 				){
-
+	
 				acc_demand[line] += cost_of_producing; 
 			
 				first_in_line = false;
@@ -1919,29 +1954,29 @@ for (int line = 0 ; line < 6 ; line++){
 				
 				// Inventory refresh
 				if (m > 1){
-					double inventory_val = -1*s.demand[m-1];
-					if (get_pc_inventory(country).containsKey(s)) 
-				      inventory_val += get_pc_inventory(country).get(s);
+					double inventory_val = -1*l.real_demand;
+					if (get_pc_inventory(country).containsKey(l.code))
+				      inventory_val += get_pc_inventory(country).get(l.code);
 				   	inventory_val += cost_of_producing;
-					get_pc_inventory(country).put(s, inventory_val);
+					get_pc_inventory(country).put(l.code, inventory_val);
 				}
 				
-				last_packsize = s.sku_packsize;
-				last_size = s.sku_size_code;
+				last_packsize = l.packsize;
+				last_size = l.size;
 				
-				int month_prod = estimate_month_of_production(s,country,m+1);
-					
-				s.monthly_line[month_prod-1] = line+1;
-				s.monthly_country[month_prod-1] = country;
-				sku_to_remove.add(s);
+				int month_prod = estimate_month_of_production_lote(l,country,m+1);
+				
+				l.line = line+1;
+				l.country_of_production = country;
+				lotes_to_remove.add(l);
 			} else {
 				//System.out.println(cost_of_producing + " no entra en l: " + line + " cap: " + line_capacities[line]);
 			}
 		}
 		
-		for (SKU s : sku_to_remove){
-			sorted_sku.remove(s);
-			add_acc(pc_prodatt_col, time, s.real_demand[m-1]);
+		for (Lote l : lotes_to_remove){
+			sorted_lotes.remove(l);
+			add_acc(pc_prodatt_col, time, l.real_demand);
 		}
 	}
 }
@@ -1963,17 +1998,13 @@ for (int line = 0 ; line < 6 ; line++){
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
 					<Parameter>
-						<Name><![CDATA[line]]></Name>
-						<Type><![CDATA[int]]></Type>
+						<Name><![CDATA[l]]></Name>
+						<Type><![CDATA[Lote]]></Type>
 					</Parameter>
-					<Parameter>
-						<Name><![CDATA[s]]></Name>
-						<Type><![CDATA[SKU]]></Type>
-					</Parameter>
-					<Body><![CDATA[double demand = s.real_demand[m-1] * (800/s.line_rates[line]);
+					<Body><![CDATA[double demand = l.real_demand * (800/l.rate);
 
 // If rate == 0 then impossible to make.
-if (s.line_rates[line] == 0)
+if (l.rate == 0)
 	demand *= 1000000000; 
 return demand;]]></Body>
 				</Function>
@@ -2133,10 +2164,10 @@ switch (destination) {
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
-						<Name><![CDATA[s]]></Name>
+						<Name><![CDATA[l]]></Name>
 						<Type><![CDATA[Lote]]></Type>
 					</Parameter>
-					<Body><![CDATA[int country = s.country_of_production;
+					<Body><![CDATA[int country = l.country_of_production;
 switch (country) {
 	case 1: return selectOutputOutArg;
 	case 2: return selectOutputOutBra;
@@ -2258,7 +2289,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[LinkedHashMap<SKU,Double>]]></ReturnType>
+					<ReturnType><![CDATA[LinkedHashMap<String,Double>]]></ReturnType>
 					<Id>1526050788459</Id>
 					<Name><![CDATA[get_pc_inventory]]></Name>
 					<X>-760</X><Y>-60</Y>
@@ -2325,7 +2356,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 				 .values(
 				 	s.code,
 				 	m,
-				 	s.country_of_production,
+				 	s.monthly_country[m-1],
 				 	s.monthly_line[m-1],
 				 	plant.sku_eff.get(s.code),
 				 	prod_att,
@@ -2357,12 +2388,229 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 					<Body><![CDATA[refresh_sku_table(plant);
 plant.refresh_lines_table();]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526398959498</Id>
+					<Name><![CDATA[lotear]]></Name>
+					<X>-650</X><Y>-20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[s]]></Name>
+						<Type><![CDATA[SKU]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[int lotees = (int)(s.real_demand[m-1] / s.loteSize[m-1])+1;
+
+for( int i = 0 ; i < lotees ; i++ ){
+	Lote n = add_lote();
+	loteId = loteId + 1;
+	n.loteID = loteId;
+	n.proLine = s.proLine[m-1];
+	n.proSline = s.proSline[m-1];
+	n.proPri = s.proPri[m-1];
+	n.prodPlan = s.prodPlan[m-1]/lotees;
+	n.proDemand = s.proDemand[m-1];
+	n.proRDemand = s.proRDemand[m-1];
+	n.proInventory = s.proInventory[m-1];
+	n.countryD_code = s.countryD_code;
+	n.month = m;
+	n.name = s.name;
+	n.code = s.code;
+	n.size = s.sku_size_code;
+	n.packsize = s.sku_packsize;
+	n.line = s.monthly_line[m-1];
+	n.real_demand = (int)s.loteSize[m-1];
+	n.sku_demand = s.real_demand[m-1];
+	n.loteNumber = i+1;
+	n.country_of_production = s.monthly_country[m-1];
+	n.days_on_hand = s.days_of_hand[m-1];
+	int rate = 0;
+	if (s.monthly_line[m-1] != 0)
+		n.rate = s.line_rates[s.monthly_line[m-1]-1];
+	n.total_variable_cost = s.total_variable_cost;
+
+	sorted_lotes.add(n);
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526399401998</Id>
+					<Name><![CDATA[sort_lotes]]></Name>
+					<Description><![CDATA[Recibe dos posibles formas de ordenamiento según vF en el main (desde input).
+	vF=1 
+		Ordenamiento1 : de mayor Size a menor Size y dentro del size de mayor pack size a 		menor pack size.
+	vF= 2 
+		Ordenamiento 2 : de mayor cantidad demandada a menor cantidad demandada.]]></Description>
+					<X>-370</X><Y>-260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[lote_list]]></Name>
+						<Type><![CDATA[ArrayList<Lote>]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[if (sorting_arrangement == 0)
+	sort_lote_size(lote_list);
+else if (sorting_arrangement == 1)
+	sort_lote_demand(lote_list,m);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526399457280</Id>
+					<Name><![CDATA[sort_lote_size]]></Name>
+					<Description><![CDATA[Ordena el paquete de SKU de mayor Size a menor Size y dentro del size de mayor pack size a menor pack size.
+
+Primero los XXG, dentro de esta categoría que es la variable sku_size, hay que ordenar también de mayor a menor por la variable pack_size .
+
+Los ordenamos dejando la fila ordenada según este concepto para cada mes, en una collection: SKUsvF1 ( no se si 12 collections o una que se pisa).
+]]></Description>
+					<X>-350</X><Y>-240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[lote_list]]></Name>
+						<Type><![CDATA[ArrayList<Lote>]]></Type>
+					</Parameter>
+					<Body><![CDATA[class LotePackSizeComparator implements Comparator<Lote> {
+    public int compare(Lote l1, Lote l2) {
+    	if (l1.packsize < l2.packsize)
+    		return 1;
+    	if (l1.packsize > l2.packsize)
+    		return -1;
+    	return 0;
+    }
+}
+
+class LoteSizeComparator implements Comparator<Lote> {
+    public int compare(Lote l1, Lote l2) {
+    	if (l1.size < l2.size)
+    		return 1;
+    	if (l1.size > l2.size)
+    		return -1;
+    	return 0;
+    }
+}
+
+Collections.sort(lote_list,new LotePackSizeComparator());
+Collections.sort(lote_list,new LoteSizeComparator());
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526399457283</Id>
+					<Name><![CDATA[sort_lote_demand]]></Name>
+					<Description><![CDATA[Ordena el paquete de SKU de mayor cantidad demandada a menor cantidad demandada.
+Tomando el mes real, sin leads time.
+
+Los ordenamos dejando la fila ordenada según este concepto para cada mes, en una collection: SKUsvF2 ( no se si 12 collections o una que se pisa)]]></Description>
+					<X>-350</X><Y>-220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[lote_list]]></Name>
+						<Type><![CDATA[ArrayList<Lote>]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[class LoteDemandComparator implements Comparator<Lote> {
+    public int compare(Lote l1, Lote l2) {
+    	if (l1.sku_demand < l2.sku_demand)
+    		return 1;
+    	if (l1.sku_demand > l2.sku_demand)
+    		return -1;
+    	return 0;
+    }
+}
+
+Collections.sort(lote_list,new LoteDemandComparator());
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1526401484937</Id>
+					<Name><![CDATA[estimate_month_of_production_lote]]></Name>
+					<Description><![CDATA[Recibe un SKU y un pais de produccion y calcula el mes en el que deberia ser producido.
+
+Dias desde el comienzo hasta el mes de demanda
+Restar lead time planificación
+Restar lead time país demanda/país 1
+
+Devuelve el mes calculado
+Guarda el mes calculado en la variable: monthestimated. modulo 12]]></Description>
+					<X>-600</X><Y>-270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[l]]></Name>
+						<Type><![CDATA[Lote]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[country]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[month_num]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[int days_of_lead_time = lead_time(code2country(country),code2country(l.countryD_code));
+
+Calendar date_of_production = Calendar.getInstance();
+date_of_production.setTime(toDate(start_year, month_num-1, 1, 1, 1, 1));
+date_of_production.add(Calendar.DAY_OF_MONTH, -days_of_lead_time);
+
+int month_of_production = date_of_production.get(Calendar.MONTH)+1;
+int year_of_production = date_of_production.get(Calendar.YEAR);
+
+return month_of_production;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526401907456</Id>
+					<Name><![CDATA[send_lote_to_pline]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>130</X><Y>-210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[l]]></Name>
+						<Type><![CDATA[Lote]]></Type>
+					</Parameter>
+					<Body><![CDATA[tempLotes.remove(l); // Delete SKU from temp list
+in_products.take( l ); // Inject Lote in production line]]></Body>
+				</Function>
 			</Functions>
 			<AnalysisData>
     			<DataSet>
 					<Id>1524152121727</Id>
 					<Name><![CDATA[pc_backorder]]></Name>
-					<X>-670</X><Y>-160</Y>
+					<X>-760</X><Y>-160</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2384,7 +2632,7 @@ plant.refresh_lines_table();]]></Body>
     			<DataSet>
 					<Id>1524152143793</Id>
 					<Name><![CDATA[pc_prodatt]]></Name>
-					<X>-760</X><Y>-160</Y>
+					<X>-760</X><Y>-140</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4660,6 +4908,12 @@ plant.refresh_lines_table();]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[total_variable_cost]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[days_on_hand]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[sku_demand]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -7182,7 +7436,7 @@ plant.refresh_lines_table();]]></Body>
 				<RoundedRectangle>
 					<Id>1524075218989</Id>
 					<Name><![CDATA[roundRectangle3]]></Name>
-					<X>-390</X><Y>-320</Y>
+					<X>-390</X><Y>-400</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7197,7 +7451,7 @@ plant.refresh_lines_table();]]></Body>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
 					<Width>180</Width>
-					<Height>130</Height>
+					<Height>210</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -7206,7 +7460,7 @@ plant.refresh_lines_table();]]></Body>
 				<Text>
 					<Id>1524075224619</Id>
 					<Name><![CDATA[sort_text]]></Name>
-					<X>-330</X><Y>-310</Y>
+					<X>-320</X><Y>-390</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9245,6 +9499,7 @@ plant.refresh_lines_table();]]></Body>
 				<Variable Class="Parameter">
 					<Id>1524853138388</Id>
 					<Name><![CDATA[country_of_production]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>340</X><Y>580</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38429,7 +38684,7 @@ activity_l6 = 0;]]></Code>
 					<Id>1523287631421</Id>
 					<Name><![CDATA[countryP]]></Name>
 					<Description><![CDATA[Pais donde se produce]]></Description>
-					<X>770</X><Y>200</Y>
+					<X>160</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -38526,7 +38781,7 @@ activity_l6 = 0;]]></Code>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
+						<Type><![CDATA[int]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
@@ -38550,7 +38805,7 @@ activity_l6 = 0;]]></Code>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
+						<Type><![CDATA[int]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
@@ -38655,6 +38910,54 @@ activity_l6 = 0;]]></Code>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526401584360</Id>
+					<Name><![CDATA[days_on_hand]]></Name>
+					<X>150</X><Y>910</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526401584358</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526404654181</Id>
+					<Name><![CDATA[sku_demand]]></Name>
+					<X>150</X><Y>780</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526404654179</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<Functions>
 				<Function AccessType="public" StaticFunction="false">
@@ -38670,6 +38973,7 @@ activity_l6 = 0;]]></Code>
 					<Body><![CDATA[return "sku " + code + "| "
 	   //+ "bn "+ loteNumber+ "| "
 	   + "month "+ month+ "| "
+	   + "country "+ country_of_production+ "| "
 	   //+ "bd "+ loteDay+ "| "
 	   //+ "pri "+ proPri+ "| "
 	   + "line "+ line+ "| "
