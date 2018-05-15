@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291513" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291251" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMCP_Manufacturing]]></Name>
@@ -421,7 +421,7 @@ pre_calc();]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new double[]{0.71,0.71,0.71,0.71,0.71,0.71,0.71,0.71}]]></Code>
+							<Code><![CDATA[new double[]{0.71,0.59,0.66,0.72,0.46,0.69,0.79,0.35}]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1525790540279</Id>
@@ -1389,6 +1389,7 @@ if (lotees == 0 && month <= 11) {
 //
 lotees = (int)(s.real_demand[month-1] / s.loteSize[month-1])+1;
 if (lotees == 0)	lotees = 1;
+if (s.real_demand[month-1] == 0)	lotees = 0;
 
 for( int i = 0 ; i < lotees ; i++ ){
 	Lote n = add_lote();
@@ -1785,7 +1786,7 @@ return month_of_production;]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[for ( SKU s : sku ){
 	for ( int m = 1; m < 13; m++){
-		int estimated_month = estimate_month_of_production(s,3,m);
+		int estimated_month = estimate_month_of_production(s,s.countryD_code,m);
 		double estimated_demand = estimate_demand_amount(s,m);
 	
 		s.real_demand[estimated_month-1] += estimated_demand;
@@ -39755,7 +39756,7 @@ activity_l6 = 0;]]></Code>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[0.71]]></Code>
+							<Code><![CDATA[0.59]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -39770,7 +39771,7 @@ activity_l6 = 0;]]></Code>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[0.71]]></Code>
+							<Code><![CDATA[0.66]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -39785,7 +39786,7 @@ activity_l6 = 0;]]></Code>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[0.71]]></Code>
+							<Code><![CDATA[0.72]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -39800,7 +39801,7 @@ activity_l6 = 0;]]></Code>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[0.71]]></Code>
+							<Code><![CDATA[0.46]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -39815,7 +39816,7 @@ activity_l6 = 0;]]></Code>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[0.71]]></Code>
+							<Code><![CDATA[0.69]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -39830,7 +39831,7 @@ activity_l6 = 0;]]></Code>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[0.71]]></Code>
+							<Code><![CDATA[0.79]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -39845,7 +39846,7 @@ activity_l6 = 0;]]></Code>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[0.71]]></Code>
+							<Code><![CDATA[0.35]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -41394,7 +41395,7 @@ activity_l6 = 0;]]></Code>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Efficiency (%)]]></Text>
+					<Text><![CDATA[Efficiency]]></Text>
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>18</Size>
