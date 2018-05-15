@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291251" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291513" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMCP_Manufacturing]]></Name>
@@ -1614,13 +1614,13 @@ Dentro del agente: productionLine, para cada línea. ]]></Description>
 					</Parameter>
 					<Body><![CDATA[for (int line = 0 ; line < 6 ; line++){
 	double capacity = 800;
-	capacity *= get_plant(country).efficiency;
+	capacity *= get_plant(country).efficiency*1.2;
 	capacity *= 60;
 	capacity *= get_plant(country).shifts_amount;
 	capacity *= get_plant(country).shift_duration;
 	capacity *= working_days_year;
 	capacity /= 12;
-	get_plant(country).line_capacities[line] = (int)(capacity*1.2);
+	get_plant(country).line_capacities[line] = (int)(capacity*1.4);
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -2290,7 +2290,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1526308912027</Id>
 					<Name><![CDATA[refresh_sku_table]]></Name>
-					<X>280</X><Y>-40</Y>
+					<X>260</X><Y>-40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -10582,7 +10582,7 @@ del Producto]]></Text>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[2]]></Code>
+							<Code><![CDATA[3]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1523556167616</Id>
@@ -16640,32 +16640,32 @@ shift_start();]]></Action>
 shift_start();]]></Action>
 					<Intervals>
 						<Interval>
-							<Start>0</Start>
+							<Start>21600000</Start>
 							<End>79140000</End>
 							<Value>true</Value>
 						</Interval>
 						<Interval>
-							<Start>86400000</Start>
+							<Start>108000000</Start>
 							<End>165540000</End>
 							<Value>true</Value>
 						</Interval>
 						<Interval>
-							<Start>172800000</Start>
+							<Start>194400000</Start>
 							<End>251940000</End>
 							<Value>true</Value>
 						</Interval>
 						<Interval>
-							<Start>259200000</Start>
+							<Start>280800000</Start>
 							<End>338340000</End>
 							<Value>true</Value>
 						</Interval>
 						<Interval>
-							<Start>345600000</Start>
+							<Start>367200000</Start>
 							<End>424740000</End>
 							<Value>true</Value>
 						</Interval>
 						<Interval>
-							<Start>432000000</Start>
+							<Start>453600000</Start>
 							<End>511140000</End>
 							<Value>true</Value>
 						</Interval>
@@ -24912,6 +24912,9 @@ activity_l1 = 0;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[shiftGroupSchedules]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[{ shift2, shift3 }]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[shiftGroupSizes]]></Name>
@@ -40419,6 +40422,7 @@ activity_l6 = 0;]]></Code>
 				<Text>
 					<Id>1523641911104</Id>
 					<Name><![CDATA[turnos_text]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>700</X><Y>132</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43120,6 +43124,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360813</Id>
 					<Name><![CDATA[editbox14]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>700</X><Y>170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43144,6 +43149,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360816</Id>
 					<Name><![CDATA[editbox15]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>700</X><Y>220</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43168,6 +43174,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360818</Id>
 					<Name><![CDATA[editbox16]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>700</X><Y>270</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43192,6 +43199,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360820</Id>
 					<Name><![CDATA[editbox17]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>700</X><Y>320</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43216,6 +43224,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360822</Id>
 					<Name><![CDATA[editbox18]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>700</X><Y>370</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43240,6 +43249,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360824</Id>
 					<Name><![CDATA[editbox19]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>700</X><Y>420</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43264,6 +43274,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360826</Id>
 					<Name><![CDATA[editbox20]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>700</X><Y>470</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -43288,6 +43299,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525887360828</Id>
 					<Name><![CDATA[editbox21]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>700</X><Y>520</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
