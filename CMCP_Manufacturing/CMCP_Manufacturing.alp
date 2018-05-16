@@ -545,121 +545,9 @@ Should be used also on simulation, as tempSKU.]]></Description>
 				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1526051092793</Id>
-					<Name><![CDATA[pc_inventory_ar]]></Name>
+					<Name><![CDATA[pc_inventory]]></Name>
 					<Description><![CDATA[Inventario mensual de SKUs para precálculo]]></Description>
 					<X>-890</X><Y>-160</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526051120366</Id>
-					<Name><![CDATA[pc_inventory_br]]></Name>
-					<Description><![CDATA[Inventario mensual de SKUs para precálculo]]></Description>
-					<X>-890</X><Y>-140</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526051122497</Id>
-					<Name><![CDATA[pc_inventory_ch]]></Name>
-					<Description><![CDATA[Inventario mensual de SKUs para precálculo]]></Description>
-					<X>-890</X><Y>-120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526051124394</Id>
-					<Name><![CDATA[pc_inventory_co]]></Name>
-					<Description><![CDATA[Inventario mensual de SKUs para precálculo]]></Description>
-					<X>-890</X><Y>-100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526051126589</Id>
-					<Name><![CDATA[pc_inventory_ec]]></Name>
-					<Description><![CDATA[Inventario mensual de SKUs para precálculo]]></Description>
-					<X>-890</X><Y>-80</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526051128717</Id>
-					<Name><![CDATA[pc_inventory_mx]]></Name>
-					<Description><![CDATA[Inventario mensual de SKUs para precálculo]]></Description>
-					<X>-890</X><Y>-60</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526051131049</Id>
-					<Name><![CDATA[pc_inventory_pe]]></Name>
-					<Description><![CDATA[Inventario mensual de SKUs para precálculo]]></Description>
-					<X>-890</X><Y>-40</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526051133261</Id>
-					<Name><![CDATA[pc_inventory_ur]]></Name>
-					<Description><![CDATA[Inventario mensual de SKUs para precálculo]]></Description>
-					<X>-890</X><Y>-20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1843,6 +1731,7 @@ Restar A a X ]]></Description>
 					</Parameter>
 					<Body><![CDATA[double forward_coverage = doh*s.demand[month_num-1]/30; // TODO
 s.days_of_hand[month_num-1] = forward_coverage;
+s.demand_and_doh[month_num-1] = doh + s.demand[month_num-1];
 return s.demand[month_num-1];]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -1879,12 +1768,12 @@ Para cada mes:
 	if (country_demand_equals_producer){
 		for (Lote l : sorted_lotes){
 			l.country_of_production = l.countryD_code;
-			l.line = 7;
+			l.line = 0;
 		}
 	} else {
 		for (Lote l : sorted_lotes){
 			l.country_of_production = country_order[7];
-			l.line = 7;
+			l.line = 0;
 		}
 	}
 	sorted_lotes.clear();
@@ -2039,6 +1928,7 @@ return demand;]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[for (int c = 1 ; c < 9 ; c++)
 	estimate_prod_capacity(c);
+
 create_prod_order();
 
 LinkedHashMap<SKU,Double> hola = new LinkedHashMap();]]></Body>
@@ -2306,35 +2196,6 @@ plant.co_size_time[pline-1] = line.get(db_lines.co_size_time);
 plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[LinkedHashMap<String,Double>]]></ReturnType>
-					<Id>1526050788459</Id>
-					<Name><![CDATA[get_pc_inventory]]></Name>
-					<X>-760</X><Y>-60</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[country]]></Name>
-						<Type><![CDATA[int]]></Type>
-					</Parameter>
-					<Body><![CDATA[switch (country) {
-	case 1: return pc_inventory_ar;
-	case 2: return pc_inventory_br;
-	case 3: return pc_inventory_ch;
-	case 4: return pc_inventory_co;
-	case 5: return pc_inventory_ec;
-	case 6: return pc_inventory_mx;
-	case 7: return pc_inventory_pe;
-	case 8: return pc_inventory_ur;
-	default: {
-				System.out.println("get_pc_inventory: invalid country code");
-			  	return pc_inventory_ar;
-			 }
-}]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1526308912027</Id>
@@ -2420,6 +2281,41 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 				.execute();
 			}	
 		}
+	}
+	for (String sku : plant.get_pbo_monthly(0).keySet()){				
+		double prod_bo = plant.get_pbo_monthly(0).get(sku)[m-1];
+		if (prod_bo != 0){
+			insertInto(db_sku_out)
+			 .columns(
+			 	db_sku_out.sku, 
+			 	db_sku_out.mes,
+			 	db_sku_out.country,
+			 	db_sku_out.line,
+			 	db_sku_out.shifts,
+			 	db_sku_out.fte,
+			 	db_sku_out.efficiency,
+			 	db_sku_out.prod_att,
+			 	db_sku_out.prod_bo,
+			 	db_sku_out.brute_time,
+			 	db_sku_out.net_time,
+			 	db_sku_out.variable_cost
+			 	)
+			 .values(
+			 	sku,
+			 	m,
+			 	plant.country,
+			 	0,
+			 	0,
+			 	0,
+			 	0,
+			 	0,
+			 	prod_bo,
+			 	0,
+			 	0,
+			 	0
+			 	)
+			.execute();
+		}	
 	}
 }
 ]]></Body>
@@ -4571,6 +4467,9 @@ in_products.take( l ); // Inject Lote in production line]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[inventory]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[demand_and_doh]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -7944,7 +7843,7 @@ in_products.take( l ); // Inject Lote in production line]]></Body>
 					<Id>1523644451528</Id>
 					<Name><![CDATA[chart]]></Name>
 					<Description><![CDATA[Gráfico de la demanda anual y capacidades de línea durante el precálculo.]]></Description>
-					<X>-1370</X><Y>-260</Y>
+					<X>-1420</X><Y>-280</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9612,6 +9511,30 @@ in_products.take( l ); // Inject Lote in production line]]></Body>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1526062069955</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526485899130</Id>
+					<Name><![CDATA[demand_and_doh]]></Name>
+					<X>340</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new double[12]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526485899128</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -12482,6 +12405,36 @@ del Producto]]></Text>
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
 						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526486881522</Id>
+					<Name><![CDATA[prod_bo_lbo]]></Name>
+					<X>1400</X><Y>-110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526486971345</Id>
+					<Name><![CDATA[prod_bo_monthly_lbo]]></Name>
+					<X>1650</X><Y>-110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
 					</Properties>
 
 				</Variable>
@@ -15449,6 +15402,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1526480105375</Id>
 					<Name><![CDATA[connector63]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1280</X><Y>1260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -15480,43 +15434,9 @@ del Producto]]></Text>
 					</Points>
 				</Connector>
 				<Connector>
-					<Id>1526480105386</Id>
-					<Name><![CDATA[connector66]]></Name>
-					<X>610</X><Y>1250</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-						<ClassName><![CDATA[ProductionLine]]></ClassName>
-						<ItemName><![CDATA[queue7]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Queue]]></ClassName>
-						<ItemName><![CDATA[outTimeout]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-						<ClassName><![CDATA[ProductionLine]]></ClassName>
-						<ItemName><![CDATA[queueBO6]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Queue]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-70</Y></Point>
-						<Point><X>250</X><Y>-70</Y></Point>
-						<Point><X>320</X><Y>-70</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
 					<Id>1526480105416</Id>
 					<Name><![CDATA[connector94]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1360</X><Y>1260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -15550,6 +15470,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1526480105426</Id>
 					<Name><![CDATA[connector71]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1190</X><Y>1260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -15616,6 +15537,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1526480105446</Id>
 					<Name><![CDATA[connector59]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>620</X><Y>1260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -15715,6 +15637,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1526480105468</Id>
 					<Name><![CDATA[connector60]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>0</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -15748,6 +15671,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1526480105475</Id>
 					<Name><![CDATA[connector64]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>0</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -15781,6 +15705,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1526480105484</Id>
 					<Name><![CDATA[connector67]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>0</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -15814,6 +15739,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1526480105491</Id>
 					<Name><![CDATA[connector73]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>980</X><Y>1260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -15847,6 +15773,7 @@ del Producto]]></Text>
 				<Connector>
 					<Id>1526480105499</Id>
 					<Name><![CDATA[connector100]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1120</X><Y>1260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -15875,6 +15802,40 @@ del Producto]]></Text>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>50</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1526486583851</Id>
+					<Name><![CDATA[connector14]]></Name>
+					<X>620</X><Y>1260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+						<ClassName><![CDATA[ProductionLine]]></ClassName>
+						<ItemName><![CDATA[queue7]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Queue]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+						<ClassName><![CDATA[ProductionLine]]></ClassName>
+						<ItemName><![CDATA[queueBO6]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Queue]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>-80</Y></Point>
+						<Point><X>310</X><Y>-80</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
@@ -16385,6 +16346,7 @@ substract_previous_months(prod_bo_l3, prod_bo_monthly_l3, m);
 substract_previous_months(prod_bo_l4, prod_bo_monthly_l4, m);
 substract_previous_months(prod_bo_l5, prod_bo_monthly_l5, m);
 substract_previous_months(prod_bo_l6, prod_bo_monthly_l6, m);
+substract_previous_months(prod_bo_lbo, prod_bo_monthly_lbo, m);
 
 substract_previous_months(net_times_l1, net_times_monthly_l1, m);
 substract_previous_months(net_times_l2, net_times_monthly_l2, m);
@@ -16435,7 +16397,7 @@ substract_previous_months(brute_times_l6, brute_times_monthly_l6, m);]]></Action
 	case 4: return selectOutputOut4;
 	case 5: return selectOutputOut5;
 	case 6: return selectOutputOut6;
-	default: return selectOutputOut6;
+	default: return selectOutputOutBO;
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -17114,6 +17076,18 @@ for (String s : prod_bo_monthly_l6.keySet()){
 		monthly_array[m] += prod_bo_monthly_l6.get(s)[m]; 
 	}
 	prod_bo_monthly.put(s,monthly_array);
+}
+
+for (String s : prod_bo_monthly_lbo.keySet()){
+	if (!prod_bo_monthly.containsKey(s)){
+		Double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+		prod_bo_monthly.put(s,monthly_zeroes);
+	}
+	Double[] monthly_array = prod_bo_monthly.get(s);
+	for (int m = 0 ; m < 12 ; m++){
+		monthly_array[m] += prod_bo_monthly_lbo.get(s)[m]; 
+	}
+	prod_bo_monthly.put(s,monthly_array);
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -17435,6 +17409,7 @@ for (String s : brute_times_monthly_l6.keySet()){
 	case 4: return prod_bo_monthly_l4;
 	case 5: return prod_bo_monthly_l5;
 	case 6: return prod_bo_monthly_l6;
+	case 0: return prod_bo_monthly_lbo;
 	default: {
 				System.out.println("get_pbo_monthly: invalid line");
 			  	return prod_bo_monthly_l1;
@@ -37521,7 +37496,7 @@ activity_l6 = 0;]]></Code>
 double time = dateToTime(toDate(getYear(date()),getMonth(date()),1,1,1,1));
 add_acc(backorder_collection,time,agent.real_demand);
 main.backorders += agent.real_demand;
-main.add_acc(prod_bo_l6,agent.code,agent.real_demand);]]></Code>
+main.add_acc(prod_bo_lbo,agent.code,agent.real_demand);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -37707,6 +37682,7 @@ main.add_acc(prod_bo_l6,agent.code,agent.real_demand);]]></Code>
 				<EmbeddedObject>
 					<Id>1526480104777</Id>
 					<Name><![CDATA[prodAttained7]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1240</X><Y>1240</Y>
 					<Label><X>-10</X><Y>40</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -37865,9 +37841,6 @@ sku_tot_variable_cost.put(agent.code,agent.total_variable_cost);]]></Code>
 					<Parameters>
 						<Parameter>
 							<Name><![CDATA[initiallyBlocked]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[true]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[mode]]></Name>
@@ -38029,9 +38002,6 @@ sku_tot_variable_cost.put(agent.code,agent.total_variable_cost);]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[enableTimeout]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[true]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[timeout]]></Name>
@@ -38132,6 +38102,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1526480104904</Id>
 					<Name><![CDATA[hold23]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1340</X><Y>1250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38217,6 +38188,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1526480104936</Id>
 					<Name><![CDATA[sink16]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1390</X><Y>1250</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38287,6 +38259,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<EmbeddedObject>
 					<Id>1526480104968</Id>
 					<Name><![CDATA[restrictedAreaEnd10]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1170</X><Y>1240</Y>
 					<Label><X>-43</X><Y>-5</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38367,6 +38340,7 @@ net_time(net_times_l6,6,agent);]]></Code>
 				<EmbeddedObject>
 					<Id>1526480104997</Id>
 					<Name><![CDATA[restrictedAreaStart7]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>650</X><Y>1240</Y>
 					<Label><X>-10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38526,6 +38500,7 @@ lote_brute_time[5] = 0;]]></Code>
 				<EmbeddedObject>
 					<Id>1526480105053</Id>
 					<Name><![CDATA[resourcePool24]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>680</X><Y>1200</Y>
 					<Label><X>40</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -38785,6 +38760,7 @@ lote_brute_time[5] = 0;]]></Code>
 				<EmbeddedObject>
 					<Id>1526480105090</Id>
 					<Name><![CDATA[resourcePool25]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1080</X><Y>1200</Y>
 					<Label><X>45</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -39044,6 +39020,7 @@ lote_brute_time[5] = 0;]]></Code>
 				<EmbeddedObject>
 					<Id>1526480105137</Id>
 					<Name><![CDATA[resourcePool26]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>810</X><Y>1200</Y>
 					<Label><X>40</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -39303,6 +39280,7 @@ lote_brute_time[5] = 0;]]></Code>
 				<EmbeddedObject>
 					<Id>1526480105175</Id>
 					<Name><![CDATA[resourcePool27]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>950</X><Y>1200</Y>
 					<Label><X>45</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -39562,6 +39540,7 @@ lote_brute_time[5] = 0;]]></Code>
 				<EmbeddedObject>
 					<Id>1526480105218</Id>
 					<Name><![CDATA[delayArranque6]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>690</X><Y>1240</Y>
 					<Label><X>-25</X><Y>50</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -39790,6 +39769,7 @@ activity_l6 = 0;]]></Code>
 				<EmbeddedObject>
 					<Id>1526480105254</Id>
 					<Name><![CDATA[delayChangePackSize6]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>800</X><Y>1240</Y>
 					<Label><X>-25</X><Y>50</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -40022,6 +40002,7 @@ activity_l6 = 0;]]></Code>
 				<EmbeddedObject>
 					<Id>1526480105292</Id>
 					<Name><![CDATA[delayChangeSize6]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>940</X><Y>1240</Y>
 					<Label><X>-25</X><Y>50</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -40254,6 +40235,7 @@ activity_l6 = 0;]]></Code>
 				<EmbeddedObject>
 					<Id>1526480105327</Id>
 					<Name><![CDATA[productionTime6]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1080</X><Y>1240</Y>
 					<Label><X>-25</X><Y>50</Y></Label>
 					<PublicFlag>false</PublicFlag>
