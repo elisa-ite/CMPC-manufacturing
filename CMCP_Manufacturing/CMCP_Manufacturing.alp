@@ -1040,8 +1040,8 @@ Should be used also on simulation, as tempSKU.]]></Description>
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
 						</Rate>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1356998400000</OccurrenceDate>
+						<OccurrenceAtTime>false</OccurrenceAtTime>
+						<OccurrenceDate>1546300800000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
 							<Code><![CDATA[0]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
@@ -1190,6 +1190,7 @@ if( month < 12 ){
 //	totInv = 0;
 //	totTInv = 0;
 }
+
 
 //totSOcostpLine1=productionLine.productionLineSO1();
 //totSOcostpLine2=productionLine.productionLineSO2();
@@ -1638,13 +1639,13 @@ Dentro del agente: productionLine, para cada línea. ]]></Description>
 					</Parameter>
 					<Body><![CDATA[for (int line = 0 ; line < 6 ; line++){
 	double capacity = 800;
-	capacity *= get_plant(country).efficiency*1.2;
+	capacity *= get_plant(country).efficiency*1.1;
 	capacity *= 60;
 	capacity *= get_plant(country).shifts_amount;
 	capacity *= get_plant(country).shift_duration;
 	capacity *= working_days_year;
 	capacity /= 12;
-	get_plant(country).line_capacities[line] = (int)(capacity*1.4);
+	get_plant(country).line_capacities[line] = (int)(capacity*1);
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -1927,12 +1928,13 @@ for (int line = 0 ; line < 6 ; line++){
 	if (get_plant(country).line_active[line]){
 
 		ArrayList<Lote> lotes_to_remove = new ArrayList<Lote>();
-		for (Lote l : sorted_lotes){
+		for (int i = 0 ; i < sorted_lotes.size() ; i++){
+			Lote l = sorted_lotes.get(i);
 			// Calculate cost of producing one item
 			double cost_of_producing = calculate_prod_hours(m,l,line);
-			cost_of_producing += l.days_on_hand*(l.sku_demand/30);
-			if (get_pc_inventory(country).containsKey(l.code))
-				cost_of_producing -= get_pc_inventory(country).get(l.code);
+			//cost_of_producing += l.days_on_hand*(l.sku_demand/30);
+			//if (get_pc_inventory(country).containsKey(l.code))
+			//	cost_of_producing -= get_pc_inventory(country).get(l.code);
 
 			double cost_delay = 0;
 			if (!first_in_line){
@@ -1950,7 +1952,7 @@ for (int line = 0 ; line < 6 ; line++){
 				){
 				
 				count++;
-				System.out.println(count + " " + cost_of_producing);
+				//System.out.println(count + " " + cost_of_producing);
 				
 				acc_demand[line] += cost_of_producing; 
 			
@@ -1958,13 +1960,13 @@ for (int line = 0 ; line < 6 ; line++){
 				line_capacities[line] -= (cost_of_producing+cost_delay);
 				
 				// Inventory refresh
-				if (m > 1){
-					double inventory_val = -1*l.real_demand;
-					if (get_pc_inventory(country).containsKey(l.code))
-				      inventory_val += get_pc_inventory(country).get(l.code);
-				   	inventory_val += cost_of_producing;
-					get_pc_inventory(country).put(l.code, inventory_val);
-				}
+				//if (m > 1){
+				//	double inventory_val = -1*l.real_demand;
+				//	if (get_pc_inventory(country).containsKey(l.code))
+				//      inventory_val += get_pc_inventory(country).get(l.code);
+				//   	inventory_val += cost_of_producing;
+				//	get_pc_inventory(country).put(l.code, inventory_val);
+				//}
 				
 				last_packsize = l.packsize;
 				last_size = l.size;
@@ -2014,9 +2016,9 @@ for (int line = 0 ; line < 6 ; line++){
 					<Body><![CDATA[double demand = l.real_demand * (800/l.line_rates[line]);
 
 // If rate == 0 then impossible to make.
-if (l.rate == 0)
-	demand = 0; 
-return 18000;]]></Body>
+if (l.line_rates[line] == 0)
+	demand = 0;
+return demand;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
