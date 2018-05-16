@@ -23,7 +23,6 @@
 calculate_working_days();
 load_real_demand();
 pre_calc();]]></StartupCode>
-			<DestroyCode><![CDATA[export_data_to_db();]]></DestroyCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1519223879331</Id>
@@ -1096,6 +1095,37 @@ if( month < 12 ){
 
 ]]></Action>
 				</Event>
+				<Event>
+					<Id>1526504548195</Id>
+					<Name><![CDATA[monthlyEvent1]]></Name>
+					<X>20</X><Y>-190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>false</OccurrenceAtTime>
+						<OccurrenceDate>1548903600000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MONTH]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[getDayOfMonth() == 1;]]></Condition>
+					</Properties>
+					<Action><![CDATA[export_data_to_db();]]></Action>
+				</Event>
 			</Events>
 			<DynamicEvents>
 				<DynamicEventClass>
@@ -2147,7 +2177,7 @@ switch (country) {
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1525805643931</Id>
 					<Name><![CDATA[export_data_to_db]]></Name>
-					<X>260</X><Y>40</Y>
+					<X>260</X><Y>-20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -4731,9 +4761,6 @@ in_products.take( l ); // Inject Lote in production line]]></Body>
 						<Parameter>
 							<Name><![CDATA[moi]]></Name>
 						</Parameter>
-						<Parameter>
-							<Name><![CDATA[rcho]]></Name>
-						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -5246,9 +5273,6 @@ in_products.take( l ); // Inject Lote in production line]]></Body>
 						<Parameter>
 							<Name><![CDATA[moi]]></Name>
 						</Parameter>
-						<Parameter>
-							<Name><![CDATA[rcho]]></Name>
-						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -5476,9 +5500,6 @@ in_products.take( l ); // Inject Lote in production line]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[moi]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[rcho]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -5708,9 +5729,6 @@ in_products.take( l ); // Inject Lote in production line]]></Body>
 						<Parameter>
 							<Name><![CDATA[moi]]></Name>
 						</Parameter>
-						<Parameter>
-							<Name><![CDATA[rcho]]></Name>
-						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -5938,9 +5956,6 @@ in_products.take( l ); // Inject Lote in production line]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[moi]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[rcho]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -6170,9 +6185,6 @@ in_products.take( l ); // Inject Lote in production line]]></Body>
 						<Parameter>
 							<Name><![CDATA[moi]]></Name>
 						</Parameter>
-						<Parameter>
-							<Name><![CDATA[rcho]]></Name>
-						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -6400,9 +6412,6 @@ in_products.take( l ); // Inject Lote in production line]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[moi]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[rcho]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -6632,9 +6641,6 @@ in_products.take( l ); // Inject Lote in production line]]></Body>
 						<Parameter>
 							<Name><![CDATA[moi]]></Name>
 						</Parameter>
-						<Parameter>
-							<Name><![CDATA[rcho]]></Name>
-						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -6862,9 +6868,6 @@ in_products.take( l ); // Inject Lote in production line]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[moi]]></Name>
-						</Parameter>
-						<Parameter>
-							<Name><![CDATA[rcho]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -9925,8 +9928,8 @@ del Producto]]></Text>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
-			<StartupCode><![CDATA[calculate_mod();
-calculate_moi();]]></StartupCode>
+			<StartupCode><![CDATA[initialize_co();]]></StartupCode>
+			<DestroyCode><![CDATA[print_monthly();]]></DestroyCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1522333145964</Id>
@@ -10958,11 +10961,11 @@ calculate_moi();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
+						<Type><![CDATA[double[]]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[6]]]></Code>
+							<Code><![CDATA[new double[6]]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524731533627</Id>
@@ -10983,11 +10986,11 @@ calculate_moi();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
+						<Type><![CDATA[double[]]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[6]]]></Code>
+							<Code><![CDATA[new double[6]]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524731539508</Id>
@@ -11008,11 +11011,11 @@ calculate_moi();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
+						<Type><![CDATA[double[]]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[6]]]></Code>
+							<Code><![CDATA[new double[6]]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524731545339</Id>
@@ -11033,11 +11036,11 @@ calculate_moi();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
+						<Type><![CDATA[double[]]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[6]]]></Code>
+							<Code><![CDATA[new double[6]]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524731552411</Id>
@@ -11058,11 +11061,11 @@ calculate_moi();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
+						<Type><![CDATA[double[]]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[6]]]></Code>
+							<Code><![CDATA[new double[6]]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524731567318</Id>
@@ -11083,11 +11086,11 @@ calculate_moi();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
+						<Type><![CDATA[double[]]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[6]]]></Code>
+							<Code><![CDATA[new double[6]]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524731572553</Id>
@@ -11108,11 +11111,11 @@ calculate_moi();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
+						<Type><![CDATA[double[]]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[6]]]></Code>
+							<Code><![CDATA[new double[6]]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524731579386</Id>
@@ -11133,11 +11136,11 @@ calculate_moi();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
+						<Type><![CDATA[double[]]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[6]]]></Code>
+							<Code><![CDATA[new double[6]]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524731585482</Id>
@@ -11158,11 +11161,11 @@ calculate_moi();]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
+						<Type><![CDATA[double[]]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[6]]]></Code>
+							<Code><![CDATA[new double[6]]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1524731592481</Id>
@@ -11473,31 +11476,6 @@ calculate_moi();]]></StartupCode>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1526492087845</Id>
-							<Label><![CDATA[line_capacities]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1526492109387</Id>
-					<Name><![CDATA[rcho]]></Name>
-					<X>-340</X><Y>1120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int[]]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[new int[12]]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1526492109385</Id>
 							<Label><![CDATA[line_capacities]]></Label>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
@@ -12628,14 +12606,14 @@ calculate_moi();]]></StartupCode>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
 						<ElementClass><![CDATA[Integer]]></ElementClass>
-						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
+						<ValueElementClass><![CDATA[double[]]]></ValueElementClass>
 					</Properties>
 
 				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1526493048357</Id>
 					<Name><![CDATA[co_monthly_amount]]></Name>
-					<X>2650</X><Y>-80</Y>
+					<X>2380</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12643,7 +12621,7 @@ calculate_moi();]]></StartupCode>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
 						<ElementClass><![CDATA[Integer]]></ElementClass>
-						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
+						<ValueElementClass><![CDATA[double[]]]></ValueElementClass>
 					</Properties>
 
 				</Variable>
@@ -12725,7 +12703,7 @@ calculate_moi();]]></StartupCode>
 				<Variable Class="CollectionVariable">
 					<Id>1526494045108</Id>
 					<Name><![CDATA[co_monthly_hours]]></Name>
-					<X>2650</X><Y>-60</Y>
+					<X>2380</X><Y>-30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12733,7 +12711,22 @@ calculate_moi();]]></StartupCode>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
 						<ElementClass><![CDATA[Integer]]></ElementClass>
-						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
+						<ValueElementClass><![CDATA[double[]]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526499912048</Id>
+					<Name><![CDATA[rcho]]></Name>
+					<X>-340</X><Y>1120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[Integer]]></ElementClass>
+						<ValueElementClass><![CDATA[double[]]]></ValueElementClass>
 					</Properties>
 
 				</Variable>
@@ -16658,7 +16651,8 @@ substract_previous_months(brute_times_l4, brute_times_monthly_l4, m);
 substract_previous_months(brute_times_l5, brute_times_monthly_l5, m);
 substract_previous_months(brute_times_l6, brute_times_monthly_l6, m);
 
-]]></Action>
+calculate_mod();
+calculate_moi();]]></Action>
 				</Event>
 			</Events>
 			<DynamicEvents>
@@ -16726,6 +16720,8 @@ lote_brute_time[line-1] += delay;
 if (delay > 0){
 	co_hours[line-1] += delay;
 	co_amount[line-1] += 1;
+	add_to_co_amount(line);
+	add_to_co_hours(line,delay);
 }
 
 return delay;]]></Body>
@@ -16762,6 +16758,8 @@ lote_brute_time[line-1] += delay;
 if (delay > 0){
 	co_hours[line-1] += delay;
 	co_amount[line-1] += 1;
+	add_to_co_amount(line);
+	add_to_co_hours(line,delay);
 }
 
 return delay;]]></Body>
@@ -17130,7 +17128,9 @@ refresh_net_times_monthly();
 refresh_prod_att();
 refresh_prod_att_monthly();
 refresh_prod_bo();
-refresh_prod_bo_monthly();]]></Body>
+refresh_prod_bo_monthly();
+refresh_cho();
+refresh_rcho();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -17399,23 +17399,37 @@ for (String s : prod_bo_monthly_lbo.keySet()){
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[for (int line = 1 ; line < 7 ; line++){
-	insertInto(db_lines_out)
-	     .columns(
-	     	db_lines_out.country, 
-	     	db_lines_out.line,
-	     	db_lines_out.co_amount,
-	     	db_lines_out.co_hours,
-	     	db_lines_out.shifts_amount
-	     	)
-	     .values(
-	     	country,
-	     	line,
-	     	co_amount[line-1],
-	     	co_hours[line-1],
-	     	shifts_worked[line-1]
-	     	)
-	    .execute();
+					<Body><![CDATA[for (int m = 1 ; m < 13 ; m++){
+	for (int line = 1 ; line < 7 ; line++){
+		insertInto(db_lines_out)
+		     .columns(
+		     	db_lines_out.country, 
+		     	db_lines_out.mes,
+		     	db_lines_out.line,
+		     	db_lines_out.co_amount,
+		     	db_lines_out.co_hours,
+		     	db_lines_out.shifts_amount,
+		     	db_lines_out.mod_cost,
+		     	db_lines_out.moi_cost,
+		     	db_lines_out.cho_cost,
+		     	db_lines_out.rcho_cost,
+		     	db_lines_out.gen_cost
+		     	)
+		     .values(
+		     	country,
+		     	m,
+		     	line,
+		     	co_monthly_amount.get(line)[m-1],
+		     	co_monthly_hours.get(line)[m-1],
+		     	shifts_worked[line-1],
+		     	mod[line-1],
+		     	moi[line-1],
+		     	cho.get(line)[m-1],
+		     	rcho.get(line)[m-1],
+		     	gastos_generales_mes[line-1]
+		     	)
+		    .execute();
+	}
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -17774,30 +17788,7 @@ for (String s : brute_times_monthly_l6.keySet()){
 	double res = mano_obraI_cant_turno[line];
 	res *= mano_obraI_costo_turno[line];
 	res *= shifts_amount;
-	moi[line] = res;
-}
-]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1526492720237</Id>
-					<Name><![CDATA[calculate_cho]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-680</X><Y>930</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[m]]></Name>
-						<Type><![CDATA[int]]></Type>
-					</Parameter>
-					<Body><![CDATA[for (int line = 0 ; line < 6 ; line++){
-	double res = mano_obra_CO_hora;
-	res *= costosCO_CO;
-	res *= co_amount_monthly.get(line)[m-1];
-	cho.put(m,res);
+	moi[line] = res;	
 }
 ]]></Body>
 				</Function>
@@ -17947,6 +17938,151 @@ get_varcost_monthly(line).put(lote.code,monthly_array);]]></Body>
 				System.out.println("varcost_monthly: invalid line");
 			  	return variable_cost_monthly_l1;
 			 }
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526498423460</Id>
+					<Name><![CDATA[add_to_co_amount]]></Name>
+					<X>2380</X><Y>-90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[line]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[Calendar cal = Calendar.getInstance();
+cal.setTime(date());
+int m = cal.get(Calendar.MONTH)+1;
+
+double[] monthly_array = co_monthly_amount.get(line);
+monthly_array[m-1] += 1;
+
+co_monthly_amount.put(line,monthly_array);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526498577553</Id>
+					<Name><![CDATA[add_to_co_hours]]></Name>
+					<X>2380</X><Y>-50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[line]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[hours]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Body><![CDATA[Calendar cal = Calendar.getInstance();
+cal.setTime(date());
+int m = cal.get(Calendar.MONTH)+1;
+
+double[] monthly_array = co_monthly_hours.get(line);
+monthly_array[m-1] += hours;
+
+co_monthly_hours.put(line,monthly_array);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526499057534</Id>
+					<Name><![CDATA[refresh_cho]]></Name>
+					<X>2380</X><Y>-320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[for (int line = 1 ; line < 7 ; line++){
+	for (int m = 1 ; m < 13 ; m++){
+		if (!cho.containsKey(line)){
+			double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+			cho.put(line,monthly_zeroes);
+		}
+		double[] monthly_array = cho.get(line);
+		double cho_var = mano_obra_CO_hora[line-1];
+		cho_var *= costosCO_CO[line-1];
+		if (co_monthly_hours.containsKey(line))
+			cho_var *= co_monthly_hours.get(line)[m-1];
+		else
+			cho_var *= 0;
+		monthly_array[m-1] = cho_var;
+		
+		cho.put(line,monthly_array);
+	}
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526499781256</Id>
+					<Name><![CDATA[refresh_rcho]]></Name>
+					<X>2380</X><Y>-340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[for (int line = 1 ; line < 7 ; line++){
+	for (int m = 1 ; m < 13 ; m++){
+		if (!rcho.containsKey(line)){
+			double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+			rcho.put(line,monthly_zeroes);
+		}
+		double[] monthly_array = cho.get(line);
+		
+		double cho_var = costosCO_CO[line-1];
+
+		if (co_monthly_amount.containsKey(line))
+			cho_var *= co_monthly_amount.get(line)[m-1];
+		else
+			cho_var *= 0;
+			
+		monthly_array[m-1] = cho_var;
+		
+		rcho.put(line,monthly_array);
+	}
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526501513654</Id>
+					<Name><![CDATA[initialize_co]]></Name>
+					<X>2380</X><Y>-360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[double[] monthly_zeroes = {0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+for (int line = 1 ; line < 7 ; line++){
+	co_monthly_amount.put(line,monthly_zeroes);
+	co_monthly_hours.put(line,monthly_zeroes);
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526503687913</Id>
+					<Name><![CDATA[print_monthly]]></Name>
+					<X>2480</X><Y>-320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[for (int line = 1 ; line < 7 ; line++){
+	for (int m = 1 ; m < 13 ; m++){
+		System.out.println(m + " " + 
+			line + " " + 
+			co_monthly_amount.get(line)[m-1] + " " + 
+			co_monthly_amount.get(line)[m-1]);
+	}
 }]]></Body>
 				</Function>
 			</Functions>
@@ -41893,7 +42029,7 @@ activity_l6 = 0;]]></Code>
 				<RoundedRectangle>
 					<Id>1524226432357</Id>
 					<Name><![CDATA[roundRectangle4]]></Name>
-					<X>950</X><Y>-300</Y>
+					<X>960</X><Y>-300</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
