@@ -1640,7 +1640,7 @@ Dentro del agente: productionLine, para cada línea. ]]></Description>
 					</Parameter>
 					<Body><![CDATA[for (int line = 0 ; line < 6 ; line++){
 	double capacity = 800;
-	capacity *= get_plant(country).efficiency*1.1;
+	capacity *= get_plant(country).efficiency*0.91;
 	capacity *= 60;
 	capacity *= get_plant(country).shifts_amount;
 	capacity *= get_plant(country).shift_duration;
@@ -1879,6 +1879,11 @@ Para cada mes:
 	if (country_demand_equals_producer){
 		for (Lote l : sorted_lotes){
 			l.country_of_production = l.countryD_code;
+			l.line = 7;
+		}
+	} else {
+		for (Lote l : sorted_lotes){
+			l.country_of_production = country_order[7];
 			l.line = 7;
 		}
 	}
