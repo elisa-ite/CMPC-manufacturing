@@ -580,7 +580,7 @@ pre_calc();]]></StartupCode>
 				<Variable Class="CollectionVariable">
 					<Id>1522612589504</Id>
 					<Name><![CDATA[tempLotes]]></Name>
-					<X>20</X><Y>-270</Y>
+					<X>20</X><Y>-240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1193,292 +1193,7 @@ if( month < 12 ){
 
 ]]></Action>
 				</Event>
-				<Event>
-					<Id>1526588604276</Id>
-					<Name><![CDATA[event]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>1090</X><Y>210</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties TriggerType="timeout" Mode="cyclic">
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-						</Timeout>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
-						</Rate>
-						<OccurrenceAtTime>true</OccurrenceAtTime>
-						<OccurrenceDate>1526630400000</OccurrenceDate>
-						<OccurrenceTime Class="CodeUnitValue">
-							<Code><![CDATA[0]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-						</OccurrenceTime>
-						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
-						</RecurrenceCode>
-						<Condition><![CDATA[false]]></Condition>
-					</Properties>
-					<Action><![CDATA[ add_container();
- add_truck()]]></Action>
-				</Event>
 			</Events>
-			<DynamicEvents>
-				<DynamicEventClass>
-					<Id>1522611240358</Id>
-					<Name><![CDATA[SendToProductionLine]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>20</X><Y>-240</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[]]></Name>
-						<Type><![CDATA[]]></Type>
-					</Parameter>
-					<Action><![CDATA[
-
-// Initialize SKU variables
-
-readyToGo = prodLines;
-s.lotees[month-1] = 0;
-s.prodReq[month-1] = 0;
-s.prodPlan[month-1] = 0;
-s.prodAtt[month-1] = 0;
-s.prodBO[month-1] = 0;
-s.prodSOut[month-1] = 0;
-double pproLotees = 0;
-double pproBOLotees = 0;
-double prLotees = 0;
-double lotees = 0;
-
-// Calculate Initial Inventory
-
-if (month > 1 && month <= 12) {
-	s.proInventory[month-1] = (s.prodAtt[month-2] + s.proInventory[month-2]) - s.proRDemand[month-2];//(pp + pi) - pd;
-	if (s.proInventory[month-1] < 0) {
-		s.prodSOut[month-2] = s.proInventory[month-1];
-		s.proInventory[month-1] = 0;
-	}
-}
-
-//
-// Calculate Target Inventory (ti) by SKU
-//
-/*
-double ti = 0;
-int mfc = 0;
-int dfc = 0;
-int rdays = 0;
-
-if (s.proDFC[month-1] > 0) {
-	monthForwardCoverage = s.proDFC[month-1] / 30;
-} else {
-	monthForwardCoverage = daysForwardCoverage / 30;
-}
-mfc = (int)Math.floor(monthForwardCoverage);
-dfc = mfc * 30;
-rdays = daysForwardCoverage - dfc;
-
-if (mfc > 0){
-	for( int j = 1 ; j <= mfc ; j++ ){
-		if ((month-1) + j <= 11) {
-			ti = ti + s.proDemand[(month-1)+j];
-		} else {
-			if ((month-1) + j == 12) {
-			ti = ti + s.proDemand[0];
-		} else {
-			if ((month-1) + j == 13) {
-			ti = ti + s.proDemand[1];
-		}}};
-	}
-}
-if (rdays > 0){
-	if ((month-1) + (mfc+1) <= 11) {
-			ti = ti + s.proDemand[(month-1)+(mfc+1)] / 30 * rdays;
-		} else {
-			if ((month-1) + (mfc+1) == 12) {
-			ti = ti + s.proDemand[0] / 30 * rdays;
-		} else {
-			if ((month-1) + (mfc+1) == 13) {
-			ti = ti + s.proDemand[1] / 30 * rdays;
-		}}
-	}
-	ti = (int)Math.floor(ti+0.9999);
-};
-s.proTargetInventory[month-1] = ti;
-
-//traceln("mfc: "+mfc+" dfc: "+dfc+" rdays: "+rdays+" ti: "+ti);
-
-// Cumulate Inventory & Target Inventort for chart Datasets
-
-totInv = totInv + s.proInventory[month-1];
-
-if (s.proUPal[month-1] > 0) {
-	totInvPal = totInvPal + s.proInventory[month-1]/s.proUPal[month-1];
-} else {
-	totInvPal = totInvPal + 0;
-}
-
-//totWHCost = totInvPal * s.proCPal[month-1];
-//totInvCost = totInv * s.proCost[month-1];
-//totTInv = totTInv + s.proTargetInventory[month-1];
-
-//
-// Calculate Stock Anticipation by SKU
-//
-
-//if (pproAuto > 0) {
-	//double ppro = s.prodPPro[month-1]; // Pre Production
-	//if (ppro > 0) {
-		// s.loteSize[month-1]; // Amount of Lotes
-//		pproLotees = (int)Math.floor(pproLotees + 0.999999);
-		//pproLotees = rint(pproLotees + 0.49999);
-		//if (pproLotees < s.loteMin[month-1]) {
-			//pproLotees = s.loteMin[month-1];
-		//} else {
-		//	double pproLoteesAdj = pproLotees / s.loteMin[month-1]; // Adjust Amount of Lotes
-		//	pproLotees = (int)Math.floor(pproLoteesAdj + 0.99) * s.loteMin[month-1];
-		//}
-		//ppro = pproLotees * s.loteSize[month-1];
-		//s.prodPPro[month-1] = ppro;
-	//}
-//}
-
-//if (pproBOAuto > 0) {
-	//double pproBO = s.prodBOPPro[month-1]; // Pre Production
-	//if (pproBO > 0) {
-		//pproBOLotees = pproBO / s.loteSize[month-1]; // Amount of Lotes
-//		pproBOLotees = (int)Math.ceil(pproBOLotees + 0.999999);
-		//pproBOLotees = rint(pproBOLotees + 0.49999);
-		//if (pproBOLotees < s.loteMin[month-1]) {
-		//	pproBOLotees = s.loteMin[month-1];
-		//} else {
-		//	double pproBOLoteesAdj = pproBOLotees / s.loteMin[month-1]; // Adjust Amount of Lotes
-		//	pproBOLotees = (int)Math.floor(pproBOLoteesAdj + 0.99) * s.loteMin[month-1];
-		//}
-		//pproBO = pproBOLotees * s.loteSize[month-1];
-		//s.prodPPro[month-1] = ppro;
-	//}
-//}
-
-//
-// Calculate Production Required (pr) & Planned (pp) by SKU
-//
-
-double pi = s.proInventory[month-1]; // Product Inventory
-
-// If MAPE is True Apply Forecast Error on Demand
-if (mape == true){
-	if (s.proMAPEMin[month-1] == 0) {
-		s.proRDemand[month-1] = triangular( mapeMin,mapeMax,mapeMod ) * s.proDemand[month-1];
-		s.proRDemand[month-1] = Math.floor(s.proRDemand[month-1] + 0.999999);
-	} else {
-		s.proRDemand[month-1] = triangular( s.proMAPEMin[month-1],s.proMAPEMax[month-1],s.proMAPEMod[month-1] ) * s.proDemand[month-1];
-		s.proRDemand[month-1] = Math.floor(s.proRDemand[month-1] + 0.999999);
-	}	
-} else {
-	s.proRDemand[month-1] = s.proDemand[month-1];
-}
-
-double pd = s.proRDemand[month-1]; //Product Demand
-double pr = ((pd + ti) - pi); // Production Required
-
-if (pr / s.loteSize[month-1] <= minForLote) {
-	if (pi-pd > 0) {
-		pr = 0;
-	}
-}
-
-double pp = 0;
-if (pr > 0) {
-	prLotees = pr / s.loteSize[month-1]; // Amount of Lotes
-	prLotees = rint(prLotees + 0.49999);
-	if (prLotees < s.loteMin[month-1]) {
-		prLotees = s.loteMin[month-1];
-	} else {
-			double prLoteesAdj = prLotees / s.loteMin[month-1]; // Adjust Amount of Lotes
-			prLotees = (int)Math.floor(prLoteesAdj + 0.99) * s.loteMin[month-1];
-	}
-} else {
-	pr = 0;
-}
-
-// Define Production Planned & Lotees Planned
-
-lotees = prLotees + pproLotees + pproBOLotees; // Lotees Planned
-pp = lotees * s.loteSize[month-1]; // Production Planned
-s.lotees[month-1] = lotees;
-s.prodReq[month-1] = pr;
-s.prodPlan[month-1] = pp;
-
-if (lotees == 0 && month <= 11) {
-		s.proInventory[month] = pi - pd; // If no production planned calculate new Inventory
-}
-
-*/
-//in_products.take(s);	// Take SKU
-
-//
-// Generate Lote
-//
-lotees = (int)(s.real_demand[month-1] / s.loteSize[month-1])+1;
-if (lotees == 0)	lotees = 1;
-if (s.real_demand[month-1] == 0)	lotees = 0;
-
-for( int i = 0 ; i < lotees ; i++ ){
-	Lote n = add_lote();
-	loteId = loteId + 1;
-	n.loteID = loteId;
-	n.proLine = s.proLine[month-1];
-	n.proSline = s.proSline[month-1];
-	n.proPri = s.proPri[month-1];
-	n.prodPlan = s.prodPlan[month-1]/lotees;
-	n.proDemand = s.proDemand[month-1];
-	n.proRDemand = s.proRDemand[month-1];
-	n.proInventory = s.proInventory[month-1];
-	n.month = month;
-	n.name = s.name;
-	n.code = s.code;
-	n.size = s.sku_size_code;
-	n.packsize = s.sku_packsize;
-	n.line = s.monthly_line[month-1];
-	n.real_demand = (int)s.loteSize[month-1];
-	n.loteNumber = i+1;
-	n.country_of_production = s.monthly_country[month-1];
-	int rate = 0;
-	if (s.monthly_line[month-1] != 0)
-		n.rate = s.line_rates[s.monthly_line[month-1]-1];
-	n.total_variable_cost = s.total_variable_cost;
-	
-	//traceln(" n = "+ n);
-
-	//if (n.code == 91275) {
-		// traceln(
-		//	"code = " + n.code +
-		//	" month: "+month+
-		//	" proPReq: "+ s.prodReq[month-1] +
-		//	" prLotees: "+prLotees+
-		//	" proPPro: "+ s.prodPPro[month-1] +
-		//	" pproLotees: "+pproLotees+
-		//	" prodPlan: " + s.prodPlan[month-1]
-		//);
-//	}
-
-
-//	lote.add( n ); // Add Lote in Lote collection
-	
-	in_products.take( n ); // Inject Lote in production line
-}
-
-tempSKU.remove(s); // Delete SKU from temp list]]></Action>
-				</DynamicEventClass>
-			</DynamicEvents>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -2688,24 +2403,6 @@ int month_of_production = date_of_production.get(Calendar.MONTH)+1;
 int year_of_production = date_of_production.get(Calendar.YEAR);
 
 return month_of_production;]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1526401907456</Id>
-					<Name><![CDATA[send_lote_to_pline]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>130</X><Y>-210</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[l]]></Name>
-						<Type><![CDATA[Lote]]></Type>
-					</Parameter>
-					<Body><![CDATA[tempLotes.remove(l); // Delete SKU from temp list
-in_products.take( l ); // Inject Lote in production line]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -7183,7 +6880,7 @@ return s_to_return;]]></Body>
 				<EmbeddedObject>
 					<Id>1526588489576</Id>
 					<Name><![CDATA[container]]></Name>
-					<X>980</X><Y>180</Y>
+					<X>-240</X><Y>180</Y>
 					<Label><X>25</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7255,7 +6952,7 @@ return s_to_return;]]></Body>
 				<EmbeddedObject>
 					<Id>1526588528374</Id>
 					<Name><![CDATA[truck]]></Name>
-					<X>980</X><Y>240</Y>
+					<X>-240</X><Y>160</Y>
 					<Label><X>25</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8141,7 +7838,7 @@ return s_to_return;]]></Body>
 					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<AsObject>true</AsObject>
@@ -52934,7 +52631,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 						<MinValue><![CDATA[0]]></MinValue>
 						<MaxValue><![CDATA[60]]></MaxValue>
 						<LinkTo>true</LinkTo>
-						<Link>frequency_shipv</Link>
+						<Link>frequency_containerv</Link>
 					</ExtendedProperties>
 				</Control>
 				<Control Type="EditBox">
