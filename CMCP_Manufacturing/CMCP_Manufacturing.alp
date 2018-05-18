@@ -1269,7 +1269,8 @@ s.line_rates[2] = 		rows.get( db_sku.rate_l3 );
 s.line_rates[3] = 		rows.get( db_sku.rate_l4 );
 s.line_rates[4] = 		rows.get( db_sku.rate_l5 );
 s.line_rates[5] = 		rows.get( db_sku.rate_l6 );
-s.priority = 			rows.get( db_sku.priority );]]></Body>
+s.priority = 			rows.get( db_sku.priority );
+s.price =				rows.get( db_sku.price );]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -2256,6 +2257,7 @@ for( int i = 0 ; i < lotees ; i++ ){
 	n.total_variable_cost = s.total_variable_cost;
 	n.line_rates = s.line_rates;
 	n.priority = s.priority;
+	n.price = s.price;
 
 	sorted_lotes.add(n);
 }]]></Body>
@@ -4861,6 +4863,9 @@ Collections.sort(lote_list,new LotePriorityComparator());]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[priority]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[price]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -47159,6 +47164,30 @@ activity_l6 = 0;]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1526645643259</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526646774849</Id>
+					<Name><![CDATA[price]]></Name>
+					<X>160</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526646774847</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
