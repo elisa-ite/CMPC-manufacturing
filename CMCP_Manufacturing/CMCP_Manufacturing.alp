@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291329" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291251" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMCP_Manufacturing]]></Name>
@@ -1996,12 +1996,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 		for (String sku : plant.get_patt_monthly(line).keySet()){				
 			double prod_att = plant.get_patt_monthly(line).get(sku)[m-1];
 			if (prod_att != 0){
-				double cfa_calc = plant.mod[line-1] +
-		     				 	  plant.moi[line-1] +
-		     				 	  plant.get_cho_monthly(line)[m-1] +
-		     				 	  plant.get_rcho_monthly(line)[m-1] +
-		     				 	  plant.gastos_generales_mes[line-1];
-		     	cfa_calc = cfa_calc / prod_att;
+				double cfa_calc = calc_cfa(plant,line,m,sku);
 				insertInto(db_sku_out)
 				 .columns(
 				 	db_sku_out.sku, 
@@ -2545,6 +2540,128 @@ switch (str_destin) {
 	case "M": return false;
 	default: return false;
 }]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[Warehouse]]></ReturnType>
+					<Id>1526666873887</Id>
+					<Name><![CDATA[get_warehouse]]></Name>
+					<X>930</X><Y>-60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[country]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (country) {
+	case 1: return warehouse_ar;
+	case 2: return warehouse_br;
+	case 3: return warehouse_ch;
+	case 4: return warehouse_co;
+	case 5: return warehouse_ec;
+	case 6: return warehouse_mx;
+	case 7: return warehouse_pe;
+	case 8: return warehouse_ur;
+	default: {
+				System.out.println("get_warehouse: invalid country");
+			  	return warehouse_ar;
+			 }
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526667801016</Id>
+					<Name><![CDATA[unload_truck]]></Name>
+					<X>930</X><Y>-10</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[t]]></Name>
+						<Type><![CDATA[Truck]]></Type>
+					</Parameter>
+					<Body><![CDATA[Calendar cal = Calendar.getInstance();
+cal.setTime(date());
+int m = cal.get(Calendar.MONTH)+1;
+
+Warehouse whouse = get_warehouse(t.destination);
+if (t.destination != t.origin){
+	for (String s : t.inventory.keySet()){
+		add_acc(whouse.get_inv_imported(m),s,t.inventory.get(s));
+	}
+} else {
+	for (String s : t.inventory.keySet()){
+		add_acc(whouse.get_inv_local(m),s,t.inventory.get(s));
+	}
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526668419850</Id>
+					<Name><![CDATA[unload_container]]></Name>
+					<X>930</X><Y>-30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[c]]></Name>
+						<Type><![CDATA[Container]]></Type>
+					</Parameter>
+					<Body><![CDATA[Calendar cal = Calendar.getInstance();
+cal.setTime(date());
+int m = cal.get(Calendar.MONTH)+1;
+
+Warehouse whouse = get_warehouse(c.destination);
+if (c.destination != c.origin){
+	for (String s : c.inventory.keySet()){
+		add_acc(whouse.get_inv_imported(m),s,c.inventory.get(s));
+	}
+} else {
+	for (String s : c.inventory.keySet()){
+		add_acc(whouse.get_inv_local(m),s,c.inventory.get(s));
+	}
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526669268891</Id>
+					<Name><![CDATA[calc_cfa]]></Name>
+					<X>260</X><Y>-100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[plant]]></Name>
+						<Type><![CDATA[ProductionLine]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[line]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[sku]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Body><![CDATA[double prod_att = plant.get_patt_monthly(line).get(sku)[m-1];
+double cfa_calc = plant.mod[line-1] +
+			 	  plant.moi[line-1] +
+			 	  plant.get_cho_monthly(line)[m-1] +
+ 			 	  plant.get_rcho_monthly(line)[m-1] +
+ 			 	  plant.gastos_generales_mes[line-1];
+cfa_calc = cfa_calc / prod_att;
+return cfa_calc;]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -6995,7 +7112,10 @@ switch (str_destin) {
 							<Name><![CDATA[origin]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[cost]]></Name>
+							<Name><![CDATA[travel_cost]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[inventory_cost]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -7076,7 +7196,10 @@ switch (str_destin) {
 							<Name><![CDATA[origin]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[cost]]></Name>
+							<Name><![CDATA[travel_cost]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[inventory_cost]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -7125,7 +7248,7 @@ switch (str_destin) {
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1526662702411</Id>
-					<Name><![CDATA[warehouseArg]]></Name>
+					<Name><![CDATA[warehouse_ar]]></Name>
 					<X>930</X><Y>50</Y>
 					<Label><X>-35</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -7191,8 +7314,8 @@ switch (str_destin) {
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1526662845946</Id>
-					<Name><![CDATA[warehouseBra]]></Name>
-					<X>930</X><Y>110</Y>
+					<Name><![CDATA[warehouse_br]]></Name>
+					<X>930</X><Y>120</Y>
 					<Label><X>-35</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7257,7 +7380,7 @@ switch (str_destin) {
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1526663003782</Id>
-					<Name><![CDATA[warehouseChile]]></Name>
+					<Name><![CDATA[warehouse_ch]]></Name>
 					<X>930</X><Y>200</Y>
 					<Label><X>-35</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -7323,8 +7446,8 @@ switch (str_destin) {
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1526663191769</Id>
-					<Name><![CDATA[warehouseCol]]></Name>
-					<X>920</X><Y>270</Y>
+					<Name><![CDATA[warehouse_co]]></Name>
+					<X>930</X><Y>270</Y>
 					<Label><X>-35</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7389,8 +7512,8 @@ switch (str_destin) {
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1526663394601</Id>
-					<Name><![CDATA[warehouse]]></Name>
-					<X>910</X><Y>320</Y>
+					<Name><![CDATA[warehouse_ec]]></Name>
+					<X>930</X><Y>340</Y>
 					<Label><X>-35</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7455,8 +7578,8 @@ switch (str_destin) {
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1526663427067</Id>
-					<Name><![CDATA[warehouse1]]></Name>
-					<X>970</X><Y>390</Y>
+					<Name><![CDATA[warehouse_mx]]></Name>
+					<X>930</X><Y>410</Y>
 					<Label><X>-35</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7521,8 +7644,8 @@ switch (str_destin) {
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1526663478252</Id>
-					<Name><![CDATA[warehouse2]]></Name>
-					<X>940</X><Y>610</Y>
+					<Name><![CDATA[warehouse_ur]]></Name>
+					<X>930</X><Y>550</Y>
 					<Label><X>-35</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -7587,8 +7710,8 @@ switch (str_destin) {
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1526663724858</Id>
-					<Name><![CDATA[warehouse3]]></Name>
-					<X>940</X><Y>500</Y>
+					<Name><![CDATA[warehouse_pe]]></Name>
+					<X>930</X><Y>480</Y>
 					<Label><X>-35</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -8484,7 +8607,7 @@ switch (str_destin) {
 				</EmbeddedObjectPresentation>
 				<EmbeddedObjectPresentation>
 					<Id>1526662709809</Id>
-					<Name><![CDATA[warehouseArg_presentation]]></Name>
+					<Name><![CDATA[warehouse_ar_presentation]]></Name>
 					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -8504,7 +8627,7 @@ switch (str_destin) {
 				</EmbeddedObjectPresentation>
 				<EmbeddedObjectPresentation>
 					<Id>1526662853094</Id>
-					<Name><![CDATA[warehouseBra_presentation]]></Name>
+					<Name><![CDATA[warehouse_br_presentation]]></Name>
 					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -8524,7 +8647,7 @@ switch (str_destin) {
 				</EmbeddedObjectPresentation>
 				<EmbeddedObjectPresentation>
 					<Id>1526663009649</Id>
-					<Name><![CDATA[warehouseChile_presentation]]></Name>
+					<Name><![CDATA[warehouse_ch_presentation]]></Name>
 					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -8544,7 +8667,7 @@ switch (str_destin) {
 				</EmbeddedObjectPresentation>
 				<EmbeddedObjectPresentation>
 					<Id>1526663199199</Id>
-					<Name><![CDATA[warehouseCol_presentation]]></Name>
+					<Name><![CDATA[warehouse_co_presentation]]></Name>
 					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -8564,7 +8687,7 @@ switch (str_destin) {
 				</EmbeddedObjectPresentation>
 				<EmbeddedObjectPresentation>
 					<Id>1526663400359</Id>
-					<Name><![CDATA[warehouse_presentation]]></Name>
+					<Name><![CDATA[warehouse_ec_presentation]]></Name>
 					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -8584,7 +8707,7 @@ switch (str_destin) {
 				</EmbeddedObjectPresentation>
 				<EmbeddedObjectPresentation>
 					<Id>1526663436976</Id>
-					<Name><![CDATA[warehouse1_presentation]]></Name>
+					<Name><![CDATA[warehouse_mx_presentation]]></Name>
 					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -8604,7 +8727,7 @@ switch (str_destin) {
 				</EmbeddedObjectPresentation>
 				<EmbeddedObjectPresentation>
 					<Id>1526663497471</Id>
-					<Name><![CDATA[warehouse2_presentation]]></Name>
+					<Name><![CDATA[warehouse_ur_presentation]]></Name>
 					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -8624,7 +8747,7 @@ switch (str_destin) {
 				</EmbeddedObjectPresentation>
 				<EmbeddedObjectPresentation>
 					<Id>1526663724917</Id>
-					<Name><![CDATA[warehouse3_presentation]]></Name>
+					<Name><![CDATA[warehouse_pe_presentation]]></Name>
 					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -18380,6 +18503,39 @@ calculate_moi();]]></Action>
 	}
 }]]></Action>
 				</Event>
+				<Event>
+					<Id>1526665468824</Id>
+					<Name><![CDATA[to_warehouse]]></Name>
+					<X>2260</X><Y>60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>false</OccurrenceAtTime>
+						<OccurrenceDate>1548892801000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MONTH]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[Calendar cal = Calendar.getInstance();
+cal.setTime(date());
+int m = cal.get(Calendar.MONTH)+1;]]></Action>
+				</Event>
 			</Events>
 			<DynamicEvents>
 				<DynamicEventClass>
@@ -19819,7 +19975,7 @@ for (String sku : inv_available.keySet()){
 truck.inventory = truck_load;
 truck.destination = destination;
 truck.origin = country;
-truck.cost = main.travel_cost(truck.origin,truck.destination);
+truck.travel_cost = main.travel_cost(truck.origin,truck.destination);
 truck.travel_time = main.travel_time(truck.origin,truck.destination);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -19962,7 +20118,7 @@ for (String sku : inv_available.keySet()){
 container.inventory = container_load;
 container.destination = destination;
 container.origin = country;
-container.cost = main.travel_cost(container.origin,container.destination);
+container.travel_cost = main.travel_cost(container.origin,container.destination);
 container.travel_time = main.travel_time(container.origin,container.destination);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -19993,6 +20149,17 @@ container.travel_time = main.travel_time(container.origin,container.destination)
 			  	return inventory_to_ar;
 			 }
 }]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526666395363</Id>
+					<Name><![CDATA[load_inventory]]></Name>
+					<X>2150</X><Y>90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
 				</Function>
 			</Functions>
 			<Schedules>
@@ -48001,6 +48168,9 @@ activity_l6 = 0;]]></Code>
 						<Type><![CDATA[double]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
 						<ParameterEditor>
 							<Id>0</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -48037,7 +48207,7 @@ activity_l6 = 0;]]></Code>
 				<Variable Class="Parameter">
 					<Id>1526649539419</Id>
 					<Name><![CDATA[destination]]></Name>
-					<X>50</X><Y>110</Y>
+					<X>50</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -48061,7 +48231,7 @@ activity_l6 = 0;]]></Code>
 				<Variable Class="Parameter">
 					<Id>1526649865318</Id>
 					<Name><![CDATA[origin]]></Name>
-					<X>50</X><Y>140</Y>
+					<X>50</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -48084,8 +48254,8 @@ activity_l6 = 0;]]></Code>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1526650048252</Id>
-					<Name><![CDATA[cost]]></Name>
-					<X>50</X><Y>170</Y>
+					<Name><![CDATA[travel_cost]]></Name>
+					<X>50</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -48099,6 +48269,30 @@ activity_l6 = 0;]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1526650048250</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526664473720</Id>
+					<Name><![CDATA[inventory_cost]]></Name>
+					<X>50</X><Y>110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[LinkedHashMap<String,Double>]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new LinkedHashMap()]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526664473718</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -48141,6 +48335,7 @@ activity_l6 = 0;]]></Code>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="100" Height="30">
+						<EntryAction><![CDATA[main.unload_truck(this);]]></EntryAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
@@ -48153,6 +48348,7 @@ activity_l6 = 0;]]></Code>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Properties>	
+						<Action><![CDATA[main.remove_truck(this);]]></Action>
 					</Properties>	
 				</StatechartElement>
 				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
@@ -48216,7 +48412,7 @@ activity_l6 = 0;]]></Code>
 					<Properties Source="1526587761554" Target="1526587761564" Trigger="timeout">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[travel_time]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</Timeout>
 						<Condition><![CDATA[true]]></Condition>
 						<Rate Class="CodeUnitValue">
@@ -48246,7 +48442,7 @@ activity_l6 = 0;]]></Code>
 					<Properties Source="1526587761564" Target="1526587761573" Trigger="timeout">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 						</Timeout>
 						<Condition><![CDATA[true]]></Condition>
 						<Rate Class="CodeUnitValue">
@@ -48310,7 +48506,7 @@ activity_l6 = 0;]]></Code>
 					<Name><![CDATA[truck]]></Name>
 					<X>0</X><Y>0</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
+					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
@@ -48439,7 +48635,7 @@ activity_l6 = 0;]]></Code>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[480]]></Code>
+							<Code><![CDATA[0]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>0</Id>
@@ -48477,7 +48673,7 @@ activity_l6 = 0;]]></Code>
 				<Variable Class="Parameter">
 					<Id>1526649557121</Id>
 					<Name><![CDATA[destination]]></Name>
-					<X>50</X><Y>110</Y>
+					<X>50</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -48501,7 +48697,7 @@ activity_l6 = 0;]]></Code>
 				<Variable Class="Parameter">
 					<Id>1526649875701</Id>
 					<Name><![CDATA[origin]]></Name>
-					<X>50</X><Y>140</Y>
+					<X>50</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -48524,8 +48720,8 @@ activity_l6 = 0;]]></Code>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1526650334688</Id>
-					<Name><![CDATA[cost]]></Name>
-					<X>50</X><Y>170</Y>
+					<Name><![CDATA[travel_cost]]></Name>
+					<X>50</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -48539,6 +48735,30 @@ activity_l6 = 0;]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1526650334686</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526664490064</Id>
+					<Name><![CDATA[inventory_cost]]></Name>
+					<X>50</X><Y>110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[LinkedHashMap<String,Double>]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new LinkedHashMap()]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526664490062</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -48581,6 +48801,7 @@ activity_l6 = 0;]]></Code>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties Width="100" Height="30">
+						<EntryAction><![CDATA[main.unload_container(this);]]></EntryAction>
 						<FillColor/>
 					</Properties>
 				</StatechartElement>
@@ -48593,6 +48814,7 @@ activity_l6 = 0;]]></Code>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Properties>	
+						<Action><![CDATA[main.remove_container(this);]]></Action>
 					</Properties>	
 				</StatechartElement>
 				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
@@ -48656,7 +48878,7 @@ activity_l6 = 0;]]></Code>
 					<Properties Source="1526587275135" Target="1526587292804" Trigger="timeout">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[travel_time]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</Timeout>
 						<Condition><![CDATA[true]]></Condition>
 						<Rate Class="CodeUnitValue">
@@ -48673,20 +48895,20 @@ activity_l6 = 0;]]></Code>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1526587489841</Id>
 					<Name><![CDATA[transition2]]></Name>
-					<X>260</X><Y>280</Y>
+					<X>259</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>42</Y></Point>
+						<Point><X>0.8400319904031903</X><Y>42.00159952015997</Y></Point>
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1526587292804" Target="1526587498097" Trigger="timeout">
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
 						</Timeout>
 						<Condition><![CDATA[true]]></Condition>
 						<Rate Class="CodeUnitValue">
@@ -48750,7 +48972,7 @@ activity_l6 = 0;]]></Code>
 					<Name><![CDATA[container_ship_loaded]]></Name>
 					<X>0</X><Y>0</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
+					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
@@ -49068,7 +49290,7 @@ activity_l6 = 0;]]></Code>
 				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1526661771503</Id>
-					<Name><![CDATA[inventory_from_plant_m1]]></Name>
+					<Name><![CDATA[inventory_local_m1]]></Name>
 					<X>210</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -49082,339 +49304,9 @@ activity_l6 = 0;]]></Code>
 
 				</Variable>
 				<Variable Class="CollectionVariable">
-					<Id>1526661782989</Id>
-					<Name><![CDATA[inventory_from_plant_m2]]></Name>
-					<X>210</X><Y>40</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661785397</Id>
-					<Name><![CDATA[inventory_from_plant_m3]]></Name>
-					<X>210</X><Y>60</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661786715</Id>
-					<Name><![CDATA[inventory_from_plant_m4]]></Name>
-					<X>210</X><Y>80</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661788216</Id>
-					<Name><![CDATA[inventory_from_plant_m5]]></Name>
-					<X>210</X><Y>100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661789401</Id>
-					<Name><![CDATA[inventory_from_plant_m6]]></Name>
-					<X>210</X><Y>120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661790770</Id>
-					<Name><![CDATA[inventory_from_plant_m7]]></Name>
-					<X>210</X><Y>140</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661792306</Id>
-					<Name><![CDATA[inventory_from_plant_m8]]></Name>
-					<X>210</X><Y>160</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661793808</Id>
-					<Name><![CDATA[inventory_from_plant_m9]]></Name>
-					<X>210</X><Y>180</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661795256</Id>
-					<Name><![CDATA[inventory_from_plant_m10]]></Name>
-					<X>210</X><Y>200</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661796594</Id>
-					<Name><![CDATA[inventory_from_plant_m11]]></Name>
-					<X>210</X><Y>220</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661798060</Id>
-					<Name><![CDATA[inventory_from_plant_m12]]></Name>
-					<X>210</X><Y>240</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
 					<Id>1526661801000</Id>
-					<Name><![CDATA[cost_from_plant_m1]]></Name>
+					<Name><![CDATA[cost_local_m1]]></Name>
 					<X>410</X><Y>20</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661813817</Id>
-					<Name><![CDATA[cost_from_plant_m2]]></Name>
-					<X>410</X><Y>40</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661816281</Id>
-					<Name><![CDATA[cost_from_plant_m3]]></Name>
-					<X>410</X><Y>60</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661818138</Id>
-					<Name><![CDATA[cost_from_plant_m4]]></Name>
-					<X>410</X><Y>80</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661820188</Id>
-					<Name><![CDATA[cost_from_plant_m5]]></Name>
-					<X>410</X><Y>100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661821760</Id>
-					<Name><![CDATA[cost_from_plant_m6]]></Name>
-					<X>410</X><Y>120</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661823384</Id>
-					<Name><![CDATA[cost_from_plant_m7]]></Name>
-					<X>410</X><Y>140</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661825172</Id>
-					<Name><![CDATA[cost_from_plant_m8]]></Name>
-					<X>410</X><Y>160</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661826725</Id>
-					<Name><![CDATA[cost_from_plant_m9]]></Name>
-					<X>410</X><Y>180</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661828530</Id>
-					<Name><![CDATA[cost_from_plant_m10]]></Name>
-					<X>410</X><Y>200</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661830834</Id>
-					<Name><![CDATA[cost_from_plant_m11]]></Name>
-					<X>410</X><Y>220</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526661833269</Id>
-					<Name><![CDATA[cost_from_plant_m12]]></Name>
-					<X>410</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -49606,7 +49498,405 @@ activity_l6 = 0;]]></Code>
 					</Properties>
 
 				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668263756</Id>
+					<Name><![CDATA[inventory_local_m2]]></Name>
+					<X>210</X><Y>40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668265190</Id>
+					<Name><![CDATA[inventory_local_m3]]></Name>
+					<X>210</X><Y>60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668266801</Id>
+					<Name><![CDATA[inventory_local_m4]]></Name>
+					<X>210</X><Y>80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668268194</Id>
+					<Name><![CDATA[inventory_local_m5]]></Name>
+					<X>210</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668269643</Id>
+					<Name><![CDATA[inventory_local_m6]]></Name>
+					<X>210</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668271360</Id>
+					<Name><![CDATA[inventory_local_m7]]></Name>
+					<X>210</X><Y>140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668273684</Id>
+					<Name><![CDATA[inventory_local_m8]]></Name>
+					<X>210</X><Y>160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668275076</Id>
+					<Name><![CDATA[inventory_local_m9]]></Name>
+					<X>210</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668276452</Id>
+					<Name><![CDATA[inventory_local_m10]]></Name>
+					<X>210</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668277906</Id>
+					<Name><![CDATA[inventory_local_m11]]></Name>
+					<X>210</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668282187</Id>
+					<Name><![CDATA[inventory_local_m12]]></Name>
+					<X>210</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668298186</Id>
+					<Name><![CDATA[cost_local_m2]]></Name>
+					<X>410</X><Y>40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668299582</Id>
+					<Name><![CDATA[cost_local_m3]]></Name>
+					<X>410</X><Y>60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668300992</Id>
+					<Name><![CDATA[cost_local_m4]]></Name>
+					<X>410</X><Y>80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668303324</Id>
+					<Name><![CDATA[cost_local_m5]]></Name>
+					<X>410</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668305040</Id>
+					<Name><![CDATA[cost_local_m6]]></Name>
+					<X>410</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668306443</Id>
+					<Name><![CDATA[cost_local_m7]]></Name>
+					<X>410</X><Y>140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668307978</Id>
+					<Name><![CDATA[cost_local_m8]]></Name>
+					<X>410</X><Y>160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668309458</Id>
+					<Name><![CDATA[cost_local_m9]]></Name>
+					<X>410</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668310753</Id>
+					<Name><![CDATA[cost_local_m10]]></Name>
+					<X>410</X><Y>200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668312747</Id>
+					<Name><![CDATA[cost_local_m11]]></Name>
+					<X>410</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1526668314000</Id>
+					<Name><![CDATA[cost_local_m12]]></Name>
+					<X>410</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
 			</Variables>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[LinkedHashMap<String,Double>]]></ReturnType>
+					<Id>1526667116264</Id>
+					<Name><![CDATA[get_inv_imported]]></Name>
+					<X>20</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (m) {
+	case 1: return inventory_imported_m1;
+	case 2: return inventory_imported_m2;
+	case 3: return inventory_imported_m3;
+	case 4: return inventory_imported_m4;
+	case 5: return inventory_imported_m5;
+	case 6: return inventory_imported_m6;
+	case 7: return inventory_imported_m7;
+	case 8: return inventory_imported_m8;
+	case 9: return inventory_imported_m9;
+	case 10: return inventory_imported_m10;
+	case 11: return inventory_imported_m11;
+	case 12: return inventory_imported_m12;
+	default: {
+				System.out.println("get_inventory_imported: invalid month");
+			  	return inventory_imported_m1;
+			 }
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[LinkedHashMap<String,Double>]]></ReturnType>
+					<Id>1526668476282</Id>
+					<Name><![CDATA[get_inv_local]]></Name>
+					<X>210</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (m) {
+	case 1: return inventory_local_m1;
+	case 2: return inventory_local_m2;
+	case 3: return inventory_local_m3;
+	case 4: return inventory_local_m4;
+	case 5: return inventory_local_m5;
+	case 6: return inventory_local_m6;
+	case 7: return inventory_local_m7;
+	case 8: return inventory_local_m8;
+	case 9: return inventory_local_m9;
+	case 10: return inventory_local_m10;
+	case 11: return inventory_local_m11;
+	case 12: return inventory_local_m12;
+	default: {
+				System.out.println("get_inventory_local: invalid month");
+			  	return inventory_local_m1;
+			 }
+}]]></Body>
+				</Function>
+			</Functions>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1526660456248</Id>
@@ -49651,7 +49941,7 @@ activity_l6 = 0;]]></Code>
 					<Name><![CDATA[warehouse]]></Name>
 					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>true</PublicFlag>
+					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
