@@ -1468,7 +1468,7 @@ Guarda el mes calculado en la variable: monthestimated. modulo 12]]></Descriptio
 						<Name><![CDATA[month_num]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[int days_of_lead_time = transfer_time(country,s.countryD_code);
+					<Body><![CDATA[int days_of_lead_time = travel_time(country,s.countryD_code);
 
 Calendar date_of_production = Calendar.getInstance();
 date_of_production.setTime(toDate(start_year, month_num-1, 1, 1, 1, 1));
@@ -1640,9 +1640,6 @@ for (int line = 0 ; line < 6 ; line++){
 			Lote l = sorted_lotes.get(i);
 			// Calculate cost of producing one item
 			double cost_of_producing = calculate_prod_hours(m,l,line);
-			//cost_of_producing += l.days_on_hand*(l.sku_demand/30);
-			//if (get_pc_inventory(country).containsKey(l.code))
-			//	cost_of_producing -= get_pc_inventory(country).get(l.code);
 
 			double cost_delay = 0;
 			if (!first_in_line){
@@ -1660,19 +1657,9 @@ for (int line = 0 ; line < 6 ; line++){
 				){
 				
 				count++;
-				//System.out.println(count + " " + cost_of_producing);
 			
 				first_in_line = false;
 				line_capacities[line] -= (cost_of_producing+cost_delay);
-				
-				// Inventory refresh
-				//if (m > 1){
-				//	double inventory_val = -1*l.real_demand;
-				//	if (get_pc_inventory(country).containsKey(l.code))
-				//      inventory_val += get_pc_inventory(country).get(l.code);
-				//   	inventory_val += cost_of_producing;
-				//	get_pc_inventory(country).put(l.code, inventory_val);
-				//}
 				
 				last_packsize = l.packsize;
 				last_size = l.size;
@@ -1798,7 +1785,7 @@ collection.put(key, accumulated);]]></Body>
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
 					<ReturnType><![CDATA[int]]></ReturnType>
 					<Id>1524490183955</Id>
-					<Name><![CDATA[transfer_time]]></Name>
+					<Name><![CDATA[travel_time]]></Name>
 					<X>-810</X><Y>-260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1850,8 +1837,8 @@ switch (str_destin) {
 	case 3: return productionLineChile;
 	case 4: return productionLineCol;
 	case 5: return productionLineEcu;
-	case 6: return productionLinePeru;
-	case 7: return productionLineMex;
+	case 6: return productionLineMex;
+	case 7: return productionLinePeru;
 	case 8: return productionLineUru;
 	default: return productionLineArg;
 }]]></Body>
@@ -1877,8 +1864,8 @@ switch (country) {
 	case 3: return selectOutputOutChile;
 	case 4: return selectOutputOutCol;
 	case 5: return selectOutputOutEcu;
-	case 6: return selectOutputOutPeru;
-	case 7: return selectOutputOutMex;
+	case 6: return selectOutputOutMex;
+	case 7: return selectOutputOutPeru;
 	case 8: return selectOutputOutUru;
 	default: {
 				System.out.println("Backorders from precalc");
@@ -2326,7 +2313,7 @@ Guarda el mes calculado en la variable: monthestimated. modulo 12]]></Descriptio
 						<Name><![CDATA[month_num]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[int days_of_lead_time = transfer_time(country,l.countryD_code);
+					<Body><![CDATA[int days_of_lead_time = travel_time(country,l.countryD_code);
 
 Calendar date_of_production = Calendar.getInstance();
 date_of_production.setTime(toDate(start_year, month_num-1, 1, 1, 1, 1));
@@ -2471,7 +2458,7 @@ Collections.sort(lote_list,new LotePriorityComparator());]]></Body>
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
 					<ReturnType><![CDATA[String]]></ReturnType>
 					<Id>1526647899324</Id>
-					<Name><![CDATA[transfer_type]]></Name>
+					<Name><![CDATA[travel_type]]></Name>
 					<X>-810</X><Y>-240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2507,7 +2494,7 @@ switch (str_destin) {
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1526647901075</Id>
-					<Name><![CDATA[transfer_cost]]></Name>
+					<Name><![CDATA[travel_cost]]></Name>
 					<X>-810</X><Y>-220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2537,6 +2524,26 @@ switch (str_destin) {
 	case "Peru": return cost.uniqueResult(transfer_cost.peru);
 	case "Uruguay": return cost.uniqueResult(transfer_cost.uruguay);
 	default: return 0;
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[boolean]]></ReturnType>
+					<Id>1526652410827</Id>
+					<Name><![CDATA[is_truck_type]]></Name>
+					<X>-810</X><Y>-200</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[type]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (type) {
+	case "C": return true;
+	case "M": return false;
+	default: return false;
 }]]></Body>
 				</Function>
 			</Functions>
@@ -6981,6 +6988,15 @@ switch (str_destin) {
 						<Parameter>
 							<Name><![CDATA[inventory]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[destination]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[origin]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[cost]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -7052,6 +7068,15 @@ switch (str_destin) {
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[inventory]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[destination]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[origin]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[cost]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -17624,7 +17649,12 @@ calculate_moi();]]></Action>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[create_containers(inventory_to_ar);]]></Action>
+					<Action><![CDATA[for (int destination = 1 ; destination < 9 ; destination++){
+	boolean is_container = !main.is_truck_type(main.travel_type(country,destination));
+	if (is_container){
+		create_containers(get_inventory_to(destination),destination);
+	}
+}]]></Action>
 				</Event>
 				<Event>
 					<Id>1526579498218</Id>
@@ -17655,7 +17685,12 @@ calculate_moi();]]></Action>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[create_trucks(inventory_to_ar);]]></Action>
+					<Action><![CDATA[for (int destination = 1 ; destination < 9 ; destination++){
+	boolean is_truck = main.is_truck_type(main.travel_type(country,destination));
+	if (is_truck){
+		create_trucks(get_inventory_to(destination),destination);
+	}
+}]]></Action>
 				</Event>
 			</Events>
 			<DynamicEvents>
@@ -18742,7 +18777,7 @@ get_varcost_monthly(line).put(lote.code,monthly_array);]]></Body>
 	case 7: return selectOutputPeruL;
 	case 8: return selectOutputUruL;
 	default: {
-				System.out.println("ChooseOutput1: invalid country string");
+				System.out.println("ChooseOutput1: invalid country code");
 			  	return selectOutputArgL;
 			 }
 }]]></Body>
@@ -19070,6 +19105,10 @@ return delay;]]></Body>
 						<Name><![CDATA[inv_available]]></Name>
 						<Type><![CDATA[LinkedHashMap<String,Double>]]></Type>
 					</Parameter>
+					<Parameter>
+						<Name><![CDATA[destination]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
 					<Body><![CDATA[int remaining_pallets = main.pallets_per_truck;
 LinkedHashMap<String,Double> truck_load = new LinkedHashMap();
 for (String sku : inv_available.keySet()){
@@ -19089,7 +19128,11 @@ for (String sku : inv_available.keySet()){
 		remaining_pallets--;
 	}
 }
-truck.inventory = truck_load;]]></Body>
+truck.inventory = truck_load;
+truck.destination = destination;
+truck.origin = country;
+truck.cost = main.travel_cost(truck.origin,truck.destination);
+truck.travel_time = main.travel_time(truck.origin,truck.destination);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -19105,10 +19148,14 @@ truck.inventory = truck_load;]]></Body>
 						<Name><![CDATA[inv_available]]></Name>
 						<Type><![CDATA[LinkedHashMap<String,Double>]]></Type>
 					</Parameter>
+					<Parameter>
+						<Name><![CDATA[destination]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
 					<Body><![CDATA[int trucks_amount = trucks_to_fill(inv_available);
 while (trucks_amount > 0){
 	Truck t = main.add_truck();
-	load_truck(t,inv_available);
+	load_truck(t,inv_available,destination);
 	trucks_amount--;
 }]]></Body>
 				</Function>
@@ -19151,6 +19198,7 @@ return available_pallets / main.pallets_per_truck;]]></Body>
 					</Parameter>
 					<Body><![CDATA[int available_pallets = 0;
 for (String sku : inv_available.keySet()){
+	System.out.println(sku);
 	SKU s = main.get_sku(sku);
 	double units_per_pallet = s.sku_packsize * s.packs_per_packet * s.packets_per_pallet;
 	double pallets = floor(inv_available.get(sku) / units_per_pallet);
@@ -19172,10 +19220,14 @@ return available_pallets / main.pallets_per_container;]]></Body>
 						<Name><![CDATA[inv_available]]></Name>
 						<Type><![CDATA[LinkedHashMap<String,Double>]]></Type>
 					</Parameter>
+					<Parameter>
+						<Name><![CDATA[destination]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
 					<Body><![CDATA[int containers_amount = containers_to_fill(inv_available);
 while (containers_amount > 0){
 	Container c = main.add_container();
-	load_container(c,inv_available);
+	load_container(c,inv_available,destination);
 	containers_amount--;
 }]]></Body>
 				</Function>
@@ -19197,6 +19249,10 @@ while (containers_amount > 0){
 						<Name><![CDATA[inv_available]]></Name>
 						<Type><![CDATA[LinkedHashMap<String,Double>]]></Type>
 					</Parameter>
+					<Parameter>
+						<Name><![CDATA[destination]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
 					<Body><![CDATA[int remaining_pallets = main.pallets_per_container;
 LinkedHashMap<String,Double> container_load = new LinkedHashMap();
 for (String sku : inv_available.keySet()){
@@ -19216,7 +19272,40 @@ for (String sku : inv_available.keySet()){
 		remaining_pallets--;
 	}
 }
-container.inventory = container_load;]]></Body>
+container.inventory = container_load;
+container.destination = destination;
+container.origin = country;
+container.cost = main.travel_cost(container.origin,container.destination);
+container.travel_time = main.travel_time(container.origin,container.destination);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[LinkedHashMap<String,Double>]]></ReturnType>
+					<Id>1526650843723</Id>
+					<Name><![CDATA[get_inventory_to]]></Name>
+					<X>2400</X><Y>20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[country]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (country) {
+	case 1: return inventory_to_ar;
+	case 2: return inventory_to_br;
+	case 3: return inventory_to_ch;
+	case 4: return inventory_to_co;
+	case 5: return inventory_to_ec;
+	case 6: return inventory_to_mx;
+	case 7: return inventory_to_pe;
+	case 8: return inventory_to_ur;
+	default: {
+				System.out.println("get_inventory_to: invalid country");
+			  	return inventory_to_ar;
+			 }
+}]]></Body>
 				</Function>
 			</Functions>
 			<Schedules>
@@ -47258,6 +47347,78 @@ activity_l6 = 0;]]></Code>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526649539419</Id>
+					<Name><![CDATA[destination]]></Name>
+					<X>50</X><Y>110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526649539417</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526649865318</Id>
+					<Name><![CDATA[origin]]></Name>
+					<X>50</X><Y>140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526649865316</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526650048252</Id>
+					<Name><![CDATA[cost]]></Name>
+					<X>50</X><Y>170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526650048250</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<StatechartElements>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
@@ -47619,6 +47780,78 @@ activity_l6 = 0;]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1526604800340</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526649557121</Id>
+					<Name><![CDATA[destination]]></Name>
+					<X>50</X><Y>110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526649557119</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526649875701</Id>
+					<Name><![CDATA[origin]]></Name>
+					<X>50</X><Y>140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526649875699</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526650334688</Id>
+					<Name><![CDATA[cost]]></Name>
+					<X>50</X><Y>170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526650334686</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
