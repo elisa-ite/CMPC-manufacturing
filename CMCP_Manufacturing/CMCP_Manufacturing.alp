@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291329" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291513" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMCP_Manufacturing]]></Name>
@@ -483,7 +483,7 @@ pre_calc();]]></StartupCode>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1526565034830</Id>
-					<Name><![CDATA[frequency_ship]]></Name>
+					<Name><![CDATA[frequency_container]]></Name>
 					<X>-240</X><Y>550</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -542,7 +542,7 @@ pre_calc();]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[40]]></Code>
+							<Code><![CDATA[60]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1526580647362</Id>
@@ -555,7 +555,7 @@ pre_calc();]]></StartupCode>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1526580657930</Id>
-					<Name><![CDATA[pallets_per_ship]]></Name>
+					<Name><![CDATA[pallets_per_container]]></Name>
 					<X>-240</X><Y>610</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -565,6 +565,9 @@ pre_calc();]]></StartupCode>
 						<Type><![CDATA[int]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[40]]></Code>
+						</DefaultValue>
 						<ParameterEditor>
 							<Id>1526580657928</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
@@ -1193,6 +1196,7 @@ if( month < 12 ){
 				<Event>
 					<Id>1526588604276</Id>
 					<Name><![CDATA[event]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1090</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -7200,6 +7204,9 @@ return s_to_return;]]></Body>
 						<Parameter>
 							<Name><![CDATA[travel_time]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[inventory]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -7268,6 +7275,9 @@ return s_to_return;]]></Body>
 					<Parameters>
 						<Parameter>
 							<Name><![CDATA[travel_time]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[inventory]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -17881,7 +17891,7 @@ calculate_moi();]]></Action>
 				</Event>
 				<Event>
 					<Id>1526579253989</Id>
-					<Name><![CDATA[ship_departure]]></Name>
+					<Name><![CDATA[container_departure]]></Name>
 					<X>2260</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -17903,11 +17913,12 @@ calculate_moi();]]></Action>
 							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 						</OccurrenceTime>
 						<RecurrenceCode Class="CodeUnitValue">
-							<Code><![CDATA[main.frequency_ship]]></Code>
+							<Code><![CDATA[main.frequency_container]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
+					<Action><![CDATA[create_containers(inventory_to_ar);]]></Action>
 				</Event>
 				<Event>
 					<Id>1526579498218</Id>
@@ -17938,6 +17949,7 @@ calculate_moi();]]></Action>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
+					<Action><![CDATA[//create_trucks(inventory_to_ar);]]></Action>
 				</Event>
 			</Events>
 			<DynamicEvents>
@@ -19339,7 +19351,6 @@ return delay;]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1526580304733</Id>
 					<Name><![CDATA[load_truck]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>2280</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -19353,13 +19364,32 @@ return delay;]]></Body>
 						<Name><![CDATA[inv_available]]></Name>
 						<Type><![CDATA[LinkedHashMap<String,Double>]]></Type>
 					</Parameter>
+					<Body><![CDATA[int remaining_pallets = main.pallets_per_truck;
+LinkedHashMap<String,Double> truck_load = new LinkedHashMap();
+for (String sku : inv_available.keySet()){
+	SKU s = main.get_sku(sku);
+	double units_per_pallet = s.sku_packsize * s.packs_per_packet * s.packets_per_pallet;
+	double pallets = floor(inv_available.get(sku) / units_per_pallet);
+	while ((pallets > 0) && (remaining_pallets > 0)){
+		double remaining_units = inv_available.get(sku) - units_per_pallet;
+		inv_available.put(sku,remaining_units);
+		
+		if (!truck_load.containsKey(sku))
+			truck_load.put(sku,0.0);
+		double units_to_load = truck_load.get(sku);
+		units_to_load += units_per_pallet;
+		truck_load.put(sku,units_to_load);
+		pallets--;
+		remaining_pallets--;
+	}
+}
+truck.inventory = truck_load;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1526580793825</Id>
 					<Name><![CDATA[create_trucks]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>2260</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -19381,7 +19411,6 @@ while (trucks_amount > 0){
 					<ReturnType><![CDATA[int]]></ReturnType>
 					<Id>1526580886305</Id>
 					<Name><![CDATA[trucks_to_fill]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>2280</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -19394,7 +19423,6 @@ while (trucks_amount > 0){
 					<Body><![CDATA[int available_pallets = 0;
 for (String sku : inv_available.keySet()){
 	SKU s = main.get_sku(sku);
-	System.out.println(s.code == sku);
 	double units_per_pallet = s.sku_packsize * s.packs_per_packet * s.packets_per_pallet;
 	double pallets = floor(inv_available.get(sku) / units_per_pallet);
 	available_pallets += (int)pallets;
@@ -19406,7 +19434,6 @@ return available_pallets / main.pallets_per_truck;]]></Body>
 					<ReturnType><![CDATA[int]]></ReturnType>
 					<Id>1526584889480</Id>
 					<Name><![CDATA[containers_to_fill]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>2410</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -19419,7 +19446,6 @@ return available_pallets / main.pallets_per_truck;]]></Body>
 					<Body><![CDATA[int available_pallets = 0;
 for (String sku : inv_available.keySet()){
 	SKU s = main.get_sku(sku);
-	System.out.println(s.code == sku);
 	double units_per_pallet = s.sku_packsize * s.packs_per_packet * s.packets_per_pallet;
 	double pallets = floor(inv_available.get(sku) / units_per_pallet);
 	available_pallets += (int)pallets;
@@ -19431,7 +19457,6 @@ return available_pallets / main.pallets_per_container;]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1526584903843</Id>
 					<Name><![CDATA[create_containers]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>2390</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -19441,11 +19466,11 @@ return available_pallets / main.pallets_per_container;]]></Body>
 						<Name><![CDATA[inv_available]]></Name>
 						<Type><![CDATA[LinkedHashMap<String,Double>]]></Type>
 					</Parameter>
-					<Body><![CDATA[int trucks_amount = trucks_to_fill(inv_available);
-while (trucks_amount > 0){
-	Truck t = main.add_truck();
-	load_truck(t,inv_available);
-	trucks_amount--;
+					<Body><![CDATA[int containers_amount = containers_to_fill(inv_available);
+while (containers_amount > 0){
+	Container c = main.add_container();
+	load_container(c,inv_available);
+	containers_amount--;
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -19453,20 +19478,39 @@ while (trucks_amount > 0){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1526584919762</Id>
 					<Name><![CDATA[load_container]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>2410</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
-						<Name><![CDATA[truck]]></Name>
-						<Type><![CDATA[Truck]]></Type>
+						<Name><![CDATA[container]]></Name>
+						<Type><![CDATA[Container]]></Type>
 					</Parameter>
 					<Parameter>
 						<Name><![CDATA[inv_available]]></Name>
 						<Type><![CDATA[LinkedHashMap<String,Double>]]></Type>
 					</Parameter>
+					<Body><![CDATA[int remaining_pallets = main.pallets_per_container;
+LinkedHashMap<String,Double> container_load = new LinkedHashMap();
+for (String sku : inv_available.keySet()){
+	SKU s = main.get_sku(sku);
+	double units_per_pallet = s.sku_packsize * s.packs_per_packet * s.packets_per_pallet;
+	double pallets = floor(inv_available.get(sku) / units_per_pallet);
+	while ((pallets > 0) && (remaining_pallets > 0)){
+		double remaining_units = inv_available.get(sku) - units_per_pallet;
+		inv_available.put(sku,remaining_units);
+		
+		if (!container_load.containsKey(sku))
+			container_load.put(sku,0.0);
+		double units_to_load = container_load.get(sku);
+		units_to_load += units_per_pallet;
+		container_load.put(sku,units_to_load);
+		pallets--;
+		remaining_pallets--;
+	}
+}
+container.inventory = container_load;]]></Body>
 				</Function>
 			</Functions>
 			<Schedules>
@@ -47435,6 +47479,30 @@ activity_l6 = 0;]]></Code>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526603854589</Id>
+					<Name><![CDATA[inventory]]></Name>
+					<X>50</X><Y>80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[LinkedHashMap<String,Double>]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new LinkedHashMap()]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526603854587</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<StatechartElements>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
@@ -47772,6 +47840,30 @@ activity_l6 = 0;]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>0</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526604800342</Id>
+					<Name><![CDATA[inventory]]></Name>
+					<X>50</X><Y>80</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[LinkedHashMap<String,Double>]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new LinkedHashMap()]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526604800340</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -49338,8 +49430,8 @@ activity_l6 = 0;]]></Code>
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1526564933798</Id>
-					<Name><![CDATA[frequency_shipv]]></Name>
-					<X>-140</X><Y>180</Y>
+					<Name><![CDATA[frequency_containerv]]></Name>
+					<X>-180</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -49354,7 +49446,7 @@ activity_l6 = 0;]]></Code>
 				<Variable Class="PlainVariable">
 					<Id>1526564933806</Id>
 					<Name><![CDATA[frequency_truckv]]></Name>
-					<X>-140</X><Y>210</Y>
+					<X>-180</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -50841,7 +50933,7 @@ activity_l6 = 0;]]></Code>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
-					<Text><![CDATA[Fequency SHIP Departures]]></Text>
+					<Text><![CDATA[Fequency CONTAINER Departures]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>12</Size>
@@ -52933,9 +53025,9 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					</ParameterValue>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[frequency_ship]]></ParameterName>
+					<ParameterName><![CDATA[frequency_container]]></ParameterName>
 					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[frequency_shipv]]></Code>
+						<Code><![CDATA[frequency_containerv]]></Code>
 					</ParameterValue>
 				</Parameter>
 				<Parameter>
@@ -52948,7 +53040,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<ParameterName><![CDATA[pallets_per_truck]]></ParameterName>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[pallets_per_ship]]></ParameterName>
+					<ParameterName><![CDATA[pallets_per_container]]></ParameterName>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties 
