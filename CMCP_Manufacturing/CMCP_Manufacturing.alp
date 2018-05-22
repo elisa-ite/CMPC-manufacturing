@@ -2558,7 +2558,7 @@ switch (str_destin) {
 					<X>930</X><Y>-60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[country]]></Name>
@@ -2587,7 +2587,7 @@ switch (str_destin) {
 					<X>930</X><Y>-10</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[t]]></Name>
@@ -2611,7 +2611,7 @@ for (String s : t.inventory.keySet()){
 					<X>930</X><Y>-30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[c]]></Name>
@@ -7119,6 +7119,12 @@ return cfa_calc;]]></Body>
 						<Parameter>
 							<Name><![CDATA[inventory_cost]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[pallets_per_sku]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[pallets_carried]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -7208,6 +7214,12 @@ return cfa_calc;]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[inventory_cost]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[pallets_per_sku]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[pallets_carried]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -14009,7 +14021,7 @@ del Producto]]></Text>
 				<Variable Class="CollectionVariable">
 					<Id>1526579144136</Id>
 					<Name><![CDATA[inventory_to_ar]]></Name>
-					<X>2260</X><Y>150</Y>
+					<X>1510</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14024,7 +14036,7 @@ del Producto]]></Text>
 				<Variable Class="CollectionVariable">
 					<Id>1526579171792</Id>
 					<Name><![CDATA[inventory_to_br]]></Name>
-					<X>2260</X><Y>230</Y>
+					<X>1510</X><Y>300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14039,7 +14051,7 @@ del Producto]]></Text>
 				<Variable Class="CollectionVariable">
 					<Id>1526579174459</Id>
 					<Name><![CDATA[inventory_to_ch]]></Name>
-					<X>2260</X><Y>310</Y>
+					<X>1510</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14054,7 +14066,7 @@ del Producto]]></Text>
 				<Variable Class="CollectionVariable">
 					<Id>1526579179063</Id>
 					<Name><![CDATA[inventory_to_co]]></Name>
-					<X>2260</X><Y>400</Y>
+					<X>1510</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14069,7 +14081,7 @@ del Producto]]></Text>
 				<Variable Class="CollectionVariable">
 					<Id>1526579181140</Id>
 					<Name><![CDATA[inventory_to_ec]]></Name>
-					<X>2260</X><Y>480</Y>
+					<X>1510</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14084,7 +14096,7 @@ del Producto]]></Text>
 				<Variable Class="CollectionVariable">
 					<Id>1526579182856</Id>
 					<Name><![CDATA[inventory_to_mx]]></Name>
-					<X>2260</X><Y>550</Y>
+					<X>1510</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14099,7 +14111,7 @@ del Producto]]></Text>
 				<Variable Class="CollectionVariable">
 					<Id>1526579184554</Id>
 					<Name><![CDATA[inventory_to_pe]]></Name>
-					<X>2260</X><Y>620</Y>
+					<X>1510</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14114,7 +14126,7 @@ del Producto]]></Text>
 				<Variable Class="CollectionVariable">
 					<Id>1526579186419</Id>
 					<Name><![CDATA[inventory_to_ur]]></Name>
-					<X>2260</X><Y>690</Y>
+					<X>1510</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -19865,6 +19877,7 @@ return delay;]]></Body>
 					<Body><![CDATA[int remaining_pallets = main.pallets_per_truck;
 LinkedHashMap<String,Double> truck_load = new LinkedHashMap();
 LinkedHashMap<String,Double> truck_prod_cost = new LinkedHashMap();
+LinkedHashMap<String,Double> pallets_sku = new LinkedHashMap();
 for (String sku : inv_available.keySet()){
 	SKU s = main.get_sku(sku);
 	double units_per_pallet = s.sku_packsize * s.packs_per_packet * s.packets_per_pallet;
@@ -19880,8 +19893,12 @@ for (String sku : inv_available.keySet()){
 		units_to_load += units_per_pallet;
 		truck_load.put(sku,units_to_load);
 		
+		if(calc_prod_value(sku, units_per_pallet) == 0)
+			System.out.println(sku +" camion "+ country);
 		double prod_val = calc_prod_value(sku, units_per_pallet);
 		main.add_acc(truck_prod_cost,sku,prod_val);
+		
+		main.add_acc(pallets_sku,sku,1);
 		
 		pallets--;
 		remaining_pallets--;
@@ -19891,6 +19908,8 @@ truck.inventory = truck_load;
 truck.inventory_cost = truck_prod_cost;
 truck.destination = destination;
 truck.origin = country;
+truck.pallets_per_sku = pallets_sku;
+truck.pallets_carried = main.pallets_per_truck;
 truck.travel_cost = main.travel_cost(truck.origin,truck.destination);
 truck.travel_time = main.travel_time(truck.origin,truck.destination);]]></Body>
 				</Function>
@@ -20015,6 +20034,7 @@ while (containers_amount > 0){
 					<Body><![CDATA[int remaining_pallets = main.pallets_per_container;
 LinkedHashMap<String,Double> container_load = new LinkedHashMap();
 LinkedHashMap<String,Double> container_prod_cost = new LinkedHashMap();
+LinkedHashMap<String,Double> pallets_sku = new LinkedHashMap();
 for (String sku : inv_available.keySet()){
 	SKU s = main.get_sku(sku);
 	double units_per_pallet = s.sku_packsize * s.packs_per_packet * s.packets_per_pallet;
@@ -20030,8 +20050,12 @@ for (String sku : inv_available.keySet()){
 		units_to_load += units_per_pallet;
 		container_load.put(sku,units_to_load);
 		
+		if(calc_prod_value(sku, units_per_pallet) == 0)
+			System.out.println(sku +" container "+ country);
 		double prod_val = calc_prod_value(sku, units_per_pallet);
 		main.add_acc(container_prod_cost,sku,prod_val);
+		
+		main.add_acc(pallets_sku,sku,1);
 		
 		pallets--;
 		remaining_pallets--;
@@ -20041,6 +20065,8 @@ container.inventory = container_load;
 container.inventory_cost = container_prod_cost;
 container.destination = destination;
 container.origin = country;
+container.pallets_per_sku = pallets_sku;
+container.pallets_carried = main.pallets_per_container;
 container.travel_cost = main.travel_cost(container.origin,container.destination);
 container.travel_time = main.travel_time(container.origin,container.destination);
 ]]></Body>
@@ -20097,6 +20123,7 @@ if (c != country) {
 	main.add_acc(get_inventory_to(c),l.code,l.real_demand);
 } else {
 	main.add_acc(main.get_warehouse(c).get_prod_recieved(m),l.code,l.real_demand);
+	main.add_acc(main.get_warehouse(c).get_prod_value(m),l.code,calc_prod_value(l.code,l.real_demand));
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -48412,6 +48439,54 @@ activity_l6 = 0;]]></Code>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526996410581</Id>
+					<Name><![CDATA[pallets_per_sku]]></Name>
+					<X>50</X><Y>230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[LinkedHashMap<String,Double>]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new LinkedHashMap()]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526996410579</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526996431269</Id>
+					<Name><![CDATA[pallets_carried]]></Name>
+					<X>50</X><Y>260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526996431267</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<StatechartElements>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
@@ -48575,7 +48650,7 @@ activity_l6 = 0;]]></Code>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1526910729766</Id>
 					<Name><![CDATA[calc_travel_cost]]></Name>
-					<X>50</X><Y>260</Y>
+					<X>50</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -48584,7 +48659,10 @@ activity_l6 = 0;]]></Code>
 						<Name><![CDATA[s]]></Name>
 						<Type><![CDATA[String]]></Type>
 					</Parameter>
-					<Body><![CDATA[return 0;]]></Body>
+					<Body><![CDATA[double prod_cost = inventory_cost.get(s);
+double travel_sku = travel_cost * (pallets_per_sku.get(s) / pallets_carried);
+double customs_fee = 0; // TODO
+return (prod_cost + travel_sku)*(1+customs_fee);]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -48896,6 +48974,54 @@ activity_l6 = 0;]]></Code>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526996664220</Id>
+					<Name><![CDATA[pallets_per_sku]]></Name>
+					<X>50</X><Y>230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[LinkedHashMap<String,Double>]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new LinkedHashMap()]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526996664218</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1526996679571</Id>
+					<Name><![CDATA[pallets_carried]]></Name>
+					<X>50</X><Y>260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1526996679569</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<StatechartElements>
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
@@ -49059,7 +49185,7 @@ activity_l6 = 0;]]></Code>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1526910687941</Id>
 					<Name><![CDATA[calc_travel_cost]]></Name>
-					<X>50</X><Y>280</Y>
+					<X>50</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -49068,7 +49194,10 @@ activity_l6 = 0;]]></Code>
 						<Name><![CDATA[s]]></Name>
 						<Type><![CDATA[String]]></Type>
 					</Parameter>
-					<Body><![CDATA[return 0;]]></Body>
+					<Body><![CDATA[double prod_cost = inventory_cost.get(s);
+double travel_sku = travel_cost * (pallets_per_sku.get(s) / pallets_carried);
+double customs_fee = 0; // TODO
+return (prod_cost + travel_sku)*(1+customs_fee);]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
