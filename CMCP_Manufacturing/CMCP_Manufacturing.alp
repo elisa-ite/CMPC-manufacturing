@@ -20466,7 +20466,8 @@ for (String sku : inv_available.keySet()){
 	while ((pallets > 0) && (remaining_pallets > 0)){
 		
 		double remaining_units = inv_available.get(sku) - units_per_pallet;
-		inv_available.put(sku,remaining_units);
+		main.add_acc(inv_available,sku,-1*units_per_pallet);
+		//inv_available.put(sku,remaining_units);
 		
 		if (!truck_load.containsKey(sku))
 			truck_load.put(sku,0.0);	
@@ -50560,6 +50561,14 @@ for (Container c : main.container){
 	}
 }
 
+ProductionLine plant = main.get_plant(country);
+double waiting_delivery = 0;
+for (int c = 1 ; c < 9 ; c++){
+	for (String sku : plant.get_inventory_to(c).keySet()){
+		waiting_delivery += plant.get_inventory_to(c).get(sku);
+	}
+}
+
 insertInto(db_inventory_out)
  .columns(
  	db_inventory_out.country, 
@@ -50567,7 +50576,8 @@ insertInto(db_inventory_out)
  	db_inventory_out.inventory,
  	db_inventory_out.inventory_value,
  	db_inventory_out.in_transit_qty,
- 	db_inventory_out.in_transit_value
+ 	db_inventory_out.in_transit_value,
+ 	db_inventory_out.waiting_qty
  	)
  .values(
  	country,
@@ -50575,7 +50585,8 @@ insertInto(db_inventory_out)
  	units,
  	value,
  	units_it,
- 	value_it
+ 	value_it,
+ 	waiting_delivery
  	)
 .execute();]]></Body>
 				</Function>
