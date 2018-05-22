@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291329" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.4.201805161715" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMCP_Manufacturing]]></Name>
@@ -473,7 +473,7 @@ for (int c = 1 ; c < 9 ; c++){
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[5]]></Code>
+							<Code><![CDATA[7]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1526565034828</Id>
@@ -497,7 +497,7 @@ for (int c = 1 ; c < 9 ; c++){
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[7]]></Code>
+							<Code><![CDATA[5]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1526565034847</Id>
@@ -2014,7 +2014,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 				 	db_sku_out.efficiency,
 				 	db_sku_out.prod_att,
 				 	db_sku_out.prod_bo,
-				 	db_sku_out.brute_time,
+				 	db_sku_out.gross_time,
 				 	db_sku_out.net_time,
 				 	db_sku_out.variable_cost,
 				 	db_sku_out.cfa
@@ -2051,7 +2051,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 				 	db_sku_out.efficiency,
 				 	db_sku_out.prod_att,
 				 	db_sku_out.prod_bo,
-				 	db_sku_out.brute_time,
+				 	db_sku_out.gross_time,
 				 	db_sku_out.net_time,
 				 	db_sku_out.variable_cost
 				 	)
@@ -2087,7 +2087,7 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 			 	db_sku_out.efficiency,
 			 	db_sku_out.prod_att,
 			 	db_sku_out.prod_bo,
-			 	db_sku_out.brute_time,
+			 	db_sku_out.gross_time,
 			 	db_sku_out.net_time,
 			 	db_sku_out.variable_cost
 			 	)
@@ -20014,11 +20014,13 @@ while (containers_amount > 0){
 					</Parameter>
 					<Body><![CDATA[int remaining_pallets = main.pallets_per_container;
 LinkedHashMap<String,Double> container_load = new LinkedHashMap();
+LinkedHashMap<String,Double> container_prod_cost = new LinkedHashMap();
 for (String sku : inv_available.keySet()){
 	SKU s = main.get_sku(sku);
 	double units_per_pallet = s.sku_packsize * s.packs_per_packet * s.packets_per_pallet;
 	double pallets = floor(inv_available.get(sku) / units_per_pallet);
 	while ((pallets > 0) && (remaining_pallets > 0)){
+	
 		double remaining_units = inv_available.get(sku) - units_per_pallet;
 		inv_available.put(sku,remaining_units);
 		
@@ -20027,11 +20029,16 @@ for (String sku : inv_available.keySet()){
 		double units_to_load = container_load.get(sku);
 		units_to_load += units_per_pallet;
 		container_load.put(sku,units_to_load);
+		
+		double prod_val = calc_prod_value(sku, units_per_pallet);
+		main.add_acc(container_prod_cost,sku,prod_val);
+		
 		pallets--;
 		remaining_pallets--;
 	}
 }
 container.inventory = container_load;
+container.inventory_cost = container_prod_cost;
 container.destination = destination;
 container.origin = country;
 container.travel_cost = main.travel_cost(container.origin,container.destination);
@@ -51373,7 +51380,7 @@ for (String s : inventory.keySet()){
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[20]]></Code>
+							<Code><![CDATA[7]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -51388,7 +51395,7 @@ for (String s : inventory.keySet()){
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[7]]></Code>
+							<Code><![CDATA[5]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
