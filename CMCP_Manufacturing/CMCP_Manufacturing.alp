@@ -2662,6 +2662,42 @@ double cfa_calc = plant.mod[line-1] +
 cfa_calc = cfa_calc / prod_att;
 return cfa_calc;]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1526997334451</Id>
+					<Name><![CDATA[customs_fee]]></Name>
+					<X>-810</X><Y>-280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[origin]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[destination]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[String str_origin = code2country(origin);
+String str_destin = code2country(destination);
+
+SelectQuery cost = selectFrom( customs_fee ).
+      where( customs_fee.name.eq( str_origin ) );
+      
+switch (str_destin) {
+	case "Argentina": return cost.uniqueResult(customs_fee.argentina);
+	case "Brazil": return cost.uniqueResult(customs_fee.brazil);
+	case "Chile": return cost.uniqueResult(customs_fee.chile);
+	case "Colombia": return cost.uniqueResult(customs_fee.colombia);
+	case "Ecuador": return cost.uniqueResult(customs_fee.ecuador);
+	case "Mexico": return cost.uniqueResult(customs_fee.mexico);
+	case "Peru": return cost.uniqueResult(customs_fee.peru);
+	case "Uruguay": return cost.uniqueResult(customs_fee.uruguay);
+	default: return 0;
+}]]></Body>
+				</Function>
 			</Functions>
 			<AgentLinks>
 				<AgentLink>
@@ -48661,8 +48697,8 @@ activity_l6 = 0;]]></Code>
 					</Parameter>
 					<Body><![CDATA[double prod_cost = inventory_cost.get(s);
 double travel_sku = travel_cost * (pallets_per_sku.get(s) / pallets_carried);
-double customs_fee = 0; // TODO
-return (prod_cost + travel_sku)*(1+customs_fee);]]></Body>
+double customs = main.customs_fee(origin,destination);
+return (prod_cost + travel_sku)*(1+customs);]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -49196,8 +49232,8 @@ return (prod_cost + travel_sku)*(1+customs_fee);]]></Body>
 					</Parameter>
 					<Body><![CDATA[double prod_cost = inventory_cost.get(s);
 double travel_sku = travel_cost * (pallets_per_sku.get(s) / pallets_carried);
-double customs_fee = 0; // TODO
-return (prod_cost + travel_sku)*(1+customs_fee);]]></Body>
+double customs = main.customs_fee(origin,destination);
+return (prod_cost + travel_sku)*(1+customs);]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -50236,6 +50272,15 @@ for (String s : inventory.keySet()){
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
 				<ExternalTableName><![CDATA["Transfer Cost"]]></ExternalTableName>
+				<AutoImport>true</AutoImport>
+			</TableImportSettings>
+			<TableImportSettings>
+				<TableReference>
+					<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+					<ClassName><![CDATA[customs_fee]]></ClassName>
+				</TableReference>
+				<ConnectionIndex>0</ConnectionIndex>
+				<ExternalTableName><![CDATA["Tasas Aduaneras"]]></ExternalTableName>
 				<AutoImport>true</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
