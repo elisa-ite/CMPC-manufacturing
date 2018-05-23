@@ -49699,7 +49699,8 @@ activity_l6 = 0;]]></Code>
 					<Body><![CDATA[double prod_cost = inventory_cost.get(s);
 double travel_sku = travel_cost * (pallets_per_sku.get(s) / pallets_carried);
 double customs = main.customs_fee(origin,destination);
-return (prod_cost + travel_sku)*(1+customs);]]></Body>
+double customs_fee = (prod_cost + travel_sku)*(customs);
+return travel_sku + customs_fee;]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
