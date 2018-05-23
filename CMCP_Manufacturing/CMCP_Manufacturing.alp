@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.4.201805161715" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
-	<Name><![CDATA[CMPC_Manufacturing]]></Name>
+	<Name><![CDATA[CMCP_Manufacturing]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[cmcp_manufacturing_2]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Minute]]></ModelTimeUnit>
@@ -28,9 +28,8 @@ pre_calc();
 for (int c = 1 ; c < 9 ; c++){
 	get_plant(c).fill_initial_cfa();
 }
-]]></StartupCode>
-			<DestroyCode><![CDATA[clear_tables();
-export_data_to_db();]]></DestroyCode>
+clear_tables();]]></StartupCode>
+			<DestroyCode><![CDATA[export_data_to_db();]]></DestroyCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1519223879331</Id>
@@ -2540,9 +2539,7 @@ switch (country) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[clear_tables();
-
-productionLineArg.refresh_collections();
+					<Body><![CDATA[productionLineArg.refresh_collections();
 refresh_tables(productionLineArg);
 
 productionLineBra.refresh_collections();
@@ -3440,7 +3437,7 @@ plant.refresh_lines_table();]]></Body>
      
 deleteFrom(db_lines_out)    
      .execute();
-
+     
 deleteFrom(db_inventory_out)    
      .execute();
      
