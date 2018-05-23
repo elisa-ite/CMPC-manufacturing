@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.4.201805161715" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
-	<Name><![CDATA[CMCP_Manufacturing]]></Name>
+	<Name><![CDATA[CMPC_Manufacturing]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[cmcp_manufacturing_2]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Minute]]></ModelTimeUnit>
@@ -3251,7 +3251,7 @@ for (String s : c.inventory.keySet()){
 					<X>260</X><Y>-140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[plant]]></Name>
@@ -3390,7 +3390,7 @@ switch (str_destin) {
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[for (int m = 1 ; m < 13 ; m++){
-	for (String sku : get_sku_log_val(m).keySet()){
+	for (String s : get_sku_log_val(m).keySet()){
 		insertInto(db_sku_logistics_out)
 		 .columns(
 		 	db_sku_logistics_out.sku, 
@@ -3399,10 +3399,10 @@ switch (str_destin) {
 		 	db_sku_logistics_out.logistic_value
 		 	)
 		 .values(
-		 	sku,
+		 	s,
 		 	m,
-		 	get_sku_log_val(m).get(sku),
-		 	get_sku_moved_qty(m).get(sku)
+		 	get_sku_moved_qty(m).get(s),
+		 	get_sku_log_val(m).get(s)
 		 	)
 		.execute();
 	}
@@ -49724,6 +49724,7 @@ activity_l6 = 0;]]></Code>
 double travel_sku = travel_cost * (pallets_per_sku.get(s) / pallets_carried);
 double customs = main.customs_fee(origin,destination);
 double customs_fee = (prod_cost + travel_sku)*(customs);
+
 return travel_sku + customs_fee;]]></Body>
 				</Function>
 			</Functions>
@@ -50260,6 +50261,7 @@ return travel_sku + customs_fee;]]></Body>
 double travel_sku = travel_cost * (pallets_per_sku.get(s) / pallets_carried);
 double customs = main.customs_fee(origin,destination);
 double customs_fee = (prod_cost + travel_sku)*(customs);
+
 return travel_sku + customs_fee;]]></Body>
 				</Function>
 			</Functions>
@@ -53015,7 +53017,7 @@ insertInto(db_inventory_out)
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-12490271</Color>
-					<Text><![CDATA[CMCP Manufacturing]]></Text>
+					<Text><![CDATA[CMPC Manufacturing]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>24</Size>
