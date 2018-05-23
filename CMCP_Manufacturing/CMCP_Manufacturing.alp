@@ -28,9 +28,9 @@ pre_calc();
 for (int c = 1 ; c < 9 ; c++){
 	get_plant(c).fill_initial_cfa();
 }
-
-clear_tables();]]></StartupCode>
-			<DestroyCode><![CDATA[export_data_to_db();]]></DestroyCode>
+]]></StartupCode>
+			<DestroyCode><![CDATA[clear_tables();
+export_data_to_db();]]></DestroyCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1519223879331</Id>
@@ -2540,7 +2540,9 @@ switch (country) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[productionLineArg.refresh_collections();
+					<Body><![CDATA[clear_tables();
+
+productionLineArg.refresh_collections();
 refresh_tables(productionLineArg);
 
 productionLineBra.refresh_collections();
@@ -2562,7 +2564,9 @@ productionLineMex.refresh_collections();
 refresh_tables(productionLineMex);
 
 productionLineUru.refresh_collections();
-refresh_tables(productionLineUru);]]></Body>
+refresh_tables(productionLineUru);
+
+refresh_logistics_table();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -3419,8 +3423,7 @@ switch (str_destin) {
 						<Type><![CDATA[ProductionLine]]></Type>
 					</Parameter>
 					<Body><![CDATA[refresh_sku_table(plant);
-plant.refresh_lines_table();
-refresh_logistics_table();]]></Body>
+plant.refresh_lines_table();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -9855,8 +9858,7 @@ country_order[2] = country_of_prod_3;]]></Body>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1525805513486</Id>
 					<Name><![CDATA[export_tables]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>250</X><Y>50</Y>
+					<X>400</X><Y>-40</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9872,6 +9874,28 @@ country_order[2] = country_of_prod_3;]]></Body>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="0"/>
 						<LabelText><![CDATA[export]]></LabelText>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="Button">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1527095167974</Id>
+					<Name><![CDATA[export_tables1]]></Name>
+					<X>400</X><Y>-80</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="100" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+						<ActionCode><![CDATA[clear_tables();]]></ActionCode>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[clear]]></LabelText>
 					</ExtendedProperties>
 				</Control>
 			</Controls>
@@ -50235,7 +50259,8 @@ return travel_sku + customs_fee;]]></Body>
 					<Body><![CDATA[double prod_cost = inventory_cost.get(s);
 double travel_sku = travel_cost * (pallets_per_sku.get(s) / pallets_carried);
 double customs = main.customs_fee(origin,destination);
-return (prod_cost + travel_sku)*(1+customs);]]></Body>
+double customs_fee = (prod_cost + travel_sku)*(customs);
+return travel_sku + customs_fee;]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -51668,11 +51693,11 @@ insertInto(db_inventory_out)
 			</TableReference>
 			<TableReference>
 				<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-				<ClassName><![CDATA[db_sku_logistics_out]]></ClassName>
+				<ClassName><![CDATA[db_inventory_out]]></ClassName>
 			</TableReference>
 			<TableReference>
 				<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-				<ClassName><![CDATA[db_inventory_out]]></ClassName>
+				<ClassName><![CDATA[db_sku_logistics_out]]></ClassName>
 			</TableReference>
 		</ExportSettings>
 	</Database>
