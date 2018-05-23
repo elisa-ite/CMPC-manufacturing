@@ -142,7 +142,7 @@ clear_tables();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1527011120080</Id>
 					<Name><![CDATA[sales_earnings]]></Name>
-					<X>-230</X><Y>640</Y>
+					<X>-230</X><Y>760</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -157,7 +157,7 @@ clear_tables();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1527011132723</Id>
 					<Name><![CDATA[sales_satisfied]]></Name>
-					<X>-230</X><Y>620</Y>
+					<X>-230</X><Y>740</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -187,7 +187,7 @@ clear_tables();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1527015522460</Id>
 					<Name><![CDATA[prod_att_total]]></Name>
-					<X>-210</X><Y>710</Y>
+					<X>-210</X><Y>830</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -202,7 +202,7 @@ clear_tables();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1527015558240</Id>
 					<Name><![CDATA[prod_cost]]></Name>
-					<X>-210</X><Y>690</Y>
+					<X>-210</X><Y>810</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -217,7 +217,7 @@ clear_tables();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1527015576843</Id>
 					<Name><![CDATA[prod_cost_harmonized]]></Name>
-					<X>-230</X><Y>670</Y>
+					<X>-230</X><Y>790</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -232,7 +232,7 @@ clear_tables();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1527080881354</Id>
 					<Name><![CDATA[roa]]></Name>
-					<X>-80</X><Y>670</Y>
+					<X>-80</X><Y>790</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -299,6 +299,51 @@ clear_tables();]]></StartupCode>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1527090261026</Id>
+					<Name><![CDATA[total_prod_cost]]></Name>
+					<X>-230</X><Y>850</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1527090480994</Id>
+					<Name><![CDATA[total_logistic_cost]]></Name>
+					<X>-230</X><Y>870</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1527091373086</Id>
+					<Name><![CDATA[total_inv_value]]></Name>
+					<X>-230</X><Y>890</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -681,6 +726,30 @@ clear_tables();]]></StartupCode>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1527080061053</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1527091040712</Id>
+					<Name><![CDATA[active_assets]]></Name>
+					<X>-230</X><Y>600</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[148800000]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1527091040710</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -1639,7 +1708,7 @@ if( month < 12 ){
 				<Event>
 					<Id>1527010868914</Id>
 					<Name><![CDATA[last_event]]></Name>
-					<X>-80</X><Y>650</Y>
+					<X>-80</X><Y>770</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1668,13 +1737,13 @@ if( month < 12 ){
 					<Action><![CDATA[sales_earnings = calc_sales();
 calc_prod_cost_temp();
 calc_prod_cost_harmonized();
+calc_log_cost();
+calc_inv_value();
 
-double cost = 0;
-for (String s : prod_cost.keySet()){
-	cost += prod_cost.get(s);
-}
-roa = sales_earnings - cost;
+roa = (sales_earnings - (total_prod_cost + total_logistic_cost)) 
+	   / (active_assets + total_inv_value);
 
+/*
 insertInto(db_param_var_out)
  .columns(
  	db_param_var_out.country_1, 
@@ -1690,7 +1759,8 @@ insertInto(db_param_var_out)
  	doh,
  	roa
  	)
-.execute();]]></Action>
+.execute();
+*/]]></Action>
 				</Event>
 			</Events>
 			<Functions>
@@ -2562,7 +2632,8 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 				 	db_sku_out.gross_time,
 				 	db_sku_out.net_time,
 				 	db_sku_out.variable_cost,
-				 	db_sku_out.cfa
+				 	db_sku_out.cfa,
+				 	db_sku_out.production_cost
 				 	)
 				 .values(
 				 	s,
@@ -2577,7 +2648,8 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 				 	plant.get_brutet_monthly(line).get(s)[m-1],
 				 	plant.get_nett_monthly(line).get(s)[m-1],
 				 	get_sku(s).total_variable_cost,
-				 	cfa_calc
+				 	cfa_calc,
+				 	cfa_calc + get_sku(s).total_variable_cost
 				 	)
 				.execute();
 			}	
@@ -2598,7 +2670,9 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 				 	db_sku_out.prod_bo,
 				 	db_sku_out.gross_time,
 				 	db_sku_out.net_time,
-				 	db_sku_out.variable_cost
+				 	db_sku_out.variable_cost,
+				 	db_sku_out.cfa,
+				 	db_sku_out.production_cost
 				 	)
 				 .values(
 				 	s,
@@ -2610,6 +2684,8 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 				 	0,
 				 	0,
 				 	prod_bo,
+				 	0,
+				 	0,
 				 	0,
 				 	0,
 				 	0
@@ -2634,7 +2710,9 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 			 	db_sku_out.prod_bo,
 			 	db_sku_out.gross_time,
 			 	db_sku_out.net_time,
-			 	db_sku_out.variable_cost
+			 	db_sku_out.variable_cost,
+			 	db_sku_out.cfa,
+			 	db_sku_out.production_cost
 			 	)
 			 .values(
 			 	s,
@@ -2646,6 +2724,8 @@ plant.co_packsize_time[pline-1] = line.get(db_lines.co_packsize_time);]]></Body>
 			 	0,
 			 	0,
 			 	prod_bo,
+			 	0,
+			 	0,
 			 	0,
 			 	0,
 			 	0
@@ -3369,7 +3449,7 @@ deleteFrom(db_sku_logistics_out)
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1527010932077</Id>
 					<Name><![CDATA[calc_sales]]></Name>
-					<X>-230</X><Y>800</Y>
+					<X>-230</X><Y>990</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3385,7 +3465,7 @@ return sales;]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1527015607648</Id>
 					<Name><![CDATA[calc_prod_cost_temp]]></Name>
-					<X>-230</X><Y>820</Y>
+					<X>-230</X><Y>1010</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3416,14 +3496,16 @@ return sales;]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1527016900188</Id>
 					<Name><![CDATA[calc_prod_cost_harmonized]]></Name>
-					<X>-230</X><Y>840</Y>
+					<X>-230</X><Y>1030</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[for (String s : prod_cost.keySet()){
-	double harmonized = prod_cost.get(s) / prod_att_total.get(s);
+	double individual_cost = prod_cost.get(s);
+	double harmonized = individual_cost / prod_att_total.get(s);
 	prod_cost_harmonized.put(s,harmonized);
+	total_prod_cost += individual_cost;
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -3439,6 +3521,40 @@ return sales;]]></Body>
 					<Body><![CDATA[country_order[0] = country_of_prod_1;
 country_order[1] = country_of_prod_2;
 country_order[2] = country_of_prod_3;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1527090366617</Id>
+					<Name><![CDATA[calc_log_cost]]></Name>
+					<X>-230</X><Y>970</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[for (int m = 1 ; m < 13 ; m++){
+	LinkedHashMap<String,Double> log_val = get_sku_log_val(m);
+	for (String s : log_val.keySet()){
+		total_logistic_cost += log_val.get(s);
+	}
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1527091412715</Id>
+					<Name><![CDATA[calc_inv_value]]></Name>
+					<X>-230</X><Y>950</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[for (int c = 1 ; c < 9 ; c++){
+	LinkedHashMap<String,Double> inv_val = get_warehouse(c).inventory_value;
+	for (String s : inv_val.keySet()){
+		total_inv_value += inv_val.get(s);
+	}
+}]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -9389,7 +9505,7 @@ country_order[2] = country_of_prod_3;]]></Body>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
 					<Width>230</Width>
-					<Height>250</Height>
+					<Height>370</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -9666,7 +9782,7 @@ country_order[2] = country_of_prod_3;]]></Body>
 				<RoundedRectangle>
 					<Id>1527009704819</Id>
 					<Name><![CDATA[roundRectangle10]]></Name>
-					<X>-250</X><Y>600</Y>
+					<X>-250</X><Y>720</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -9681,7 +9797,7 @@ country_order[2] = country_of_prod_3;]]></Body>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
 					<Width>240</Width>
-					<Height>260</Height>
+					<Height>330</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -9690,7 +9806,7 @@ country_order[2] = country_of_prod_3;]]></Body>
 				<Text>
 					<Id>1527009711335</Id>
 					<Name><![CDATA[text12]]></Name>
-					<X>-70</X><Y>610</Y>
+					<X>-70</X><Y>730</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -52818,6 +52934,21 @@ insertInto(db_inventory_out)
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1527091161427</Id>
+					<Name><![CDATA[active_assetsv]]></Name>
+					<X>-290</X><Y>340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[148800000]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 			</Variables>
 
 			<Shapes>
@@ -54317,6 +54448,28 @@ insertInto(db_inventory_out)
 					<Rotation>0.0</Rotation>
 					<Color>-16777216</Color>
 					<Text><![CDATA[Frequency TRUCKS Departures]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1527091232995</Id>
+					<Name><![CDATA[doh_text3]]></Name>
+					<X>120</X><Y>280</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Active Assets]]></Text>
 					<Font>
 						<Name>SansSerif</Name>
 						<Size>12</Size>
@@ -56324,6 +56477,28 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 						<Link>frequency_truckv</Link>
 					</ExtendedProperties>
 				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1527091219371</Id>
+					<Name><![CDATA[editbox22]]></Name>
+					<X>50</X><Y>270</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="60" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LinkTo>true</LinkTo>
+						<Link>active_assetsv</Link>
+					</ExtendedProperties>
+				</Control>
 			</Controls>
 
 			<Parameters>			
@@ -56408,6 +56583,12 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 						<Code><![CDATA[countryP3]]></Code>
 					</ParameterValue>
 				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[active_assets]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[active_assetsv]]></Code>
+					</ParameterValue>
+				</Parameter>
 			</Parameters>			
 			<PresentationProperties 
 				EnableAdaptiveFrameManagement="true" 
@@ -56450,7 +56631,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 		<!--   =========  Optimization Experiment   ========  -->
 		<OptimizationExperiment ActiveObjectClassId="1519223879332">
 			<Id>1525451099182</Id>
-			<Name><![CDATA[optimize_bo]]></Name>
+			<Name><![CDATA[Optimize_roa]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
@@ -56579,7 +56760,16 @@ datasetBestFeasibleObjective.reset();
 			</Parameter>
 			<Parameter>	
 				<Id>1524758045225</Id>
-				<Type>FIXED</Type>
+				<Type>INTEGER</Type>
+				<Min Class="CodeValue">
+					<Code><![CDATA[10]]></Code>
+				</Min>
+				<Max Class="CodeValue">
+					<Code><![CDATA[30]]></Code>
+				</Max>
+				<Step Class="CodeValue">
+					<Code><![CDATA[5]]></Code>
+				</Step>
 			</Parameter>
 			<Parameter>	
 				<Id>1525790540281</Id>
@@ -56611,18 +56801,49 @@ datasetBestFeasibleObjective.reset();
 			</Parameter>
 			<Parameter>	
 				<Id>1527080046165</Id>
-				<Type>FIXED</Type>
+				<Type>INTEGER</Type>
+				<Min Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Min>
+				<Max Class="CodeValue">
+					<Code><![CDATA[3]]></Code>
+				</Max>
+				<Step Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Step>
 			</Parameter>
 			<Parameter>	
 				<Id>1527080059462</Id>
-				<Type>FIXED</Type>
+				<Type>INTEGER</Type>
+				<Min Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Min>
+				<Max Class="CodeValue">
+					<Code><![CDATA[3]]></Code>
+				</Max>
+				<Step Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Step>
 			</Parameter>
 			<Parameter>	
 				<Id>1527080061055</Id>
+				<Type>INTEGER</Type>
+				<Min Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Min>
+				<Max Class="CodeValue">
+					<Code><![CDATA[3]]></Code>
+				</Max>
+				<Step Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Step>
+			</Parameter>
+			<Parameter>	
+				<Id>1527091040712</Id>
 				<Type>FIXED</Type>
 			</Parameter>
-			<ObjectiveFunctionCode><![CDATA[root.backorders]]></ObjectiveFunctionCode>
-			<Objective>MINIMIZE</Objective>
+			<ObjectiveFunctionCode><![CDATA[root.roa]]></ObjectiveFunctionCode>
+			<Objective>MAXIMIZE</Objective>
 			<AfterIterationCode><![CDATA[if (isBestSolutionFeasible()) {
 	datasetBestFeasibleObjective.update();
 }
@@ -57580,6 +57801,9 @@ if (bestInfeasibleObjective != Double.POSITIVE_INFINITY) {
 			<FreeformParamValue>	
 				<Id>1527080061055</Id>
 			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527091040712</Id>
+			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1523191134710</Id>
 				<Type>FIXED</Type>
@@ -57660,6 +57884,10 @@ if (bestInfeasibleObjective != Double.POSITIVE_INFINITY) {
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
 				<Id>1527080061055</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527091040712</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<ModelTimeProperties>
