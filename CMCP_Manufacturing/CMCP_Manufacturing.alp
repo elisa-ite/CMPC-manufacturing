@@ -4,10 +4,10 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291329" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.4.201805161715" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
-	<Name><![CDATA[CMCP_Manufacturing]]></Name>
+	<Name><![CDATA[CMPC_Manufacturing]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[cmcp_manufacturing_2]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Minute]]></ModelTimeUnit>
@@ -12681,6 +12681,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146423</Id>
 					<Name><![CDATA[countR1]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-320</X><Y>530</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -12705,6 +12706,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146432</Id>
 					<Name><![CDATA[countR1T]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-320</X><Y>510</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -12729,6 +12731,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146435</Id>
 					<Name><![CDATA[countR1PrT]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-320</X><Y>550</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -12753,6 +12756,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146450</Id>
 					<Name><![CDATA[countR1So]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-320</X><Y>490</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -12777,6 +12781,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146453</Id>
 					<Name><![CDATA[countR1SoT]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-320</X><Y>470</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -12798,6 +12803,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1522333146462</Id>
 					<Name><![CDATA[wCap_o]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-320</X><Y>570</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -51600,6 +51606,7 @@ insertInto(db_inventory_out)
 		<ActiveObjectClass>
 			<Id>1527161721489</Id>
 			<Name><![CDATA[Machine]]></Name>
+			<ExcludeFromBuild>true</ExcludeFromBuild>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
