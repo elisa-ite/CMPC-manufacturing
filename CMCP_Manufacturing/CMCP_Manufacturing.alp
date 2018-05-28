@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291329" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.4.201805161715" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMCP_Manufacturing]]></Name>
@@ -23,7 +23,8 @@
 read_data();
 calculate_working_days();
 load_real_demand();
-pre_calc();]]></StartupCode>
+pre_calc();
+fill_initial_cfa();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1519223879331</Id>
@@ -3213,41 +3214,6 @@ for (String s : c.inventory.keySet()){
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1526669268891</Id>
-					<Name><![CDATA[calc_cfa]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>260</X><Y>-140</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[plant]]></Name>
-						<Type><![CDATA[ProductionLine]]></Type>
-					</Parameter>
-					<Parameter>
-						<Name><![CDATA[line]]></Name>
-						<Type><![CDATA[int]]></Type>
-					</Parameter>
-					<Parameter>
-						<Name><![CDATA[m]]></Name>
-						<Type><![CDATA[int]]></Type>
-					</Parameter>
-					<Body><![CDATA[double prod_att = 0;
-for (String s : plant.get_patt_monthly(line).keySet()){
-	prod_att += plant.get_patt_monthly(line).get(s)[m-1];
-}
-double cfa_calc = plant.mod[line-1] +
-			 	  plant.moi[line-1] +
-			 	  plant.get_cho_monthly(line)[m-1] +
- 			 	  plant.get_rcho_monthly(line)[m-1] +
- 			 	  plant.gastos_generales_mes[line-1];
-cfa_calc = cfa_calc / prod_att;
-return cfa_calc;]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1526997334451</Id>
 					<Name><![CDATA[customs_fee]]></Name>
 					<X>-810</X><Y>-280</Y>
@@ -3533,6 +3499,20 @@ country_order[2] = country_of_prod_3;]]></Body>
 	for (String s : inv_val.keySet()){
 		total_inv_value += inv_val.get(s);
 	}
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1527525291210</Id>
+					<Name><![CDATA[fill_initial_cfa]]></Name>
+					<X>260</X><Y>-120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[for (int c = 1 ; c < 9 ; c++){
+	get_plant(c).fill_initial_cfa();
 }]]></Body>
 				</Function>
 			</Functions>
@@ -5147,7 +5127,7 @@ country_order[2] = country_of_prod_3;]]></Body>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[//productionLineUru.in_products.take( plantUru.remove( agent ) );]]></Code>
+								<Code><![CDATA[productionLineUru.in_products.take( plantUru.remove( agent ) );]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -12235,38 +12215,6 @@ del Producto]]></Text>
 
 				</Variable>
 				<Variable Class="CollectionVariable">
-					<Id>1526305921572</Id>
-					<Name><![CDATA[prod_att_monthly]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>1510</X><Y>-90</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1526308191458</Id>
-					<Name><![CDATA[prod_bo_monthly]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>1650</X><Y>-90</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
 					<Id>1526478350576</Id>
 					<Name><![CDATA[net_times_monthly_l1]]></Name>
 					<ExcludeFromBuild>true</ExcludeFromBuild>
@@ -12819,9 +12767,9 @@ del Producto]]></Text>
 
 				</Variable>
 				<Variable Class="CollectionVariable">
-					<Id>1526920771449</Id>
+					<Id>1527525496224</Id>
 					<Name><![CDATA[cfa_per_sku]]></Name>
-					<X>150</X><Y>-20</Y>
+					<X>150</X><Y>-10</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12830,6 +12778,36 @@ del Producto]]></Text>
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
 						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1527527807433</Id>
+					<Name><![CDATA[prod_att_monthly]]></Name>
+					<X>530</X><Y>-110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1527527807455</Id>
+					<Name><![CDATA[prod_bo_monthly]]></Name>
+					<X>530</X><Y>-90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
 					</Properties>
 
 				</Variable>
@@ -15707,42 +15685,9 @@ del Producto]]></Text>
 					</Points>
 				</Connector>
 				<Connector>
-					<Id>1527179777858</Id>
-					<Name><![CDATA[connector1]]></Name>
-					<X>120</X><Y>410</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<SourceEmbeddedObjectReference>
-						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-						<ClassName><![CDATA[ProductionLine]]></ClassName>
-						<ItemName><![CDATA[machine_distributor]]></ItemName>
-					</SourceEmbeddedObjectReference>
-					<SourceConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Queue]]></ClassName>
-						<ItemName><![CDATA[in]]></ItemName>
-					</SourceConnectableItemReference>
-					<TargetEmbeddedObjectReference>
-						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
-						<ClassName><![CDATA[ProductionLine]]></ClassName>
-						<ItemName><![CDATA[in_products]]></ItemName>
-					</TargetEmbeddedObjectReference>
-					<TargetConnectableItemReference>
-						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Enter]]></ClassName>
-						<ItemName><![CDATA[out]]></ItemName>
-					</TargetConnectableItemReference>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-60</X><Y>0</Y></Point>
-					</Points>
-				</Connector>
-				<Connector>
 					<Id>1527518330953</Id>
 					<Name><![CDATA[connector11]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>50</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15773,9 +15718,9 @@ del Producto]]></Text>
 					</Points>
 				</Connector>
 				<Connector>
-					<Id>1527518333761</Id>
-					<Name><![CDATA[connector12]]></Name>
-					<X>0</X><Y>0</Y>
+					<Id>1527523281895</Id>
+					<Name><![CDATA[connector16]]></Name>
+					<X>230</X><Y>330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15783,26 +15728,92 @@ del Producto]]></Text>
 					<SourceEmbeddedObjectReference>
 						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
 						<ClassName><![CDATA[ProductionLine]]></ClassName>
-						<ItemName><![CDATA[sink3]]></ItemName>
+						<ItemName><![CDATA[in_produced]]></ItemName>
 					</SourceEmbeddedObjectReference>
 					<SourceConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Sink]]></ClassName>
+						<ClassName><![CDATA[Enter]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+						<ClassName><![CDATA[ProductionLine]]></ClassName>
+						<ItemName><![CDATA[produced]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Queue]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>80</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1527524606006</Id>
+					<Name><![CDATA[connector1]]></Name>
+					<X>180</X><Y>410</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+						<ClassName><![CDATA[ProductionLine]]></ClassName>
+						<ItemName><![CDATA[machine_distributor]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Queue]]></ClassName>
 						<ItemName><![CDATA[in]]></ItemName>
 					</SourceConnectableItemReference>
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
 						<ClassName><![CDATA[ProductionLine]]></ClassName>
-						<ItemName><![CDATA[backorders]]></ItemName>
+						<ItemName><![CDATA[in_products]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
-						<ClassName><![CDATA[Queue]]></ClassName>
+						<ClassName><![CDATA[Enter]]></ClassName>
 						<ItemName><![CDATA[out]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
-						<Point><X>370</X><Y>470</Y></Point>
-						<Point><X>300</X><Y>470</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-120</X><Y>0</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1527524743406</Id>
+					<Name><![CDATA[connector12]]></Name>
+					<X>350</X><Y>410</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+						<ClassName><![CDATA[ProductionLine]]></ClassName>
+						<ItemName><![CDATA[backorders]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Queue]]></ClassName>
+						<ItemName><![CDATA[out]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
+						<ClassName><![CDATA[ProductionLine]]></ClassName>
+						<ItemName><![CDATA[sink3]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
+						<ClassName><![CDATA[Sink]]></ClassName>
+						<ItemName><![CDATA[in]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>70</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
@@ -15887,15 +15898,15 @@ for (Machine mac : machine_population){
 }
 
 // CFA per SKU
-/*
-for (String s : prod_att.keySet()){
+
+for (String s : prod_att_monthly.keySet()){
 	ArrayList<Double> cfas = new ArrayList();
 	double total_produced = 0;
-	for (int line = 1 ; line < 7 ; line++){
-		if (get_patt_monthly(line).containsKey(s) && get_patt_monthly(line).get(s)[m-1] != 0){
-			double cfa_calc = main.calc_cfa(this,line,m);
-			cfas.add(cfa_calc*get_patt_monthly(line).get(s)[m-1]);
-			total_produced += get_patt_monthly(line).get(s)[m-1];
+	for (Machine mac : machine_population){
+		if (mac.prod_att_monthly.containsKey(s) && mac.prod_att_monthly.get(s)[m-1] != 0){
+			double cfa_calc = mac.calc_cfa(m);
+			cfas.add(cfa_calc*mac.prod_att_monthly.get(s)[m-1]);
+			total_produced += mac.prod_att_monthly.get(s)[m-1];
 		}
 	}
 	double cfa_final = 0;
@@ -15906,7 +15917,7 @@ for (String s : prod_att.keySet()){
 		cfa_final /= total_produced;
 	cfa_per_sku.put(s,cfa_final);
 }
-*/]]></Action>
+]]></Action>
 				</Event>
 				<Event>
 					<Id>1526579253989</Id>
@@ -17542,24 +17553,10 @@ return cant*(cfa_value + vcost);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1526924736434</Id>
-					<Name><![CDATA[fill_initial_cfa]]></Name>
-					<X>150</X><Y>-90</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[for (SKU s : main.sku){
-	cfa_per_sku.put(s.code,s.cfam1);
-}]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[SelectOutputOut]]></ReturnType>
 					<Id>1527179122921</Id>
 					<Name><![CDATA[send_to_line]]></Name>
-					<X>130</X><Y>440</Y>
+					<X>120</X><Y>450</Y>
 					<Label><X>-80</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -17568,8 +17565,12 @@ return cant*(cfa_value + vcost);]]></Body>
 						<Name><![CDATA[agent]]></Name>
 						<Type><![CDATA[Lote]]></Type>
 					</Parameter>
-					<Body><![CDATA[Machine line = get_mac(agent.line);
-line.in_products.take( machine_distributor.remove( agent ) );]]></Body>
+					<Body><![CDATA[if (agent.line != "None"){
+	Machine line = get_mac(agent.line);
+	line.in_products.take( machine_distributor.remove( agent ) );
+} else {
+	// Do nothing and send to backorders
+}]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -17587,6 +17588,20 @@ line.in_products.take( machine_distributor.remove( agent ) );]]></Body>
 					</Parameter>
 					<Body><![CDATA[int index = mac_indexed.get(name);
 return machine_population.get(index);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1527525496232</Id>
+					<Name><![CDATA[fill_initial_cfa]]></Name>
+					<X>150</X><Y>-30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[for (SKU s : main.sku){
+	cfa_per_sku.put(s.code,s.cfam1);
+}]]></Body>
 				</Function>
 			</Functions>
 			<Schedules>
@@ -19674,7 +19689,7 @@ main.add_acc(inventory,agent.code,agent.real_demand);]]></Code>
 				<EmbeddedObject>
 					<Id>1522335354723</Id>
 					<Name><![CDATA[sink3]]></Name>
-					<X>370</X><Y>460</Y>
+					<X>420</X><Y>400</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -20641,7 +20656,7 @@ sku_tot_variable_cost.put(agent.code,agent.total_variable_cost);]]></Code>
 				<EmbeddedObject>
 					<Id>1524048416295</Id>
 					<Name><![CDATA[sink5]]></Name>
-					<X>370</X><Y>320</Y>
+					<X>420</X><Y>320</Y>
 					<Label><X>10</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21091,7 +21106,7 @@ lote_brute_time[1] = 0;]]></Code>
 				<EmbeddedObject>
 					<Id>1524048694973</Id>
 					<Name><![CDATA[produced]]></Name>
-					<X>260</X><Y>310</Y>
+					<X>310</X><Y>310</Y>
 					<Label><X>5</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21594,7 +21609,7 @@ sku_tot_variable_cost.put(agent.code,agent.total_variable_cost);]]></Code>
 				<EmbeddedObject>
 					<Id>1524048695066</Id>
 					<Name><![CDATA[machine_distributor]]></Name>
-					<X>120</X><Y>390</Y>
+					<X>180</X><Y>390</Y>
 					<Label><X>-15</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -21609,6 +21624,9 @@ sku_tot_variable_cost.put(agent.code,agent.total_variable_cost);]]></Code>
 							<ClassName><![CDATA[Queue]]></ClassName>
 							<ItemName><![CDATA[1412336242932]]></ItemName>
 						</GenericParameterSubstituteReference>
+						<GenericParameterSubstituteValue Class="CodeValue">
+							<Code><![CDATA[Lote]]></Code>
+						</GenericParameterSubstituteValue>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
@@ -22485,7 +22503,7 @@ sku_tot_variable_cost.put(agent.code,agent.total_variable_cost);
 				<EmbeddedObject>
 					<Id>1524048715896</Id>
 					<Name><![CDATA[backorders]]></Name>
-					<X>260</X><Y>450</Y>
+					<X>310</X><Y>390</Y>
 					<Label><X>4</X><Y>-2</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -39932,8 +39950,8 @@ activity_l6 = 0;]]></Code>
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1527523088785</Id>
-					<Name><![CDATA[in_products1]]></Name>
-					<X>130</X><Y>230</Y>
+					<Name><![CDATA[in_produced]]></Name>
+					<X>210</X><Y>320</Y>
 					<Label><X>-19</X><Y>-21</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -40053,12 +40071,12 @@ activity_l6 = 0;]]></Code>
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1527523095170</Id>
-					<Name><![CDATA[in_products2]]></Name>
-					<X>220</X><Y>220</Y>
+					<Name><![CDATA[in_backorders]]></Name>
+					<X>90</X><Y>570</Y>
 					<Label><X>-19</X><Y>-21</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
+					<ShowLabel>false</ShowLabel>
 					<ActiveObjectClass>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
 						<ClassName><![CDATA[Enter]]></ClassName>
@@ -40175,7 +40193,8 @@ activity_l6 = 0;]]></Code>
 				<EmbeddedObject>
 					<Id>1527523110391</Id>
 					<Name><![CDATA[in_products3]]></Name>
-					<X>310</X><Y>220</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>1400</X><Y>560</Y>
 					<Label><X>-19</X><Y>-21</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -40296,7 +40315,8 @@ activity_l6 = 0;]]></Code>
 				<EmbeddedObject>
 					<Id>1527523121226</Id>
 					<Name><![CDATA[in_products4]]></Name>
-					<X>390</X><Y>230</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>1480</X><Y>570</Y>
 					<Label><X>-19</X><Y>-21</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -40417,7 +40437,8 @@ activity_l6 = 0;]]></Code>
 				<EmbeddedObject>
 					<Id>1527523129861</Id>
 					<Name><![CDATA[in_products5]]></Name>
-					<X>470</X><Y>230</Y>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>1560</X><Y>570</Y>
 					<Label><X>-19</X><Y>-21</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -41305,6 +41326,7 @@ activity_l6 = 0;]]></Code>
 				<RoundedRectangle>
 					<Id>1524076350958</Id>
 					<Name><![CDATA[roundRectangle3]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>720</X><Y>-150</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -41329,9 +41351,10 @@ activity_l6 = 0;]]></Code>
 				<Text>
 					<Id>1524076357603</Id>
 					<Name><![CDATA[text14]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>870</X><Y>-140</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
+					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D</DrawMode>
@@ -46080,7 +46103,7 @@ insertInto(db_inventory_out)
 				<Variable Class="PlainVariable">
 					<Id>1527165401972</Id>
 					<Name><![CDATA[lote_net_time]]></Name>
-					<X>990</X><Y>-110</Y>
+					<X>990</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46095,7 +46118,7 @@ insertInto(db_inventory_out)
 				<Variable Class="PlainVariable">
 					<Id>1527165401974</Id>
 					<Name><![CDATA[lote_gross_time]]></Name>
-					<X>990</X><Y>-150</Y>
+					<X>990</X><Y>-130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46188,7 +46211,7 @@ insertInto(db_inventory_out)
 				<Variable Class="PlainVariable">
 					<Id>1527511785895</Id>
 					<Name><![CDATA[schedules]]></Name>
-					<X>390</X><Y>-130</Y>
+					<X>400</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46804,7 +46827,7 @@ insertInto(db_inventory_out)
 				<Variable Class="CollectionVariable">
 					<Id>1527165401712</Id>
 					<Name><![CDATA[prod_att_monthly]]></Name>
-					<X>990</X><Y>-90</Y>
+					<X>990</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46819,7 +46842,7 @@ insertInto(db_inventory_out)
 				<Variable Class="CollectionVariable">
 					<Id>1527165401747</Id>
 					<Name><![CDATA[prod_bo_monthly]]></Name>
-					<X>990</X><Y>-70</Y>
+					<X>990</X><Y>-50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46834,7 +46857,7 @@ insertInto(db_inventory_out)
 				<Variable Class="CollectionVariable">
 					<Id>1527165401777</Id>
 					<Name><![CDATA[net_times_monthly]]></Name>
-					<X>990</X><Y>-130</Y>
+					<X>990</X><Y>-110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46849,7 +46872,7 @@ insertInto(db_inventory_out)
 				<Variable Class="CollectionVariable">
 					<Id>1527165401804</Id>
 					<Name><![CDATA[gross_times_monthly]]></Name>
-					<X>990</X><Y>-170</Y>
+					<X>990</X><Y>-150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -46858,22 +46881,6 @@ insertInto(db_inventory_out)
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
 						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[Double[]]]></ValueElementClass>
-					</Properties>
-
-				</Variable>
-				<Variable Class="CollectionVariable">
-					<Id>1527165401880</Id>
-					<Name><![CDATA[cfa_per_sku]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>720</X><Y>-500</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
-						<ElementClass><![CDATA[String]]></ElementClass>
-						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
 					</Properties>
 
 				</Variable>
@@ -47078,7 +47085,7 @@ insertInto(db_inventory_out)
 					<TargetEmbeddedObjectReference>
 						<PackageName><![CDATA[cmcp_manufacturing_2]]></PackageName>
 						<ClassName><![CDATA[Machine]]></ClassName>
-						<ItemName><![CDATA[prod_att]]></ItemName>
+						<ItemName><![CDATA[prod_att_queue]]></ItemName>
 					</TargetEmbeddedObjectReference>
 					<TargetConnectableItemReference>
 						<PackageName><![CDATA[com.anylogic.libraries.processmodeling]]></PackageName>
@@ -50384,6 +50391,7 @@ collection.put(key, accumulated);]]></Body>
 					<Body><![CDATA[double res = mano_obraD_cant_turno;
 res *= mano_obraD_costo_turno;
 res *= shifts_amount;
+res *= 26; // Days of month worked
 mod = res;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -50399,32 +50407,8 @@ mod = res;]]></Body>
 					<Body><![CDATA[double res = mano_obraI_cant_turno;
 res *= mano_obraI_costo_turno;
 res *= shifts_amount;
-moi = res;	
-]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1527165354366</Id>
-					<Name><![CDATA[shift_start]]></Name>
-					<X>390</X><Y>-60</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[holdLine.unblock();]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1527165354368</Id>
-					<Name><![CDATA[shift_stop]]></Name>
-					<X>390</X><Y>-40</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[holdLine.block();]]></Body>
+res *= 26; // Days of month worked
+moi = res;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -50512,7 +50496,7 @@ if (packsize != last_packsize && size == last_size){
 lote_gross_time += delay;
 
 if (delay > 0){
-	add_to_co_am();
+	// add_to_co_am();
 	add_to_co_hs(delay);
 }
 
@@ -50719,21 +50703,6 @@ co_monthly_hs[m-1] += delay;]]></Body>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1527165401958</Id>
-					<Name><![CDATA[fill_initial_cfa]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>830</X><Y>-350</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[for (SKU s : main.sku){
-	cfa_per_sku.put(s.code,s.cfam1);
-}]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1527165935791</Id>
 					<Name><![CDATA[refresh_cho]]></Name>
 					<X>-120</X><Y>610</Y>
@@ -50768,7 +50737,6 @@ co_monthly_hs[m-1] += delay;]]></Body>
 					<ReturnType><![CDATA[SelectOutputOut]]></ReturnType>
 					<Id>1527185481631</Id>
 					<Name><![CDATA[send_to_produced]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1110</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -50778,14 +50746,13 @@ co_monthly_hs[m-1] += delay;]]></Body>
 						<Name><![CDATA[agent]]></Name>
 						<Type><![CDATA[Lote]]></Type>
 					</Parameter>
-					<Body><![CDATA[plant.produced.take( prod_att.remove( agent ) );]]></Body>
+					<Body><![CDATA[plant.in_produced.take( prod_att_queue.remove( agent ) );]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[SelectOutputOut]]></ReturnType>
 					<Id>1527185488517</Id>
 					<Name><![CDATA[send_to_backorders]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1110</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -50795,14 +50762,14 @@ co_monthly_hs[m-1] += delay;]]></Body>
 						<Name><![CDATA[agent]]></Name>
 						<Type><![CDATA[Lote]]></Type>
 					</Parameter>
-					<Body><![CDATA[plant.backorders.take( queueBO.remove( agent ) );]]></Body>
+					<Body><![CDATA[plant.in_backorders.take( queueBO.remove( agent ) );]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1527512122531</Id>
 					<Name><![CDATA[fill_schedules]]></Name>
-					<X>290</X><Y>-130</Y>
+					<X>400</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -50817,476 +50784,38 @@ else if (shifts_amount == 3){
 	schedules = new Schedule[]{shift1,shift2,shift3};
 }]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1527525084626</Id>
+					<Name><![CDATA[calc_cfa]]></Name>
+					<X>860</X><Y>-20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[double prod_att = 0;
+for (String s : prod_att_monthly.keySet()){
+	prod_att += prod_att_monthly.get(s)[m-1];
+}
+double cfa_calc = mod +
+			 	  moi +
+			 	  cho[m-1] +
+ 			 	  rcho[m-1] +
+ 			 	  gastos_generales_mes;
+cfa_calc = cfa_calc / prod_att;
+return cfa_calc;]]></Body>
+				</Function>
 			</Functions>
 			<Schedules>
 				<Schedule>
-					<Id>1527165354371</Id>
-					<Name><![CDATA[shift1_start]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>290</X><Y>-100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<ValueType>onOff</ValueType>
-					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>false</DefaultValue>
-					<RepresentationMode>exactTimes</RepresentationMode>
-					<RepresentationType>week</RepresentationType>
-					<FirstDayOfWeek>sunday</FirstDayOfWeek>
-					<TimeUnitsInterval>hours</TimeUnitsInterval>
-					<RepeatTime>86400000</RepeatTime>
-					<RepeatTimeInterval>days</RepeatTimeInterval>
-					<IsSnapTo>false</IsSnapTo>
-					<SnapTo>1524067332101</SnapTo>
-					<SnapToTimeUnits>minutes</SnapToTimeUnits>
-					<AllDayExceptionMode>true</AllDayExceptionMode>
-					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
-					<IntervalsQuery>
-						<TableReference>
-						</TableReference>
-							<StartColumnReference>
-							</StartColumnReference>
-							<EndColumnReference>
-							</EndColumnReference>
-							<ValueColumnReference>
-							</ValueColumnReference>
-					</IntervalsQuery>
-					<Action><![CDATA[if (shifts_amount > 0)
-	shift_start();]]></Action>
-					<Intervals>
-						<Interval>
-							<Start>21600000</Start>
-							<End>21600000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>108000000</Start>
-							<End>108000000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>194400000</Start>
-							<End>194400000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>280800000</Start>
-							<End>280800000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>367200000</Start>
-							<End>367200000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>453600000</Start>
-							<End>453600000</End>
-							<Value>true</Value>
-						</Interval>
-					</Intervals>
-					<Exceptions>
-						<Exception>
-							<Annually>true</Annually>
-							<Start>1525046400000</Start>
-							<End>1525132800000</End>
-							<Value>false</Value>
-						</Exception>
-					</Exceptions>
-				</Schedule>
-				<Schedule>
-					<Id>1527165354384</Id>
-					<Name><![CDATA[shift1_end]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>290</X><Y>-80</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<ValueType>onOff</ValueType>
-					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>false</DefaultValue>
-					<RepresentationMode>exactTimes</RepresentationMode>
-					<RepresentationType>week</RepresentationType>
-					<FirstDayOfWeek>sunday</FirstDayOfWeek>
-					<TimeUnitsInterval>hours</TimeUnitsInterval>
-					<RepeatTime>86400000</RepeatTime>
-					<RepeatTimeInterval>days</RepeatTimeInterval>
-					<IsSnapTo>false</IsSnapTo>
-					<SnapTo>1524067332101</SnapTo>
-					<SnapToTimeUnits>minutes</SnapToTimeUnits>
-					<AllDayExceptionMode>true</AllDayExceptionMode>
-					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
-					<IntervalsQuery>
-						<TableReference>
-						</TableReference>
-							<StartColumnReference>
-							</StartColumnReference>
-							<EndColumnReference>
-							</EndColumnReference>
-							<ValueColumnReference>
-							</ValueColumnReference>
-					</IntervalsQuery>
-					<Action><![CDATA[if (shifts_amount > 0)
-	shift_stop();
-//if (shifts_amount == 1){
-//	for (int line = 0 ; line < 6 ; line++)
-//		arranque[line] = 1;
-//}]]></Action>
-					<Intervals>
-						<Interval>
-							<Start>50340000</Start>
-							<End>50340000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>136740000</Start>
-							<End>136740000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>223140000</Start>
-							<End>223140000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>309540000</Start>
-							<End>309540000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>395940000</Start>
-							<End>395940000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>482340000</Start>
-							<End>482340000</End>
-							<Value>true</Value>
-						</Interval>
-					</Intervals>
-					<Exceptions>
-						<Exception>
-							<Annually>true</Annually>
-							<Start>1525046400000</Start>
-							<End>1525132800000</End>
-							<Value>false</Value>
-						</Exception>
-					</Exceptions>
-				</Schedule>
-				<Schedule>
-					<Id>1527165354397</Id>
-					<Name><![CDATA[shift2_start]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>390</X><Y>-100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<ValueType>onOff</ValueType>
-					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>false</DefaultValue>
-					<RepresentationMode>exactTimes</RepresentationMode>
-					<RepresentationType>week</RepresentationType>
-					<FirstDayOfWeek>sunday</FirstDayOfWeek>
-					<TimeUnitsInterval>hours</TimeUnitsInterval>
-					<RepeatTime>86400000</RepeatTime>
-					<RepeatTimeInterval>days</RepeatTimeInterval>
-					<IsSnapTo>false</IsSnapTo>
-					<SnapTo>1524067332101</SnapTo>
-					<SnapToTimeUnits>minutes</SnapToTimeUnits>
-					<AllDayExceptionMode>true</AllDayExceptionMode>
-					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
-					<IntervalsQuery>
-						<TableReference>
-						</TableReference>
-							<StartColumnReference>
-							</StartColumnReference>
-							<EndColumnReference>
-							</EndColumnReference>
-							<ValueColumnReference>
-							</ValueColumnReference>
-					</IntervalsQuery>
-					<Action><![CDATA[if (shifts_amount > 1)
-	shift_start();]]></Action>
-					<Intervals>
-						<Interval>
-							<Start>50400000</Start>
-							<End>50400000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>136800000</Start>
-							<End>136800000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>223200000</Start>
-							<End>223200000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>309600000</Start>
-							<End>309600000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>396000000</Start>
-							<End>396000000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>482400000</Start>
-							<End>482400000</End>
-							<Value>true</Value>
-						</Interval>
-					</Intervals>
-					<Exceptions>
-						<Exception>
-							<Annually>true</Annually>
-							<Start>1525046400000</Start>
-							<End>1525132800000</End>
-							<Value>false</Value>
-						</Exception>
-					</Exceptions>
-				</Schedule>
-				<Schedule>
-					<Id>1527165354410</Id>
-					<Name><![CDATA[shift2_end]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>390</X><Y>-80</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<ValueType>onOff</ValueType>
-					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>false</DefaultValue>
-					<RepresentationMode>exactTimes</RepresentationMode>
-					<RepresentationType>week</RepresentationType>
-					<FirstDayOfWeek>sunday</FirstDayOfWeek>
-					<TimeUnitsInterval>hours</TimeUnitsInterval>
-					<RepeatTime>86400000</RepeatTime>
-					<RepeatTimeInterval>days</RepeatTimeInterval>
-					<IsSnapTo>false</IsSnapTo>
-					<SnapTo>1524067332101</SnapTo>
-					<SnapToTimeUnits>minutes</SnapToTimeUnits>
-					<AllDayExceptionMode>true</AllDayExceptionMode>
-					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
-					<IntervalsQuery>
-						<TableReference>
-						</TableReference>
-							<StartColumnReference>
-							</StartColumnReference>
-							<EndColumnReference>
-							</EndColumnReference>
-							<ValueColumnReference>
-							</ValueColumnReference>
-					</IntervalsQuery>
-					<Action><![CDATA[if (shifts_amount > 1)
-	shift_stop();
-//if (shifts_amount == 2){
-//	for (int line = 0 ; line < 6 ; line++)
-//		arranque[line] = 1;
-//}]]></Action>
-					<Intervals>
-						<Interval>
-							<Start>79140000</Start>
-							<End>79140000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>165540000</Start>
-							<End>165540000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>251940000</Start>
-							<End>251940000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>338340000</Start>
-							<End>338340000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>424740000</Start>
-							<End>424740000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>511140000</Start>
-							<End>511140000</End>
-							<Value>true</Value>
-						</Interval>
-					</Intervals>
-					<Exceptions>
-						<Exception>
-							<Annually>true</Annually>
-							<Start>1525046400000</Start>
-							<End>1525132800000</End>
-							<Value>false</Value>
-						</Exception>
-					</Exceptions>
-				</Schedule>
-				<Schedule>
-					<Id>1527165354423</Id>
-					<Name><![CDATA[shift3_start]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>490</X><Y>-100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<ValueType>onOff</ValueType>
-					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>false</DefaultValue>
-					<RepresentationMode>exactTimes</RepresentationMode>
-					<RepresentationType>week</RepresentationType>
-					<FirstDayOfWeek>sunday</FirstDayOfWeek>
-					<TimeUnitsInterval>hours</TimeUnitsInterval>
-					<RepeatTime>86400000</RepeatTime>
-					<RepeatTimeInterval>days</RepeatTimeInterval>
-					<IsSnapTo>false</IsSnapTo>
-					<SnapTo>1524067332101</SnapTo>
-					<SnapToTimeUnits>minutes</SnapToTimeUnits>
-					<AllDayExceptionMode>true</AllDayExceptionMode>
-					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
-					<IntervalsQuery>
-						<TableReference>
-						</TableReference>
-							<StartColumnReference>
-							</StartColumnReference>
-							<EndColumnReference>
-							</EndColumnReference>
-							<ValueColumnReference>
-							</ValueColumnReference>
-					</IntervalsQuery>
-					<Action><![CDATA[if (shifts_amount > 2)
-	shift_start();]]></Action>
-					<Intervals>
-						<Interval>
-							<Start>79200000</Start>
-							<End>79200000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>165600000</Start>
-							<End>165600000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>252000000</Start>
-							<End>252000000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>338400000</Start>
-							<End>338400000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>424800000</Start>
-							<End>424800000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>511200000</Start>
-							<End>511200000</End>
-							<Value>true</Value>
-						</Interval>
-					</Intervals>
-					<Exceptions>
-						<Exception>
-							<Annually>true</Annually>
-							<Start>1525046400000</Start>
-							<End>1525132800000</End>
-							<Value>false</Value>
-						</Exception>
-					</Exceptions>
-				</Schedule>
-				<Schedule>
-					<Id>1527165354436</Id>
-					<Name><![CDATA[shift3_end]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>490</X><Y>-80</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<ValueType>onOff</ValueType>
-					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>false</DefaultValue>
-					<RepresentationMode>exactTimes</RepresentationMode>
-					<RepresentationType>week</RepresentationType>
-					<FirstDayOfWeek>sunday</FirstDayOfWeek>
-					<TimeUnitsInterval>hours</TimeUnitsInterval>
-					<RepeatTime>86400000</RepeatTime>
-					<RepeatTimeInterval>days</RepeatTimeInterval>
-					<IsSnapTo>false</IsSnapTo>
-					<SnapTo>1524067332101</SnapTo>
-					<SnapToTimeUnits>minutes</SnapToTimeUnits>
-					<AllDayExceptionMode>true</AllDayExceptionMode>
-					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
-					<IntervalsQuery>
-						<TableReference>
-						</TableReference>
-							<StartColumnReference>
-							</StartColumnReference>
-							<EndColumnReference>
-							</EndColumnReference>
-							<ValueColumnReference>
-							</ValueColumnReference>
-					</IntervalsQuery>
-					<Action><![CDATA[if (shifts_amount > 2)
-	shift_stop();]]></Action>
-					<Intervals>
-						<Interval>
-							<Start>21540000</Start>
-							<End>21540000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>107940000</Start>
-							<End>107940000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>194340000</Start>
-							<End>194340000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>280740000</Start>
-							<End>280740000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>367140000</Start>
-							<End>367140000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>453540000</Start>
-							<End>453540000</End>
-							<Value>true</Value>
-						</Interval>
-					</Intervals>
-					<Exceptions>
-						<Exception>
-							<Annually>true</Annually>
-							<Start>1525046400000</Start>
-							<End>1525132800000</End>
-							<Value>false</Value>
-						</Exception>
-					</Exceptions>
-				</Schedule>
-				<Schedule>
 					<Id>1527165354448</Id>
 					<Name><![CDATA[shift1]]></Name>
-					<X>290</X><Y>-60</Y>
+					<X>510</X><Y>-90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -51315,13 +50844,6 @@ else if (shifts_amount == 3){
 							<ValueColumnReference>
 							</ValueColumnReference>
 					</IntervalsQuery>
-					<Action><![CDATA[if (shifts_amount > 0)
-	shift_stop();
-//if (shifts_amount == 1){
-//	for (int line = 0 ; line < 6 ; line++)
-//		arranque[line] = 1;
-//}
-shift_start();]]></Action>
 					<Intervals>
 						<Interval>
 							<Start>0</Start>
@@ -51366,7 +50888,7 @@ shift_start();]]></Action>
 				<Schedule>
 					<Id>1527165354461</Id>
 					<Name><![CDATA[shift2]]></Name>
-					<X>290</X><Y>-40</Y>
+					<X>510</X><Y>-70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -51395,13 +50917,6 @@ shift_start();]]></Action>
 							<ValueColumnReference>
 							</ValueColumnReference>
 					</IntervalsQuery>
-					<Action><![CDATA[if (shifts_amount > 0)
-	shift_stop();
-//if (shifts_amount == 1){
-//	for (int line = 0 ; line < 6 ; line++)
-//		arranque[line] = 1;
-//}
-shift_start();]]></Action>
 					<Intervals>
 						<Interval>
 							<Start>21600000</Start>
@@ -51446,7 +50961,7 @@ shift_start();]]></Action>
 				<Schedule>
 					<Id>1527165354474</Id>
 					<Name><![CDATA[shift3]]></Name>
-					<X>290</X><Y>-20</Y>
+					<X>510</X><Y>-50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -51475,13 +50990,6 @@ shift_start();]]></Action>
 							<ValueColumnReference>
 							</ValueColumnReference>
 					</IntervalsQuery>
-					<Action><![CDATA[if (shifts_amount > 0)
-	shift_stop();
-//if (shifts_amount == 1){
-//	for (int line = 0 ; line < 6 ; line++)
-//		arranque[line] = 1;
-//}
-shift_start();]]></Action>
 					<Intervals>
 						<Interval>
 							<Start>50400000</Start>
@@ -51652,7 +51160,10 @@ shift_start();]]></Action>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[fill_monthly(prod_bo_monthly,agent.code,agent.real_demand);]]></Code>
+								<Code><![CDATA[fill_monthly(prod_bo_monthly,agent.code,agent.real_demand);
+fill_monthly(plant.prod_bo_monthly,agent.code,agent.real_demand);
+
+send_to_backorders(agent);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -51838,7 +51349,7 @@ shift_start();]]></Action>
 				</EmbeddedObject>
 				<EmbeddedObject>
 					<Id>1527161894594</Id>
-					<Name><![CDATA[prod_att]]></Name>
+					<Name><![CDATA[prod_att_queue]]></Name>
 					<X>1020</X><Y>160</Y>
 					<Label><X>-15</X><Y>50</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -51869,11 +51380,10 @@ shift_start();]]></Action>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[fill_monthly(prod_att_monthly,agent.code,agent.real_demand);
-
+fill_monthly(plant.prod_att_monthly,agent.code,agent.real_demand);
 main.add_acc(inventory,agent.code,agent.real_demand);
 
-
-//send_to_produced(agent);]]></Code>
+send_to_produced(agent);]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -74887,8 +74397,7 @@ activity_l6 = 0;]]></Code>
 				<RoundedRectangle>
 					<Id>1527165354360</Id>
 					<Name><![CDATA[roundRectangle2]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>270</X><Y>-150</Y>
+					<X>380</X><Y>-150</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -74902,7 +74411,7 @@ activity_l6 = 0;]]></Code>
 					<LineColor>-16777216</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>310</Width>
+					<Width>200</Width>
 					<Height>140</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
@@ -74912,7 +74421,6 @@ activity_l6 = 0;]]></Code>
 				<Text>
 					<Id>1527165354363</Id>
 					<Name><![CDATA[text11]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>480</X><Y>-140</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -74935,7 +74443,6 @@ activity_l6 = 0;]]></Code>
 				<RoundedRectangle>
 					<Id>1527165379467</Id>
 					<Name><![CDATA[roundRectangle3]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>590</X><Y>-150</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -74960,7 +74467,6 @@ activity_l6 = 0;]]></Code>
 				<Text>
 					<Id>1527165379470</Id>
 					<Name><![CDATA[text14]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>740</X><Y>-140</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
