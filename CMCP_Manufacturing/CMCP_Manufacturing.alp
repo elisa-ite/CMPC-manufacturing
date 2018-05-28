@@ -2559,6 +2559,7 @@ ProductionLine plant = get_plant(line.get(db_lines.country));
 Machine mac = plant.add_machine_population();
 
 mac.name = name_of_line;
+mac.shifts_amount = line.get(db_lines.shifts);
 mac.mano_obraD_cant_turno = line.get(db_lines.mano_obra_d_cant_turno);
 mac.mano_obraD_costo_turno = line.get(db_lines.mano_obra_d_costo_turno);
 mac.mano_obraI_cant_turno = line.get(db_lines.mano_obra_i_cant_turno);
@@ -2571,6 +2572,7 @@ mac.merma = line.get(db_lines.merma);
 mac.co_size_time = line.get(db_lines.co_size_time);
 mac.co_packsize_time = line.get(db_lines.co_packsize_time);
 mac.plant = plant;
+mac.fill_schedules();
 
 for (int i = 0 ; i < rows_sku.size() ; i++){
 	Tuple sku_rate = rows_sku.get(i);
@@ -11345,7 +11347,7 @@ del Producto]]></Text>
 				<Variable Class="Parameter">
 					<Id>1525804984200</Id>
 					<Name><![CDATA[country]]></Name>
-					<X>-90</X><Y>150</Y>
+					<X>-190</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -39761,9 +39763,6 @@ activity_l6 = 0;]]></Code>
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
-							<Name><![CDATA[line_capacity]]></Name>
-						</Parameter>
-						<Parameter>
 							<Name><![CDATA[efficiency]]></Name>
 						</Parameter>
 						<Parameter>
@@ -45641,30 +45640,35 @@ insertInto(db_inventory_out)
 						</InitialValue>
 					</Properties>
 				</Variable>
-				<Variable Class="Parameter">
-					<Id>1527165019925</Id>
+				<Variable Class="PlainVariable">
+					<Id>1527511785895</Id>
+					<Name><![CDATA[schedules]]></Name>
+					<X>390</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[Schedule<Integer>[]]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[new Schedule[]{shift1}]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1527513690338</Id>
 					<Name><![CDATA[line_capacity]]></Name>
 					<X>-190</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
-						<UnitType><![CDATA[NONE]]></UnitType>
-						<SdArray>false</SdArray>
-						<DefaultValue Class="CodeValue">
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
 							<Code><![CDATA[0]]></Code>
-						</DefaultValue>
-						<ParameterEditor>
-							<Id>1527165019923</Id>
-							<Label><![CDATA[line_capacities]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<DelimeterType>NO_DELIMETER</DelimeterType>
-						</ParameterEditor>
-					</Properties>                 
+						</InitialValue>
+					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1527165019928</Id>
@@ -46141,7 +46145,7 @@ insertInto(db_inventory_out)
 					<X>-90</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
 						<Type><![CDATA[ProductionLine]]></Type>
@@ -46159,6 +46163,7 @@ insertInto(db_inventory_out)
 				<Variable Class="CollectionVariable">
 					<Id>1527165019864</Id>
 					<Name><![CDATA[backorder_collection]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-350</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -46174,6 +46179,7 @@ insertInto(db_inventory_out)
 				<Variable Class="CollectionVariable">
 					<Id>1527165019868</Id>
 					<Name><![CDATA[prodatt_collection]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-350</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -49751,6 +49757,7 @@ insertInto(db_inventory_out)
 				<Event>
 					<Id>1527165019922</Id>
 					<Name><![CDATA[dataset_refresh]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-350</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -49796,6 +49803,7 @@ for (double time : backorder_collection.keySet()){
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1527165019875</Id>
 					<Name><![CDATA[add_acc]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-350</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -50259,11 +50267,32 @@ co_monthly_hs[m-1] += delay;]]></Body>
 					</Parameter>
 					<Body><![CDATA[plant.backorders.take( queueBO.remove( agent ) );]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1527512122531</Id>
+					<Name><![CDATA[fill_schedules]]></Name>
+					<X>290</X><Y>-130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[if (shifts_amount == 1){
+	schedules = new Schedule[]{shift1};
+}
+else if (shifts_amount == 2){
+	schedules = new Schedule[]{shift1,shift2};
+}
+else if (shifts_amount == 3){
+	schedules = new Schedule[]{shift1,shift2,shift3};
+}]]></Body>
+				</Function>
 			</Functions>
 			<Schedules>
 				<Schedule>
 					<Id>1527165354371</Id>
 					<Name><![CDATA[shift1_start]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>290</X><Y>-100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -50339,6 +50368,7 @@ co_monthly_hs[m-1] += delay;]]></Body>
 				<Schedule>
 					<Id>1527165354384</Id>
 					<Name><![CDATA[shift1_end]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>290</X><Y>-80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -50418,6 +50448,7 @@ co_monthly_hs[m-1] += delay;]]></Body>
 				<Schedule>
 					<Id>1527165354397</Id>
 					<Name><![CDATA[shift2_start]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>390</X><Y>-100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -50493,6 +50524,7 @@ co_monthly_hs[m-1] += delay;]]></Body>
 				<Schedule>
 					<Id>1527165354410</Id>
 					<Name><![CDATA[shift2_end]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>390</X><Y>-80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -50572,6 +50604,7 @@ co_monthly_hs[m-1] += delay;]]></Body>
 				<Schedule>
 					<Id>1527165354423</Id>
 					<Name><![CDATA[shift3_start]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>490</X><Y>-100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -50647,6 +50680,7 @@ co_monthly_hs[m-1] += delay;]]></Body>
 				<Schedule>
 					<Id>1527165354436</Id>
 					<Name><![CDATA[shift3_end]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>490</X><Y>-80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -50722,176 +50756,14 @@ co_monthly_hs[m-1] += delay;]]></Body>
 				<Schedule>
 					<Id>1527165354448</Id>
 					<Name><![CDATA[shift1]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>290</X><Y>-60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<ValueType>onOff</ValueType>
+					<ValueType>integer</ValueType>
 					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>false</DefaultValue>
-					<RepresentationMode>intervals</RepresentationMode>
-					<RepresentationType>week</RepresentationType>
-					<FirstDayOfWeek>sunday</FirstDayOfWeek>
-					<TimeUnitsInterval>hours</TimeUnitsInterval>
-					<RepeatTime>86400000</RepeatTime>
-					<RepeatTimeInterval>days</RepeatTimeInterval>
-					<IsSnapTo>false</IsSnapTo>
-					<SnapTo>1524067332101</SnapTo>
-					<SnapToTimeUnits>minutes</SnapToTimeUnits>
-					<AllDayExceptionMode>true</AllDayExceptionMode>
-					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
-					<IntervalsQuery>
-						<TableReference>
-						</TableReference>
-							<StartColumnReference>
-							</StartColumnReference>
-							<EndColumnReference>
-							</EndColumnReference>
-							<ValueColumnReference>
-							</ValueColumnReference>
-					</IntervalsQuery>
-					<Action><![CDATA[if (shifts_amount > 0)
-	shift_stop();
-//if (shifts_amount == 1){
-//	for (int line = 0 ; line < 6 ; line++)
-//		arranque[line] = 1;
-//}
-shift_start();]]></Action>
-					<Intervals>
-						<Interval>
-							<Start>21600000</Start>
-							<End>50340000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>108000000</Start>
-							<End>136740000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>194400000</Start>
-							<End>223140000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>280800000</Start>
-							<End>309540000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>367200000</Start>
-							<End>395940000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>453600000</Start>
-							<End>482340000</End>
-							<Value>true</Value>
-						</Interval>
-					</Intervals>
-					<Exceptions>
-						<Exception>
-							<Annually>true</Annually>
-							<Start>1525046400000</Start>
-							<End>1525132800000</End>
-							<Value>false</Value>
-						</Exception>
-					</Exceptions>
-				</Schedule>
-				<Schedule>
-					<Id>1527165354461</Id>
-					<Name><![CDATA[shift2]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>290</X><Y>-40</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<ValueType>onOff</ValueType>
-					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>false</DefaultValue>
-					<RepresentationMode>intervals</RepresentationMode>
-					<RepresentationType>week</RepresentationType>
-					<FirstDayOfWeek>sunday</FirstDayOfWeek>
-					<TimeUnitsInterval>hours</TimeUnitsInterval>
-					<RepeatTime>86400000</RepeatTime>
-					<RepeatTimeInterval>days</RepeatTimeInterval>
-					<IsSnapTo>false</IsSnapTo>
-					<SnapTo>1524067332101</SnapTo>
-					<SnapToTimeUnits>minutes</SnapToTimeUnits>
-					<AllDayExceptionMode>true</AllDayExceptionMode>
-					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
-					<IntervalsQuery>
-						<TableReference>
-						</TableReference>
-							<StartColumnReference>
-							</StartColumnReference>
-							<EndColumnReference>
-							</EndColumnReference>
-							<ValueColumnReference>
-							</ValueColumnReference>
-					</IntervalsQuery>
-					<Action><![CDATA[if (shifts_amount > 0)
-	shift_stop();
-//if (shifts_amount == 1){
-//	for (int line = 0 ; line < 6 ; line++)
-//		arranque[line] = 1;
-//}
-shift_start();]]></Action>
-					<Intervals>
-						<Interval>
-							<Start>21600000</Start>
-							<End>79140000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>108000000</Start>
-							<End>165540000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>194400000</Start>
-							<End>251940000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>280800000</Start>
-							<End>338340000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>367200000</Start>
-							<End>424740000</End>
-							<Value>true</Value>
-						</Interval>
-						<Interval>
-							<Start>453600000</Start>
-							<End>511140000</End>
-							<Value>true</Value>
-						</Interval>
-					</Intervals>
-					<Exceptions>
-						<Exception>
-							<Annually>true</Annually>
-							<Start>1525046400000</Start>
-							<End>1525132800000</End>
-							<Value>false</Value>
-						</Exception>
-					</Exceptions>
-				</Schedule>
-				<Schedule>
-					<Id>1527165354474</Id>
-					<Name><![CDATA[shift3]]></Name>
-					<X>290</X><Y>-20</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<ValueType>onOff</ValueType>
-					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>false</DefaultValue>
+					<DefaultValue>1</DefaultValue>
 					<RepresentationMode>intervals</RepresentationMode>
 					<RepresentationType>week</RepresentationType>
 					<FirstDayOfWeek>sunday</FirstDayOfWeek>
@@ -50923,33 +50795,33 @@ shift_start();]]></Action>
 					<Intervals>
 						<Interval>
 							<Start>0</Start>
-							<End>86340000</End>
-							<Value>true</Value>
+							<End>21600000</End>
+							<Value>1</Value>
 						</Interval>
 						<Interval>
 							<Start>86400000</Start>
-							<End>172740000</End>
-							<Value>true</Value>
+							<End>108000000</End>
+							<Value>1</Value>
 						</Interval>
 						<Interval>
 							<Start>172800000</Start>
-							<End>259140000</End>
-							<Value>true</Value>
+							<End>194400000</End>
+							<Value>1</Value>
 						</Interval>
 						<Interval>
 							<Start>259200000</Start>
-							<End>345540000</End>
-							<Value>true</Value>
+							<End>280800000</End>
+							<Value>1</Value>
 						</Interval>
 						<Interval>
 							<Start>345600000</Start>
-							<End>431940000</End>
-							<Value>true</Value>
+							<End>367200000</End>
+							<Value>1</Value>
 						</Interval>
 						<Interval>
 							<Start>432000000</Start>
-							<End>518340000</End>
-							<Value>true</Value>
+							<End>453600000</End>
+							<Value>1</Value>
 						</Interval>
 					</Intervals>
 					<Exceptions>
@@ -50957,7 +50829,167 @@ shift_start();]]></Action>
 							<Annually>true</Annually>
 							<Start>1525046400000</Start>
 							<End>1525132800000</End>
-							<Value>false</Value>
+							<Value>0</Value>
+						</Exception>
+					</Exceptions>
+				</Schedule>
+				<Schedule>
+					<Id>1527165354461</Id>
+					<Name><![CDATA[shift2]]></Name>
+					<X>290</X><Y>-40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ValueType>integer</ValueType>
+					<UnitType><![CDATA[NONE]]></UnitType>
+					<DefaultValue>1</DefaultValue>
+					<RepresentationMode>intervals</RepresentationMode>
+					<RepresentationType>week</RepresentationType>
+					<FirstDayOfWeek>sunday</FirstDayOfWeek>
+					<TimeUnitsInterval>hours</TimeUnitsInterval>
+					<RepeatTime>86400000</RepeatTime>
+					<RepeatTimeInterval>days</RepeatTimeInterval>
+					<IsSnapTo>false</IsSnapTo>
+					<SnapTo>1524067332101</SnapTo>
+					<SnapToTimeUnits>minutes</SnapToTimeUnits>
+					<AllDayExceptionMode>true</AllDayExceptionMode>
+					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
+					<IntervalsQuery>
+						<TableReference>
+						</TableReference>
+							<StartColumnReference>
+							</StartColumnReference>
+							<EndColumnReference>
+							</EndColumnReference>
+							<ValueColumnReference>
+							</ValueColumnReference>
+					</IntervalsQuery>
+					<Action><![CDATA[if (shifts_amount > 0)
+	shift_stop();
+//if (shifts_amount == 1){
+//	for (int line = 0 ; line < 6 ; line++)
+//		arranque[line] = 1;
+//}
+shift_start();]]></Action>
+					<Intervals>
+						<Interval>
+							<Start>21600000</Start>
+							<End>50400000</End>
+							<Value>1</Value>
+						</Interval>
+						<Interval>
+							<Start>108000000</Start>
+							<End>136800000</End>
+							<Value>1</Value>
+						</Interval>
+						<Interval>
+							<Start>194400000</Start>
+							<End>223200000</End>
+							<Value>1</Value>
+						</Interval>
+						<Interval>
+							<Start>280800000</Start>
+							<End>309600000</End>
+							<Value>1</Value>
+						</Interval>
+						<Interval>
+							<Start>367200000</Start>
+							<End>396000000</End>
+							<Value>1</Value>
+						</Interval>
+						<Interval>
+							<Start>453600000</Start>
+							<End>482400000</End>
+							<Value>1</Value>
+						</Interval>
+					</Intervals>
+					<Exceptions>
+						<Exception>
+							<Annually>true</Annually>
+							<Start>1525046400000</Start>
+							<End>1525132800000</End>
+							<Value>0</Value>
+						</Exception>
+					</Exceptions>
+				</Schedule>
+				<Schedule>
+					<Id>1527165354474</Id>
+					<Name><![CDATA[shift3]]></Name>
+					<X>290</X><Y>-20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ValueType>integer</ValueType>
+					<UnitType><![CDATA[NONE]]></UnitType>
+					<DefaultValue>1</DefaultValue>
+					<RepresentationMode>intervals</RepresentationMode>
+					<RepresentationType>week</RepresentationType>
+					<FirstDayOfWeek>sunday</FirstDayOfWeek>
+					<TimeUnitsInterval>hours</TimeUnitsInterval>
+					<RepeatTime>86400000</RepeatTime>
+					<RepeatTimeInterval>days</RepeatTimeInterval>
+					<IsSnapTo>false</IsSnapTo>
+					<SnapTo>1524067332101</SnapTo>
+					<SnapToTimeUnits>minutes</SnapToTimeUnits>
+					<AllDayExceptionMode>true</AllDayExceptionMode>
+					<LoadFromDatabase><![CDATA[false]]></LoadFromDatabase>
+					<IntervalsQuery>
+						<TableReference>
+						</TableReference>
+							<StartColumnReference>
+							</StartColumnReference>
+							<EndColumnReference>
+							</EndColumnReference>
+							<ValueColumnReference>
+							</ValueColumnReference>
+					</IntervalsQuery>
+					<Action><![CDATA[if (shifts_amount > 0)
+	shift_stop();
+//if (shifts_amount == 1){
+//	for (int line = 0 ; line < 6 ; line++)
+//		arranque[line] = 1;
+//}
+shift_start();]]></Action>
+					<Intervals>
+						<Interval>
+							<Start>50400000</Start>
+							<End>86400000</End>
+							<Value>1</Value>
+						</Interval>
+						<Interval>
+							<Start>136800000</Start>
+							<End>172800000</End>
+							<Value>1</Value>
+						</Interval>
+						<Interval>
+							<Start>223200000</Start>
+							<End>259200000</End>
+							<Value>1</Value>
+						</Interval>
+						<Interval>
+							<Start>309600000</Start>
+							<End>345600000</End>
+							<Value>1</Value>
+						</Interval>
+						<Interval>
+							<Start>396000000</Start>
+							<End>432000000</End>
+							<Value>1</Value>
+						</Interval>
+						<Interval>
+							<Start>482400000</Start>
+							<End>518400000</End>
+							<Value>1</Value>
+						</Interval>
+					</Intervals>
+					<Exceptions>
+						<Exception>
+							<Annually>true</Annually>
+							<Start>1525046400000</Start>
+							<End>1525132800000</End>
+							<Value>0</Value>
 						</Exception>
 					</Exceptions>
 				</Schedule>
@@ -50966,6 +50998,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1527165019916</Id>
 					<Name><![CDATA[datasetProd]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-450</X><Y>170</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -50988,6 +51021,7 @@ shift_start();]]></Action>
     			<DataSet>
 					<Id>1527165019919</Id>
 					<Name><![CDATA[datasetBO]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-450</X><Y>150</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -51429,9 +51463,6 @@ main.add_acc(inventory,agent.code,agent.real_demand);
 					<Parameters>
 						<Parameter>
 							<Name><![CDATA[initiallyBlocked]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[true]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[mode]]></Name>
@@ -52562,7 +52593,7 @@ lote_gross_time = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[capacityDefinitionType]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.CAPACITY_SCHEDULE_ON_OFF]]></Code>
+								<Code><![CDATA[self.CAPACITY_SHIFT_GROUP_SCHEDULES]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -52580,7 +52611,7 @@ lote_gross_time = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[capacityScheduleOnOff]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[shift3]]></Code>
+								<Code><![CDATA[get_schedules(2)]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -52589,7 +52620,7 @@ lote_gross_time = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[shiftGroupSchedules]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[{ shift2, shift3 }]]></Code>
+								<Code><![CDATA[schedules]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -52824,7 +52855,7 @@ lote_gross_time = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[capacityDefinitionType]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.CAPACITY_SCHEDULE_ON_OFF]]></Code>
+								<Code><![CDATA[self.CAPACITY_SHIFT_GROUP_SCHEDULES]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -52850,6 +52881,9 @@ lote_gross_time = 0;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[shiftGroupSchedules]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[schedules]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[shiftGroupSizes]]></Name>
@@ -53083,7 +53117,7 @@ lote_gross_time = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[capacityDefinitionType]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.CAPACITY_SCHEDULE_ON_OFF]]></Code>
+								<Code><![CDATA[self.CAPACITY_SHIFT_GROUP_SCHEDULES]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -53109,6 +53143,9 @@ lote_gross_time = 0;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[shiftGroupSchedules]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[schedules]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[shiftGroupSizes]]></Name>
@@ -53568,7 +53605,7 @@ lote_gross_time = 0;]]></Code>
 						<Parameter>
 							<Name><![CDATA[capacityDefinitionType]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[self.CAPACITY_SCHEDULE_ON_OFF]]></Code>
+								<Code><![CDATA[self.CAPACITY_SHIFT_GROUP_SCHEDULES]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -53594,6 +53631,9 @@ lote_gross_time = 0;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[shiftGroupSchedules]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[schedules]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[shiftGroupSizes]]></Name>
