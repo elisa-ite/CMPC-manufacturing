@@ -1681,7 +1681,6 @@ if( month < 12 ){
 				<Event>
 					<Id>1527010868914</Id>
 					<Name><![CDATA[last_event]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-80</X><Y>770</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3376,7 +3375,6 @@ deleteFrom(db_sku_logistics_out)
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1527010932077</Id>
 					<Name><![CDATA[calc_sales]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-230</X><Y>990</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3393,7 +3391,6 @@ return sales;]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1527015607648</Id>
 					<Name><![CDATA[calc_prod_cost_temp]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-230</X><Y>1010</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3425,7 +3422,6 @@ return sales;]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1527016900188</Id>
 					<Name><![CDATA[calc_prod_cost_harmonized]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-230</X><Y>1030</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3457,7 +3453,6 @@ country_order[2] = country_of_prod_3;]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1527090366617</Id>
 					<Name><![CDATA[calc_log_cost]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-230</X><Y>970</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3475,7 +3470,6 @@ country_order[2] = country_of_prod_3;]]></Body>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1527091412715</Id>
 					<Name><![CDATA[calc_inv_value]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-230</X><Y>950</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
