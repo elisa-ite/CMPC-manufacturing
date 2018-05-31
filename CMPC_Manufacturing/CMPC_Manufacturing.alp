@@ -680,10 +680,34 @@ clear_tables();]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[36000]]></Code>
+							<Code><![CDATA[80000]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1527686620793</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1527784639339</Id>
+					<Name><![CDATA[cfa_initial]]></Name>
+					<X>-230</X><Y>640</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0.004]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1527784639337</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -2583,6 +2607,7 @@ mac.costosCO_CO = line.get(db_lines.costos_co_co);
 mac.merma = line.get(db_lines.merma);
 mac.plant = plant;
 mac.fill_schedules();
+mac.cfa = cfa_initial;
 
 for (int i = 0 ; i < rows_sku.size() ; i++){
 	Tuple sku_rate = rows_sku.get(i);
@@ -2608,7 +2633,11 @@ for (int i = 0 ; i < rows_sku.size() ; i++){
 		for (String s : mac.prod_att_monthly.keySet()){				
 			double prod_att = mac.prod_att_monthly.get(s)[m-1];
 			if (prod_att != 0){
-				double cfa_calc = calc_cfa(plant,mac.name,m);
+				double cfa_calc = 0;
+				if (m == 1)
+					cfa_calc = cfa_initial;
+				else
+					cfa_calc = calc_cfa(plant,mac.name,m-1);
 				double vcost = get_sku(s).total_variable_cost*(1+mac.merma);
 				insertInto(db_sku_out)
 				 .columns(
@@ -3190,6 +3219,9 @@ int m = cal.get(Calendar.MONTH)+1;
 Warehouse whouse = get_warehouse(t.destination);
 for (String s : t.inventory.keySet()){
 	double travel_val = t.calc_travel_cost(s);
+	add_acc(whouse.inventory,s,t.inventory.get(s));
+	add_acc(whouse.inventory_value,s,t.inventory.get(s));
+	
 	add_acc(whouse.get_prod_recieved(m),s,t.inventory.get(s));
 	add_acc(whouse.get_prod_value(m),s,travel_val);
 	
@@ -3218,6 +3250,9 @@ int m = cal.get(Calendar.MONTH)+1;
 Warehouse whouse = get_warehouse(c.destination);
 for (String s : c.inventory.keySet()){
 	double travel_val = c.calc_travel_cost(s);
+	add_acc(whouse.inventory,s,c.inventory.get(s));
+	add_acc(whouse.inventory_value,s,c.inventory.get(s));
+	
 	add_acc(whouse.get_prod_recieved(m),s,c.inventory.get(s));
 	add_acc(whouse.get_prod_value(m),s,travel_val);
 	
@@ -12971,7 +13006,7 @@ del Producto]]></Text>
 					<X>-190</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[LinkedHashMap<String,Integer>]]></Type>        
@@ -12986,7 +13021,7 @@ del Producto]]></Text>
 					<X>-190</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double[]]]></Type>        
@@ -13049,7 +13084,7 @@ del Producto]]></Text>
 					<X>-300</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13064,7 +13099,7 @@ del Producto]]></Text>
 					<X>-300</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13079,7 +13114,7 @@ del Producto]]></Text>
 					<X>-300</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13094,7 +13129,7 @@ del Producto]]></Text>
 					<X>-300</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13109,7 +13144,7 @@ del Producto]]></Text>
 					<X>-300</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13124,7 +13159,7 @@ del Producto]]></Text>
 					<X>-300</X><Y>460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13139,7 +13174,7 @@ del Producto]]></Text>
 					<X>-300</X><Y>480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13154,7 +13189,7 @@ del Producto]]></Text>
 					<X>-300</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13199,7 +13234,7 @@ del Producto]]></Text>
 					<X>-180</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13214,7 +13249,7 @@ del Producto]]></Text>
 					<X>-180</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13229,7 +13264,7 @@ del Producto]]></Text>
 					<X>-180</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13244,7 +13279,7 @@ del Producto]]></Text>
 					<X>-180</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13259,7 +13294,7 @@ del Producto]]></Text>
 					<X>-180</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13274,7 +13309,7 @@ del Producto]]></Text>
 					<X>-180</X><Y>460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13289,7 +13324,7 @@ del Producto]]></Text>
 					<X>-180</X><Y>480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13304,7 +13339,7 @@ del Producto]]></Text>
 					<X>-180</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
 						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
@@ -13764,6 +13799,39 @@ for (Machine mac : machine_population){
 	ds_mac_activity.get(mac.name).add(time(),mac.input_count);
 }]]></Action>
 				</Event>
+				<Event>
+					<Id>1527783964110</Id>
+					<Name><![CDATA[refresh_ds_fast]]></Name>
+					<X>720</X><Y>-240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1527753600000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[4]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[for (Machine mac : machine_population){
+	ds_mac_activity.get(mac.name).add(time(),mac.activity_var);
+}]]></Action>
+				</Event>
 			</Events>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -13994,7 +14062,7 @@ container.travel_time = main.travel_time(container.origin,container.destination)
 					<X>-300</X><Y>310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[country]]></Name>
@@ -14023,7 +14091,7 @@ container.travel_time = main.travel_time(container.origin,container.destination)
 					<X>-300</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[l]]></Name>
@@ -14038,6 +14106,9 @@ if (c != country) {
 	main.add_acc(get_inventory_to(c),l.code,l.real_demand);
 	main.add_acc(get_inventory_val_to(c),l.code,calc_prod_value(l));
 } else {
+	main.add_acc(main.get_warehouse(c).inventory,l.code,l.real_demand);
+	main.add_acc(main.get_warehouse(c).inventory_value,l.code,calc_prod_value(l));
+	
 	main.add_acc(main.get_warehouse(c).get_prod_recieved(m),l.code,l.real_demand);
 	main.add_acc(main.get_warehouse(c).get_prod_value(m),l.code,calc_prod_value(l));
 }]]></Body>
@@ -14090,7 +14161,7 @@ return l.real_demand*(cfa_value + vcost);]]></Body>
 					<X>-190</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[name]]></Name>
@@ -14120,7 +14191,7 @@ return machine_population.get(index);]]></Body>
 					<X>-180</X><Y>310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[country]]></Name>
@@ -14242,7 +14313,7 @@ monthly_collection.put(l,monthly_array);]]></Body>
 					<X>-300</X><Y>330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[c]]></Name>
@@ -14262,7 +14333,7 @@ return val;]]></Body>
 					<X>-180</X><Y>330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Parameter>
 						<Name><![CDATA[c]]></Name>
@@ -16434,8 +16505,8 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<Persistent>true</Persistent>
 					<ShowLegend>true</ShowLegend>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
-					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
-					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
+					<TimeWindowUnits>MONTH</TimeWindowUnits>
+					<TimeWindowExpression><![CDATA[1]]></TimeWindowExpression>
 					<DefaultColor/>
 					<Bars>
 						<Direction>RIGHT</Direction>
@@ -16454,8 +16525,13 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					</ColorConditionExpression>
 					<ColorConditionExpression>
 						<CompareType>EQUALS</CompareType>
-						<Color>-16776961</Color>
+						<Color>-10496</Color>
 						<Expression><![CDATA[3]]></Expression>
+					</ColorConditionExpression>
+					<ColorConditionExpression>
+						<CompareType>LESS</CompareType>
+						<Color>-16776961</Color>
+						<Expression><![CDATA[4]]></Expression>
 					</ColorConditionExpression>
 					<LabelFormat>MMM</LabelFormat>
     			</TimeColorChart>
@@ -19299,6 +19375,21 @@ return travel_sku + customs_fee;]]></Body>
 					</Properties>
 
 				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1527789293735</Id>
+					<Name><![CDATA[warehousing_cost]]></Name>
+					<X>20</X><Y>410</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
 			</Variables>
 			<Events>
 				<Event>
@@ -19333,13 +19424,13 @@ return travel_sku + customs_fee;]]></Body>
 					<Action><![CDATA[Calendar cal = Calendar.getInstance();
 cal.setTime(date());
 int m = cal.get(Calendar.MONTH)+1;
-
+/*
 // Cargo el inventario del mes
 for (String s : get_prod_recieved(m).keySet()){
 	main.add_acc(inventory,s,get_prod_recieved(m).get(s));
 	main.add_acc(inventory_value,s,get_prod_value(m).get(s));
 }
-
+*/
 // Retiro la demanda
 for (String s : inventory.keySet()){
 	double demand = main.get_sku(s).demand[m-1];
@@ -19369,7 +19460,45 @@ for (String s : inventory.keySet()){
 	inventory_value.put(s,value);
 }
 
-refresh_inventory_table(m);]]></Action>
+refresh_inventory_table(m);
+
+for (String s : warehousing_cost.keySet()){
+	warehousing_cost.put(s,0.0);
+}]]></Action>
+				</Event>
+				<Event>
+					<Id>1527789259152</Id>
+					<Name><![CDATA[daily_warehousing]]></Name>
+					<X>160</X><Y>390</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>false</OccurrenceAtTime>
+						<OccurrenceDate>1546383600000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[for (String s : inventory.keySet()){
+	double ware_cost = calc_ware_cost(inventory.get(s));
+	main.add_acc(warehousing_cost,s,ware_cost);
+}]]></Action>
 				</Event>
 			</Events>
 			<Functions>
@@ -19455,9 +19584,11 @@ refresh_inventory_table(m);]]></Action>
 					</Parameter>
 					<Body><![CDATA[double units = 0;
 double value = 0;
+double warehousing = 0;
 for (String sku : inventory.keySet()){
 	units += inventory.get(sku);
 	value += inventory_value.get(sku);
+	warehousing += warehousing_cost.get(sku);
 }
 double units_it = 0;
 double value_it = 0;
@@ -19494,7 +19625,8 @@ insertInto(db_inventory_out)
  	db_inventory_out.inventory_value,
  	db_inventory_out.in_transit_qty,
  	db_inventory_out.in_transit_value,
- 	db_inventory_out.waiting_qty
+ 	db_inventory_out.waiting_qty,
+  	db_inventory_out.warehousing_cost
  	)
  .values(
  	country,
@@ -19503,7 +19635,8 @@ insertInto(db_inventory_out)
  	value,
  	units_it,
  	value_it,
- 	waiting_delivery
+ 	waiting_delivery,
+ 	warehousing
  	)
 .execute();]]></Body>
 				</Function>
@@ -19571,6 +19704,40 @@ for (String sku : inventory.keySet()){
 	val += inventory.get(sku);
 }
 return val;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1527789667134</Id>
+					<Name><![CDATA[get_db_warehousing_cost]]></Name>
+					<X>160</X><Y>410</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[String str_country = main.code2country(country);
+
+SelectQuery cost = selectFrom( warehousing_costs ).
+      where( warehousing_costs.country.eq( str_country ) );
+      
+return cost.uniqueResult(warehousing_costs.daily_cost);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1527789984090</Id>
+					<Name><![CDATA[calc_ware_cost]]></Name>
+					<X>160</X><Y>430</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[units]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Body><![CDATA[double country_cost = get_db_warehousing_cost();
+return units * country_cost;]]></Body>
 				</Function>
 			</Functions>
 			<AgentLinks>
@@ -20171,7 +20338,7 @@ return val;]]></Body>
 					<X>620</X><Y>-240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
@@ -21150,164 +21317,6 @@ return val;]]></Body>
 					</Points>
 				</Connector>
 			</Connectors>
-			<StatechartElements>
-				<StatechartElement Class="State" ParentState="ROOT_NODE">
-					<Id>1527775856451</Id>
-					<Name><![CDATA[waiting]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>60</X><Y>280</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties Width="64.9" Height="30">
-						<FillColor/>
-					</Properties>
-				</StatechartElement>
-				<StatechartElement Class="State" ParentState="ROOT_NODE">
-					<Id>1527776004454</Id>
-					<Name><![CDATA[starting]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>170</X><Y>280</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties Width="92.715" Height="30">
-						<FillColor/>
-					</Properties>
-				</StatechartElement>
-				<StatechartElement Class="State" ParentState="ROOT_NODE">
-					<Id>1527776023732</Id>
-					<Name><![CDATA[co_format]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>170</X><Y>340</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties Width="100" Height="30">
-						<FillColor/>
-					</Properties>
-				</StatechartElement>
-				<StatechartElement Class="State" ParentState="ROOT_NODE">
-					<Id>1527776041560</Id>
-					<Name><![CDATA[co_packsize]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>170</X><Y>380</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties Width="100" Height="30">
-						<FillColor/>
-					</Properties>
-				</StatechartElement>
-				<StatechartElement Class="State" ParentState="ROOT_NODE">
-					<Id>1527776064875</Id>
-					<Name><![CDATA[producing]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>300</X><Y>340</Y>
-					<Label><X>10</X><Y>10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties Width="100" Height="30">
-						<FillColor/>
-					</Properties>
-				</StatechartElement>
-				<StatechartElement Class="FinalState" ParentState="ROOT_NODE">
-					<Id>1527777920706</Id>
-					<Name><![CDATA[finalState]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>280</X><Y>460</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Properties>	
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
-					<Id>1527775839173</Id>
-					<Name><![CDATA[activity]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>59.10000000000001</X><Y>250</Y>
-					<Label><X>5</X><Y>-10</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>50</Y></Point>
-					</Points>
-					<Properties Target="1527775856451">
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
-					<Id>1527775943502</Id>
-					<Name><![CDATA[transition]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>124.07300000000001</X><Y>300</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>45</X><Y>0</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1527775856451" Target="1527776004454" Trigger="timeout">
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
-					<Id>1527777983004</Id>
-					<Name><![CDATA[transition1]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>262</X><Y>300</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<Points>
-						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>88</X><Y>0</Y></Point>
-						<Point><X>88</X><Y>40</Y></Point>
-					</Points>
-					<IconOffset>20.0</IconOffset>
-					<Properties Source="1527776004454" Target="1527776064875" Trigger="timeout">
-						<Timeout Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
-						</Timeout>
-						<Condition><![CDATA[true]]></Condition>
-						<Rate Class="CodeUnitValue">
-							<Code><![CDATA[1]]></Code>
-							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
-						</Rate>
-						<MessageType><![CDATA[Object]]></MessageType>
-						<DefaultTransition>true</DefaultTransition>
-						<FilterType><![CDATA[unconditionally]]></FilterType>
-						<EqualsExpression><![CDATA["text"]]></EqualsExpression>
-						<SatisfiesExpression><![CDATA[true]]></SatisfiesExpression>
-					</Properties>	
-				</StatechartElement>
-			</StatechartElements>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -22474,7 +22483,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
 								<Code><![CDATA[fill_monthly(net_times_monthly,agent.code,lote_net_time);
-fill_monthly(gross_times_monthly,agent.code,lote_gross_time);]]></Code>
+fill_monthly(gross_times_monthly,agent.code,lote_gross_time);
+
+activity_var = 0;]]></Code>
 							</Value>
 						</Parameter>
 					</Parameters>
@@ -22976,6 +22987,9 @@ lote_gross_time = 0;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_var = 2;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -23205,7 +23219,9 @@ lote_gross_time = 0;]]></Code>
 							<Value Class="CodeValue">
 								<Code><![CDATA[last_packsize = agent.packsize;
 last_size = agent.size;
-last_type = agent.type;]]></Code>
+last_type = agent.type;
+
+activity_var = 4;]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -24219,6 +24235,9 @@ last_type = agent.type;]]></Code>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[activity_var = 3;]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[onExitTimeout]]></Name>
@@ -31596,6 +31615,9 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				<Parameter>
 					<ParameterName><![CDATA[lote_size]]></ParameterName>
 				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[cfa_initial]]></ParameterName>
+				</Parameter>
 			</Parameters>			
 			<PresentationProperties 
 				EnableAdaptiveFrameManagement="true" 
@@ -33265,6 +33287,10 @@ copyToClipboard( s );]]></ActionCode>
 				<Id>1527686620795</Id>
 				<Type>FIXED</Type>
 			</Parameter>
+			<Parameter>	
+				<Id>1527784639339</Id>
+				<Type>FIXED</Type>
+			</Parameter>
 			<ObjectiveFunctionCode><![CDATA[root.roa]]></ObjectiveFunctionCode>
 			<Objective>MAXIMIZE</Objective>
 			<AfterIterationCode><![CDATA[if (isBestSolutionFeasible()) {
@@ -33389,6 +33415,9 @@ if (bestInfeasibleObjective != Double.NEGATIVE_INFINITY) {
 			<FreeformParamValue>	
 				<Id>1527686620795</Id>
 			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527784639339</Id>
+			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1523364409951</Id>
 				<Type>FIXED</Type>
@@ -33456,6 +33485,10 @@ if (bestInfeasibleObjective != Double.NEGATIVE_INFINITY) {
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
 				<Id>1527686620795</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527784639339</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<ModelTimeProperties>
