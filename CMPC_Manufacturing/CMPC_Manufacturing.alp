@@ -2631,8 +2631,8 @@ for (int i = 0 ; i < rows_sku.size() ; i++){
 				 	m,
 				 	plant.country,
 				 	mac.name,
-				 	mac.shifts_amount,
 				 	mac.mano_obraD_cant_turno,
+				 	mac.sku_rates.get(s),
 				 	prod_att,
 				 	0,
 				 	mac.gross_times_monthly.get(s)[m-1],
@@ -19342,7 +19342,7 @@ for (String s : get_prod_recieved(m).keySet()){
 
 // Retiro la demanda
 for (String s : inventory.keySet()){
-	double demand = main.get_sku(s).real_demand[m-1];
+	double demand = main.get_sku(s).demand[m-1];
 	double in_inventory = inventory.get(s);
 	double remaining_inv = in_inventory - demand;
 	if (remaining_inv < 0){
@@ -20171,7 +20171,7 @@ return val;]]></Body>
 					<X>620</X><Y>-240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
@@ -21254,8 +21254,8 @@ return val;]]></Body>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Points>
-						<Point><X>0.8269999999999982</X><Y>0</Y></Point>
-						<Point><X>45.92699999999999</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>45</X><Y>0</Y></Point>
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1527775856451" Target="1527776004454" Trigger="timeout">
@@ -21285,7 +21285,7 @@ return val;]]></Body>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Points>
-						<Point><X>0.7150000000000318</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>88</X><Y>0</Y></Point>
 						<Point><X>88</X><Y>40</Y></Point>
 					</Points>
