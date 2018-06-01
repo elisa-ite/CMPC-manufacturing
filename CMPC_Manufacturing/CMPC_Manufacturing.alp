@@ -1874,6 +1874,7 @@ s.sku_packsize = 		rows.get( db_sku.sku_packsize );
 s.sku_size = 			rows.get( db_sku.sku_size );
 s.sku_size_code =		size_str2int(s.sku_size );
 s.inventory = 			rows.get( db_sku.inventory );
+s.inventory_value = 	rows.get( db_sku.inventory_value );
 s.sku_model = 			rows.get( db_sku.sku_model );
 s.sku_type = 			rows.get( db_sku.sku_type );
 s.packs_per_packet = 	rows.get( db_sku.packs_per_packet );
@@ -1884,7 +1885,11 @@ s.price =				rows.get( db_sku.price );
 s.cfam1 =				rows.get( db_sku.cfam1 );
 s.days_on_hand = 		rows.get( db_sku.days_on_hand );
 s.co_size =				rows.get( db_sku.co_size );
-s.co_packsize = 		rows.get( db_sku.co_packsize );]]></Body>
+s.co_packsize = 		rows.get( db_sku.co_packsize );
+
+Warehouse whouse = get_warehouse(s.countryD_code);
+add_acc(whouse.inventory,s.code,s.inventory);
+add_acc(whouse.inventory_value,s.code,s.inventory_value);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -6121,6 +6126,9 @@ return cfa_calc;]]></Body>
 						<Parameter>
 							<Name><![CDATA[co_packsize]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[inventory_value]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -10111,7 +10119,7 @@ return cfa_calc;]]></Body>
 					<X>2440</X><Y>42</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<AsObject>true</AsObject>
@@ -10133,7 +10141,7 @@ return cfa_calc;]]></Body>
 					<X>2440</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<AsObject>true</AsObject>
@@ -10274,7 +10282,7 @@ return cfa_calc;]]></Body>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
 						<Title><![CDATA[]]></Title>
-					<Expression><![CDATA[datasetMonthlyInvValueBR]]></Expression>
+					<Expression><![CDATA[datasetMonthlyInvQtyBR]]></Expression>
 					<Color>-2354116</Color>
 					<Expression2><![CDATA[0]]></Expression2>
 					<Expression2Flag>false</Expression2Flag>
@@ -10340,7 +10348,7 @@ return cfa_calc;]]></Body>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
 						<Title><![CDATA[]]></Title>
-					<Expression><![CDATA[datasetMonthlyInvValueCH]]></Expression>
+					<Expression><![CDATA[datasetMonthlyInvQtyCH]]></Expression>
 					<Color>-6632142</Color>
 					<Expression2><![CDATA[0]]></Expression2>
 					<Expression2Flag>false</Expression2Flag>
@@ -10406,7 +10414,7 @@ return cfa_calc;]]></Body>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
 						<Title><![CDATA[]]></Title>
-					<Expression><![CDATA[datasetMonthlyInvValueCO]]></Expression>
+					<Expression><![CDATA[datasetMonthlyInvQtyCO]]></Expression>
 					<Color>-10496</Color>
 					<Expression2><![CDATA[0]]></Expression2>
 					<Expression2Flag>false</Expression2Flag>
@@ -10472,7 +10480,7 @@ return cfa_calc;]]></Body>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
 						<Title><![CDATA[]]></Title>
-					<Expression><![CDATA[datasetMonthlyInvValueEC]]></Expression>
+					<Expression><![CDATA[datasetMonthlyInvQtyEC]]></Expression>
 					<Color>-29696</Color>
 					<Expression2><![CDATA[0]]></Expression2>
 					<Expression2Flag>false</Expression2Flag>
@@ -10538,7 +10546,7 @@ return cfa_calc;]]></Body>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
 						<Title><![CDATA[]]></Title>
-					<Expression><![CDATA[datasetMonthlyInvValueME]]></Expression>
+					<Expression><![CDATA[datasetMonthlyInvQtyME]]></Expression>
 					<Color>-16776961</Color>
 					<Expression2><![CDATA[0]]></Expression2>
 					<Expression2Flag>false</Expression2Flag>
@@ -10604,7 +10612,7 @@ return cfa_calc;]]></Body>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
 						<Title><![CDATA[]]></Title>
-					<Expression><![CDATA[datasetMonthlyInvValuePE]]></Expression>
+					<Expression><![CDATA[datasetMonthlyInvQtyPE]]></Expression>
 					<Color>-32944</Color>
 					<Expression2><![CDATA[0]]></Expression2>
 					<Expression2Flag>false</Expression2Flag>
@@ -10670,7 +10678,7 @@ return cfa_calc;]]></Body>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
 						<Title><![CDATA[]]></Title>
-					<Expression><![CDATA[datasetMonthlyInvValueUR]]></Expression>
+					<Expression><![CDATA[datasetMonthlyInvQtyUR]]></Expression>
 					<Color>-16744448</Color>
 					<Expression2><![CDATA[0]]></Expression2>
 					<Expression2Flag>false</Expression2Flag>
@@ -10817,6 +10825,7 @@ return cfa_calc;]]></Body>
     			<TimeStackChart>
 					<Id>1527693324822</Id>
 					<Name><![CDATA[chart]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>2440</X><Y>100</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -12668,6 +12677,30 @@ return cfa_calc;]]></Body>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1527613105775</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1527882536413</Id>
+					<Name><![CDATA[inventory_value]]></Name>
+					<X>170</X><Y>350</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1527882536411</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
