@@ -2002,7 +2002,7 @@ for (Machine line : plant.machine_population){
 	capacity *= working_days_year;
 	capacity /= 12;
 	
-	line.line_capacity = (int)(capacity);
+	line.line_capacity = (int)(capacity)*1.1;
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -2243,7 +2243,9 @@ Para cada mes:
 	}
 	
 	for (int i = 0 ; i < 8 ; i++){
-		load_production_line(m,country_order[i]);
+		if (country_order[i] != 0){
+			load_production_line(m,country_order[i]);
+		}
 	}
 	
 	// Para los SKU sin linea asignada
@@ -10825,7 +10827,6 @@ return cfa_calc;]]></Body>
     			<TimeStackChart>
 					<Id>1527693324822</Id>
 					<Name><![CDATA[chart]]></Name>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>2440</X><Y>100</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -10848,10 +10849,10 @@ return cfa_calc;]]></Body>
 					<BackgroundColor>-2556733</BackgroundColor>
 					<BorderColor/>
 					<ChartArea>
-						<XOffset>50</XOffset>
+						<XOffset>90</XOffset>
 						<YOffset>30</YOffset>
-						<Width>560</Width>
-						<Height>540</Height>
+						<Width>520</Width>
+						<Height>500</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -10859,7 +10860,7 @@ return cfa_calc;]]></Body>
 					<Legend>
 						<Place>SOUTH</Place>
 						<TextColor>-16777216</TextColor>
-						<Size>30</Size>
+						<Size>60</Size>
 					</Legend>
 					<Labels>
 						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
@@ -14452,7 +14453,7 @@ for (Machine mac : machine_population){
 	Color col = new Color(r,g,b);
 	
 	machine_occupancy_chart.addDataSet(ds_mac_input.get(mac.name),mac.name,col);
-	machine_activity_chart.addDataSet(ds_mac_activity.get(mac.name),mac.name);
+	//machine_activity_chart.addDataSet(ds_mac_activity.get(mac.name),mac.name);
 	
 	r = (r + 100) % 255;
 	g = (g + 42) % 255;
@@ -14877,9 +14878,6 @@ for (Machine mac : machine_population){
 					<Parameters>
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
-							<Value Class="CodeValue">
-								<Code><![CDATA[units[main.month-1] += agent.real_demand;]]></Code>
-							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[locationType]]></Name>
@@ -15236,7 +15234,8 @@ for (Machine mac : machine_population){
 						<Parameter>
 							<Name><![CDATA[onEnter]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[load_inventory(agent);]]></Code>
+								<Code><![CDATA[load_inventory(agent);
+units[main.month-1] += agent.real_demand;]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -16535,6 +16534,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
     			<TimeColorChart>
 					<Id>1527775391349</Id>
 					<Name><![CDATA[machine_activity_chart]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>1050</X><Y>0</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
