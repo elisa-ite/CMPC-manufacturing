@@ -2046,7 +2046,7 @@ for (Machine line : plant.machine_population){
 	capacity *= working_days_year;
 	capacity /= 12;
 	
-	line.line_capacity = (int)(capacity);
+	line.line_capacity = (int)(capacity)*1.18;
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -6406,6 +6406,9 @@ return cfa_calc;]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[loteSize]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[lote_size]]></Code>
+							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[month]]></Name>
