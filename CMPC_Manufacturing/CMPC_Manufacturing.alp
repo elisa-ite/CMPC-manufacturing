@@ -2046,7 +2046,12 @@ for (Machine line : plant.machine_population){
 	capacity *= working_days_year;
 	capacity /= 12;
 	
-	line.line_capacity = (int)(capacity)*1.18;
+	double coef = 0;
+	if (country_demand_equals_producer)
+		coef = 1.18;
+	else
+		coef = 1;
+	line.line_capacity = (int)(capacity)*coef;
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -2852,7 +2857,7 @@ for( int i = 0 ; i < lotees ; i++ ){
 	n.size = s.sku_size_code;
 	n.packsize = s.sku_packsize;
 	n.line = "None";
-	n.real_demand = (int)s.loteSize;
+	n.real_demand = (int)lote_size;
 	n.sku_demand = s.real_demand[m-1];
 	//n.loteNumber = i+1;
 	n.country_of_production = 0;
