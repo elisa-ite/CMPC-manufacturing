@@ -860,6 +860,30 @@ clear_tables();]]></StartupCode>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1528300505463</Id>
+					<Name><![CDATA[reverse_line_order]]></Name>
+					<X>-230</X><Y>330</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[boolean]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1528300505461</Id>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1522612589504</Id>
 					<Name><![CDATA[tempLotes]]></Name>
@@ -2485,8 +2509,12 @@ LinkedHashMap<String,Double> line_capacities = new LinkedHashMap();
 for (Machine mac : plant.machine_population)
 	line_capacities.put(mac.name,mac.line_capacity);
 
-for (int k = plant.machine_population.size()-1 ; k >= 0 ; k--){
-	Machine mac = plant.machine_population.get(k);
+int machine_am = plant.machine_population.size();
+for (int k = machine_am-1 ; k >= 0 ; k--){
+	Machine mac = plant.machine_population.get(machine_am-k-1);
+	if (reverse_line_order)
+		mac = plant.machine_population.get(k);
+
 	boolean first_in_line = true;
 	int last_packsize = 0;
 	int last_size = 0;
@@ -28357,6 +28385,21 @@ activity_var = 4;]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1528300569837</Id>
+					<Name><![CDATA[reverse_line_orderv]]></Name>
+					<X>-290</X><Y>10</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[true]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 			</Variables>
 
 			<Shapes>
@@ -29974,7 +30017,7 @@ activity_var = 4;]]></Code>
 				<Rectangle>
 					<Id>1527693378695</Id>
 					<Name><![CDATA[rectangle2]]></Name>
-					<X>20</X><Y>460</Y>
+					<X>20</X><Y>450</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -29989,7 +30032,7 @@ activity_var = 4;]]></Code>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
 					<Width>330</Width>
-					<Height>120</Height>
+					<Height>130</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -32802,7 +32845,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1527693378957</Id>
 					<Name><![CDATA[checkbox1]]></Name>
-					<X>30</X><Y>470</Y>
+					<X>30</X><Y>450</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -33249,6 +33292,29 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 						<Link>pallets_per_truckv</Link>
 					</ExtendedProperties>
 				</Control>
+				<Control Type="CheckBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1528300547158</Id>
+					<Name><![CDATA[checkbox2]]></Name>
+					<X>30</X><Y>470</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="290" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LabelText><![CDATA[Reverse line order]]></LabelText>
+						<LinkTo>true</LinkTo>
+						<Link>reverse_line_orderv</Link>
+	 				</ExtendedProperties>
+				</Control>
 			</Controls>
 
 			<Parameters>			
@@ -33358,6 +33424,12 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<ParameterName><![CDATA[country_of_prod_8]]></ParameterName>
 					<ParameterValue Class="CodeValue">
 						<Code><![CDATA[countryP8]]></Code>
+					</ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[reverse_line_order]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[reverse_line_orderv]]></Code>
 					</ParameterValue>
 				</Parameter>
 			</Parameters>			
@@ -34911,6 +34983,10 @@ copyToClipboard( s );]]></ActionCode>
 				<Id>1528223849478</Id>
 				<Type>FIXED</Type>
 			</Parameter>
+			<Parameter>	
+				<Id>1528300505463</Id>
+				<Type>FIXED</Type>
+			</Parameter>
 			<ObjectiveFunctionCode><![CDATA[root.roa]]></ObjectiveFunctionCode>
 			<Objective>MAXIMIZE</Objective>
 			<AfterIterationCode><![CDATA[if (isBestSolutionFeasible()) {
@@ -35165,6 +35241,9 @@ if (bestInfeasibleObjective != Double.NEGATIVE_INFINITY) {
 			<FreeformParamValue>	
 				<Id>1528223849478</Id>
 			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528300505463</Id>
+			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1523364409951</Id>
 				<Type>FIXED</Type>
@@ -35260,6 +35339,10 @@ if (bestInfeasibleObjective != Double.NEGATIVE_INFINITY) {
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
 				<Id>1528223849478</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528300505463</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<ModelTimeProperties>
