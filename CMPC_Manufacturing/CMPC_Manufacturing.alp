@@ -2175,7 +2175,7 @@ add_acc(whouse.inventory_value,s.code,s.inventory_value);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
+					<ReturnType><![CDATA[int]]></ReturnType>
 					<Id>1523362834653</Id>
 					<Name><![CDATA[estimate_prod_capacity]]></Name>
 					<Description><![CDATA[Calcula para cada país cual es la capacidad máxima y lo guarda en dos parámetros calculados: capacidad según escenario: 
@@ -2512,6 +2512,8 @@ for (Machine mac : plant.machine_population)
 int machine_am = plant.machine_population.size();
 for (int k = machine_am-1 ; k >= 0 ; k--){
 	Machine mac = plant.machine_population.get(machine_am-k-1);
+	double line_capacity = est_prod_cap_line(mac);
+	
 	if (reverse_line_order)
 		mac = plant.machine_population.get(k);
 
@@ -2539,12 +2541,13 @@ for (int k = machine_am-1 ; k >= 0 ; k--){
 		// If it fits, it produces
 		if ((mac.sku_rates.containsKey(l.code)) &&
 			(cost_of_producing > 0) && 
-			(line_capacities.get(mac.name) - (cost_of_producing+cost_delay) > 0) &&
+			(line_capacity - (cost_of_producing+cost_delay) > 0) &&
 			(!country_demand_equals_producer || country == l.countryD_code)
 			){
 
 			first_in_line = false;
-			add_acc(line_capacities, mac.name, -1*(cost_of_producing+cost_delay));
+			//add_acc(line_capacities, mac.name, -1*(cost_of_producing+cost_delay));
+			line_capacity -= (cost_of_producing+cost_delay);
 			
 			last_packsize = l.packsize;
 			last_size = l.size;
@@ -2560,10 +2563,53 @@ for (int k = machine_am-1 ; k >= 0 ; k--){
 			//System.out.println(cost_of_producing + " no entra en l: " + line + " cap: " + line_capacities[line]);
 		}
 	}
+	
+	for (int i = 0 ; i < sorted_lotes.size() ; i++){
+		Lote l = sorted_lotes.get(i);
+		// Calculate cost of producing one item
+		double cost_of_producing = calculate_prod_hours(m,l,mac);
+		
+		double delay_packsize = l.co_packsize*60*800*plant.efficiency;
+		double delay_size = l.co_size*60*800*plant.efficiency;
+		
+		double cost_delay = 0;
+		if (!first_in_line){
+			if (l.packsize != last_packsize)
+				cost_delay += delay_packsize;
+			if (l.size != last_size)
+				cost_delay += delay_size;
+		}
+		
+		// If it fits, it produces
+		if ((mac.sku_rates.containsKey(l.code)) &&
+			(cost_of_producing > 0) && 
+			(line_capacity - (cost_of_producing+cost_delay) > 0) &&
+			(!country_demand_equals_producer || country == l.countryD_code)
+			){
+
+			first_in_line = false;
+			//add_acc(line_capacities, mac.name, -1*(cost_of_producing+cost_delay));
+			line_capacity -= (cost_of_producing+cost_delay);
+			
+			last_packsize = l.packsize;
+			last_size = l.size;
+			
+			int month_prod = estimate_month_of_production_lote(l,country,m+1);
+			
+			l.line = mac.name;
+			l.country_of_production = country;
+			lotes_to_remove.add(l);
+			l.rate = mac.sku_rates.get(l.code);
+			add_acc(pc_inventory,l.code,l.real_demand);
+		} else {
+			//System.out.println(cost_of_producing + " no entra en l: " + line + " cap: " + line_capacities[line]);
+		}
+	}
+	
 	for (Lote l : lotes_to_remove){
 		sorted_lotes.remove(l);
 	}
-	mac.line_capacity_post = line_capacities.get(mac.name);
+	mac.line_capacity_post = line_capacity;
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -3982,6 +4028,40 @@ return cfa_calc;]]></Body>
 			  	return ds_sales_ar;
 			 }
 }]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1528301869553</Id>
+					<Name><![CDATA[est_prod_cap_line]]></Name>
+					<Description><![CDATA[Calcula para cada país cual es la capacidad máxima y lo guarda en dos parámetros calculados: capacidad según escenario: 
+- capmaxhoras
+- capmax en cantidad numérica de pañales a producir
+Dentro del agente: productionLine, para cada línea. ]]></Description>
+					<X>-650</X><Y>-20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[line]]></Name>
+						<Type><![CDATA[Machine]]></Type>
+					</Parameter>
+					<Body><![CDATA[double capacity = 800;
+capacity *= line.efficiency;
+capacity *= 60;
+capacity *= line.shifts_amount;
+capacity *= line.shift_duration;
+capacity *= working_days_year;
+capacity /= 12;
+
+double coef = 0;
+if (country_demand_equals_producer)
+	coef = 1.18;
+else
+	coef = 1;
+	
+return capacity*coef;]]></Body>
 				</Function>
 			</Functions>
 			<AnalysisData>
@@ -17622,7 +17702,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 				<Text>
 					<Id>1527773896679</Id>
 					<Name><![CDATA[text69]]></Name>
-					<X>640</X><Y>280</Y>
+					<X>110</X><Y>720</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17668,9 +17748,9 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
-						<XOffset>104.762</XOffset>
+						<XOffset>40</XOffset>
 						<YOffset>30</YOffset>
-						<Width>865.238</Width>
+						<Width>930</Width>
 						<Height>350</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
@@ -28141,7 +28221,7 @@ activity_var = 4;]]></Code>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[boolean]]></Type>        
 						<InitialValue Class="CodeValue">
-							<Code><![CDATA[false]]></Code>
+							<Code><![CDATA[true]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
