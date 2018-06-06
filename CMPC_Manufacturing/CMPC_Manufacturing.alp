@@ -2485,7 +2485,8 @@ LinkedHashMap<String,Double> line_capacities = new LinkedHashMap();
 for (Machine mac : plant.machine_population)
 	line_capacities.put(mac.name,mac.line_capacity);
 
-for (Machine mac : plant.machine_population){
+for (int k = plant.machine_population.size()-1 ; k >= 0 ; k--){
+	Machine mac = plant.machine_population.get(k);
 	boolean first_in_line = true;
 	int last_packsize = 0;
 	int last_size = 0;
@@ -2534,6 +2535,7 @@ for (Machine mac : plant.machine_population){
 	for (Lote l : lotes_to_remove){
 		sorted_lotes.remove(l);
 	}
+	mac.line_capacity_post = line_capacities.get(mac.name);
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -17616,7 +17618,7 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
     			<TimeStackChart>
 					<Id>1527701840312</Id>
 					<Name><![CDATA[chart]]></Name>
-					<X>440</X><Y>280</Y>
+					<X>0</X><Y>720</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -17633,14 +17635,14 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>604.762</Width>
+					<Width>1000</Width>
 					<Height>488.462</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>104.762</XOffset>
 						<YOffset>30</YOffset>
-						<Width>469.99999999999994</Width>
+						<Width>865.238</Width>
 						<Height>350</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
@@ -17742,14 +17744,14 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>480</Width>
+					<Width>1000</Width>
 					<Height>387.692</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>40</XOffset>
 						<YOffset>30</YOffset>
-						<Width>410</Width>
+						<Width>930</Width>
 						<Height>280</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
@@ -22047,6 +22049,21 @@ return acc;]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1528296628615</Id>
+					<Name><![CDATA[line_capacity_post]]></Name>
+					<X>-190</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[0]]></Code>
 						</InitialValue>
