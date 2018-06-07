@@ -1931,7 +1931,7 @@ calc_log_cost();
 calc_inv_value();
 calc_whousing_cost();
 
-roa = (total_inv_value + sales_earnings - (total_prod_cost + total_logistic_cost + total_warehousing_cost)) 
+roa = ( sales_earnings - (total_prod_cost + total_logistic_cost + total_warehousing_cost)) 
 	   / (active_assets + total_inv_value);
 
 
