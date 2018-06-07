@@ -2661,7 +2661,10 @@ for (int k = machine_am-1 ; k >= 0 ; k--){
 					</Parameter>
 					<Body><![CDATA[double demand = 0;
 if (line.sku_rates.containsKey(l.code)){
-	demand = l.real_demand * (800/line.sku_rates.get(l.code)) * pc_coef_rate;
+	if (country_demand_equals_producer)
+		demand = l.real_demand * (800/line.sku_rates.get(l.code)) * pc_coef_rate;
+	else
+		demand = l.real_demand * (800/line.sku_rates.get(l.code));
 }
 return demand;]]></Body>
 				</Function>
