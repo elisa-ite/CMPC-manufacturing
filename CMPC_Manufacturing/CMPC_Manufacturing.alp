@@ -1931,7 +1931,7 @@ calc_log_cost();
 calc_inv_value();
 calc_whousing_cost();
 
-roa = (sales_earnings - (total_prod_cost + total_logistic_cost + total_warehousing_cost)) 
+roa = (total_inv_value + sales_earnings - (total_prod_cost + total_logistic_cost + total_warehousing_cost)) 
 	   / (active_assets + total_inv_value);
 
 
@@ -11106,9 +11106,9 @@ return capacity*coef;]]></Body>
 					<ShowLegend>false</ShowLegend>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
 					<TimeWindowUnits>DAY</TimeWindowUnits>
-					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
-					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
-					<VerScaleType>AUTO</VerScaleType>
+					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
+					<VerScaleType>FIXED</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -11172,9 +11172,9 @@ return capacity*coef;]]></Body>
 					<ShowLegend>false</ShowLegend>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
 					<TimeWindowUnits>DAY</TimeWindowUnits>
-					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
-					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
-					<VerScaleType>AUTO</VerScaleType>
+					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
+					<VerScaleType>FIXED</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -11238,9 +11238,9 @@ return capacity*coef;]]></Body>
 					<ShowLegend>false</ShowLegend>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
 					<TimeWindowUnits>DAY</TimeWindowUnits>
-					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
-					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
-					<VerScaleType>AUTO</VerScaleType>
+					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
+					<VerScaleType>FIXED</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -11304,9 +11304,9 @@ return capacity*coef;]]></Body>
 					<ShowLegend>false</ShowLegend>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
 					<TimeWindowUnits>DAY</TimeWindowUnits>
-					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
-					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
-					<VerScaleType>AUTO</VerScaleType>
+					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
+					<VerScaleType>FIXED</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -11370,9 +11370,9 @@ return capacity*coef;]]></Body>
 					<ShowLegend>false</ShowLegend>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
 					<TimeWindowUnits>DAY</TimeWindowUnits>
-					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
-					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
-					<VerScaleType>AUTO</VerScaleType>
+					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
+					<VerScaleType>FIXED</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -11436,9 +11436,9 @@ return capacity*coef;]]></Body>
 					<ShowLegend>false</ShowLegend>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
 					<TimeWindowUnits>DAY</TimeWindowUnits>
-					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
-					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
-					<VerScaleType>AUTO</VerScaleType>
+					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
+					<VerScaleType>FIXED</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -11502,9 +11502,9 @@ return capacity*coef;]]></Body>
 					<ShowLegend>false</ShowLegend>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
 					<TimeWindowUnits>DAY</TimeWindowUnits>
-					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
-					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
-					<VerScaleType>AUTO</VerScaleType>
+					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
+					<VerScaleType>FIXED</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -11568,9 +11568,9 @@ return capacity*coef;]]></Body>
 					<ShowLegend>false</ShowLegend>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
 					<TimeWindowUnits>DAY</TimeWindowUnits>
-					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
-					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
-					<VerScaleType>AUTO</VerScaleType>
+					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
+					<VerScaleType>FIXED</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -15580,7 +15580,7 @@ if (c != country) {
 						<Type><![CDATA[Lote]]></Type>
 					</Parameter>
 					<Body><![CDATA[double cfa_value = get_mac(l.line).cfa;
-double vcost = main.get_sku(l.code).total_variable_cost*get_mac(l.line).merma;
+double vcost = main.get_sku(l.code).total_variable_cost*(get_mac(l.line).merma+1);
 
 return l.real_demand*(cfa_value + vcost);]]></Body>
 				</Function>
@@ -35970,10 +35970,10 @@ copyToClipboard( s );]]></ActionCode>
 				<Id>1528375037636</Id>
 				<Type>CONTINUOUS</Type>
 				<Min Class="CodeValue">
-					<Code><![CDATA[0.5]]></Code>
+					<Code><![CDATA[0.2]]></Code>
 				</Min>
 				<Max Class="CodeValue">
-					<Code><![CDATA[2]]></Code>
+					<Code><![CDATA[2.5]]></Code>
 				</Max>
 				<Suggested Class="CodeValue">
 					<Code><![CDATA[1.383]]></Code>
@@ -35983,10 +35983,10 @@ copyToClipboard( s );]]></ActionCode>
 				<Id>1528375061743</Id>
 				<Type>CONTINUOUS</Type>
 				<Min Class="CodeValue">
-					<Code><![CDATA[0.5]]></Code>
+					<Code><![CDATA[0.2]]></Code>
 				</Min>
 				<Max Class="CodeValue">
-					<Code><![CDATA[2]]></Code>
+					<Code><![CDATA[2.5]]></Code>
 				</Max>
 				<Suggested Class="CodeValue">
 					<Code><![CDATA[1.327]]></Code>
