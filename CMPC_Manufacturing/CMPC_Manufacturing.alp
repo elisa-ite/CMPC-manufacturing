@@ -2901,6 +2901,7 @@ Machine mac = plant.add_machine_population();
 
 mac.name = name_of_line;
 mac.country = plant.country;
+mac.efficiency = plant.efficiency;
 mac.shifts_amount = line.get(db_lines.shifts);
 mac.mano_obraD_cant_turno = line.get(db_lines.mano_obra_d_cant_turno);
 mac.mano_obraD_costo_turno = line.get(db_lines.mano_obra_d_costo_turno);
@@ -23455,7 +23456,8 @@ double cfa_calc = mod +
  			 	  rcho[m-1] +
  			 	  gastos_generales_mes;
 cfa_calc = cfa_calc / prod_att;
-cfa = cfa_calc;
+if (prod_att != 0)
+	cfa = cfa_calc;
 return cfa_calc;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
