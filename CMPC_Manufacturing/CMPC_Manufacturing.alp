@@ -2149,6 +2149,7 @@ s.cfam1 =				rows.get( db_sku.cfam1 );
 s.days_on_hand = 		rows.get( db_sku.days_on_hand );
 s.co_size =				rows.get( db_sku.co_size );
 s.co_packsize = 		rows.get( db_sku.co_packsize );
+s.producer_country = 	rows.get( db_sku.producer_country );
 
 Warehouse whouse = get_warehouse(s.countryD_code);
 add_acc(whouse.inventory,s.code,s.inventory);
@@ -2609,7 +2610,8 @@ for (int k = machine_am-1 ; k >= 0 ; k--){
 		if ((mac.sku_rates.containsKey(l.code)) &&
 			(cost_of_producing > 0) && 
 			(line_capacity - (cost_of_producing+cost_delay) > 0) &&
-			(!country_demand_equals_producer || country == l.countryD_code)
+			(!country_demand_equals_producer || country == l.countryD_code) &&
+			(l.producer_country == country || l.producer_country == 0)
 			){
 
 			first_in_line = false;
@@ -3102,6 +3104,7 @@ for( int i = 0 ; i < lotees ; i++ ){
 	n.co_size = s.co_size;
 	n.co_packsize = s.co_packsize;
 	n.type = s.sku_type;
+	n.producer_country = s.producer_country;
 
 	sorted_lotes.add(n);
 }]]></Body>
@@ -6863,6 +6866,9 @@ return capacity*pc_coef_cap;]]></Body>
 						<Parameter>
 							<Name><![CDATA[inventory_value]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[producer_country]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -7123,6 +7129,9 @@ return capacity*pc_coef_cap;]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[type]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[producer_country]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -14067,6 +14076,30 @@ return capacity*pc_coef_cap;]]></Body>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1528387291084</Id>
+					<Name><![CDATA[producer_country]]></Name>
+					<X>180</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1528387291082</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
 			<AgentLinks>
 				<AgentLink>
@@ -18941,6 +18974,32 @@ toDate( getYear(), getMonth()+1, getDayOfMonth(), 00, 00, 00 )) - 1]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1527776671763</Id>
+							<Label><![CDATA[type1]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1528387420548</Id>
+					<Name><![CDATA[producer_country]]></Name>
+					<Description><![CDATA[Tipo de SKu]]></Description>
+					<X>60</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1528387420546</Id>
 							<Label><![CDATA[type1]]></Label>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
