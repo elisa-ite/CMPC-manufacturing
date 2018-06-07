@@ -419,6 +419,21 @@ clear_tables();]]></StartupCode>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1528388921685</Id>
+					<Name><![CDATA[total_produced]]></Name>
+					<X>-230</X><Y>950</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1523364409951</Id>
 					<Name><![CDATA[sorting_arrangement]]></Name>
@@ -1930,6 +1945,7 @@ calc_prod_cost_harmonized();
 calc_log_cost();
 calc_inv_value();
 calc_whousing_cost();
+total_produced = calc_produced();
 
 roa = ( sales_earnings - (total_prod_cost + total_logistic_cost + total_warehousing_cost)) 
 	   / (active_assets + total_inv_value);
@@ -1953,7 +1969,31 @@ insertInto(db_param_var_out)
  	lote_size
  	)
 .execute();
-]]></Action>
+
+insertInto(db_outputs)
+ .columns(
+ 	db_outputs.roa,
+ 	db_outputs.assets,
+ 	db_outputs.demand_satisfied,
+ 	db_outputs.sales,
+ 	db_outputs.total_production_cost,
+ 	db_outputs.total_logistic_cost,
+ 	db_outputs.total_inventory_value,
+ 	db_outputs.total_produced,
+ 	db_outputs.total_warehousing_cost
+ 	)
+ .values(
+ 	roa,
+ 	active_assets,
+ 	total_sales_satisfied,
+ 	sales_earnings,
+ 	total_prod_cost,
+ 	total_logistic_cost,
+ 	total_inv_value,
+ 	total_produced,
+ 	total_warehousing_cost
+ 	)
+.execute();]]></Action>
 				</Event>
 				<Event>
 					<Id>1527693324967</Id>
@@ -4085,6 +4125,22 @@ capacity *= working_days_year;
 capacity /= 12;
 	
 return capacity*pc_coef_cap;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1528388975286</Id>
+					<Name><![CDATA[calc_produced]]></Name>
+					<X>-230</X><Y>970</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[double produced = 0;
+for (String s : prod_att_total.keySet()){
+	produced += prod_att_total.get(s);
+}
+return produced;]]></Body>
 				</Function>
 			</Functions>
 			<AnalysisData>
@@ -10015,7 +10071,7 @@ return capacity*pc_coef_cap;]]></Body>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
 					<Width>420</Width>
-					<Height>470</Height>
+					<Height>590</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1644806</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -10216,7 +10272,7 @@ return capacity*pc_coef_cap;]]></Body>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-12566464</Color>
-					<Text><![CDATA[DEMAND SATISFIED ( Units)]]></Text>
+					<Text><![CDATA[DEMAND SATISFIED (Units)]]></Text>
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>14</Size>
@@ -11061,6 +11117,142 @@ return capacity*pc_coef_cap;]]></Body>
 					<Latitude>0.0</Latitude>
 					<Longitude>0.0</Longitude>
 				</EmbeddedObjectPresentation>
+				<Rectangle>
+					<Id>1528388782819</Id>
+					<Name><![CDATA[rectangle14]]></Name>
+					<X>15</X><Y>660</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>136.164</Width>
+					<Height>40</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1528388782821</Id>
+					<Name><![CDATA[text54]]></Name>
+					<X>24.055</X><Y>680</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12566464</Color>
+					<Text><![CDATA[]]></Text>
+					<TextCode><![CDATA[total_warehousing_cost]]></TextCode>
+					<Font>
+						<Name>Calibri</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1528388782823</Id>
+					<Name><![CDATA[text55]]></Name>
+					<X>204.055</X><Y>680</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12566464</Color>
+					<Text><![CDATA[TOTAL WAREHOUSING COST]]></Text>
+					<Font>
+						<Name>Helvetica</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1528388782825</Id>
+					<Name><![CDATA[rectangle15]]></Name>
+					<X>15</X><Y>720</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>136.164</Width>
+					<Height>40</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1528388782827</Id>
+					<Name><![CDATA[text56]]></Name>
+					<X>24.055</X><Y>740</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12566464</Color>
+					<Text><![CDATA[]]></Text>
+					<TextCode><![CDATA[total_produced]]></TextCode>
+					<Font>
+						<Name>Calibri</Name>
+						<Size>14</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1528388782829</Id>
+					<Name><![CDATA[text57]]></Name>
+					<X>204.055</X><Y>740</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12566464</Color>
+					<Text><![CDATA[TOTAL PRODUCED (Units)]]></Text>
+					<Font>
+						<Name>Helvetica</Name>
+						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Shapes>
 			<Charts>
     			<TimePlot>
@@ -27255,6 +27447,10 @@ activity_var = 4;]]></Code>
 			<TableReference>
 				<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
 				<ClassName><![CDATA[db_sku_logistics_out]]></ClassName>
+			</TableReference>
+			<TableReference>
+				<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
+				<ClassName><![CDATA[db_outputs]]></ClassName>
 			</TableReference>
 		</ExportSettings>
 	</Database>
