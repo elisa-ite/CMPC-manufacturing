@@ -2245,6 +2245,7 @@ add_acc(whouse.inventory_value,s.code,s.inventory_value);]]></Body>
 - capmaxhoras
 - capmax en cantidad numérica de pañales a producir
 Dentro del agente: productionLine, para cada línea. ]]></Description>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>-660</X><Y>-120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2661,10 +2662,7 @@ for (int k = machine_am-1 ; k >= 0 ; k--){
 					</Parameter>
 					<Body><![CDATA[double demand = 0;
 if (line.sku_rates.containsKey(l.code)){
-	if (country_demand_equals_producer)
-		demand = l.real_demand * (800/line.sku_rates.get(l.code)) * pc_coef_rate;
-	else
-		demand = l.real_demand * (800/line.sku_rates.get(l.code));
+	demand = l.real_demand * (800/line.sku_rates.get(l.code)) * pc_coef_rate;
 }
 return demand;]]></Body>
 				</Function>
@@ -2679,8 +2677,8 @@ return demand;]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[for (int c = 1 ; c < 9 ; c++)
-	estimate_prod_capacity(c);
+					<Body><![CDATA[//for (int c = 1 ; c < 9 ; c++)
+//	estimate_prod_capacity(c);
 
 create_prod_order();]]></Body>
 				</Function>
@@ -4082,14 +4080,8 @@ capacity *= line.shifts_amount;
 capacity *= line.shift_duration;
 capacity *= working_days_year;
 capacity /= 12;
-
-double coef = 0;
-if (country_demand_equals_producer)
-	coef = pc_coef_cap;
-else
-	coef = 1;
 	
-return capacity*coef;]]></Body>
+return capacity*pc_coef_cap;]]></Body>
 				</Function>
 			</Functions>
 			<AnalysisData>
