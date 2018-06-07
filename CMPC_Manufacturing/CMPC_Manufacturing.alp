@@ -410,7 +410,7 @@ clear_tables();]]></StartupCode>
 					<X>-670</X><Y>50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
@@ -920,7 +920,7 @@ clear_tables();]]></StartupCode>
 					<X>-670</X><Y>10</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
 						<Type><![CDATA[double]]></Type>
@@ -944,7 +944,7 @@ clear_tables();]]></StartupCode>
 					<X>-670</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
+					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
 						<Type><![CDATA[double]]></Type>
@@ -1928,7 +1928,7 @@ if( month < 12 ){
 							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
 						</Rate>
 						<OccurrenceAtTime>false</OccurrenceAtTime>
-						<OccurrenceDate>1577833200000</OccurrenceDate>
+						<OccurrenceDate>1577835000000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
 							<Code><![CDATA[0]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
@@ -2033,7 +2033,7 @@ insertInto(db_outputs)
 				<Event>
 					<Id>1527693324972</Id>
 					<Name><![CDATA[refresh_plant_ds_start]]></Name>
-					<X>2450</X><Y>-130</Y>
+					<X>2440</X><Y>-110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -11304,7 +11304,7 @@ return produced;]]></Body>
 					<TimeWindowUnits>DAY</TimeWindowUnits>
 					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
 					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
-					<VerScaleType>FIXED</VerScaleType>
+					<VerScaleType>AUTO</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -11370,7 +11370,7 @@ return produced;]]></Body>
 					<TimeWindowUnits>DAY</TimeWindowUnits>
 					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
 					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
-					<VerScaleType>FIXED</VerScaleType>
+					<VerScaleType>AUTO</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -11436,7 +11436,7 @@ return produced;]]></Body>
 					<TimeWindowUnits>DAY</TimeWindowUnits>
 					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
 					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
-					<VerScaleType>FIXED</VerScaleType>
+					<VerScaleType>AUTO</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -11502,7 +11502,7 @@ return produced;]]></Body>
 					<TimeWindowUnits>DAY</TimeWindowUnits>
 					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
 					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
-					<VerScaleType>FIXED</VerScaleType>
+					<VerScaleType>AUTO</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -11568,7 +11568,7 @@ return produced;]]></Body>
 					<TimeWindowUnits>DAY</TimeWindowUnits>
 					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
 					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
-					<VerScaleType>FIXED</VerScaleType>
+					<VerScaleType>AUTO</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -11634,7 +11634,7 @@ return produced;]]></Body>
 					<TimeWindowUnits>DAY</TimeWindowUnits>
 					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
 					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
-					<VerScaleType>FIXED</VerScaleType>
+					<VerScaleType>AUTO</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -11700,7 +11700,7 @@ return produced;]]></Body>
 					<TimeWindowUnits>DAY</TimeWindowUnits>
 					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
 					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
-					<VerScaleType>FIXED</VerScaleType>
+					<VerScaleType>AUTO</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -11766,7 +11766,7 @@ return produced;]]></Body>
 					<TimeWindowUnits>DAY</TimeWindowUnits>
 					<VerScaleFromExpression><![CDATA[1000000]]></VerScaleFromExpression>
 					<VerScaleToExpression><![CDATA[50000000]]></VerScaleToExpression>
-					<VerScaleType>FIXED</VerScaleType>
+					<VerScaleType>AUTO</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
@@ -14674,7 +14674,7 @@ del Producto]]></Text>
 					<X>-190</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double[]]]></Type>        
@@ -14689,7 +14689,7 @@ del Producto]]></Text>
 					<X>-190</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>false</PresentationFlag>
+					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double[]]]></Type>        
@@ -27378,28 +27378,10 @@ activity_var = 4;]]></Code>
 			<TableImportSettings>
 				<TableReference>
 					<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
-					<ClassName><![CDATA[db_sku_rates]]></ClassName>
+					<ClassName><![CDATA[customs_fee]]></ClassName>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
-				<ExternalTableName><![CDATA["SKURates"]]></ExternalTableName>
-				<AutoImport>true</AutoImport>
-			</TableImportSettings>
-			<TableImportSettings>
-				<TableReference>
-					<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
-					<ClassName><![CDATA[transfer_type]]></ClassName>
-				</TableReference>
-				<ConnectionIndex>0</ConnectionIndex>
-				<ExternalTableName><![CDATA["Transfer Type"]]></ExternalTableName>
-				<AutoImport>true</AutoImport>
-			</TableImportSettings>
-			<TableImportSettings>
-				<TableReference>
-					<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
-					<ClassName><![CDATA[db_lines]]></ClassName>
-				</TableReference>
-				<ConnectionIndex>0</ConnectionIndex>
-				<ExternalTableName><![CDATA["Lines"]]></ExternalTableName>
+				<ExternalTableName><![CDATA["Tasas Aduaneras"]]></ExternalTableName>
 				<AutoImport>true</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
@@ -27414,19 +27396,46 @@ activity_var = 4;]]></Code>
 			<TableImportSettings>
 				<TableReference>
 					<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
-					<ClassName><![CDATA[customs_fee]]></ClassName>
+					<ClassName><![CDATA[db_sku]]></ClassName>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
-				<ExternalTableName><![CDATA["Tasas Aduaneras"]]></ExternalTableName>
+				<ExternalTableName><![CDATA["SKU"]]></ExternalTableName>
 				<AutoImport>true</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
 				<TableReference>
 					<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
-					<ClassName><![CDATA[db_sku]]></ClassName>
+					<ClassName><![CDATA[db_lines]]></ClassName>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
-				<ExternalTableName><![CDATA["SKU"]]></ExternalTableName>
+				<ExternalTableName><![CDATA["Lines"]]></ExternalTableName>
+				<AutoImport>true</AutoImport>
+			</TableImportSettings>
+			<TableImportSettings>
+				<TableReference>
+					<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
+					<ClassName><![CDATA[warehousing_costs]]></ClassName>
+				</TableReference>
+				<ConnectionIndex>0</ConnectionIndex>
+				<ExternalTableName><![CDATA["Warehousing Cost"]]></ExternalTableName>
+				<AutoImport>true</AutoImport>
+			</TableImportSettings>
+			<TableImportSettings>
+				<TableReference>
+					<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
+					<ClassName><![CDATA[db_sku_rates]]></ClassName>
+				</TableReference>
+				<ConnectionIndex>0</ConnectionIndex>
+				<ExternalTableName><![CDATA["SKURates"]]></ExternalTableName>
+				<AutoImport>true</AutoImport>
+			</TableImportSettings>
+			<TableImportSettings>
+				<TableReference>
+					<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
+					<ClassName><![CDATA[transfer_type]]></ClassName>
+				</TableReference>
+				<ConnectionIndex>0</ConnectionIndex>
+				<ExternalTableName><![CDATA["Transfer Type"]]></ExternalTableName>
 				<AutoImport>true</AutoImport>
 			</TableImportSettings>
 		</ImportSettings>
@@ -27447,10 +27456,6 @@ activity_var = 4;]]></Code>
 			<TableReference>
 				<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
 				<ClassName><![CDATA[db_sku_logistics_out]]></ClassName>
-			</TableReference>
-			<TableReference>
-				<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
-				<ClassName><![CDATA[db_outputs]]></ClassName>
 			</TableReference>
 		</ExportSettings>
 	</Database>
@@ -33654,6 +33659,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1528300547158</Id>
 					<Name><![CDATA[checkbox2]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>30</X><Y>470</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -33831,8 +33837,8 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				<StopOption><![CDATA[Stop at specified date]]></StopOption>
 				<InitialDate><![CDATA[1546300800000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
-				<FinalDate><![CDATA[1577833545000]]></FinalDate>	
-				<FinalTime><![CDATA[525545.75]]></FinalTime>	
+				<FinalDate><![CDATA[1577836545000]]></FinalDate>	
+				<FinalTime><![CDATA[525595.75]]></FinalTime>	
 			</ModelTimeProperties>
 		</SimulationExperiment>
 		<!--   =========  Optimization Experiment   ========  -->
@@ -36291,8 +36297,8 @@ if (bestInfeasibleObjective != Double.POSITIVE_INFINITY) {
 				<StopOption><![CDATA[Stop at specified date]]></StopOption>
 				<InitialDate><![CDATA[1546300800000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
-				<FinalDate><![CDATA[1577833545000]]></FinalDate>	
-				<FinalTime><![CDATA[525545.75]]></FinalTime>	
+				<FinalDate><![CDATA[1577836545000]]></FinalDate>	
+				<FinalTime><![CDATA[525595.75]]></FinalTime>	
 				<StopAfterIterationCount>true</StopAfterIterationCount>
 				<IterationCount>100</IterationCount>
 				<AutomaticStop>true</AutomaticStop>
