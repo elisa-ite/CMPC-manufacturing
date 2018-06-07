@@ -912,7 +912,7 @@ clear_tables();]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.91]]></Code>
+							<Code><![CDATA[1.372]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1528375037634</Id>
@@ -936,7 +936,7 @@ clear_tables();]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.82]]></Code>
+							<Code><![CDATA[1.326]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1528375061741</Id>
@@ -2601,8 +2601,8 @@ for (int k = machine_am-1 ; k >= 0 ; k--){
 			if (l.size != last_size)
 				cost_delay += delay_size;
 		}
-		System.out.println("name: " + mac.name + " lote: " + i + " last_lote: " + sorted_lotes.size());
-		System.out.println("name: " + mac.name + " capacity left: " + line_capacity + " cost: " + (cost_of_producing+cost_delay));
+		//System.out.println("name: " + mac.name + " lote: " + i + " last_lote: " + sorted_lotes.size());
+		//System.out.println("name: " + mac.name + " capacity left: " + line_capacity + " cost: " + (cost_of_producing+cost_delay));
 		
 		// If it fits, it produces
 		if ((mac.sku_rates.containsKey(l.code)) &&
@@ -35853,6 +35853,9 @@ copyToClipboard( s );]]></ActionCode>
 			<Parameter>	
 				<Id>1523364409951</Id>
 				<Type>FIXED</Type>
+				<Value Class="CodeValue">
+					<Code><![CDATA[0]]></Code>
+				</Value>
 			</Parameter>
 			<Parameter>	
 				<Id>1525790540281</Id>
@@ -35967,10 +35970,10 @@ copyToClipboard( s );]]></ActionCode>
 					<Code><![CDATA[0.5]]></Code>
 				</Min>
 				<Max Class="CodeValue">
-					<Code><![CDATA[1.5]]></Code>
+					<Code><![CDATA[2]]></Code>
 				</Max>
 				<Suggested Class="CodeValue">
-					<Code><![CDATA[0.91]]></Code>
+					<Code><![CDATA[1.383]]></Code>
 				</Suggested>
 			</Parameter>
 			<Parameter>	
@@ -35980,10 +35983,10 @@ copyToClipboard( s );]]></ActionCode>
 					<Code><![CDATA[0.5]]></Code>
 				</Min>
 				<Max Class="CodeValue">
-					<Code><![CDATA[1.5]]></Code>
+					<Code><![CDATA[2]]></Code>
 				</Max>
 				<Suggested Class="CodeValue">
-					<Code><![CDATA[0.82]]></Code>
+					<Code><![CDATA[1.327]]></Code>
 				</Suggested>
 			</Parameter>
 			<ObjectiveFunctionCode><![CDATA[root.bo_arg]]></ObjectiveFunctionCode>
@@ -36038,7 +36041,7 @@ if (bestInfeasibleObjective != Double.POSITIVE_INFINITY) {
 				<FinalDate><![CDATA[1577833545000]]></FinalDate>	
 				<FinalTime><![CDATA[525545.75]]></FinalTime>	
 				<StopAfterIterationCount>true</StopAfterIterationCount>
-				<IterationCount>500</IterationCount>
+				<IterationCount>100</IterationCount>
 				<AutomaticStop>true</AutomaticStop>
 			</ModelTimeProperties>
 		</OptimizationExperiment>
