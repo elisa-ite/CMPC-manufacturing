@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.4.201805161715" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.3.201712291513" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMPC_Manufacturing]]></Name>
@@ -2968,10 +2968,9 @@ Para cada mes:
 		}
 		
 		// Optimizador agrupado
-		if (force_grouping){
+		if (force_grouping && s.producer_country == 0){
 			s.producer_country = get_group(s.group);
 		}
-		
 		
 		lotear(s,m);
 	}
