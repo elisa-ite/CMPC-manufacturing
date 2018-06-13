@@ -3416,6 +3416,7 @@ for (int i = 0 ; i < rows_sku.size() ; i++){
 				 	db_sku_out.sku, 
 				 	db_sku_out.mes,
 				 	db_sku_out.country,
+				 	db_sku_out.country_demand,
 				 	db_sku_out.line,
 				 	db_sku_out.fte,
 				 	db_sku_out.efficiency,
@@ -3431,6 +3432,7 @@ for (int i = 0 ; i < rows_sku.size() ; i++){
 				 	s,
 				 	m,
 				 	plant.country,
+				 	get_sku(s).countryD_code,
 				 	mac.name,
 				 	mac.mano_obraD_cant_turno,
 				 	mac.sku_rates.get(s),
@@ -3453,6 +3455,7 @@ for (int i = 0 ; i < rows_sku.size() ; i++){
 				 	db_sku_out.sku, 
 				 	db_sku_out.mes,
 				 	db_sku_out.country,
+				 	db_sku_out.country_demand,
 				 	db_sku_out.line,
 				 	db_sku_out.fte,
 				 	db_sku_out.efficiency,
@@ -3468,6 +3471,7 @@ for (int i = 0 ; i < rows_sku.size() ; i++){
 				 	s,
 				 	m,
 				 	plant.country,
+				 	get_sku(s).countryD_code,
 				 	mac.name,
 				 	0,
 				 	0,
@@ -3492,6 +3496,7 @@ for (int i = 0 ; i < rows_sku.size() ; i++){
 			 	db_sku_out.sku, 
 			 	db_sku_out.mes,
 			 	db_sku_out.country,
+				db_sku_out.country_demand,
 			 	db_sku_out.line,
 			 	db_sku_out.fte,
 			 	db_sku_out.efficiency,
@@ -3507,6 +3512,7 @@ for (int i = 0 ; i < rows_sku.size() ; i++){
 			 	s,
 			 	m,
 			 	plant.country,
+				get_sku(s).countryD_code,
 			 	0,
 			 	0,
 			 	0,
@@ -38235,15 +38241,51 @@ copyToClipboard( s );]]></ActionCode>
 			</Parameter>
 			<Parameter>	
 				<Id>1528904937166</Id>
-				<Type>FIXED</Type>
+				<Type>INTEGER</Type>
+				<Min Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Min>
+				<Max Class="CodeValue">
+					<Code><![CDATA[8]]></Code>
+				</Max>
+				<Step Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Step>
+				<Suggested Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Suggested>
 			</Parameter>
 			<Parameter>	
 				<Id>1528904938908</Id>
-				<Type>FIXED</Type>
+				<Type>INTEGER</Type>
+				<Min Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Min>
+				<Max Class="CodeValue">
+					<Code><![CDATA[8]]></Code>
+				</Max>
+				<Step Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Step>
+				<Suggested Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Suggested>
 			</Parameter>
 			<Parameter>	
 				<Id>1528904940668</Id>
-				<Type>FIXED</Type>
+				<Type>INTEGER</Type>
+				<Min Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Min>
+				<Max Class="CodeValue">
+					<Code><![CDATA[8]]></Code>
+				</Max>
+				<Step Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Step>
+				<Suggested Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Suggested>
 			</Parameter>
 			<Parameter>	
 				<Id>1528904942169</Id>
