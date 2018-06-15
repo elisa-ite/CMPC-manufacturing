@@ -106,6 +106,108 @@ clear_tables();]]></StartupCode>
 			</ScaleRuler>
 			<DefaultGround>1525370914350</DefaultGround>
 			<ConnectionsId>1519223879328</ConnectionsId>
+			<Outputs>
+				<Output>
+					<Id>1529081962261</Id>
+					<Name><![CDATA[contribution_out]]></Name>
+					<X>-390</X><Y>60</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Type><![CDATA[double]]></Type>
+					<UnitType><![CDATA[NONE]]></UnitType>
+					<Value Class="CodeValue">
+						<Code><![CDATA[contribution]]></Code>
+					</Value>
+					<ComputationMoment>ON_SIMULATION_END</ComputationMoment>
+					<ComputationTimeCode Class="CodeUnitValue">
+						<Code><![CDATA[]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</ComputationTimeCode>
+					<ComputationDate>1529136000000</ComputationDate>
+				</Output>
+				<Output>
+					<Id>1529082003938</Id>
+					<Name><![CDATA[demand_sat_out]]></Name>
+					<X>-390</X><Y>90</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Type><![CDATA[double]]></Type>
+					<UnitType><![CDATA[NONE]]></UnitType>
+					<Value Class="CodeValue">
+						<Code><![CDATA[total_sales_satisfied]]></Code>
+					</Value>
+					<ComputationMoment>ON_SIMULATION_END</ComputationMoment>
+					<ComputationTimeCode Class="CodeUnitValue">
+						<Code><![CDATA[]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</ComputationTimeCode>
+					<ComputationDate>1529136000000</ComputationDate>
+				</Output>
+				<Output>
+					<Id>1529082005340</Id>
+					<Name><![CDATA[sales_out]]></Name>
+					<X>-390</X><Y>110</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Type><![CDATA[double]]></Type>
+					<UnitType><![CDATA[NONE]]></UnitType>
+					<Value Class="CodeValue">
+						<Code><![CDATA[sales_earnings]]></Code>
+					</Value>
+					<ComputationMoment>ON_SIMULATION_END</ComputationMoment>
+					<ComputationTimeCode Class="CodeUnitValue">
+						<Code><![CDATA[]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</ComputationTimeCode>
+					<ComputationDate>1529136000000</ComputationDate>
+				</Output>
+				<Output>
+					<Id>1529082006774</Id>
+					<Name><![CDATA[prod_out]]></Name>
+					<X>-390</X><Y>130</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Type><![CDATA[double]]></Type>
+					<UnitType><![CDATA[NONE]]></UnitType>
+					<Value Class="CodeValue">
+						<Code><![CDATA[total_prod_cost]]></Code>
+					</Value>
+					<ComputationMoment>ON_SIMULATION_END</ComputationMoment>
+					<ComputationTimeCode Class="CodeUnitValue">
+						<Code><![CDATA[]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</ComputationTimeCode>
+					<ComputationDate>1529136000000</ComputationDate>
+				</Output>
+				<Output>
+					<Id>1529082008181</Id>
+					<Name><![CDATA[logistic_out]]></Name>
+					<X>-390</X><Y>150</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Type><![CDATA[double]]></Type>
+					<UnitType><![CDATA[NONE]]></UnitType>
+					<Value Class="CodeValue">
+						<Code><![CDATA[total_logistic_cost]]></Code>
+					</Value>
+					<ComputationMoment>ON_SIMULATION_END</ComputationMoment>
+					<ComputationTimeCode Class="CodeUnitValue">
+						<Code><![CDATA[]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</ComputationTimeCode>
+					<ComputationDate>1529136000000</ComputationDate>
+				</Output>
+			</Outputs>
 			<Variables>
 				<Variable Class="PlainVariable">
 					<Id>1527011120080</Id>
@@ -28290,7 +28392,7 @@ activity_var = 4;]]></Code>
 	</Frame>
 	<Database>
 		<Logging>false</Logging>
-		<AutoExport>true</AutoExport>
+		<AutoExport>false</AutoExport>
 		<ImportSettings>
 			<ExternalConnection>
 				<Id>1526060883009</Id>
@@ -28317,7 +28419,7 @@ activity_var = 4;]]></Code>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
 				<ExternalTableName><![CDATA["Transfer Time"]]></ExternalTableName>
-				<AutoImport>true</AutoImport>
+				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
 				<TableReference>
@@ -28326,7 +28428,7 @@ activity_var = 4;]]></Code>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
 				<ExternalTableName><![CDATA["Tasas Aduaneras"]]></ExternalTableName>
-				<AutoImport>true</AutoImport>
+				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
 				<TableReference>
@@ -28335,7 +28437,7 @@ activity_var = 4;]]></Code>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
 				<ExternalTableName><![CDATA["Transfer Cost"]]></ExternalTableName>
-				<AutoImport>true</AutoImport>
+				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
 				<TableReference>
@@ -28344,7 +28446,7 @@ activity_var = 4;]]></Code>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
 				<ExternalTableName><![CDATA["SKU"]]></ExternalTableName>
-				<AutoImport>true</AutoImport>
+				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
 				<TableReference>
@@ -28353,7 +28455,7 @@ activity_var = 4;]]></Code>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
 				<ExternalTableName><![CDATA["Lines"]]></ExternalTableName>
-				<AutoImport>true</AutoImport>
+				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
 				<TableReference>
@@ -28362,7 +28464,7 @@ activity_var = 4;]]></Code>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
 				<ExternalTableName><![CDATA["Warehousing Cost"]]></ExternalTableName>
-				<AutoImport>true</AutoImport>
+				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
 				<TableReference>
@@ -28371,7 +28473,7 @@ activity_var = 4;]]></Code>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
 				<ExternalTableName><![CDATA["SKURates"]]></ExternalTableName>
-				<AutoImport>true</AutoImport>
+				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
 				<TableReference>
@@ -28380,7 +28482,7 @@ activity_var = 4;]]></Code>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
 				<ExternalTableName><![CDATA["Transfer Type"]]></ExternalTableName>
-				<AutoImport>true</AutoImport>
+				<AutoImport>false</AutoImport>
 			</TableImportSettings>
 		</ImportSettings>
 		<ExportSettings>
@@ -29712,6 +29814,21 @@ activity_var = 4;]]></Code>
 						<Type><![CDATA[boolean]]></Type>        
 						<InitialValue Class="CodeValue">
 							<Code><![CDATA[true]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1529087738045</Id>
+					<Name><![CDATA[identifier_v]]></Name>
+					<X>-180</X><Y>230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[String]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA["None"]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
@@ -31679,9 +31796,9 @@ Sorting Arrangement]]></Text>
 					<Color>-16777216</Color>
 					<Text><![CDATA[Active Assets Value]]></Text>
 					<Font>
-						<Name>Calibri</Name>
-						<Size>18</Size>
-						<Style>0</Style>
+						<Name>Helvetica</Name>
+						<Size>14</Size>
+						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
@@ -31960,6 +32077,28 @@ ROA estimates
 						<Name>Calibri</Name>
 						<Size>12</Size>
 						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1529087697910</Id>
+					<Name><![CDATA[text29]]></Name>
+					<X>40</X><Y>345</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Run identifier]]></Text>
+					<Font>
+						<Name>Helvetica</Name>
+						<Size>14</Size>
+						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
@@ -34630,6 +34769,28 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 						<LinkTo>true</LinkTo>
 						<Link>reverse_line_orderv</Link>
 	 				</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1529087697919</Id>
+					<Name><![CDATA[editbox50]]></Name>
+					<X>170</X><Y>335</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="170" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<LinkTo>true</LinkTo>
+						<Link>identifier_v</Link>
+					</ExtendedProperties>
 				</Control>
 			</Controls>
 
@@ -38506,7 +38667,7 @@ if (bestInfeasibleObjective != Double.NEGATIVE_INFINITY) {
 				<FinalDate><![CDATA[1577836799000]]></FinalDate>	
 				<FinalTime><![CDATA[525599.9833333333]]></FinalTime>	
 				<StopAfterIterationCount>true</StopAfterIterationCount>
-				<IterationCount>500</IterationCount>
+				<IterationCount>1500</IterationCount>
 				<AutomaticStop>false</AutomaticStop>
 			</ModelTimeProperties>
 		</OptimizationExperiment>
@@ -38995,5 +39156,6 @@ if (bestInfeasibleObjective != Double.NEGATIVE_INFINITY) {
 		<VersionMinor>0</VersionMinor>
 		<VersionBuild>5</VersionBuild>
     </RequiredLibraryReference>
+	<CloudModelUuid><![CDATA[ee26ebeb-97fe-46f0-8566-a8c1fbb5a04f]]></CloudModelUuid>
 </Model>
 </AnyLogicWorkspace>
