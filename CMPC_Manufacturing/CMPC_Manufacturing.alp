@@ -1478,6 +1478,102 @@ clear_tables();]]></StartupCode>
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1529596731468</Id>
+					<Name><![CDATA[forecast_error_min]]></Name>
+					<X>-740</X><Y>230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1529596731466</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1529671799481</Id>
+					<Name><![CDATA[forecast_error_mode]]></Name>
+					<X>-740</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1529671799479</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1529671807160</Id>
+					<Name><![CDATA[forecast_error_max]]></Name>
+					<X>-740</X><Y>250</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1529671807158</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1529673033920</Id>
+					<Name><![CDATA[supply_variation]]></Name>
+					<X>-740</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1529673033918</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1522612589504</Id>
 					<Name><![CDATA[tempLotes]]></Name>
@@ -2773,7 +2869,10 @@ add_acc(whouse.inventory_value,s.code,s.inventory_value);]]></Body>
 						<Name><![CDATA[i]]></Name>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
-					<Body><![CDATA[s.demand[i] = rows.get(i).get( db_sku.demand );]]></Body>
+					<Body><![CDATA[s.demand_original[i] = rows.get(i).get( db_sku.demand );
+s.demand[i] = 
+	triangular(forecast_error_min, forecast_error_max, forecast_error_mode)
+	* s.demand_original[i];]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
@@ -3069,12 +3168,18 @@ Restar A a X ]]></Description>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
 					<Body><![CDATA[int following_month = month_num % 12;
-double forward_coverage = s.days_on_hand*s.demand[following_month]/30;
+double doh = s.days_on_hand;
+double demand_following_month = s.demand[following_month];
+double forward_coverage = doh*demand_following_month/30;
+double demand_current_month = s.demand[month_num-1];
+
 s.days_of_hand[month_num-1] = forward_coverage;
-s.demand_and_doh[month_num-1] = forward_coverage + s.demand[month_num-1];
-double est_demand = forward_coverage + s.demand[month_num-1] - pc_inventory.get(s.code);
+s.demand_and_doh[month_num-1] = forward_coverage + demand_current_month;
+
+double est_demand = forward_coverage + demand_current_month - pc_inventory.get(s.code);
 if (est_demand < 0)
 	est_demand = 0;
+	
 return est_demand;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -3116,7 +3221,9 @@ Para cada mes:
 			s.producer_country = get_group(s.group);
 		}
 		
-		lotear(s,m);
+		if (bernoulli(1-supply_variation) == 1){
+			lotear(s,m);
+		}
 	}
 	
 	for (int i = 0 ; i < 8 ; i++){
@@ -7562,6 +7669,9 @@ return produced;]]></Body>
 						<Parameter>
 							<Name><![CDATA[group]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[demand_original]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -9787,7 +9897,7 @@ return produced;]]></Body>
 				<Text>
 					<Id>1524075293503</Id>
 					<Name><![CDATA[rdemand_text]]></Name>
-					<X>-540</X><Y>-310</Y>
+					<X>-530</X><Y>-310</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -15247,6 +15357,30 @@ return produced;]]></Body>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1528904716844</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1529669586238</Id>
+					<Name><![CDATA[demand_original]]></Name>
+					<X>170</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[double[]]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new double[12]]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1529669586236</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -29832,6 +29966,66 @@ activity_var = 4;]]></Code>
 						</InitialValue>
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1529672289915</Id>
+					<Name><![CDATA[forecast_error_minv]]></Name>
+					<X>-180</X><Y>320</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1529672307588</Id>
+					<Name><![CDATA[forecast_error_modev]]></Name>
+					<X>-180</X><Y>340</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1529672309179</Id>
+					<Name><![CDATA[forecast_error_maxv]]></Name>
+					<X>-180</X><Y>360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[1]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1529673399443</Id>
+					<Name><![CDATA[supply_variation_v]]></Name>
+					<X>-180</X><Y>390</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 			</Variables>
 
 			<Shapes>
@@ -31417,8 +31611,8 @@ activity_var = 4;]]></Code>
 					<LineColor>-4144960</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>540</Width>
-					<Height>90</Height>
+					<Width>180</Width>
+					<Height>170</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
 					<FillMaterial>null</FillMaterial>
@@ -31487,8 +31681,8 @@ activity_var = 4;]]></Code>
             
 CMPC Manufacturing PRODUCTION & LOGISTICS SCENARIOS]]></Text>
 					<Font>
-						<Name>Calibri</Name>
-						<Size>24</Size>
+						<Name>Helvetica</Name>
+						<Size>20</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -31739,7 +31933,7 @@ Sorting Arrangement]]></Text>
 				<Text>
 					<Id>1527693378789</Id>
 					<Name><![CDATA[doh_text6]]></Name>
-					<X>760</X><Y>180</Y>
+					<X>690</X><Y>180</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -31761,7 +31955,7 @@ Sorting Arrangement]]></Text>
 				<Text>
 					<Id>1527693378796</Id>
 					<Name><![CDATA[doh_text7]]></Name>
-					<X>760</X><Y>220</Y>
+					<X>690</X><Y>220</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -31805,7 +31999,7 @@ Sorting Arrangement]]></Text>
 				<Text>
 					<Id>1527693378823</Id>
 					<Name><![CDATA[doh_text9]]></Name>
-					<X>990</X><Y>180</Y>
+					<X>690</X><Y>260</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -31827,7 +32021,7 @@ Sorting Arrangement]]></Text>
 				<Text>
 					<Id>1527693378830</Id>
 					<Name><![CDATA[doh_text10]]></Name>
-					<X>990</X><Y>220</Y>
+					<X>690</X><Y>300</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -31919,7 +32113,7 @@ Sorting Arrangement]]></Text>
 				<Text>
 					<Id>1527693378870</Id>
 					<Name><![CDATA[text31]]></Name>
-					<X>860</X><Y>110</Y>
+					<X>690</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -31930,10 +32124,10 @@ Sorting Arrangement]]></Text>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-12566464</Color>
-					<Text><![CDATA[LOGISTICS]]></Text>
+					<Text><![CDATA[Logistics]]></Text>
 					<Font>
-						<Name>Calibri</Name>
-						<Size>18</Size>
+						<Name>Helvetica</Name>
+						<Size>16</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -31974,7 +32168,7 @@ Sorting Arrangement]]></Text>
 					<Color>-12566464</Color>
 					<Text><![CDATA[Model Brief]]></Text>
 					<Font>
-						<Name>Calibri</Name>
+						<Name>Helvetica</Name>
 						<Size>18</Size>
 						<Style>1</Style>
 					</Font>
@@ -32098,6 +32292,184 @@ ROA estimates
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>14</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1529672055781</Id>
+					<Name><![CDATA[rectangle5]]></Name>
+					<X>840</X><Y>160</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-4144960</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>130</Width>
+					<Height>140</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1529672055786</Id>
+					<Name><![CDATA[doh_text11]]></Name>
+					<X>910</X><Y>180</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Min]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1529672055788</Id>
+					<Name><![CDATA[doh_text12]]></Name>
+					<X>910</X><Y>260</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Max]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1529672055791</Id>
+					<Name><![CDATA[doh_text13]]></Name>
+					<X>910</X><Y>220</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Mode]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1529672055798</Id>
+					<Name><![CDATA[text37]]></Name>
+					<X>850</X><Y>130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12566464</Color>
+					<Text><![CDATA[Forecast Error]]></Text>
+					<Font>
+						<Name>Helvetica</Name>
+						<Size>16</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1529673065649</Id>
+					<Name><![CDATA[rectangle6]]></Name>
+					<X>1000</X><Y>160</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-4144960</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>120</Width>
+					<Height>140</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1529673065653</Id>
+					<Name><![CDATA[doh_text14]]></Name>
+					<X>1070</X><Y>180</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[.]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>12</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1529673065665</Id>
+					<Name><![CDATA[text38]]></Name>
+					<X>1000</X><Y>130</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AsObject>true</AsObject>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12566464</Color>
+					<Text><![CDATA[Supply Variation]]></Text>
+					<Font>
+						<Name>Helvetica</Name>
+						<Size>16</Size>
 						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
@@ -34634,7 +35006,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1527693379047</Id>
 					<Name><![CDATA[editbox45]]></Name>
-					<X>720</X><Y>170</Y>
+					<X>650</X><Y>170</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -34658,7 +35030,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1527693379052</Id>
 					<Name><![CDATA[editbox46]]></Name>
-					<X>720</X><Y>210</Y>
+					<X>650</X><Y>210</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -34704,7 +35076,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1527693379062</Id>
 					<Name><![CDATA[editbox48]]></Name>
-					<X>950</X><Y>170</Y>
+					<X>650</X><Y>250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -34727,7 +35099,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1527693379068</Id>
 					<Name><![CDATA[editbox49]]></Name>
-					<X>950</X><Y>210</Y>
+					<X>650</X><Y>290</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -34790,6 +35162,102 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 						<Font Name="Dialog" Size="11" Style="0"/>
 						<LinkTo>true</LinkTo>
 						<Link>identifier_v</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1529672055800</Id>
+					<Name><![CDATA[editbox51]]></Name>
+					<X>850</X><Y>170</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="50" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[60]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>forecast_error_minv</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1529672055803</Id>
+					<Name><![CDATA[editbox52]]></Name>
+					<X>850</X><Y>210</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="50" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[60]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>forecast_error_modev</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1529672055805</Id>
+					<Name><![CDATA[editbox53]]></Name>
+					<X>850</X><Y>250</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="50" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[60]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>forecast_error_maxv</Link>
+					</ExtendedProperties>
+				</Control>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1529673065669</Id>
+					<Name><![CDATA[editbox54]]></Name>
+					<X>1010</X><Y>170</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<BasicProperties Width="50" Height="30" 
+				AsObject="true">
+                        <EmbeddedIcon>false</EmbeddedIcon>				
+						<FillColor/>
+						<TextColor/>
+						<Enabled>true</Enabled>
+					</BasicProperties>
+					<ExtendedProperties>
+						<Font Name="Dialog" Size="11" Style="0"/>
+						<MinValue><![CDATA[0]]></MinValue>
+						<MaxValue><![CDATA[1]]></MaxValue>
+						<LinkTo>true</LinkTo>
+						<Link>supply_variation_v</Link>
 					</ExtendedProperties>
 				</Control>
 			</Controls>
@@ -34962,6 +35430,30 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[run_identifier]]></ParameterName>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[forecast_error_min]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[forecast_error_minv]]></Code>
+					</ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[forecast_error_mode]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[forecast_error_modev]]></Code>
+					</ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[forecast_error_max]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[forecast_error_maxv]]></Code>
+					</ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[supply_variation]]></ParameterName>
+					<ParameterValue Class="CodeValue">
+						<Code><![CDATA[supply_variation_v]]></Code>
+					</ParameterValue>
 				</Parameter>
 			</Parameters>			
 			<PresentationProperties 
@@ -36599,6 +37091,22 @@ copyToClipboard( s );]]></ActionCode>
 			</Parameter>
 			<Parameter>	
 				<Id>1529078249644</Id>
+				<Type>FIXED</Type>
+			</Parameter>
+			<Parameter>	
+				<Id>1529596731468</Id>
+				<Type>FIXED</Type>
+			</Parameter>
+			<Parameter>	
+				<Id>1529671799481</Id>
+				<Type>FIXED</Type>
+			</Parameter>
+			<Parameter>	
+				<Id>1529671807160</Id>
+				<Type>FIXED</Type>
+			</Parameter>
+			<Parameter>	
+				<Id>1529673033920</Id>
 				<Type>FIXED</Type>
 			</Parameter>
 			<ObjectiveFunctionCode><![CDATA[root.roa]]></ObjectiveFunctionCode>
@@ -38615,6 +39123,22 @@ copyToClipboard( s );]]></ActionCode>
 					<Code><![CDATA[identifier_v]]></Code>
 				</Value>
 			</Parameter>
+			<Parameter>	
+				<Id>1529596731468</Id>
+				<Type>FIXED</Type>
+			</Parameter>
+			<Parameter>	
+				<Id>1529671799481</Id>
+				<Type>FIXED</Type>
+			</Parameter>
+			<Parameter>	
+				<Id>1529671807160</Id>
+				<Type>FIXED</Type>
+			</Parameter>
+			<Parameter>	
+				<Id>1529673033920</Id>
+				<Type>FIXED</Type>
+			</Parameter>
 			<ObjectiveFunctionCode><![CDATA[root.contribution]]></ObjectiveFunctionCode>
 			<Objective>MAXIMIZE</Objective>
 			<AfterIterationCode><![CDATA[if (isBestSolutionFeasible()) {
@@ -38926,6 +39450,18 @@ if (bestInfeasibleObjective != Double.NEGATIVE_INFINITY) {
 			<FreeformParamValue>	
 				<Id>1529078249644</Id>
 			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1529596731468</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1529671799481</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1529671807160</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1529673033920</Id>
+			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1523364409951</Id>
 				<Type>FIXED</Type>
@@ -39106,6 +39642,22 @@ if (bestInfeasibleObjective != Double.NEGATIVE_INFINITY) {
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
 				<Id>1529078249644</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1529596731468</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1529671799481</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1529671807160</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1529673033920</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<ModelTimeProperties>
