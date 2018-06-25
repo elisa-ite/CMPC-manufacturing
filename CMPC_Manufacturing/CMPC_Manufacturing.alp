@@ -31662,7 +31662,7 @@ activity_var = 4;]]></Code>
 				<Text>
 					<Id>1527693378700</Id>
 					<Name><![CDATA[text26]]></Name>
-					<X>40</X><Y>0</Y>
+					<X>40</X><Y>20</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -31673,9 +31673,7 @@ activity_var = 4;]]></Code>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
 					<Color>-12566464</Color>
-					<Text><![CDATA[STRATEGIC ANALITICAL SIMULATION TOOL 
-            
-CMPC Manufacturing PRODUCTION & LOGISTICS SCENARIOS]]></Text>
+					<Text><![CDATA[MANUFACTURING & LOGISTICS SIMULATOR]]></Text>
 					<Font>
 						<Name>Helvetica</Name>
 						<Size>20</Size>
@@ -32128,26 +32126,6 @@ Sorting Arrangement]]></Text>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
-				<Image>
-					<Id>1527693378875</Id>
-					<Name><![CDATA[image]]></Name>
-					<X>680</X><Y>4.211</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<AsObject>true</AsObject>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Width>240</Width>
-					<Height>75.789</Height>
-					<Rotation>0.0</Rotation>
-					<ImageFiles>
-						<ImageFile><![CDATA[images.png]]></ImageFile>
-					</ImageFiles>
-					<OriginalSize>false</OriginalSize>
-				</Image>
 				<Text>
 					<Id>1527693378880</Id>
 					<Name><![CDATA[text32]]></Name>
