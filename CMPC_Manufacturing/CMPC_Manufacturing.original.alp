@@ -38283,7 +38283,7 @@ copyToClipboard( s );]]></ActionCode>
 				<Id>1526565034849</Id>
 				<Type>FIXED</Type>
 				<Value Class="CodeValue">
-					<Code><![CDATA[frequency_truckv]]></Code>
+					<Code><![CDATA[frequency_truck]]></Code>
 				</Value>
 			</Parameter>
 			<Parameter>	
@@ -38605,9 +38605,6 @@ copyToClipboard( s );]]></ActionCode>
 			<Parameter>	
 				<Id>1529078249644</Id>
 				<Type>FIXED</Type>
-				<Value Class="CodeValue">
-					<Code><![CDATA[identifier_v]]></Code>
-				</Value>
 			</Parameter>
 			<Parameter>	
 				<Id>1529596731468</Id>
@@ -41144,9 +41141,6 @@ copyToClipboard( s );]]></ActionCode>
 			<Parameter>	
 				<Id>1523364409951</Id>
 				<Type>FIXED</Type>
-				<Value Class="CodeValue">
-					<Code><![CDATA[0]]></Code>
-				</Value>
 			</Parameter>
 			<Parameter>	
 				<Id>1525790540281</Id>
@@ -41460,7 +41454,7 @@ if (bestInfeasibleObjective != Double.NEGATIVE_INFINITY) {
 				<FinalDate><![CDATA[1577836799000]]></FinalDate>	
 				<FinalTime><![CDATA[525599.9833333333]]></FinalTime>	
 				<StopAfterIterationCount>true</StopAfterIterationCount>
-				<IterationCount>500</IterationCount>
+				<IterationCount>1500</IterationCount>
 				<AutomaticStop>false</AutomaticStop>
 			</ModelTimeProperties>
 		</OptimizationExperiment>
