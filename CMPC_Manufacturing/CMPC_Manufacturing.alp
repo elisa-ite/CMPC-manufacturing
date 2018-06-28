@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.4.201805161701" AlpVersion="8.0.4">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.2.4.201805161715" AlpVersion="8.0.4">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMPC_Manufacturing]]></Name>
@@ -16557,7 +16557,7 @@ for (Machine mac : machine_population){
 							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
 						</Rate>
 						<OccurrenceAtTime>false</OccurrenceAtTime>
-						<OccurrenceDate>1514793600000</OccurrenceDate>
+						<OccurrenceDate>1546329600000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
 							<Code><![CDATA[0]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
@@ -16593,7 +16593,7 @@ for (Machine mac : machine_population){
 							<Unit Class="RateUnits"><![CDATA[PER_MINUTE]]></Unit>
 						</Rate>
 						<OccurrenceAtTime>false</OccurrenceAtTime>
-						<OccurrenceDate>1514793600000</OccurrenceDate>
+						<OccurrenceDate>1546329600000</OccurrenceDate>
 						<OccurrenceTime Class="CodeUnitValue">
 							<Code><![CDATA[0]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
@@ -24838,7 +24838,7 @@ co_monthly_am[m-1] += 1;]]></Body>
 					</Parameter>
 					<Body><![CDATA[int m = main.month;
 
-System.out.println("delay: " + delay);
+//System.out.println("delay: " + delay);
 co_monthly_hs[m-1] += delay;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
