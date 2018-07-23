@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.1.201806181547" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061735" AlpVersion="8.3.1">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMPC_Manufacturing]]></Name>
@@ -3564,6 +3564,7 @@ for (int i = 0 ; i < rows_sku.size() ; i++){
 				else
 					cfa_calc = calc_cfa(plant,mac.name,m-1);
 				double vcost = get_sku(s).total_variable_cost*(1+mac.merma);
+				vcost *= raw_material(get_sku(s).countryD_code,plant.country);
 				insertInto(db_sku_out)
 				 .columns(
 				 	db_sku_out.sku, 
@@ -4784,6 +4785,42 @@ return produced;]]></Body>
 	case 11: return group_11;
 	case 12: return group_12;
 	default: return group_1;
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1532350268918</Id>
+					<Name><![CDATA[raw_material]]></Name>
+					<X>-810</X><Y>-170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[origin]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[destination]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[String str_origin = code2country(origin);
+String str_destin = code2country(destination);
+
+SelectQuery cost = selectFrom( raw_material_cost ).
+      where( raw_material_cost.name.eq( str_origin ) );
+      
+switch (str_destin) {
+  case "Argentina": return cost.uniqueResult(raw_material_cost.argentina);
+  case "Brazil": return cost.uniqueResult(raw_material_cost.brazil);
+  case "Chile": return cost.uniqueResult(raw_material_cost.chile);
+  case "Colombia": return cost.uniqueResult(raw_material_cost.colombia);
+  case "Ecuador": return cost.uniqueResult(raw_material_cost.ecuador);
+  case "Mexico": return cost.uniqueResult(raw_material_cost.mexico);
+  case "Peru": return cost.uniqueResult(raw_material_cost.peru);
+  case "Uruguay": return cost.uniqueResult(raw_material_cost.uruguay);
+  default: return 0;
 }]]></Body>
 				</Function>
 			</Functions>
@@ -16715,7 +16752,9 @@ if (c != country) {
 						<Type><![CDATA[Lote]]></Type>
 					</Parameter>
 					<Body><![CDATA[double cfa_value = get_mac(l.line).cfa;
-double vcost = main.get_sku(l.code).total_variable_cost*(get_mac(l.line).merma+1);
+SKU s = main.get_sku(l.code);
+double vcost = s.total_variable_cost*(get_mac(l.line).merma+1);
+vcost *= main.raw_material(s.countryD_code, country);
 
 return l.real_demand*(cfa_value + vcost);]]></Body>
 				</Function>
@@ -28417,10 +28456,10 @@ activity_var = 4;]]></Code>
 			<TableImportSettings>
 				<TableReference>
 					<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
-					<ClassName><![CDATA[db_lines]]></ClassName>
+					<ClassName><![CDATA[raw_material_cost]]></ClassName>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
-				<ExternalTableName><![CDATA["Lines"]]></ExternalTableName>
+				<ExternalTableName><![CDATA["Raw Material Cost"]]></ExternalTableName>
 				<AutoImport>true</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
@@ -28435,10 +28474,10 @@ activity_var = 4;]]></Code>
 			<TableImportSettings>
 				<TableReference>
 					<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
-					<ClassName><![CDATA[db_sku_rates]]></ClassName>
+					<ClassName><![CDATA[db_lines]]></ClassName>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
-				<ExternalTableName><![CDATA["SKURates"]]></ExternalTableName>
+				<ExternalTableName><![CDATA["Lines"]]></ExternalTableName>
 				<AutoImport>true</AutoImport>
 			</TableImportSettings>
 			<TableImportSettings>
@@ -28448,6 +28487,15 @@ activity_var = 4;]]></Code>
 				</TableReference>
 				<ConnectionIndex>0</ConnectionIndex>
 				<ExternalTableName><![CDATA["Transfer Type"]]></ExternalTableName>
+				<AutoImport>true</AutoImport>
+			</TableImportSettings>
+			<TableImportSettings>
+				<TableReference>
+					<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
+					<ClassName><![CDATA[db_sku_rates]]></ClassName>
+				</TableReference>
+				<ConnectionIndex>0</ConnectionIndex>
+				<ExternalTableName><![CDATA["SKURates"]]></ExternalTableName>
 				<AutoImport>true</AutoImport>
 			</TableImportSettings>
 		</ImportSettings>
