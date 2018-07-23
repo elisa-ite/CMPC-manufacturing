@@ -24869,7 +24869,7 @@ return cfa_calc;]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<ValueType>integer</ValueType>
 					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>1</DefaultValue>
+					<DefaultValue>0</DefaultValue>
 					<RepresentationMode>intervals</RepresentationMode>
 					<RepresentationType>week</RepresentationType>
 					<FirstDayOfWeek>sunday</FirstDayOfWeek>
@@ -24942,7 +24942,7 @@ return cfa_calc;]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<ValueType>integer</ValueType>
 					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>1</DefaultValue>
+					<DefaultValue>0</DefaultValue>
 					<RepresentationMode>intervals</RepresentationMode>
 					<RepresentationType>week</RepresentationType>
 					<FirstDayOfWeek>sunday</FirstDayOfWeek>
@@ -25015,7 +25015,7 @@ return cfa_calc;]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<ValueType>integer</ValueType>
 					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>1</DefaultValue>
+					<DefaultValue>0</DefaultValue>
 					<RepresentationMode>intervals</RepresentationMode>
 					<RepresentationType>week</RepresentationType>
 					<FirstDayOfWeek>sunday</FirstDayOfWeek>
