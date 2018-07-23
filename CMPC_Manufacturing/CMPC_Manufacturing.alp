@@ -4262,7 +4262,7 @@ Warehouse whouse = get_warehouse(t.destination);
 for (String s : t.inventory.keySet()){
 	double travel_val = t.calc_travel_cost(s);
 	add_acc(whouse.inventory,s,t.inventory.get(s));
-	add_acc(whouse.inventory_value,s,t.inventory.get(s));
+	add_acc(whouse.inventory_value,s,t.inventory_cost.get(s));
 	
 	add_acc(whouse.get_prod_recieved(m),s,t.inventory.get(s));
 	add_acc(whouse.get_prod_value(m),s,travel_val);
@@ -4296,7 +4296,7 @@ Warehouse whouse = get_warehouse(c.destination);
 for (String s : c.inventory.keySet()){
 	double travel_val = c.calc_travel_cost(s);
 	add_acc(whouse.inventory,s,c.inventory.get(s));
-	add_acc(whouse.inventory_value,s,c.inventory.get(s));
+	add_acc(whouse.inventory_value,s,c.inventory_cost.get(s));
 	
 	add_acc(whouse.get_prod_recieved(m),s,c.inventory.get(s));
 	add_acc(whouse.get_prod_value(m),s,travel_val);
@@ -34297,7 +34297,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="147.866" Height="55.484">
+					<BasicProperties Width="147" Height="55">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor/>
 						<Enabled>true</Enabled>
@@ -34322,7 +34322,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="134.423" Height="110.968">
+					<BasicProperties Width="134" Height="110">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor/>
 						<Enabled>true</Enabled>
@@ -34346,7 +34346,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="40.327" Height="41.613">
+					<BasicProperties Width="40" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34369,7 +34369,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="40.327" Height="41.613">
+					<BasicProperties Width="40" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34392,7 +34392,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="40.327" Height="41.613">
+					<BasicProperties Width="40" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34415,7 +34415,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="389.828" Height="41.613">
+					<BasicProperties Width="389" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor/>
 						<Enabled>true</Enabled>
@@ -34436,7 +34436,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="67.212" Height="41.613">
+					<BasicProperties Width="67" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34459,7 +34459,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="67.212" Height="41.613">
+					<BasicProperties Width="67" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34482,7 +34482,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="67.212" Height="41.613">
+					<BasicProperties Width="67" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34505,7 +34505,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="67.212" Height="41.613">
+					<BasicProperties Width="67" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34528,7 +34528,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="67.212" Height="41.613">
+					<BasicProperties Width="67" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34551,7 +34551,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="67.212" Height="41.613">
+					<BasicProperties Width="67" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34574,7 +34574,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="67.212" Height="41.613">
+					<BasicProperties Width="67" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34597,7 +34597,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="67.212" Height="41.613">
+					<BasicProperties Width="67" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34620,7 +34620,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="40.327" Height="41.613">
+					<BasicProperties Width="40" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34643,7 +34643,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="40.327" Height="41.613">
+					<BasicProperties Width="40" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34666,7 +34666,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="40.327" Height="41.613">
+					<BasicProperties Width="40" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34689,7 +34689,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="40.327" Height="41.613">
+					<BasicProperties Width="40" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34712,7 +34712,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="40.327" Height="41.613">
+					<BasicProperties Width="40" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34735,7 +34735,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="40.327" Height="41.613">
+					<BasicProperties Width="40" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34758,7 +34758,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="40.327" Height="41.613">
+					<BasicProperties Width="40" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34781,7 +34781,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="188.193" Height="41.613">
+					<BasicProperties Width="188" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34802,7 +34802,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="40.327" Height="41.613">
+					<BasicProperties Width="40" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34824,7 +34824,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="40.327" Height="41.613">
+					<BasicProperties Width="40" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34847,7 +34847,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="389.828" Height="41.613">
+					<BasicProperties Width="389" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor/>
 						<Enabled>true</Enabled>
@@ -34868,7 +34868,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="228.52" Height="41.613">
+					<BasicProperties Width="228" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34889,7 +34889,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="67.212" Height="41.613">
+					<BasicProperties Width="67" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34912,7 +34912,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="67.212" Height="41.613">
+					<BasicProperties Width="67" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34935,7 +34935,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="67.212" Height="41.613">
+					<BasicProperties Width="67" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -34958,7 +34958,7 @@ getExperimentHost().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<BasicProperties Width="67.212" Height="41.613">
+					<BasicProperties Width="67" Height="41">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -41095,6 +41095,343 @@ if (bestInfeasibleObjective != Double.NEGATIVE_INFINITY) {
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
 				<Title><![CDATA[CMCP_Manufacturing : Simulation1]]></Title>
+				<EnableDeveloperPanel>true</EnableDeveloperPanel>
+				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
+			</PresentationProperties>
+			<ReplicationsProperties>
+				<UseReplication>false</UseReplication>
+				<FixedReplicationsNumber>true</FixedReplicationsNumber>
+				<ReplicationPerIteration>10</ReplicationPerIteration>
+				<MinimumReplication>2</MinimumReplication>
+				<MaximumReplication>10</MaximumReplication>
+				<ConfidenceLevel>LEVEL_80</ConfidenceLevel>
+				<ErrorPercent>0.5</ErrorPercent>
+				<ExpressionForConfidenceComputation><![CDATA[0]]></ExpressionForConfidenceComputation>
+			</ReplicationsProperties>
+		</ParamVariationExperiment>
+		<!--   =========  Parameter Variation Experiment   ========  -->
+		<ParamVariationExperiment ActiveObjectClassId="1519223879332">
+			<Id>1532097469671</Id>
+			<Name><![CDATA[Variacion_por_Pais]]></Name>
+			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
+			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
+			<MaximumMemory>512</MaximumMemory>
+			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
+			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
+			<SeedValue>1</SeedValue>
+			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
+			<VmArgs><![CDATA[]]></VmArgs>
+			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
+			<SnapshotFile></SnapshotFile>
+
+
+			<AllowParallelEvaluations>true</AllowParallelEvaluations>
+			<UseFreeformParameters>false</UseFreeformParameters>
+			<NumberOfRuns>10</NumberOfRuns>
+			<FreeformParamValue>	
+				<Id>1523364409951</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1525790540281</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1525794366757</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1525892625486</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1526565034830</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1526565034849</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1526580647364</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1526580657930</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527080046165</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527080059462</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527080061055</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527091040712</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527686620795</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527784639339</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223847654</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223847663</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223847668</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223849473</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223849478</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528300505463</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528375037636</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528375061743</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528900916494</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528901145671</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904854609</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904932066</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904933722</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904935382</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904937166</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904938908</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904940668</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904942169</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904944818</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904946474</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904948149</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904949650</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528905176189</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1529078249644</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1529596731468</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1529671799481</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1529671807160</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1529673033920</Id>
+			</FreeformParamValue>
+			<RangeVariationParamValue>	
+				<Id>1523364409951</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1525790540281</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1525794366757</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1525892625486</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1526565034830</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1526565034849</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1526580647364</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1526580657930</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527080046165</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527080059462</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527080061055</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527091040712</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527686620795</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527784639339</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223847654</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223847663</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223847668</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223849473</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223849478</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528300505463</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528375037636</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528375061743</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528900916494</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528901145671</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904854609</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904932066</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904933722</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904935382</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904937166</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904938908</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904940668</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904942169</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904944818</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904946474</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904948149</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904949650</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528905176189</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1529078249644</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1529596731468</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1529671799481</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1529671807160</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1529673033920</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<ModelTimeProperties>
+				<StopOption><![CDATA[Stop at specified date]]></StopOption>
+				<InitialDate><![CDATA[1546300800000]]></InitialDate>	
+				<InitialTime><![CDATA[0.0]]></InitialTime>	
+				<FinalDate><![CDATA[1577836799000]]></FinalDate>	
+				<FinalTime><![CDATA[525599.9833333333]]></FinalTime>	
+			</ModelTimeProperties>
+			<PresentationProperties>
+				<EnableZoomAndPanning>true</EnableZoomAndPanning>
+				<Title><![CDATA[CMPC_Manufacturing : Variacion_por_Pais]]></Title>
 				<EnableDeveloperPanel>true</EnableDeveloperPanel>
 				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
 			</PresentationProperties>
