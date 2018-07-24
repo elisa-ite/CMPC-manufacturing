@@ -5744,8 +5744,8 @@ switch (str_destin) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[deleteFrom(db_opt_out)    
-     .execute();
+					<Body><![CDATA[//deleteFrom(db_opt_out)    
+//     .execute();
 
 int country_of_production = 0;
 double prod_attained = 0;
@@ -5756,6 +5756,12 @@ double whousing_cost = 0;
 
 for (int m = 1 ; m < 13 ; m++){
 	for (SKU s : sku){
+		country_of_production = 0;
+		prod_attained = 0;
+		prod_cost = 0;
+		prod_time = 0;
+		logistic_cost = 0;
+		whousing_cost = 0;
 		if (get_sku_prod_country(m).containsKey(s.code))
 			country_of_production = get_sku_prod_country(m).get(s.code);
 		if (get_sku_prod_att(m).containsKey(s.code))
@@ -39929,6 +39935,329 @@ if (bestInfeasibleObjective != Double.NEGATIVE_INFINITY) {
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
 				<Title><![CDATA[CMCP_Manufacturing : Simulation1]]></Title>
+				<EnableDeveloperPanel>true</EnableDeveloperPanel>
+				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
+			</PresentationProperties>
+			<ReplicationsProperties>
+				<UseReplication>false</UseReplication>
+				<FixedReplicationsNumber>true</FixedReplicationsNumber>
+				<ReplicationPerIteration>10</ReplicationPerIteration>
+				<MinimumReplication>2</MinimumReplication>
+				<MaximumReplication>10</MaximumReplication>
+				<ConfidenceLevel>LEVEL_80</ConfidenceLevel>
+				<ErrorPercent>0.5</ErrorPercent>
+				<ExpressionForConfidenceComputation><![CDATA[0]]></ExpressionForConfidenceComputation>
+			</ReplicationsProperties>
+		</ParamVariationExperiment>
+		<!--   =========  Parameter Variation Experiment   ========  -->
+		<ParamVariationExperiment ActiveObjectClassId="1519223879332">
+			<Id>1532433966562</Id>
+			<Name><![CDATA[PrepareForOptimizer]]></Name>
+			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
+			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
+			<InitialSetupCode><![CDATA[deleteFrom(db_opt_out)    
+     .execute();]]></InitialSetupCode>
+			<MaximumMemory>2048</MaximumMemory>
+			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
+			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
+			<SeedValue>1</SeedValue>
+			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
+			<VmArgs><![CDATA[]]></VmArgs>
+			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
+			<SnapshotFile></SnapshotFile>
+
+
+			<AllowParallelEvaluations>true</AllowParallelEvaluations>
+			<UseFreeformParameters>false</UseFreeformParameters>
+			<NumberOfRuns>10</NumberOfRuns>
+			<FreeformParamValue>	
+				<Id>1523364409951</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1525790540281</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1525794366757</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1525892625486</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1526565034830</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1526565034849</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1526580647364</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1526580657930</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527080046165</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527080059462</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527080061055</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527091040712</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527686620795</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527784639339</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223847654</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223847663</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223847668</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223849473</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223849478</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528300505463</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528375037636</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528375061743</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528900916494</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528901145671</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904854609</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904932066</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904933722</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904935382</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904937166</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904938908</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904940668</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904942169</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904944818</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904946474</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904948149</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904949650</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528905176189</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1529078249644</Id>
+			</FreeformParamValue>
+			<RangeVariationParamValue>	
+				<Id>1523364409951</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1525790540281</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1525794366757</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1525892625486</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1526565034830</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1526565034849</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1526580647364</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1526580657930</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527080046165</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527080059462</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527080061055</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527091040712</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527686620795</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527784639339</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223847654</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223847663</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223847668</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223849473</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223849478</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528300505463</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528375037636</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528375061743</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528900916494</Id>
+				<Type>RANGE</Type>
+				<From Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</From>
+				<To Class="CodeValue">
+					<Code><![CDATA[8]]></Code>
+				</To>
+				<Step Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Step>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528901145671</Id>
+				<Type>FIXED</Type>
+				<Expression Class="CodeValue">
+					<Code><![CDATA[true]]></Code>
+				</Expression>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904854609</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904932066</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904933722</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904935382</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904937166</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904938908</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904940668</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904942169</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904944818</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904946474</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904948149</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904949650</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528905176189</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1529078249644</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<ModelTimeProperties>
+				<StopOption><![CDATA[Stop at specified date]]></StopOption>
+				<InitialDate><![CDATA[1546300800000]]></InitialDate>	
+				<InitialTime><![CDATA[0.0]]></InitialTime>	
+				<FinalDate><![CDATA[1577836799000]]></FinalDate>	
+				<FinalTime><![CDATA[525599.9833333333]]></FinalTime>	
+			</ModelTimeProperties>
+			<PresentationProperties>
+				<EnableZoomAndPanning>true</EnableZoomAndPanning>
+				<Title><![CDATA[CMPC_Manufacturing : PrepareForOptimizer]]></Title>
 				<EnableDeveloperPanel>true</EnableDeveloperPanel>
 				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
 			</PresentationProperties>
