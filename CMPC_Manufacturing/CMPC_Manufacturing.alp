@@ -2815,6 +2815,186 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					</Properties>
 
 				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530100777</Id>
+					<Name><![CDATA[sku_sales_earnings_m1]]></Name>
+					<X>-1450</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530125588</Id>
+					<Name><![CDATA[sku_sales_earnings_m2]]></Name>
+					<X>-1450</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530127133</Id>
+					<Name><![CDATA[sku_sales_earnings_m3]]></Name>
+					<X>-1450</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530129813</Id>
+					<Name><![CDATA[sku_sales_earnings_m4]]></Name>
+					<X>-1450</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530131484</Id>
+					<Name><![CDATA[sku_sales_earnings_m5]]></Name>
+					<X>-1450</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530133112</Id>
+					<Name><![CDATA[sku_sales_earnings_m6]]></Name>
+					<X>-1450</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530134892</Id>
+					<Name><![CDATA[sku_sales_earnings_m7]]></Name>
+					<X>-1450</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530136838</Id>
+					<Name><![CDATA[sku_sales_earnings_m8]]></Name>
+					<X>-1450</X><Y>520</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530138400</Id>
+					<Name><![CDATA[sku_sales_earnings_m9]]></Name>
+					<X>-1450</X><Y>540</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530140237</Id>
+					<Name><![CDATA[sku_sales_earnings_m10]]></Name>
+					<X>-1450</X><Y>560</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530142042</Id>
+					<Name><![CDATA[sku_sales_earnings_m11]]></Name>
+					<X>-1450</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530144167</Id>
+					<Name><![CDATA[sku_sales_earnings_m12]]></Name>
+					<X>-1450</X><Y>600</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
 			</Variables>
 			<Connectors>
 				<Connector>
@@ -5753,6 +5933,7 @@ double prod_cost = 0;
 double prod_time = 0;
 double logistic_cost = 0;
 double whousing_cost = 0;
+double earnings = 0;
 
 for (int m = 1 ; m < 13 ; m++){
 	for (SKU s : sku){
@@ -5762,6 +5943,7 @@ for (int m = 1 ; m < 13 ; m++){
 		prod_time = 0;
 		logistic_cost = 0;
 		whousing_cost = 0;
+		earnings = 0;
 		if (get_sku_prod_country(m).containsKey(s.code))
 			country_of_production = get_sku_prod_country(m).get(s.code);
 		if (get_sku_prod_att(m).containsKey(s.code))
@@ -5774,6 +5956,8 @@ for (int m = 1 ; m < 13 ; m++){
 			logistic_cost = get_sku_log_val(m).get(s.code);
 		if (get_sku_whousing_cost(m).containsKey(s.code))
 			whousing_cost = get_sku_whousing_cost(m).get(s.code);
+		if (get_sku_sales_earnings(m).containsKey(s.code))
+			earnings = get_sku_sales_earnings(m).get(s.code);
 		
 		insertInto(db_opt_out)
 		 .columns(
@@ -5785,7 +5969,8 @@ for (int m = 1 ; m < 13 ; m++){
 		 	db_opt_out.prod_cost,
 		 	db_opt_out.prod_time,
 		 	db_opt_out.logistic_cost,
-		 	db_opt_out.whousing_cost
+		 	db_opt_out.whousing_cost,
+		 	db_opt_out.sales_earnings
 		 	)
 		 .values(
 		 	s.code,
@@ -5796,7 +5981,8 @@ for (int m = 1 ; m < 13 ; m++){
 		 	prod_cost,
 		 	prod_time,
 		 	logistic_cost,
-		 	whousing_cost
+		 	whousing_cost,
+		 	earnings
 		 	)
 		.execute();
 	}
@@ -6009,6 +6195,39 @@ for (int m = 1 ; m < 13 ; m++){
   default: {
         System.out.println("sku_whousing_cost: invalid month");
           return sku_whousing_cost_m1;
+       }
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[LinkedHashMap<String,Double>]]></ReturnType>
+					<Id>1532530148056</Id>
+					<Name><![CDATA[get_sku_sales_earnings]]></Name>
+					<X>-1450</X><Y>620</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (m) {
+  case 1: return sku_sales_earnings_m1;
+  case 2: return sku_sales_earnings_m2;
+  case 3: return sku_sales_earnings_m3;
+  case 4: return sku_sales_earnings_m4;
+  case 5: return sku_sales_earnings_m5;
+  case 6: return sku_sales_earnings_m6;
+  case 7: return sku_sales_earnings_m7;
+  case 8: return sku_sales_earnings_m8;
+  case 9: return sku_sales_earnings_m9;
+  case 10: return sku_sales_earnings_m10;
+  case 11: return sku_sales_earnings_m11;
+  case 12: return sku_sales_earnings_m12;
+  default: {
+        System.out.println("sku_sales_earnings: invalid month");
+          return sku_sales_earnings_m1;
        }
 }]]></Body>
 				</Function>
@@ -11585,7 +11804,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<RoundedRectangle>
 					<Id>1527078694240</Id>
 					<Name><![CDATA[roundRectangle11]]></Name>
-					<X>-1350</X><Y>350</Y>
+					<X>-1500</X><Y>350</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -11598,7 +11817,7 @@ for (int m = 1 ; m < 13 ; m++){
 					<LineColor>-16777216</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>1090</Width>
+					<Width>1240</Width>
 					<Height>300</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
@@ -23408,6 +23627,8 @@ for (String s : inventory.keySet()){
 	get_sales(m).put(s,sales);
 	main.add_acc(sales_acc,s,sales);
 	main.add_acc(main.sales_satisfied,s,sales);
+	double earnings = sales * main.get_sku(s).price;
+	export_opt_sales_earnings(s,earnings,m);
 	
 	// Warehousing
 	double ware_leaving_units = 0;
@@ -23824,6 +24045,30 @@ return acc;]]></Body>
 						<Type><![CDATA[int]]></Type>
 					</Parameter>
 					<Body><![CDATA[main.add_acc(main.get_sku_whousing_cost(m),s,cost);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1532530214673</Id>
+					<Name><![CDATA[export_opt_sales_earnings]]></Name>
+					<X>160</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[s]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[earnings]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[main.add_acc(main.get_sku_sales_earnings(m),s,earnings);]]></Body>
 				</Function>
 			</Functions>
 			<AnalysisData>
