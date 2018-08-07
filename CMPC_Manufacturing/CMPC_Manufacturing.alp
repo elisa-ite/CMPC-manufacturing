@@ -22,8 +22,8 @@ read_data();
 calculate_working_days();
 load_real_demand();
 pre_calc();
-clear_tables();]]></StartupCode>
-			<DestroyCode><![CDATA[export_data_to_db();]]></DestroyCode>
+clear_tables();
+create_db_opt_out();]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1519223879331</Id>
@@ -1915,6 +1915,1086 @@ Should be used also on simulation, as tempSKU.]]></Description>
 					</Properties>
 
 				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532363933392</Id>
+					<Name><![CDATA[sku_prod_cost_m1]]></Name>
+					<X>-710</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532363950202</Id>
+					<Name><![CDATA[sku_prod_cost_m2]]></Name>
+					<X>-710</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532363951845</Id>
+					<Name><![CDATA[sku_prod_cost_m3]]></Name>
+					<X>-710</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532363953604</Id>
+					<Name><![CDATA[sku_prod_cost_m4]]></Name>
+					<X>-710</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532363954968</Id>
+					<Name><![CDATA[sku_prod_cost_m5]]></Name>
+					<X>-710</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532363956425</Id>
+					<Name><![CDATA[sku_prod_cost_m6]]></Name>
+					<X>-710</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532363957853</Id>
+					<Name><![CDATA[sku_prod_cost_m7]]></Name>
+					<X>-710</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532363959212</Id>
+					<Name><![CDATA[sku_prod_cost_m8]]></Name>
+					<X>-710</X><Y>520</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532363960783</Id>
+					<Name><![CDATA[sku_prod_cost_m9]]></Name>
+					<X>-710</X><Y>540</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532363962483</Id>
+					<Name><![CDATA[sku_prod_cost_m10]]></Name>
+					<X>-710</X><Y>560</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532363963886</Id>
+					<Name><![CDATA[sku_prod_cost_m11]]></Name>
+					<X>-710</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532363965253</Id>
+					<Name><![CDATA[sku_prod_cost_m12]]></Name>
+					<X>-710</X><Y>600</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364037083</Id>
+					<Name><![CDATA[sku_prod_time_m1]]></Name>
+					<X>-840</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364050145</Id>
+					<Name><![CDATA[sku_prod_time_m2]]></Name>
+					<X>-840</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364051946</Id>
+					<Name><![CDATA[sku_prod_time_m3]]></Name>
+					<X>-840</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364053386</Id>
+					<Name><![CDATA[sku_prod_time_m4]]></Name>
+					<X>-840</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364054895</Id>
+					<Name><![CDATA[sku_prod_time_m5]]></Name>
+					<X>-840</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364056310</Id>
+					<Name><![CDATA[sku_prod_time_m6]]></Name>
+					<X>-840</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364057751</Id>
+					<Name><![CDATA[sku_prod_time_m7]]></Name>
+					<X>-840</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364059304</Id>
+					<Name><![CDATA[sku_prod_time_m8]]></Name>
+					<X>-840</X><Y>520</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364060757</Id>
+					<Name><![CDATA[sku_prod_time_m9]]></Name>
+					<X>-840</X><Y>540</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364062120</Id>
+					<Name><![CDATA[sku_prod_time_m10]]></Name>
+					<X>-840</X><Y>560</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364063497</Id>
+					<Name><![CDATA[sku_prod_time_m11]]></Name>
+					<X>-840</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364065107</Id>
+					<Name><![CDATA[sku_prod_time_m12]]></Name>
+					<X>-840</X><Y>600</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364108189</Id>
+					<Name><![CDATA[sku_prod_att_m1]]></Name>
+					<X>-970</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364119622</Id>
+					<Name><![CDATA[sku_prod_att_m2]]></Name>
+					<X>-970</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364120861</Id>
+					<Name><![CDATA[sku_prod_att_m3]]></Name>
+					<X>-970</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364122208</Id>
+					<Name><![CDATA[sku_prod_att_m4]]></Name>
+					<X>-970</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364123627</Id>
+					<Name><![CDATA[sku_prod_att_m5]]></Name>
+					<X>-970</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364124883</Id>
+					<Name><![CDATA[sku_prod_att_m6]]></Name>
+					<X>-970</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364126285</Id>
+					<Name><![CDATA[sku_prod_att_m7]]></Name>
+					<X>-970</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364127713</Id>
+					<Name><![CDATA[sku_prod_att_m8]]></Name>
+					<X>-970</X><Y>520</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364129256</Id>
+					<Name><![CDATA[sku_prod_att_m9]]></Name>
+					<X>-970</X><Y>540</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364130890</Id>
+					<Name><![CDATA[sku_prod_att_m10]]></Name>
+					<X>-970</X><Y>560</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364133666</Id>
+					<Name><![CDATA[sku_prod_att_m11]]></Name>
+					<X>-970</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364135693</Id>
+					<Name><![CDATA[sku_prod_att_m12]]></Name>
+					<X>-970</X><Y>600</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364162487</Id>
+					<Name><![CDATA[sku_prod_country_m1]]></Name>
+					<X>-1120</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364174630</Id>
+					<Name><![CDATA[sku_prod_country_m2]]></Name>
+					<X>-1120</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364176663</Id>
+					<Name><![CDATA[sku_prod_country_m3]]></Name>
+					<X>-1120</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364178219</Id>
+					<Name><![CDATA[sku_prod_country_m4]]></Name>
+					<X>-1120</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364179532</Id>
+					<Name><![CDATA[sku_prod_country_m5]]></Name>
+					<X>-1120</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364181073</Id>
+					<Name><![CDATA[sku_prod_country_m6]]></Name>
+					<X>-1120</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364182865</Id>
+					<Name><![CDATA[sku_prod_country_m7]]></Name>
+					<X>-1120</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364184814</Id>
+					<Name><![CDATA[sku_prod_country_m8]]></Name>
+					<X>-1120</X><Y>520</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364186254</Id>
+					<Name><![CDATA[sku_prod_country_m9]]></Name>
+					<X>-1120</X><Y>540</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364187748</Id>
+					<Name><![CDATA[sku_prod_country_m10]]></Name>
+					<X>-1120</X><Y>560</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364189422</Id>
+					<Name><![CDATA[sku_prod_country_m11]]></Name>
+					<X>-1120</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532364190926</Id>
+					<Name><![CDATA[sku_prod_country_m12]]></Name>
+					<X>-1120</X><Y>600</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532370383135</Id>
+					<Name><![CDATA[sku_whousing_cost_m1]]></Name>
+					<X>-1290</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532370397730</Id>
+					<Name><![CDATA[sku_whousing_cost_m2]]></Name>
+					<X>-1290</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532370399014</Id>
+					<Name><![CDATA[sku_whousing_cost_m3]]></Name>
+					<X>-1290</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532370401745</Id>
+					<Name><![CDATA[sku_whousing_cost_m4]]></Name>
+					<X>-1290</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532370403218</Id>
+					<Name><![CDATA[sku_whousing_cost_m5]]></Name>
+					<X>-1290</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532370404575</Id>
+					<Name><![CDATA[sku_whousing_cost_m6]]></Name>
+					<X>-1290</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532370406110</Id>
+					<Name><![CDATA[sku_whousing_cost_m7]]></Name>
+					<X>-1290</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532370407763</Id>
+					<Name><![CDATA[sku_whousing_cost_m8]]></Name>
+					<X>-1290</X><Y>520</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532370409107</Id>
+					<Name><![CDATA[sku_whousing_cost_m9]]></Name>
+					<X>-1290</X><Y>540</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532370410331</Id>
+					<Name><![CDATA[sku_whousing_cost_m10]]></Name>
+					<X>-1290</X><Y>560</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532370411690</Id>
+					<Name><![CDATA[sku_whousing_cost_m11]]></Name>
+					<X>-1290</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532370413114</Id>
+					<Name><![CDATA[sku_whousing_cost_m12]]></Name>
+					<X>-1290</X><Y>600</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530100777</Id>
+					<Name><![CDATA[sku_sales_earnings_m1]]></Name>
+					<X>-1450</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530125588</Id>
+					<Name><![CDATA[sku_sales_earnings_m2]]></Name>
+					<X>-1450</X><Y>400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530127133</Id>
+					<Name><![CDATA[sku_sales_earnings_m3]]></Name>
+					<X>-1450</X><Y>420</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530129813</Id>
+					<Name><![CDATA[sku_sales_earnings_m4]]></Name>
+					<X>-1450</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530131484</Id>
+					<Name><![CDATA[sku_sales_earnings_m5]]></Name>
+					<X>-1450</X><Y>460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530133112</Id>
+					<Name><![CDATA[sku_sales_earnings_m6]]></Name>
+					<X>-1450</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530134892</Id>
+					<Name><![CDATA[sku_sales_earnings_m7]]></Name>
+					<X>-1450</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530136838</Id>
+					<Name><![CDATA[sku_sales_earnings_m8]]></Name>
+					<X>-1450</X><Y>520</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530138400</Id>
+					<Name><![CDATA[sku_sales_earnings_m9]]></Name>
+					<X>-1450</X><Y>540</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530140237</Id>
+					<Name><![CDATA[sku_sales_earnings_m10]]></Name>
+					<X>-1450</X><Y>560</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530142042</Id>
+					<Name><![CDATA[sku_sales_earnings_m11]]></Name>
+					<X>-1450</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1532530144167</Id>
+					<Name><![CDATA[sku_sales_earnings_m12]]></Name>
+					<X>-1450</X><Y>600</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[LinkedHashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Double]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
 			</Variables>
 			<Connectors>
 				<Connector>
@@ -2545,7 +3625,10 @@ insertInto(db_outputs)
  	total_produced,
  	total_warehousing_cost
  	)
-.execute();]]></Action>
+.execute();
+
+export_data_to_db();
+create_db_opt_out();]]></Action>
 				</Event>
 				<Event>
 					<Id>1527693324967</Id>
@@ -3599,6 +4682,11 @@ for (int i = 0 ; i < rows_sku.size() ; i++){
 				 	cfa_calc + vcost
 				 	)
 				.execute();
+				
+				get_sku_prod_country(m).put(s,plant.country);
+				add_acc(get_sku_prod_att(m),s,prod_att);
+				add_acc(get_sku_prod_time(m),s,mac.gross_times_monthly.get(s)[m-1]);
+				add_acc(get_sku_prod_cost(m),s,cfa_calc + vcost);
 			}	
 		}
 		for (String s : mac.prod_bo_monthly.keySet()){				
@@ -4522,6 +5610,9 @@ double cfa_calc = plant.get_mac(line).mod +
  			 	  plant.get_mac(line).rcho[m-1] +
  			 	  plant.get_mac(line).gastos_generales_mes;
 cfa_calc = cfa_calc / prod_att;
+double cfa = 0;
+if (prod_att != 0)
+	cfa = cfa_calc;
 return cfa_calc;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -4821,6 +5912,323 @@ switch (str_destin) {
   case "Peru": return cost.uniqueResult(raw_material_cost.peru);
   case "Uruguay": return cost.uniqueResult(raw_material_cost.uruguay);
   default: return 0;
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1532355458344</Id>
+					<Name><![CDATA[create_db_opt_out]]></Name>
+					<X>260</X><Y>-210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[//deleteFrom(db_opt_out)    
+//     .execute();
+
+int country_of_production = 0;
+double prod_attained = 0;
+double prod_cost = 0;
+double prod_time = 0;
+double logistic_cost = 0;
+double whousing_cost = 0;
+double earnings = 0;
+
+for (int m = 1 ; m < 13 ; m++){
+	for (SKU s : sku){
+		country_of_production = 0;
+		prod_attained = 0;
+		prod_cost = 0;
+		prod_time = 0;
+		logistic_cost = 0;
+		whousing_cost = 0;
+		earnings = 0;
+		if (get_sku_prod_country(m).containsKey(s.code))
+			country_of_production = get_sku_prod_country(m).get(s.code);
+		if (get_sku_prod_att(m).containsKey(s.code))
+			prod_attained = get_sku_prod_att(m).get(s.code);
+		if (get_sku_prod_time(m).containsKey(s.code))
+			prod_time = get_sku_prod_time(m).get(s.code);
+		if (get_sku_prod_cost(m).containsKey(s.code))
+			prod_cost = get_sku_prod_cost(m).get(s.code);
+		if (get_sku_log_val(m).containsKey(s.code))
+			logistic_cost = get_sku_log_val(m).get(s.code);
+		if (get_sku_whousing_cost(m).containsKey(s.code))
+			whousing_cost = get_sku_whousing_cost(m).get(s.code);
+		if (get_sku_sales_earnings(m).containsKey(s.code))
+			earnings = get_sku_sales_earnings(m).get(s.code);
+		
+		insertInto(db_opt_out)
+		 .columns(
+		 	db_opt_out.sku, 
+		 	db_opt_out.mes,
+		 	db_opt_out.country_d,
+		 	db_opt_out.country_p,
+		 	db_opt_out.prod_att,
+		 	db_opt_out.prod_cost,
+		 	db_opt_out.prod_time,
+		 	db_opt_out.logistic_cost,
+		 	db_opt_out.whousing_cost,
+		 	db_opt_out.sales_earnings
+		 	)
+		 .values(
+		 	s.code,
+		 	m,
+		 	s.countryD_code,
+		 	country_of_production,
+		 	prod_attained,
+		 	prod_cost,
+		 	prod_time,
+		 	logistic_cost,
+		 	whousing_cost,
+		 	earnings
+		 	)
+		.execute();
+	}
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[LinkedHashMap<String,Double>]]></ReturnType>
+					<Id>1532363968703</Id>
+					<Name><![CDATA[get_sku_prod_cost]]></Name>
+					<X>-710</X><Y>620</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (m) {
+  case 1: return sku_prod_cost_m1;
+  case 2: return sku_prod_cost_m2;
+  case 3: return sku_prod_cost_m3;
+  case 4: return sku_prod_cost_m4;
+  case 5: return sku_prod_cost_m5;
+  case 6: return sku_prod_cost_m6;
+  case 7: return sku_prod_cost_m7;
+  case 8: return sku_prod_cost_m8;
+  case 9: return sku_prod_cost_m9;
+  case 10: return sku_prod_cost_m10;
+  case 11: return sku_prod_cost_m11;
+  case 12: return sku_prod_cost_m12;
+  default: {
+        System.out.println("sku_prod_cost: invalid month");
+          return sku_prod_cost_m1;
+       }
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[LinkedHashMap<String,Double>]]></ReturnType>
+					<Id>1532364069850</Id>
+					<Name><![CDATA[get_sku_prod_time]]></Name>
+					<X>-840</X><Y>620</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (m) {
+  case 1: return sku_prod_time_m1;
+  case 2: return sku_prod_time_m2;
+  case 3: return sku_prod_time_m3;
+  case 4: return sku_prod_time_m4;
+  case 5: return sku_prod_time_m5;
+  case 6: return sku_prod_time_m6;
+  case 7: return sku_prod_time_m7;
+  case 8: return sku_prod_time_m8;
+  case 9: return sku_prod_time_m9;
+  case 10: return sku_prod_time_m10;
+  case 11: return sku_prod_time_m11;
+  case 12: return sku_prod_time_m12;
+  default: {
+        System.out.println("sku_prod_time: invalid month");
+          return sku_prod_time_m1;
+       }
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[LinkedHashMap<String,Double>]]></ReturnType>
+					<Id>1532364139404</Id>
+					<Name><![CDATA[get_sku_prod_att]]></Name>
+					<X>-970</X><Y>620</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (m) {
+  case 1: return sku_prod_att_m1;
+  case 2: return sku_prod_att_m2;
+  case 3: return sku_prod_att_m3;
+  case 4: return sku_prod_att_m4;
+  case 5: return sku_prod_att_m5;
+  case 6: return sku_prod_att_m6;
+  case 7: return sku_prod_att_m7;
+  case 8: return sku_prod_att_m8;
+  case 9: return sku_prod_att_m9;
+  case 10: return sku_prod_att_m10;
+  case 11: return sku_prod_att_m11;
+  case 12: return sku_prod_att_m12;
+  default: {
+        System.out.println("sku_prod_att: invalid month");
+          return sku_prod_att_m1;
+       }
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[LinkedHashMap<String,Integer>]]></ReturnType>
+					<Id>1532364194772</Id>
+					<Name><![CDATA[get_sku_prod_country]]></Name>
+					<X>-1120</X><Y>620</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (m) {
+  case 1: return sku_prod_country_m1;
+  case 2: return sku_prod_country_m2;
+  case 3: return sku_prod_country_m3;
+  case 4: return sku_prod_country_m4;
+  case 5: return sku_prod_country_m5;
+  case 6: return sku_prod_country_m6;
+  case 7: return sku_prod_country_m7;
+  case 8: return sku_prod_country_m8;
+  case 9: return sku_prod_country_m9;
+  case 10: return sku_prod_country_m10;
+  case 11: return sku_prod_country_m11;
+  case 12: return sku_prod_country_m12;
+  default: {
+        System.out.println("sku_prod_country: invalid month");
+          return sku_prod_country_m1;
+       }
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1532365631711</Id>
+					<Name><![CDATA[update_db_opt_out]]></Name>
+					<X>260</X><Y>-230</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[int count = 0;
+for (int m = 1 ; m < 13 ; m++){
+	for (String s : get_sku_prod_country(m).keySet()){
+		count++;
+		System.out.println(s +' '+ m +' '+ get_sku_prod_country(m).get(s) +' '+ count);
+		update(db_opt_out)
+		  //.where(db_opt_out.sku.eq(s))
+		  //.where(db_opt_out.mes.eq(m))
+		  .set(db_opt_out.country_p,6)
+		  //.set(db_opt_out.country_p,get_sku_prod_country(m).get(s))
+		  .execute();
+	}
+	for (String s : get_sku_prod_att(m).keySet()){
+		update(db_opt_out)
+		  .where(db_opt_out.sku.eq(s))
+		  .where(db_opt_out.mes.eq(m))
+		  .set(db_opt_out.prod_att,get_sku_prod_att(m).get(s))
+		  .execute();
+	}
+	for (String s : get_sku_prod_time(m).keySet()){
+		update(db_opt_out)
+		  .where(db_opt_out.sku.eq(s))
+		  .where(db_opt_out.mes.eq(m))
+		  .set(db_opt_out.prod_time,get_sku_prod_time(m).get(s))
+		  .execute();
+	}
+	for (String s : get_sku_prod_cost(m).keySet()){
+		update(db_opt_out)
+		  .where(db_opt_out.sku.eq(s))
+		  .where(db_opt_out.mes.eq(m))
+		  .set(db_opt_out.prod_cost,get_sku_prod_cost(m).get(s))
+		  .execute();
+	}
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[LinkedHashMap<String,Double>]]></ReturnType>
+					<Id>1532370416908</Id>
+					<Name><![CDATA[get_sku_whousing_cost]]></Name>
+					<X>-1290</X><Y>620</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (m) {
+  case 1: return sku_whousing_cost_m1;
+  case 2: return sku_whousing_cost_m2;
+  case 3: return sku_whousing_cost_m3;
+  case 4: return sku_whousing_cost_m4;
+  case 5: return sku_whousing_cost_m5;
+  case 6: return sku_whousing_cost_m6;
+  case 7: return sku_whousing_cost_m7;
+  case 8: return sku_whousing_cost_m8;
+  case 9: return sku_whousing_cost_m9;
+  case 10: return sku_whousing_cost_m10;
+  case 11: return sku_whousing_cost_m11;
+  case 12: return sku_whousing_cost_m12;
+  default: {
+        System.out.println("sku_whousing_cost: invalid month");
+          return sku_whousing_cost_m1;
+       }
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[LinkedHashMap<String,Double>]]></ReturnType>
+					<Id>1532530148056</Id>
+					<Name><![CDATA[get_sku_sales_earnings]]></Name>
+					<X>-1450</X><Y>620</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[switch (m) {
+  case 1: return sku_sales_earnings_m1;
+  case 2: return sku_sales_earnings_m2;
+  case 3: return sku_sales_earnings_m3;
+  case 4: return sku_sales_earnings_m4;
+  case 5: return sku_sales_earnings_m5;
+  case 6: return sku_sales_earnings_m6;
+  case 7: return sku_sales_earnings_m7;
+  case 8: return sku_sales_earnings_m8;
+  case 9: return sku_sales_earnings_m9;
+  case 10: return sku_sales_earnings_m10;
+  case 11: return sku_sales_earnings_m11;
+  case 12: return sku_sales_earnings_m12;
+  default: {
+        System.out.println("sku_sales_earnings: invalid month");
+          return sku_sales_earnings_m1;
+       }
 }]]></Body>
 				</Function>
 			</Functions>
@@ -9726,7 +11134,7 @@ switch (str_destin) {
 				<RoundedRectangle>
 					<Id>1524075080332</Id>
 					<Name><![CDATA[roundRectangle2]]></Name>
-					<X>-200</X><Y>-320</Y>
+					<X>-190</X><Y>-320</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10396,7 +11804,7 @@ switch (str_destin) {
 				<RoundedRectangle>
 					<Id>1527078694240</Id>
 					<Name><![CDATA[roundRectangle11]]></Name>
-					<X>-600</X><Y>350</Y>
+					<X>-1500</X><Y>350</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -10409,7 +11817,7 @@ switch (str_destin) {
 					<LineColor>-16777216</LineColor>
 					<LineMaterial>null</LineMaterial>
 					<LineStyle>SOLID</LineStyle>
-					<Width>340</Width>
+					<Width>1240</Width>
 					<Height>300</Height>
 					<Rotation>0.0</Rotation>
 					<FillColor>-1</FillColor>
@@ -22219,6 +23627,8 @@ for (String s : inventory.keySet()){
 	get_sales(m).put(s,sales);
 	main.add_acc(sales_acc,s,sales);
 	main.add_acc(main.sales_satisfied,s,sales);
+	double earnings = sales * main.get_sku(s).price;
+	export_opt_sales_earnings(s,earnings,m);
 	
 	// Warehousing
 	double ware_leaving_units = 0;
@@ -22243,6 +23653,7 @@ double whouse_cost_month = 0;
 for (String s : warehousing_cost.keySet()){
 	whouse_cost_month += warehousing_cost.get(s);
 	warehousing_total_cost += warehousing_cost.get(s);
+	export_opt_whouse_cost(s,warehousing_cost.get(s),m);
 	warehousing_cost.put(s,0.0);
 }
 
@@ -22610,6 +24021,54 @@ for (String sku : get_sales(m).keySet()){
 	acc += get_sales(m).get(sku);
 }
 return acc;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1532354939774</Id>
+					<Name><![CDATA[export_opt_whouse_cost]]></Name>
+					<X>160</X><Y>560</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[s]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[cost]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[main.add_acc(main.get_sku_whousing_cost(m),s,cost);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1532530214673</Id>
+					<Name><![CDATA[export_opt_sales_earnings]]></Name>
+					<X>160</X><Y>580</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>false</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[s]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[earnings]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[m]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[main.add_acc(main.get_sku_sales_earnings(m),s,earnings);]]></Body>
 				</Function>
 			</Functions>
 			<AnalysisData>
@@ -28524,6 +29983,10 @@ activity_var = 4;]]></Code>
 			<TableReference>
 				<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
 				<ClassName><![CDATA[db_param_var_out]]></ClassName>
+			</TableReference>
+			<TableReference>
+				<PackageName><![CDATA[cmpc_manufacturing]]></PackageName>
+				<ClassName><![CDATA[db_opt_out]]></ClassName>
 			</TableReference>
 		</ExportSettings>
 	</Database>
@@ -38717,6 +40180,329 @@ if (bestInfeasibleObjective != Double.NEGATIVE_INFINITY) {
 			<PresentationProperties>
 				<EnableZoomAndPanning>true</EnableZoomAndPanning>
 				<Title><![CDATA[CMCP_Manufacturing : Simulation1]]></Title>
+				<EnableDeveloperPanel>true</EnableDeveloperPanel>
+				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
+			</PresentationProperties>
+			<ReplicationsProperties>
+				<UseReplication>false</UseReplication>
+				<FixedReplicationsNumber>true</FixedReplicationsNumber>
+				<ReplicationPerIteration>10</ReplicationPerIteration>
+				<MinimumReplication>2</MinimumReplication>
+				<MaximumReplication>10</MaximumReplication>
+				<ConfidenceLevel>LEVEL_80</ConfidenceLevel>
+				<ErrorPercent>0.5</ErrorPercent>
+				<ExpressionForConfidenceComputation><![CDATA[0]]></ExpressionForConfidenceComputation>
+			</ReplicationsProperties>
+		</ParamVariationExperiment>
+		<!--   =========  Parameter Variation Experiment   ========  -->
+		<ParamVariationExperiment ActiveObjectClassId="1519223879332">
+			<Id>1532433966562</Id>
+			<Name><![CDATA[PrepareForOptimizer]]></Name>
+			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
+			<CommandLineArguments><![CDATA[]]></CommandLineArguments>
+			<InitialSetupCode><![CDATA[deleteFrom(db_opt_out)    
+     .execute();]]></InitialSetupCode>
+			<MaximumMemory>2048</MaximumMemory>
+			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
+			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
+			<SeedValue>1</SeedValue>
+			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
+			<VmArgs><![CDATA[]]></VmArgs>
+			<LoadRootFromSnapshot>false</LoadRootFromSnapshot>
+			<SnapshotFile></SnapshotFile>
+
+
+			<AllowParallelEvaluations>true</AllowParallelEvaluations>
+			<UseFreeformParameters>false</UseFreeformParameters>
+			<NumberOfRuns>10</NumberOfRuns>
+			<FreeformParamValue>	
+				<Id>1523364409951</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1525790540281</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1525794366757</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1525892625486</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1526565034830</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1526565034849</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1526580647364</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1526580657930</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527080046165</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527080059462</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527080061055</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527091040712</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527686620795</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1527784639339</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223847654</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223847663</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223847668</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223849473</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528223849478</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528300505463</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528375037636</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528375061743</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528900916494</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528901145671</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904854609</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904932066</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904933722</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904935382</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904937166</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904938908</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904940668</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904942169</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904944818</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904946474</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904948149</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528904949650</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1528905176189</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1529078249644</Id>
+			</FreeformParamValue>
+			<RangeVariationParamValue>	
+				<Id>1523364409951</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1525790540281</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1525794366757</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1525892625486</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1526565034830</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1526565034849</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1526580647364</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1526580657930</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527080046165</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527080059462</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527080061055</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527091040712</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527686620795</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1527784639339</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223847654</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223847663</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223847668</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223849473</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528223849478</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528300505463</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528375037636</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528375061743</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528900916494</Id>
+				<Type>RANGE</Type>
+				<From Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</From>
+				<To Class="CodeValue">
+					<Code><![CDATA[8]]></Code>
+				</To>
+				<Step Class="CodeValue">
+					<Code><![CDATA[1]]></Code>
+				</Step>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528901145671</Id>
+				<Type>FIXED</Type>
+				<Expression Class="CodeValue">
+					<Code><![CDATA[true]]></Code>
+				</Expression>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904854609</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904932066</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904933722</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904935382</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904937166</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904938908</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904940668</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904942169</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904944818</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904946474</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904948149</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528904949650</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1528905176189</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1529078249644</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<ModelTimeProperties>
+				<StopOption><![CDATA[Stop at specified date]]></StopOption>
+				<InitialDate><![CDATA[1546300800000]]></InitialDate>	
+				<InitialTime><![CDATA[0.0]]></InitialTime>	
+				<FinalDate><![CDATA[1577836799000]]></FinalDate>	
+				<FinalTime><![CDATA[525599.9833333333]]></FinalTime>	
+			</ModelTimeProperties>
+			<PresentationProperties>
+				<EnableZoomAndPanning>true</EnableZoomAndPanning>
+				<Title><![CDATA[CMPC_Manufacturing : PrepareForOptimizer]]></Title>
 				<EnableDeveloperPanel>true</EnableDeveloperPanel>
 				<ShowDeveloperPanelOnStart>false</ShowDeveloperPanelOnStart>
 			</PresentationProperties>
