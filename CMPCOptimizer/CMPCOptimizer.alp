@@ -629,6 +629,40 @@
 					</Properties>                 
 				</Variable>
 			</Variables>
+			<Events>
+				<Event>
+					<Id>1533745656415</Id>
+					<Name><![CDATA[event]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
+					<X>-390</X><Y>-160</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_SECOND]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1533801600000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[0]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[iteration_of_month(2);]]></Action>
+				</Event>
+			</Events>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -658,50 +692,6 @@ iteration_of_month(2);]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1532437789798</Id>
-					<Name><![CDATA[read_data_old]]></Name>
-					<Description><![CDATA[Read data from tables
-	Populate SKUs' parameters
-	Stockout Anticipation
-	Backorder Anticipation]]></Description>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-180</X><Y>-100</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[for ( int sku_index = 0 ; sku_index < sku.size() ; sku_index++) {
-	// For each unique SKU	
-	SKU s = sku.get(sku_index);
-	List<Tuple> rows = selectFrom(db_sku)
-	.where(db_sku.sku.eq(s.code) )
-	.list();
-
-	for ( int i = 0; i < rows.size(); i ++) {
-		// For each month
-		populate_demand_sku(s, rows, i);
-	}
-	populate_sku(s, rows.get(0));
-	//System.out.println(s.code + " " + s.demand[0]);
-	
-	sku_indexed.put(s.code,sku_index);
-}
-
-for ( int country = 1 ; country < 9 ; country++ ) {
-	List<Tuple> rows = selectFrom(db_lines)
-	.where(db_lines.country.eq(country) )
-	.list();
-	
-	for ( int i = 0; i < rows.size(); i ++) {
-		get_plant(country).mac_indexed.put(rows.get(i).get(db_lines.name),i);
-		populate_lines(rows.get(i));
-	}
-	get_plant(country).fill_charts();
-}]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -760,79 +750,6 @@ insertInto(db_objects)
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1532437789806</Id>
-					<Name><![CDATA[populate_demand_sku]]></Name>
-					<Description><![CDATA[Populates SKUs' demand with data from the input_output table]]></Description>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-160</X><Y>-80</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[s]]></Name>
-						<Type><![CDATA[SKU]]></Type>
-					</Parameter>
-					<Parameter>
-						<Name><![CDATA[rows]]></Name>
-						<Type><![CDATA[List<Tuple>]]></Type>
-					</Parameter>
-					<Parameter>
-						<Name><![CDATA[i]]></Name>
-						<Type><![CDATA[int]]></Type>
-					</Parameter>
-					<Body><![CDATA[s.demand[i] = rows.get(i).get( db_sku.demand );]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
-					<Id>1532437789808</Id>
-					<Name><![CDATA[populate_lines]]></Name>
-					<Description><![CDATA[Populates SKUs' demand with data from the input_output table]]></Description>
-					<ExcludeFromBuild>true</ExcludeFromBuild>
-					<X>-160</X><Y>-40</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Parameter>
-						<Name><![CDATA[line]]></Name>
-						<Type><![CDATA[Tuple]]></Type>
-					</Parameter>
-					<Body><![CDATA[String name_of_line = line.get(db_lines.name);
-
-List<Tuple> rows_sku = selectFrom(db_sku_rates)
-.where(db_sku_rates.line_name.eq(name_of_line) )
-.list();
-
-ProductionLine plant = get_plant(line.get(db_lines.country));
-Machine mac = plant.add_machine_population();
-
-mac.name = name_of_line;
-mac.country = plant.country;
-mac.efficiency = plant.efficiency;
-mac.shifts_amount = line.get(db_lines.shifts);
-mac.mano_obraD_cant_turno = line.get(db_lines.mano_obra_d_cant_turno);
-mac.mano_obraD_costo_turno = line.get(db_lines.mano_obra_d_costo_turno);
-mac.mano_obraI_cant_turno = line.get(db_lines.mano_obra_i_cant_turno);
-mac.mano_obraI_costo_turno = line.get(db_lines.mano_obra_i_costo_turno);
-mac.mano_obra_CO_hora = line.get(db_lines.mano_obra_co_hora);
-mac.mantenimiento_turno = line.get(db_lines.mantenimiento_turno);
-mac.gastos_generales_mes = line.get(db_lines.gastos_generales_mes);
-mac.costosCO_CO = line.get(db_lines.costos_co_co);
-mac.merma = line.get(db_lines.merma);
-mac.plant = plant;
-mac.fill_schedules();
-mac.cfa = cfa_initial;
-
-for (int i = 0 ; i < rows_sku.size() ; i++){
-	Tuple sku_rate = rows_sku.get(i);
-	mac.sku_rates.put(sku_rate.get(db_sku_rates.sku),sku_rate.get(db_sku_rates.rate));
-}]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnModificator>VOID</ReturnModificator>
-					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1532453706350</Id>
 					<Name><![CDATA[read_data]]></Name>
 					<Description><![CDATA[Read data from tables
@@ -867,6 +784,11 @@ for (int i = 0 ; i < rows_sku.size() ; i++){
 	sku_indexed.put(s.code,sku_index);
 	
 	// cargar el sku en la primer planta de la prioridad
+	if (s.plant_priority.size() > 0){
+		int best_country = s.plant_priority.remove(0);
+		plants.get(best_country-1).items.add(s);
+		s.actual_plant = best_country;
+	}
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -922,6 +844,7 @@ p.capacity_max = p.lines * hours_per_month;]]></Body>
 					</Parameter>
 					<Body><![CDATA[for (int c = 1 ; c < 9 ; c++){
 	read_data(5,c);
+	plants.get(c-1).sort_skus();
 }]]></Body>
 				</Function>
 			</Functions>
@@ -2713,6 +2636,21 @@ belonging to the first run, and the other
 			</ScaleRuler>
 			<ConnectionsId>1531406559729</ConnectionsId>
 			<Variables>
+				<Variable Class="PlainVariable">
+					<Id>1533744303251</Id>
+					<Name><![CDATA[actual_plant]]></Name>
+					<X>50</X><Y>300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1531406559734</Id>
 					<Name><![CDATA[code]]></Name>
@@ -3377,6 +3315,51 @@ Collections.sort(plant_list,new PlantScoreComparator());]]></Body>
 
 				</Variable>
 			</Variables>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1533744114197</Id>
+					<Name><![CDATA[sort_skus]]></Name>
+					<X>60</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[class SKUScoreComparator implements Comparator<SKU> {
+    public int compare(SKU l1, SKU l2) {
+    	if (l1.score.get(country) < l2.score.get(country))
+    		return 1;
+    	if (l1.score.get(country) > l2.score.get(country))
+    		return -1;
+    	return 0;
+    }
+}
+
+Collections.sort(items,new SKUScoreComparator());]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1533745140646</Id>
+					<Name><![CDATA[load_sku]]></Name>
+					<X>60</X><Y>260</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[s]]></Name>
+						<Type><![CDATA[SKU]]></Type>
+					</Parameter>
+					<Body><![CDATA[items.add(s);
+capacity_used += s.cost.get(country);
+if (capacity_used > capacity_max){
+	over_capacity = true;
+	first_to_leave = s;
+}]]></Body>
+				</Function>
+			</Functions>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1533647443521</Id>
