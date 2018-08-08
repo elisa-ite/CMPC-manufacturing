@@ -723,19 +723,22 @@ for ( int country = 1 ; country < 9 ; country++ ) {
 						<Type><![CDATA[Tuple]]></Type>
 					</Parameter>
 					<Body><![CDATA[s.country_d = rows.get( db_sku_in.country_d );
-s.country_p = rows.get( db_sku_in.country_p );
-s.prod_att = rows.get( db_sku_in.prod_att );
-s.prod_cost = rows.get( db_sku_in.prod_cost );
-s.prod_time = rows.get( db_sku_in.prod_time );
-s.logistic_cost = rows.get( db_sku_in.logistic_cost );
-s.whousing_cost = rows.get( db_sku_in.whousing_cost );
-s.earnings = rows.get( db_sku_in.sales_earnings );
+s.country_p.add(rows.get( db_sku_in.country_p ));
+int sack = rows.get( db_sku_in.country_p );
+s.plant_priority.add(rows.get( db_sku_in.country_p ));
+s.prod_att.put(sack, rows.get( db_sku_in.prod_att ));
+s.prod_cost.put(sack, rows.get( db_sku_in.prod_cost ));
+s.prod_time.put(sack, rows.get( db_sku_in.prod_time ));
+s.logistic_cost.put(sack, rows.get( db_sku_in.logistic_cost ));
+s.whousing_cost.put(sack, rows.get( db_sku_in.whousing_cost ));
+s.earnings.put(sack, rows.get( db_sku_in.sales_earnings ));
 
-double cost = s.prod_cost*s.prod_att + s.logistic_cost + s.whousing_cost;
-s.cost = cost;
-s.contribution = s.earnings - s.cost;
-s.score = s.contribution / s.prod_time;
+double cost = s.prod_cost.get(sack)*s.prod_att.get(sack) + s.logistic_cost.get(sack) + s.whousing_cost.get(sack);
+s.cost.put(sack, cost);
+s.contribution.put(sack, s.earnings.get(sack) - s.cost.get(sack));
+s.score.put(sack, s.contribution.get(sack) / s.prod_time.get(sack));
 
+/*
 insertInto(db_objects)
  .columns(
  	db_objects.name,
@@ -751,7 +754,8 @@ insertInto(db_objects)
  	s.country_p,
  	s.contribution
  	)
-.execute();]]></Body>
+.execute();
+*/]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -859,8 +863,10 @@ for (int i = 0 ; i < rows_sku.size() ; i++){
 	
 	if (rows.size() > 0)
 		populate_sku(s, rows.get(0));
-	
+	s.sort_plants(s.plant_priority);
 	sku_indexed.put(s.code,sku_index);
+	
+	// cargar el sku en la primer planta de la prioridad
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -1030,6 +1036,9 @@ p.capacity_max = p.lines * hours_per_month;]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[earnings]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[plant_priority]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -2752,17 +2761,17 @@ belonging to the first run, and the other
 				<Variable Class="Parameter">
 					<Id>1531406559736</Id>
 					<Name><![CDATA[country_p]]></Name>
-					<X>50</X><Y>90</Y>
+					<X>190</X><Y>50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
+						<Type><![CDATA[ArrayList<Integer>]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
+							<Code><![CDATA[new ArrayList<Integer>()]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>0</Id>
@@ -2797,17 +2806,17 @@ belonging to the first run, and the other
 				<Variable Class="Parameter">
 					<Id>1531406559738</Id>
 					<Name><![CDATA[prod_att]]></Name>
-					<X>50</X><Y>130</Y>
+					<X>190</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[int]]></Type>
+						<Type><![CDATA[LinkedHashMap<Integer,Integer>]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0]]></Code>
+							<Code><![CDATA[new LinkedHashMap<Integer,Integer>()]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>0</Id>
@@ -2821,17 +2830,17 @@ belonging to the first run, and the other
 				<Variable Class="Parameter">
 					<Id>1531406559739</Id>
 					<Name><![CDATA[prod_cost]]></Name>
-					<X>50</X><Y>150</Y>
+					<X>190</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
+						<Type><![CDATA[LinkedHashMap<Integer,Double>]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.0]]></Code>
+							<Code><![CDATA[new LinkedHashMap<Integer,Double>()]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>0</Id>
@@ -2845,17 +2854,17 @@ belonging to the first run, and the other
 				<Variable Class="Parameter">
 					<Id>1531406559740</Id>
 					<Name><![CDATA[prod_time]]></Name>
-					<X>50</X><Y>170</Y>
+					<X>190</X><Y>110</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
+						<Type><![CDATA[LinkedHashMap<Integer,Double>]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.0]]></Code>
+							<Code><![CDATA[new LinkedHashMap<Integer,Double>()]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>0</Id>
@@ -2869,17 +2878,17 @@ belonging to the first run, and the other
 				<Variable Class="Parameter">
 					<Id>1531406559741</Id>
 					<Name><![CDATA[logistic_cost]]></Name>
-					<X>50</X><Y>190</Y>
+					<X>190</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
+						<Type><![CDATA[LinkedHashMap<Integer,Double>]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.0]]></Code>
+							<Code><![CDATA[new LinkedHashMap<Integer,Double>()]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>0</Id>
@@ -2893,17 +2902,17 @@ belonging to the first run, and the other
 				<Variable Class="Parameter">
 					<Id>1531406559742</Id>
 					<Name><![CDATA[whousing_cost]]></Name>
-					<X>50</X><Y>210</Y>
+					<X>190</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
+						<Type><![CDATA[LinkedHashMap<Integer,Double>]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.0]]></Code>
+							<Code><![CDATA[new LinkedHashMap<Integer,Double>()]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>0</Id>
@@ -2965,17 +2974,17 @@ belonging to the first run, and the other
 				<Variable Class="Parameter">
 					<Id>1532455217385</Id>
 					<Name><![CDATA[cost]]></Name>
-					<X>50</X><Y>270</Y>
+					<X>190</X><Y>170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
+						<Type><![CDATA[LinkedHashMap<Integer,Double>]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.0]]></Code>
+							<Code><![CDATA[new LinkedHashMap<Integer,Double>()]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1532455217383</Id>
@@ -2989,17 +2998,17 @@ belonging to the first run, and the other
 				<Variable Class="Parameter">
 					<Id>1532458273593</Id>
 					<Name><![CDATA[score]]></Name>
-					<X>50</X><Y>290</Y>
+					<X>190</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
+						<Type><![CDATA[LinkedHashMap<Integer,Double>]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.0]]></Code>
+							<Code><![CDATA[new LinkedHashMap<Integer,Double>()]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1532458273591</Id>
@@ -3013,17 +3022,17 @@ belonging to the first run, and the other
 				<Variable Class="Parameter">
 					<Id>1532530905880</Id>
 					<Name><![CDATA[contribution]]></Name>
-					<X>50</X><Y>310</Y>
+					<X>190</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
+						<Type><![CDATA[LinkedHashMap<Integer,Double>]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.0]]></Code>
+							<Code><![CDATA[new LinkedHashMap<Integer,Double>()]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1532530905878</Id>
@@ -3037,17 +3046,17 @@ belonging to the first run, and the other
 				<Variable Class="Parameter">
 					<Id>1532530907426</Id>
 					<Name><![CDATA[earnings]]></Name>
-					<X>50</X><Y>330</Y>
+					<X>190</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[double]]></Type>
+						<Type><![CDATA[LinkedHashMap<Integer,Double>]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[0.0]]></Code>
+							<Code><![CDATA[new LinkedHashMap<Integer,Double>()]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1532530907424</Id>
@@ -3058,7 +3067,59 @@ belonging to the first run, and the other
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1533736631422</Id>
+					<Name><![CDATA[plant_priority]]></Name>
+					<X>190</X><Y>20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[ArrayList<Integer>]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<DefaultValue Class="CodeValue">
+							<Code><![CDATA[new ArrayList<Integer>()]]></Code>
+						</DefaultValue>
+						<ParameterEditor>
+							<Id>1533736631420</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 			</Variables>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1533736521160</Id>
+					<Name><![CDATA[sort_plants]]></Name>
+					<X>190</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[plant_list]]></Name>
+						<Type><![CDATA[ArrayList<Integer>]]></Type>
+					</Parameter>
+					<Body><![CDATA[class PlantScoreComparator implements Comparator<Integer> {
+    public int compare(Integer l1, Integer l2) {
+    	if (score.get(l1) < score.get(l2))
+    		return 1;
+    	if (score.get(l1) > score.get(l2))
+    		return -1;
+    	return 0;
+    }
+}
+
+Collections.sort(plant_list,new PlantScoreComparator());]]></Body>
+				</Function>
+			</Functions>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1531406559729</Id>
