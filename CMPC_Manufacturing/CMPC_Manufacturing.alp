@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.2.201807061735" AlpVersion="8.3.1">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.3.1.201806201741" AlpVersion="8.3.1">
 <Model>
 	<Id>1519223879327</Id>
 	<Name><![CDATA[CMPC_Manufacturing]]></Name>
@@ -459,7 +459,7 @@ create_db_opt_out();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1528211576207</Id>
 					<Name><![CDATA[trucks_creation]]></Name>
-					<X>1840</X><Y>760</Y>
+					<X>2440</X><Y>760</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -474,7 +474,7 @@ create_db_opt_out();]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1528211618922</Id>
 					<Name><![CDATA[containers_creation]]></Name>
-					<X>1840</X><Y>780</Y>
+					<X>2440</X><Y>780</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -12609,7 +12609,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1527693324615</Id>
 					<Name><![CDATA[text38]]></Name>
-					<X>1250</X><Y>20</Y>
+					<X>1850</X><Y>20</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12630,7 +12630,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1527693324620</Id>
 					<Name><![CDATA[text39]]></Name>
-					<X>1250</X><Y>50</Y>
+					<X>1850</X><Y>50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12651,7 +12651,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Line>
 					<Id>1527693324626</Id>
 					<Name><![CDATA[line3]]></Name>
-					<X>1250</X><Y>80</Y>
+					<X>1850</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12675,7 +12675,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1527693324630</Id>
 					<Name><![CDATA[text40]]></Name>
-					<X>1270</X><Y>280</Y>
+					<X>1870</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12696,7 +12696,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1527693324634</Id>
 					<Name><![CDATA[text41]]></Name>
-					<X>1580</X><Y>100</Y>
+					<X>2180</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12717,7 +12717,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1527693324638</Id>
 					<Name><![CDATA[text42]]></Name>
-					<X>1580</X><Y>280</Y>
+					<X>2180</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12738,7 +12738,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1527693324643</Id>
 					<Name><![CDATA[text43]]></Name>
-					<X>1270</X><Y>460</Y>
+					<X>1870</X><Y>460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12759,7 +12759,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1527693324649</Id>
 					<Name><![CDATA[text44]]></Name>
-					<X>1580</X><Y>460</Y>
+					<X>2180</X><Y>460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12780,7 +12780,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1527693324653</Id>
 					<Name><![CDATA[text45]]></Name>
-					<X>1270</X><Y>640</Y>
+					<X>1870</X><Y>640</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12801,7 +12801,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1527693324657</Id>
 					<Name><![CDATA[text46]]></Name>
-					<X>1580</X><Y>640</Y>
+					<X>2180</X><Y>640</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12822,7 +12822,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Rectangle>
 					<Id>1527693324668</Id>
 					<Name><![CDATA[rectangle12]]></Name>
-					<X>1830</X><Y>100</Y>
+					<X>2430</X><Y>100</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12844,7 +12844,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Rectangle>
 					<Id>1527693324673</Id>
 					<Name><![CDATA[rectangle13]]></Name>
-					<X>1830</X><Y>420</Y>
+					<X>2430</X><Y>420</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12866,7 +12866,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1527693324678</Id>
 					<Name><![CDATA[text48]]></Name>
-					<X>1830</X><Y>42</Y>
+					<X>2430</X><Y>42</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12887,7 +12887,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Line>
 					<Id>1527693324683</Id>
 					<Name><![CDATA[line1]]></Name>
-					<X>1830</X><Y>70</Y>
+					<X>2430</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12911,7 +12911,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1527693324687</Id>
 					<Name><![CDATA[text49]]></Name>
-					<X>2440</X><Y>42</Y>
+					<X>40</X><Y>920</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12932,7 +12932,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Line>
 					<Id>1527693324692</Id>
 					<Name><![CDATA[line2]]></Name>
-					<X>2440</X><Y>70</Y>
+					<X>40</X><Y>948</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12956,7 +12956,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Line>
 					<Id>1528202240637</Id>
 					<Name><![CDATA[line4]]></Name>
-					<X>3140</X><Y>80</Y>
+					<X>740</X><Y>958</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12980,7 +12980,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1528202249525</Id>
 					<Name><![CDATA[text50]]></Name>
-					<X>3140</X><Y>50</Y>
+					<X>740</X><Y>928</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13001,7 +13001,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1528202952232</Id>
 					<Name><![CDATA[text51]]></Name>
-					<X>2440</X><Y>800</Y>
+					<X>80</X><Y>2160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13022,7 +13022,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Line>
 					<Id>1528202952234</Id>
 					<Name><![CDATA[line5]]></Name>
-					<X>2440</X><Y>828</Y>
+					<X>80</X><Y>2188</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13046,7 +13046,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1528212356768</Id>
 					<Name><![CDATA[text52]]></Name>
-					<X>1900</X><Y>800</Y>
+					<X>120</X><Y>1840</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13067,7 +13067,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1528212358702</Id>
 					<Name><![CDATA[text53]]></Name>
-					<X>1910</X><Y>1030</Y>
+					<X>640</X><Y>1840</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13088,7 +13088,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1527693324664</Id>
 					<Name><![CDATA[text47]]></Name>
-					<X>1270</X><Y>100</Y>
+					<X>1870</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13258,7 +13258,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Line>
 					<Id>1528815721889</Id>
 					<Name><![CDATA[line6]]></Name>
-					<X>3200</X><Y>870</Y>
+					<X>640</X><Y>2200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13282,7 +13282,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Text>
 					<Id>1528815721891</Id>
 					<Name><![CDATA[text58]]></Name>
-					<X>3200</X><Y>840</Y>
+					<X>640</X><Y>2170</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13303,7 +13303,7 @@ for (int m = 1 ; m < 13 ; m++){
 				<Line>
 					<Id>1528984412304</Id>
 					<Name><![CDATA[line7]]></Name>
-					<X>1240</X><Y>40</Y>
+					<X>1840</X><Y>40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13370,7 +13370,7 @@ for (int m = 1 ; m < 13 ; m++){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1528985806519</Id>
 					<Name><![CDATA[button5]]></Name>
-					<X>2180</X><Y>40</Y>
+					<X>2780</X><Y>40</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13390,7 +13390,7 @@ for (int m = 1 ; m < 13 ; m++){
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1528985849025</Id>
 					<Name><![CDATA[button6]]></Name>
-					<X>2230</X><Y>800</Y>
+					<X>2830</X><Y>800</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13411,7 +13411,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<TimePlot>
 					<Id>1527693324698</Id>
 					<Name><![CDATA[plot2]]></Name>
-					<X>1150</X><Y>120</Y>
+					<X>1720</X><Y>120</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13476,7 +13476,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<TimePlot>
 					<Id>1527693324706</Id>
 					<Name><![CDATA[plot3]]></Name>
-					<X>1470</X><Y>120</Y>
+					<X>2070</X><Y>120</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13541,7 +13541,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<TimePlot>
 					<Id>1527693324714</Id>
 					<Name><![CDATA[plot4]]></Name>
-					<X>1150</X><Y>300</Y>
+					<X>1720</X><Y>300</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13606,7 +13606,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<TimePlot>
 					<Id>1527693324736</Id>
 					<Name><![CDATA[plot5]]></Name>
-					<X>1470</X><Y>300</Y>
+					<X>2070</X><Y>300</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13671,7 +13671,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<TimePlot>
 					<Id>1527693324743</Id>
 					<Name><![CDATA[plot6]]></Name>
-					<X>1150</X><Y>480</Y>
+					<X>1720</X><Y>480</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13736,7 +13736,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<TimePlot>
 					<Id>1527693324752</Id>
 					<Name><![CDATA[plot7]]></Name>
-					<X>1470</X><Y>480</Y>
+					<X>2070</X><Y>480</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13801,7 +13801,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<TimePlot>
 					<Id>1527693324760</Id>
 					<Name><![CDATA[plot8]]></Name>
-					<X>1150</X><Y>660</Y>
+					<X>1720</X><Y>660</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13866,7 +13866,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<TimePlot>
 					<Id>1527693324789</Id>
 					<Name><![CDATA[plot9]]></Name>
-					<X>1470</X><Y>660</Y>
+					<X>2070</X><Y>660</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13931,7 +13931,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<TimePlot>
 					<Id>1527693324799</Id>
 					<Name><![CDATA[plot10]]></Name>
-					<X>1830</X><Y>110</Y>
+					<X>2430</X><Y>110</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -13996,7 +13996,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<TimePlot>
 					<Id>1527693324807</Id>
 					<Name><![CDATA[plot11]]></Name>
-					<X>1830</X><Y>430</Y>
+					<X>2430</X><Y>430</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14061,7 +14061,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<TimeStackChart>
 					<Id>1527693324822</Id>
 					<Name><![CDATA[chart]]></Name>
-					<X>2440</X><Y>100</Y>
+					<X>-40</X><Y>1040</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14078,15 +14078,15 @@ for (int m = 1 ; m < 13 ; m++){
 						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>640</Width>
-					<Height>630</Height>
+					<Width>527.43</Width>
+					<Height>405.644</Height>
 					<BackgroundColor>-2556733</BackgroundColor>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>90</XOffset>
 						<YOffset>30</YOffset>
-						<Width>520</Width>
-						<Height>500</Height>
+						<Width>407.42999999999995</Width>
+						<Height>275.644</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -14169,7 +14169,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<TimeStackChart>
 					<Id>1528202206967</Id>
 					<Name><![CDATA[chart1]]></Name>
-					<X>3120</X><Y>100</Y>
+					<X>520.394</X><Y>1040</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14186,15 +14186,15 @@ for (int m = 1 ; m < 13 ; m++){
 						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>640</Width>
-					<Height>630</Height>
+					<Width>527.43</Width>
+					<Height>405.644</Height>
 					<BackgroundColor>-2556733</BackgroundColor>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>90</XOffset>
 						<YOffset>30</YOffset>
-						<Width>520</Width>
-						<Height>500</Height>
+						<Width>407.42999999999995</Width>
+						<Height>275.644</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -14277,7 +14277,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<TimeStackChart>
 					<Id>1528202952245</Id>
 					<Name><![CDATA[chart2]]></Name>
-					<X>2440</X><Y>858</Y>
+					<X>80</X><Y>2200</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14294,15 +14294,15 @@ for (int m = 1 ; m < 13 ; m++){
 						<Unit Class="TimeUnits"><![CDATA[MINUTE]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>640</Width>
-					<Height>630</Height>
+					<Width>434.334</Width>
+					<Height>315.491</Height>
 					<BackgroundColor>-2556733</BackgroundColor>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>90</XOffset>
 						<YOffset>30</YOffset>
-						<Width>520</Width>
-						<Height>500</Height>
+						<Width>314.334</Width>
+						<Height>185.49099999999999</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -14385,7 +14385,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<BarChart>
 					<Id>1528211802188</Id>
 					<Name><![CDATA[chart3]]></Name>
-					<X>1830</X><Y>820</Y>
+					<X>40</X><Y>1880</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14509,7 +14509,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<BarChart>
 					<Id>1528212268248</Id>
 					<Name><![CDATA[chart4]]></Name>
-					<X>1810</X><Y>1030</Y>
+					<X>560</X><Y>1880</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14633,7 +14633,7 @@ for (int m = 1 ; m < 13 ; m++){
     			<BarChart>
 					<Id>1528812868961</Id>
 					<Name><![CDATA[chart6]]></Name>
-					<X>3060</X><Y>860</Y>
+					<X>500.761</X><Y>2201.002</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -14650,15 +14650,15 @@ for (int m = 1 ; m < 13 ; m++){
 						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>800</Width>
-					<Height>640</Height>
+					<Width>542.918</Width>
+					<Height>320.5</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>140</XOffset>
 						<YOffset>30</YOffset>
-						<Width>630</Width>
-						<Height>520</Height>
+						<Width>372.918</Width>
+						<Height>200.5</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -14741,32 +14741,44 @@ for (int m = 1 ; m < 13 ; m++){
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Title><![CDATA[]]></Title>
-					<Width>1160</Width>
-					<Height>800</Height>
+					<Width>1320</Width>
+					<Height>840</Height>
 				</Area>
 				<Area>
 					<Id>1528985495429</Id>
 					<Name><![CDATA[viewArea1]]></Name>
-					<X>1810</X><Y>0</Y>
+					<X>0</X><Y>1720</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Title><![CDATA[Trucks & Containers]]></Title>
-					<Width>2100</Width>
-					<Height>780</Height>
+					<Width>1320</Width>
+					<Height>840</Height>
 				</Area>
 				<Area>
 					<Id>1528985615225</Id>
 					<Name><![CDATA[viewArea2]]></Name>
-					<X>1810</X><Y>790</Y>
+					<X>0</X><Y>880</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Title><![CDATA[production Cost]]></Title>
-					<Width>2090</Width>
-					<Height>810</Height>
+					<Width>1320</Width>
+					<Height>840</Height>
+				</Area>
+				<Area>
+					<Id>1534362932565</Id>
+					<Name><![CDATA[viewArea3]]></Name>
+					<X>1720</X><Y>0</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Title><![CDATA[]]></Title>
+					<Width>1320</Width>
+					<Height>840</Height>
 				</Area>
 			</Areas>
 
@@ -29851,8 +29863,8 @@ activity_var = 4;]]></Code>
 	<RelativeAccuracy>1.0E-5</RelativeAccuracy>
 	<TimeAccuracy>1.0E-5</TimeAccuracy>
 	<Frame>
-		<Width>1800</Width>
-		<Height>1360</Height>
+		<Width>1320</Width>
+		<Height>840</Height>
 	</Frame>
 	<Database>
 		<Logging>false</Logging>
