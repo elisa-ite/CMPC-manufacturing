@@ -26340,7 +26340,7 @@ return cfa_calc;]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<ValueType>integer</ValueType>
 					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>0</DefaultValue>
+					<DefaultValue>1</DefaultValue>
 					<RepresentationMode>intervals</RepresentationMode>
 					<RepresentationType>week</RepresentationType>
 					<FirstDayOfWeek>sunday</FirstDayOfWeek>
@@ -26366,32 +26366,32 @@ return cfa_calc;]]></Body>
 						<Interval>
 							<Start>0</Start>
 							<End>21600000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>86400000</Start>
 							<End>108000000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>172800000</Start>
 							<End>194400000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>259200000</Start>
 							<End>280800000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>345600000</Start>
 							<End>367200000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>432000000</Start>
 							<End>453600000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 					</Intervals>
 					<Exceptions>
@@ -26413,7 +26413,7 @@ return cfa_calc;]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<ValueType>integer</ValueType>
 					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>0</DefaultValue>
+					<DefaultValue>1</DefaultValue>
 					<RepresentationMode>intervals</RepresentationMode>
 					<RepresentationType>week</RepresentationType>
 					<FirstDayOfWeek>sunday</FirstDayOfWeek>
@@ -26439,32 +26439,32 @@ return cfa_calc;]]></Body>
 						<Interval>
 							<Start>21600000</Start>
 							<End>50400000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>108000000</Start>
 							<End>136800000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>194400000</Start>
 							<End>223200000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>280800000</Start>
 							<End>309600000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>367200000</Start>
 							<End>396000000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>453600000</Start>
 							<End>482400000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 					</Intervals>
 					<Exceptions>
@@ -26486,7 +26486,7 @@ return cfa_calc;]]></Body>
 					<ShowLabel>true</ShowLabel>
 					<ValueType>integer</ValueType>
 					<UnitType><![CDATA[NONE]]></UnitType>
-					<DefaultValue>0</DefaultValue>
+					<DefaultValue>1</DefaultValue>
 					<RepresentationMode>intervals</RepresentationMode>
 					<RepresentationType>week</RepresentationType>
 					<FirstDayOfWeek>sunday</FirstDayOfWeek>
@@ -26512,32 +26512,32 @@ return cfa_calc;]]></Body>
 						<Interval>
 							<Start>50400000</Start>
 							<End>86400000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>136800000</Start>
 							<End>172800000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>223200000</Start>
 							<End>259200000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>309600000</Start>
 							<End>345600000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>396000000</Start>
 							<End>432000000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 						<Interval>
 							<Start>482400000</Start>
 							<End>518400000</End>
-							<Value>1</Value>
+							<Value>0</Value>
 						</Interval>
 					</Intervals>
 					<Exceptions>
