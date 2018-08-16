@@ -1069,7 +1069,7 @@ create_db_opt_out();]]></StartupCode>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<DefaultValue Class="CodeValue">
-							<Code><![CDATA[1.372]]></Code>
+							<Code><![CDATA[1.371]]></Code>
 						</DefaultValue>
 						<ParameterEditor>
 							<Id>1528375037634</Id>
@@ -40217,6 +40217,8 @@ if (bestInfeasibleObjective != Double.NEGATIVE_INFINITY) {
 			<MaximumMemory>2048</MaximumMemory>
 			<RandomNumberGenerationType>fixedSeed</RandomNumberGenerationType>
 			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
+			<BeforeEachExperimentRunCode><![CDATA[deleteFrom(db_opt_out)    
+     .execute();]]></BeforeEachExperimentRunCode>
 			<SeedValue>1</SeedValue>
 			<SelectionModeForSimultaneousEvents>LIFO</SelectionModeForSimultaneousEvents>
 			<VmArgs><![CDATA[]]></VmArgs>
@@ -40506,7 +40508,7 @@ if (bestInfeasibleObjective != Double.NEGATIVE_INFINITY) {
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<ModelTimeProperties>
-				<StopOption><![CDATA[Stop at specified date]]></StopOption>
+				<StopOption><![CDATA[Stop at specified time]]></StopOption>
 				<InitialDate><![CDATA[1546300800000]]></InitialDate>	
 				<InitialTime><![CDATA[0.0]]></InitialTime>	
 				<FinalDate><![CDATA[1577836799000]]></FinalDate>	
